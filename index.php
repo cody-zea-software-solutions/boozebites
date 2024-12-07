@@ -37,125 +37,9 @@
 
         <!-- Preloader -->
         <div class="preloader"><div class="custom-loader"></div></div>
-
-        <!-- main header -->
-        <header class="main-header white-menu menu-absolute">
-            <!--Header-Upper-->
-            <div class="header-upper">
-                <div class="container-fluid clearfix">
-
-                    <div class="header-inner rel d-flex align-items-center">
-                        <div class="logo-outer">
-                            <div class="logo"><a href="index.html"><img src="assets/images/logos/logo-white.png" alt="Logo" title="Logo"></a></div>
-                        </div>
-
-                        <div class="nav-outer ms-lg-5 ps-xxl-4 clearfix">
-                            <!-- Main Menu -->
-                            <nav class="main-menu navbar-expand-lg">
-                                <div class="navbar-header py-10">
-                                   <div class="mobile-logo">
-                                       <a href="index.html">
-                                            <img src="assets/images/logos/logo-white.png" alt="Logo" title="Logo">
-                                       </a>
-                                   </div>
-                                   
-                                    <!-- Toggle Button -->
-                                    <button type="button" class="navbar-toggle" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                </div>
-
-                                <div class="navbar-collapse collapse clearfix">
-                                    <ul class="navigation clearfix">
-                                        <li class="dropdown"><a href="#">Home</a>
-                                            <ul>
-                                                <li><a href="index.html">Home Restauran</a></li>
-                                                <li><a href="index2.html">Home Pizza</a></li>
-                                                <li><a href="index3.html">Home Burger</a></li>
-                                                <li><a href="index4.html">Home Chiken</a></li>
-                                                <li><a href="index5.html">Juice & Drinks</a></li>
-                                                <li><a href="index6.html">Home Grill</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="#">Menu</a>
-                                            <ul>
-                                                <li><a href="menu-restaurant.html">Menu Restaurant</a></li>
-                                                <li><a href="menu-pizza.html">Menu Pizza</a></li>
-                                                <li><a href="menu-grill.html">Menu Gril</a></li>
-                                                <li><a href="menu-burger.html">Menu Burger</a></li>
-                                                <li><a href="menu-sea-food.html">Menu Sea Food</a></li>
-                                                <li><a href="menu-chicken.html">Menu Chicken</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="#">pages</a>
-                                            <ul>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="history.html">Our History</a></li>
-                                                <li><a href="faq.html">faqs</a></li>
-                                                <li class="dropdown"><a href="#">chefs</a>
-                                                    <ul>
-                                                        <li><a href="chefs.html">Our chefs</a></li>
-                                                        <li><a href="chef-details.html">chef Details</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="gallery.html">Gallery</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="#">blog</a>
-                                            <ul>
-                                                <li><a href="blog.html">blog standard</a></li>
-                                                <li><a href="blog-details.html">blog details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="dropdown"><a href="#">shop</a>
-                                            <ul>
-                                                <li><a href="shop.html">Products</a></li>
-                                                <li><a href="product-details.html">Product Details</a></li>
-                                                <li><a href="cart.html">Shopping Cart</a></li>
-                                                <li><a href="checkout.html">Checkout Page</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                    </ul>
-                                </div>
-
-                            </nav>
-                            <!-- Main Menu End-->
-                        </div>
-                        
-                        <div class="header-number">
-                            <i class="far fa-phone text-white"></i>Call : <a href="callto:+88012345688">+880 123 456 88</a>
-                        </div>
-                        
-                        <!-- Nav Search -->
-                        <div class="nav-search py-10">
-                            <button class="far fa-search"></button>
-                            <form action="#" class="hide">
-                                <input type="text" placeholder="Search" class="searchbox" required="">
-                                <button type="submit" class="searchbutton far fa-search"></button>
-                            </form>
-                        </div>
-                        
-                        <!-- Menu Button -->
-                        <div class="menu-btns">
-                            <button><i class="far fa-shopping-cart"></i> <span class="bgc-secondary">2</span></button>
-                            <a href="contact.html" class="theme-btn style-three">Book now <i class="far fa-arrow-alt-right"></i></a>
-                            <!-- menu sidbar -->
-                            <div class="menu-sidebar">
-                                <button class="bg-transparent"></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-lines">
-                   <span></span><span></span>
-                   <span></span><span></span>
-                </div>
-            </div>
-            <!--End Header Upper-->
-        </header>
+<?php 
+require "header.php"
+?>
        
 
         <!--Form Back Drop-->
@@ -202,17 +86,17 @@
         <!-- Hero Area Start -->
         <section class="hero-area-three pt-250 pb-220 rpb-100 rel z-1" style="background-image: url(assets/images/background/hero-three.png)">
            <span class="marquee-wrap style-two text-white">
-               <span class="marquee-inner left">burger Hamburger</span>
-               <span class="marquee-inner left">burger Hamburger</span>
-               <span class="marquee-inner left">burger Hamburger</span>
+               <span class="marquee-inner left">Booze Bites</span>
+               <span class="marquee-inner left">Booze Bites</span>
+               <span class="marquee-inner left">Booze Bites</span>
             </span>
             <div class="container">
                 <div class="row align-items-end">
                     <div class="col-lg-6">
                         <div class="hero-content-three mt-250 rmt-0 rmb-55 text-white" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                            <h1>Chicken Burger</h1>
-                            <p>Welcome to our culinary sanctuary, where every dish tells every bite is an adventure at our food</p>
-                            <a href="shop.html" class="theme-btn style-two">order now <i class="far fa-arrow-alt-right"></i></a>
+                            <h1>Savor Boldly</h1>
+                            <p>Flavors that Pair Perfectly with Your Drink</p>
+                            <a href="shop.php" class="theme-btn style-two">order now <i class="far fa-arrow-alt-right"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -236,7 +120,7 @@
                     <div class="col-xl-7 col-lg-9">
                         <div class="section-title text-center mb-50" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <span class="sub-title mb-5">popular food category</span>
-                            <h2>we provide amazing & Quality food for your good health</h2>
+                            <h2>Elevate Your Dining & Experience with Booze Bites</h2>
                         </div>
                     </div>
                 </div>
@@ -292,27 +176,27 @@
         <div class="headline-area mb-50 rmb-20 rel z-1">
             <span class="marquee-wrap">
                <span class="marquee-inner left">
-                    <span class="marquee-item">Italian pizza</span>
+                    <span class="marquee-item">Sri Lankan Spiced Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">delicious foods</span>
+                    <span class="marquee-item">Booze Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">burger king</span>
-                    <span class="marquee-item"><i class="flaticon-star"></i></span>
-               </span>
-               <span class="marquee-inner left">
-                    <span class="marquee-item">Italian pizza</span>
-                    <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">delicious foods</span>
-                    <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">burger king</span>
+                    <span class="marquee-item">Weekend Food Pairings</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                </span>
                <span class="marquee-inner left">
-                    <span class="marquee-item">Italian pizza</span>
+                    <span class="marquee-item">Booze Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">delicious foods</span>
+                    <span class="marquee-item">Where Every Bite Meets a Sip</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">burger king</span>
+                    <span class="marquee-item">Delight</span>
+                    <span class="marquee-item"><i class="flaticon-star"></i></span>
+               </span>
+               <span class="marquee-inner left">
+                    <span class="marquee-item">Booze Bites</span>
+                    <span class="marquee-item"><i class="flaticon-star"></i></span>
+                    <span class="marquee-item">Booze Bites</span>
+                    <span class="marquee-item"><i class="flaticon-star"></i></span>
+                    <span class="marquee-item">Booze Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                </span>
             </span>
@@ -336,8 +220,8 @@
                         <div class="row">
                             <div class="col-lg-8">
                                 <div class="section-title mt-55 mb-25" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                    <span class="sub-title mb-5">learn About wellfood</span>
-                                    <h2>we provide premium Quality food for your health</h2>
+                                    <span class="sub-title mb-5">learn About Booze Bites</span>
+                                    <h2>Serving Bold Flavors to Boost Your Moments</h2>
                                 </div>
                             </div>
                         </div>
@@ -592,7 +476,7 @@
         
         
         <!-- Headline area start -->
-        <div class="headline-area bgc-black pt-120 rpt-90 rel z-2">
+        <!-- <div class="headline-area bgc-black pt-120 rpt-90 rel z-2">
             <span class="marquee-wrap white-text">
                <span class="marquee-inner left">
                     <span class="marquee-item">Italian pizza</span>
@@ -627,12 +511,12 @@
                     <img src="assets/images/shapes/burger.png" alt="Shape">
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Headline Area end -->
         
         
         <!-- Special Offer Area start -->
-        <section class="special-offer-area-two bgc-black pt-105 rpt-85 pb-130 rpb-100 rel z-1">
+        <!-- <section class="special-offer-area-two bgc-black pt-105 rpt-85 pb-130 rpb-100 rel z-1">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
@@ -672,12 +556,12 @@
                     <img src="assets/images/shapes/hero-shape3.png" alt="Shape">
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- Special Offer Area end -->
         
         
         <!-- Popular Menu Area start -->
-        <section class="popular-menu-area-three pt-130 rpt-100 pb-115 rpb-90 rel z-1">
+        <!-- <section class="popular-menu-area-three pt-130 rpt-100 pb-115 rpb-90 rel z-1">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-7 col-md-8">
@@ -796,12 +680,12 @@
                     <img src="assets/images/shapes/menu-item2.png" alt="Shape">
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- Popular Menu Area end -->
         
         
         <!-- Headline area start -->
-        <div class="headline-area mb-105 rmb-85 rel z-1">
+        <!-- <div class="headline-area mb-105 rmb-85 rel z-1">
             <span class="marquee-wrap">
                <span class="marquee-inner left">
                     <span class="marquee-item">Italian pizza</span>
@@ -836,7 +720,7 @@
                     <img src="assets/images/shapes/burger.png" alt="Shape">
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Headline Area end -->
         
         
@@ -970,7 +854,7 @@
         
         
         <!-- Blog Area start -->
-        <section class="blog-area pt-130 rpt-100 pb-80 rpb-50 rel z-1">
+        <!-- <section class="blog-area pt-130 rpt-100 pb-80 rpb-50 rel z-1">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
@@ -1052,7 +936,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- Blog Area end -->
         
         
@@ -1099,22 +983,20 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="section-title rmb-25" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                            <span class="sub-title mb-5">join our newsletter</span>
-                            <h2>subscribe follow newsletter to get more updates</h2>
+                            <span class="sub-title mb-5">GET IN TOUCH WITH US ON WHATSAPP</span>
+                            <h2>Share your WhatsApp number, and we will contact you shortly</h2>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="newsletter-form-wrap" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
-                            <h6>Hurry up to join us to get more offer, JOIN FOR HOT OFFERS</h6>
+                            <h6>Share your WhatsApp number, and the Booze Bites team will get in touch with you soon!
+                            Shape</h6>
                             <form class="newsletter-form style-two mt-15" action="#">
-                                <label for="news-email"><i class="fas fa-envelope"></i></label>
-                                <input id="news-email" type="email" placeholder="Email Address" required>
-                                <button class="theme-btn style-two" type="submit">Subscribe <i class="far fa-arrow-alt-right"></i></button>
+                                <label for="news-email"><i class="fa-brands fa-whatsapp"></i></label>
+                                <input id="news-email" type="text" placeholder="enter your whatsapp number" required>
+                                <button class="theme-btn style-two" type="submit">Submit <i class="far fa-arrow-alt-right"></i></button>
                             </form>
-                            <div class="check-field mt-15">
-                                <input id="update-news" type="checkbox">
-                                <label for="update-news">Get 15 days update news & latest offer</label>
-                            </div>
+                         
                         </div>
                     </div>
                 </div>
@@ -1165,91 +1047,10 @@
         </div>
         <!-- Instagram area end -->
           
-           
-        <!-- footer area start -->
-        <footer class="main-footer footer-two bgc-black pt-120 rpt-90 rel z-1" style="background-image: url(assets/images/background/footer-bg.png);">
-            <div class="widget-area pb-70">
-                <div class="container">
-                    <div class="row justify-content-between">
-                        <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
-                            <div class="footer-widget footer-text">
-                                <div class="footer-title">
-                                    <h5>Location</h5>
-                                </div>
-                                <p>1403 Washington Ave, New Orlea ns, LA 70130, United States</p>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-lg-3 col-sm-6" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="0">
-                            <div class="footer-widget footer-contact">
-                                <div class="footer-title">
-                                    <h5>contact us</h5>
-                                </div>
-                                <ul>
-                                    <li><a href="mailto:wellfood@gmail.com"><u>wellfood@gmail.com</u></a></li>
-                                    <li><a href="callto:+(1)0987654321">+(1) 098 765 4321</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="0">
-                            <div class="footer-widget opening-hour">
-                                <div class="footer-title">
-                                    <h5>opening hour</h5>
-                                </div>
-                                <ul>
-                                    <li>Monday – Friday: <span>8am – 4pm</span></li>
-                                    <li>Saturday: <span>8am – 12am</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500" data-aos-offset="0">
-                            <div class="footer-widget footer-text">
-                                <div class="footer-title">
-                                    <h5>Follow Us</h5>
-                                </div>
-                                <div class="social-style-one mt-5">
-                                    <a href="contact.html"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="contact.html"><i class="fab fa-twitter"></i></a>
-                                    <a href="contact.html"><i class="fab fa-linkedin-in"></i></a>
-                                    <a href="contact.html"><i class="fab fa-instagram"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom pt-30 pb-15">
-                <div class="container rel text-center">
-                    <ul class="footer-bottom-nav">
-                       <li><a href="product-details.html">Hamburger</a></li>
-                       <li><a href="#">Pizza</a></li>
-                       <li><a href="product-details.html">Vegetable roll</a></li>
-                       <li><a href="product-details.html">Sea fish</a></li>
-                       <li><a href="product-details.html">Fried chicken</a></li>
-                       <li><a href="#">Burger</a></li>
-                       <li><a href="#">Saladr</a></li>
-                    </ul>
-                    <!-- Scroll Top Button -->
-                    <button class="scroll-top scroll-to-target" data-target="html"><i class="fas fa-arrow-alt-up"></i></button>
-                </div>
-                <hr class="mt-25 mb-30">
-                <div class="container">
-                    <div class="row">
-                       <div class="col-lg-5">
-                            <div class="copyright-text text-center text-lg-start">
-                                <p>Copyright 2024 <a href="index.html">Wellfood</a>. All Rights Reserved </p>
-                            </div>
-                       </div>
-                       <div class="col-lg-7 text-center text-lg-end">
-                           <ul class="footer-bottom-nav">
-                               <li><a href="#">Privacy Policy</a></li>
-                               <li><a href="#">Terms & Condition</a></li>
-                           </ul>
-                       </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- footer area end -->
+    <?php  
+    
+    require "footer.php"
+    ?>
 
     </div>
     <!--End pagewrapper-->
