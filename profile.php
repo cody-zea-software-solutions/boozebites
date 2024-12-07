@@ -95,14 +95,18 @@
                     <div>
                         <div class="row">
                             <div class="col-12 col-lg-6">
-                                <p class="text-body">Full Name</p>
+                                <p class="text-body">First Name</p>
+                                <input class="form-control mt-1" type="text" placeholder="Full Name" required />
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <p class="text-body">Last Name</p>
                                 <input class="form-control mt-1" type="text" placeholder="Full Name" required />
                             </div>
                             <div class="col-12 col-lg-6">
                                 <p class="text-body">Email</p>
                                 <input class="form-control mt-1" type="email" placeholder="Email Address" required />
                             </div>
-                            <div class="col-12 col-lg-12">
+                            <div class="col-12 col-lg-6">
                                 <p class="text-body">Mobile Number</p>
                                 <input class="form-control mt-1" type="text" placeholder="Mobile Number" required />
                             </div>
