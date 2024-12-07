@@ -70,7 +70,7 @@ headerContent(0);
                 <p class="text-body">Password</p>
                 <input class="form-control mt-1" type="password" placeholder="Enter Password" required />
               </div>
-              <button class="theme-btn style-two" type="submit">Create Account</button>
+              <button class="theme-btn style-two" type="submit" onclick="signup();">Create Account</button>
               <p class="text-center text-body">
                 Already have an account? 
                 <span onclick="toggleForms()" class="font-primary cursor-pointer">Login here</span>
@@ -146,5 +146,7 @@ headerContent(0);
     <script src="assets/js/aos.js"></script>
     <!-- Custom script -->
     <script src="assets/js/script.js"></script>
+    <!-- -->
+    <script src="sahan.js"></script>
 </body>
 </html>

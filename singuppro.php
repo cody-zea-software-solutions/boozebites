@@ -49,29 +49,64 @@ class main
      {
           $y = $this->getdata();
           if ($y == "OK") {
-               #insert
-               $d = new DateTime();
-               $tz = new DateTimeZone("Asia/Colombo");
-               $d->setTimezone($tz);
-               $date = $d->format("Y-m-d H:i:s");
-
-               $query = "INSERT INTO `user` 
-                     (`fname`, `lname`, `email`, `password`,`joined_date`, `user_status`) 
-                     VALUES 
-                     (?, ?, ?, ?, ?, ?, '1')";
-
-               $stmt =  Database::$connection->prepare($query);
-               $stmt->bind_param("ssssss", $this->fname,$this->lname,$this->email,$this->password,$date);
-               $result = $stmt->execute();
-               if ($result) {
-                    return "User inserted successfully.";
+               $m = Database::search("SELECT * FROM `user` WHERE `email`='" . $this->email . "'");
+               $mm = $m->num_rows;
+               if ($mm == 1) {
+                    return "email already rejisterd";
                } else {
-                    return "Error inserting user.";
+                    $c = new sql($this->fname, $this->lname, $this->email, $this->password);
+                    $cc = $c->insert();
+                    return $cc;
                }
-               #insert
           } else {
                return  $y;
           }
+     }
+}
+class sql
+{
+     private $fname;
+     private $lname;
+     private $email;
+     private $password;
+
+     public function __construct($fname, $lname, $email, $password)
+     {
+          $this->fname = $fname;
+          $this->lname = $lname;
+          $this->email = $email;
+          $this->password = $password;
+     }
+     public function insert()
+     {
+          #insert
+          $d = new DateTime();
+          $tz = new DateTimeZone("Asia/Colombo");
+          $d->setTimezone($tz);
+          $date = $d->format("Y-m-d H:i:s");
+
+          $query = "INSERT INTO `user` 
+           (`first_name`, `last_name`, `email`, `password`, `joined_date`, `status`) 
+           VALUES (?, ?, ?, ?, ?, ?)";
+
+          Database::setUpConnection();
+
+          $stmt = Database::$connection->prepare($query);
+          if ($stmt) {
+               $status = 1;
+
+               $stmt->bind_param("sssssi", $this->fname, $this->lname, $this->email, $this->password, $date, $status);
+               $result = $stmt->execute();
+               if ($result) {
+                    echo "User inserted successfully.";
+               } else {
+                    echo "Error inserting user: " . $stmt->error;
+               }
+               $stmt->close();
+          } else {
+               echo "Error preparing statement: " . Database::$connection->error;
+          }
+          #insert
      }
 }
 $x = new main();
