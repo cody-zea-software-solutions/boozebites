@@ -39,8 +39,9 @@
 
         <!-- Preloader -->
         <div class="preloader"><div class="custom-loader"></div></div>
-<?php 
-require "header.php"
+        <?php  
+require_once("header.php");
+headerContent(1); 
 ?>
 
         <!--Form Back Drop-->

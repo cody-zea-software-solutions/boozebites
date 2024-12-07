@@ -36,11 +36,11 @@
     <div class="page-wrapper">
 
         <!-- Preloader -->
-        <div class="preloader"><div class="custom-loader"></div></div>
-<?php 
-require "header.php"
+        <!-- <div class="preloader"><div class="custom-loader"></div></div> -->
+<?php  
+require_once("header.php");
+headerContent(1); 
 ?>
-       
 
         <!--Form Back Drop-->
         <div class="form-back-drop"></div>
@@ -1054,8 +1054,7 @@ require "header.php"
 
     </div>
     <!--End pagewrapper-->
-   
-    
+   <!-- Header -->
     <!-- Jquery -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap -->

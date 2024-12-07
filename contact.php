@@ -39,7 +39,10 @@
         <div class="preloader"><div class="custom-loader"></div></div>
 
         <!-- main header -->
-       <?php require "header.php" ?>
+        <?php  
+require_once("header.php");
+headerContent(1); 
+?>
 
         <!--Form Back Drop-->
         <div class="form-back-drop"></div>

@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!-- Magnific Popup -->
     <link rel="stylesheet" href="assets/css/magnific-popup.min.css">
-    <!-- jQuery UI -->
-    <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
     <!-- Nice Select -->
     <link rel="stylesheet" href="assets/css/nice-select.min.css">
     <!-- Animate -->
@@ -28,76 +26,125 @@
     <link rel="stylesheet" href="assets/css/slick.min.css">
     <!-- Main Style -->
     <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    .hidden { display: none; }
+  </style>
 </head>
 <body>
+<?php  
+require_once("header.php");
+headerContent(0); 
+?>
   <div class="container-fluid m-0 p-0">
     <div class="row">
-      <!-- Left Column -->
+      <!-- Left Column (Background Image) -->
       <div
         class="col-6 d-none d-lg-block vh-100"
         style="
-          background-image: url('/assets/images/background/cover.png');
+          background-image: url('./assets/images/background/cover.png');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;
         "
       ></div>
 
-      <!-- Right Column -->
+      <!-- Right Column (Forms) -->
       <div class="col-lg-6 col-12">
-        <form class="min-vh-80 m-10 w-100 rounded-1">
-          <div class="d-flex flex-column gap-3 mx-auto p-4 min-w-540 sm:min-w-96 border rounded rounded-3 text-muted text-sm shadow-lg">
-            <!-- Heading -->
-            <p class="h2 fw-semibold text-center">Create Account</p>
-            <p class="lead text-body text-center">
-              Elevate Your Dining & Experience with Booze Bites
-            </p>
-
-            <!-- Full Name -->
-            <div class="w-100">
-              <p class="text-body">Full Name</p>
-              <input
-                class="form-control mt-1"
-                type="text"
-                placeholder="Full Name"
-                required
-              />
+        <!-- Create Account Form -->
+        <div id="signup-form" class="form-container mt-95">
+          <form class="min-vh-80 m-10 w-100 rounded-1">
+            <div class="d-flex flex-column gap-3 mx-auto p-4 min-w-540 sm:min-w-96 border rounded rounded-3 text-muted text-sm shadow-lg">
+              <p class="h2 fw-semibold text-center">Create Account</p>
+              <p class="lead text-body text-center">
+                Elevate Your Dining & Experience with Booze Bites
+              </p>
+              <div class="w-100">
+                <p class="text-body">Full Name</p>
+                <input class="form-control mt-1" type="text" placeholder="Full Name" required />
+              </div>
+              <div class="w-100">
+                <p class="text-body">Email</p>
+                <input class="form-control mt-1" type="email" placeholder="Enter Email Address" required />
+              </div>
+              <div class="w-100">
+                <p class="text-body">Password</p>
+                <input class="form-control mt-1" type="password" placeholder="Enter Password" required />
+              </div>
+              <button class="theme-btn style-two" type="submit">Create Account</button>
+              <p class="text-center text-body">
+                Already have an account? 
+                <span onclick="toggleForms()" class="font-primary cursor-pointer">Login here</span>
+              </p>
             </div>
+          </form>
+        </div>
 
-            <!-- Email -->
-            <div class="w-100">
-              <p class="text-body">Email</p>
-              <input
-                class="form-control mt-1"
-                type="email"
-                placeholder="Enter Email Address"
-                required
-              />
+        <!-- Login Form -->
+        <div id="login-form" class="form-container hidden mt-100">
+          <form class="min-vh-80 m-10 w-100 rounded-1">
+            <div class="d-flex flex-column gap-3 mx-auto p-4 min-w-540 sm:min-w-96 border rounded rounded-3 text-muted text-sm shadow-lg">
+              <p class="h2 fw-semibold text-center">Login</p>
+              <p class="lead text-body text-center">
+                Welcome back to Booze Bites
+              </p>
+              <div class="w-100">
+                <p class="text-body">Email</p>
+                <input class="form-control mt-1" type="email" placeholder="Enter Email Address" required />
+              </div>
+              <div class="w-100">
+                <p class="text-body">Password</p>
+                <input class="form-control mt-1" type="password" placeholder="Enter Password" required />
+              </div>
+              <button class="theme-btn style-two" type="submit">Login</button>
+              <p class="text-center text-body">
+                Don't have an account? 
+                <span onclick="toggleForms()" class="font-primary cursor-pointer">Create one</span>
+              </p>
             </div>
-
-            <!-- Password -->
-            <div class="w-100">
-              <p class="text-body">Password</p>
-              <input
-                class="form-control mt-1"
-                type="password"
-                placeholder="Enter Password"
-                required
-              />
-            </div>
-
-            <!-- Submit Button -->
-            <button class="theme-btn style-two" type="submit">Create Account</button>
-
-            <!-- Toggle to Login -->
-            <p class="text-center text-body">
-              Already have an account? 
-              <a href="login.html" class="font-primary cursor-pointer">Login here</a>
-            </p>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
+  <?php  
+  require "footer.php"
+  ?>
+
+  <script>
+    // JavaScript to toggle between sign-up and login forms
+    function toggleForms() {
+      var signupForm = document.getElementById("signup-form");
+      var loginForm = document.getElementById("login-form");
+
+      // Toggle the visibility of the forms
+      signupForm.classList.toggle("hidden");
+      loginForm.classList.toggle("hidden");
+    }
+  </script>
+      
+    <!-- Jquery -->
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!-- Appear Js -->
+    <script src="assets/js/appear.min.js"></script>
+    <!-- Slick -->
+    <script src="assets/js/slick.min.js"></script>
+    <!-- Magnific Popup -->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Nice Select -->
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <!-- Image Loader -->
+    <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+    <!-- Circle Progress -->
+    <script src="assets/js/circle-progress.min.js"></script>
+    <!-- Skillbar -->
+    <script src="assets/js/skill.bars.jquery.min.js"></script>
+    <!-- Isotope -->
+    <script src="assets/js/isotope.pkgd.min.js"></script>
+    <!--  AOS Animation -->
+    <script src="assets/js/aos.js"></script>
+    <!-- Custom script -->
+    <script src="assets/js/script.js"></script>
 </body>
 </html>

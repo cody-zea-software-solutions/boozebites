@@ -1,5 +1,16 @@
-    <!-- main header -->
-    <header class="main-header white-menu menu-absolute">
+<?php
+function headerContent($theme)
+{
+    if ($theme == 1) {
+        $theme = "white-menu";
+    } else {
+        $theme = "dark-menu";
+    }
+    echo
+        '
+ 
+  <!-- main header -->
+    <header class="main-header ' . htmlspecialchars($theme) . ' menu-absolute">
             <!--Header-Upper-->
             <div class="header-upper">
                 <div class="container-fluid clearfix">
@@ -100,13 +111,17 @@
                         
                         <!-- Menu Button -->
                         <div class="menu-btns">
-                            <button><i class="far fa-shopping-cart"></i> <span>2</span></button>
+                        
+                        <button><i class="far fa-shopping-cart"></i> <span>2</span></button>
                             <a href="contact.html" class="theme-btn">Book now <i class="far fa-arrow-alt-right"></i></a>
                             <!-- menu sidbar -->
-                            <div class="menu-sidebar">
-                                <button class="bg-transparent"></button>
-                            </div>
+                         
                         </div>
+                           <button>
+             
+                    <i className="fas fa-user"></i>
+              
+                </button>
                     </div>
                 </div>
                 <div class="bg-lines">
@@ -116,3 +131,8 @@
             </div>
             <!--End Header Upper-->
         </header>
+';
+
+
+}
+?>
