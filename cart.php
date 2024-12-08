@@ -1,5 +1,11 @@
+<?php
+require "C:/xampp/htdocs/meatShop/connection.php";
+require "CartItem.php";
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="zxx">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -13,7 +19,7 @@
     <link rel="shortcut icon" href="assets/images/logos/favicon.png" type="image/x-icon">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    
+
     <!-- Flaticon -->
     <link rel="stylesheet" href="assets/css/flaticon.min.css">
     <!-- Font Awesome -->
@@ -32,22 +38,25 @@
     <link rel="stylesheet" href="assets/css/slick.min.css">
     <!-- Main Style -->
     <link rel="stylesheet" href="assets/css/style.css">
-    
+
 </head>
+
 <body>
     <div class="page-wrapper">
 
         <!-- Preloader -->
-        <div class="preloader"><div class="custom-loader"></div></div>
+        <div class="preloader">
+            <div class="custom-loader"></div>
+        </div>
 
-        <?php  
-require_once("header.php");
-headerContent(1); 
-?>
+        <?php
+        require_once("header.php");
+        headerContent(1);
+        ?>
 
         <!--Form Back Drop-->
         <div class="form-back-drop"></div>
-        
+
         <!-- Hidden Sidebar -->
         <section class="hidden-bar">
             <div class="inner-box text-center">
@@ -84,8 +93,8 @@ headerContent(1);
             </div>
         </section>
         <!--End Hidden Sidebar -->
-        
-        
+
+
         <!-- Page Banner Start -->
         <section class="page-banner-area overlay pt-215 rpt-150 pb-160 rpb-120 rel z-1 bgs-cover text-center" style="background-image: url(assets/images/background/banner.jpg);">
             <div class="container">
@@ -101,8 +110,8 @@ headerContent(1);
             </div>
         </section>
         <!-- Page Banner End -->
-        
-        
+
+
         <!-- Shopping Cart Area start -->
         <section class="shopping-cart-area py-130 rel z-1">
             <div class="container">
@@ -119,48 +128,90 @@ headerContent(1);
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td><img src="assets/images/widgets/news1.jpg" alt="Product"></td>
-                                <td><span class="title">Shopping Cart</span></td>
-                                <td><span class="price">70</span></td>
-                                <td>
-                                    <div class="quantity-input">
-                                        <button class="quantity-down">--</button>
-                                        <input class="quantity" type="text" value="1" name="quantity">
-                                        <button class="quantity-up">+</button>
-                                    </div>
-                                </td>
-                                <td><b class="price">70</b></td>
-                                <td><button type="button" class="close">×</button></td>
-                            </tr>
-                            <tr>
-                                <td><img src="assets/images/widgets/news2.jpg" alt="Product"></td>
-                                <td><span class="title">Chicken Soup</span></td>
-                                <td><span class="price">65</span></td>
-                                <td>
-                                    <div class="quantity-input">
-                                        <button class="quantity-down">--</button>
-                                        <input class="quantity" type="text" value="2" name="quantity">
-                                        <button class="quantity-up">+</button>
-                                    </div>
-                                </td>
-                                <td><b class="price">130</b></td>
-                                <td><button type="button" class="close">×</button></td>
-                            </tr>
-                            <tr>
-                                <td><img src="assets/images/widgets/news3.jpg" alt="Product"></td>
-                                <td><span class="title">Red king Crab</span></td>
-                                <td><span class="price">80</span></td>
-                                <td>
-                                    <div class="quantity-input">
-                                        <button class="quantity-down">--</button>
-                                        <input class="quantity" type="text" value="3" name="quantity">
-                                        <button class="quantity-up">+</button>
-                                    </div>
-                                </td>
-                                <td><b class="price">80</b></td>
-                                <td><button type="button" class="close">×</button></td>
-                            </tr>
+                            <?php
+                            if (true) { //check if the user logged in
+                                $user_email = 'user@gmail.com';
+
+                                $cart_rs = Database::Search("SELECT * FROM `cart_item` INNER JOIN `price_table` ON
+                                cart_item.price_table_product_product_id=price_table.product_product_id AND cart_item.price_table_box_type_box_type_id=price_table.box_type_box_type_id INNER JOIN `product` ON
+                                price_table.product_product_id=product.product_id INNER JOIN `box_type` ON
+                                cart_item.price_table_box_type_box_type_id=box_type.box_type_id INNER JOIN `preference` ON 
+								cart_item.preference_preference_id=preference.preference_id WHERE `user_email`='$user_email'");
+                                if ($cart_rs->num_rows > 0) {
+                                    for ($x = 0; $x < $cart_rs->num_rows; $x++) {
+                                        $cart_d = $cart_rs->fetch_assoc();
+                            ?>
+                                        <tr id="cartRow<?php echo $x; ?>">
+                                            <td>
+                                                <?php
+                                                $img_rs = Database::Search("SELECT * FROM `product_img` WHERE `product_id`='" . $cart_d["product_id"] . "'");
+                                                if ($img_rs->num_rows > 0) {
+                                                    $img_d = $img_rs->fetch_assoc();
+                                                ?>
+                                                    <img src="<?php echo $img_d["product_img_path"]; ?>" alt="Product Details">
+                                                <?php
+                                                } else {
+                                                ?>
+                                                    <img src="assets/images/widgets/news1.jpg" alt="Product">
+                                                <?php
+                                                }
+                                                ?>
+                                            </td>
+                                            <td><span class="title"><?php echo $cart_d["product_name"]; ?> <?php echo $cart_d["box_type_name"]; ?> (<?php echo $cart_d["preference_name"]; ?>)</span></td>
+                                            <td><span class="price"><?php echo $cart_d["price"]; ?></span></td>
+                                            <td>
+                                                <div class="quantity-input">
+                                                    <button class="quantity-down">--</button>
+                                                    <input class="quantity" type="text" value="<?php echo $cart_d["cart_qty"]; ?>" name="quantity">
+                                                    <button class="quantity-up">+</button>
+                                                </div>
+                                            </td>
+                                            <td><b class="price"><?php echo $cart_d["price"] * $cart_d["cart_qty"]; ?></b></td>
+                                            <td><button type="button" class="close" onclick="removeItem('<?php echo $cart_d['product_id']; ?>', '<?php echo $cart_d['box_type_id']; ?>', '<?php echo $cart_d['preference_id']; ?>', '<?php echo $x; ?>');">×</button></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                } else {
+                                    echo "no items in the cart";
+                                }
+                            } else { //Shows session based cart instead
+
+                                if (isset($_SESSION["cart"])) {
+                                    $cartItems = $_SESSION["cart"];
+                                    foreach ($cartItems as $cartItem) {
+                                        $pid = $cartItem->pid;
+                                        $bid = $cartItem->bid;
+                                        $qty = $cartItem->qty;
+
+                                        $rs = Database::Search("SELECT `product_name`, `box_type_name`, `price` FROM `price_table` INNER JOIN `product` ON
+                                        price_table.product_product_id=product.product_id INNER JOIN `box_type` ON
+                                        price_table.box_type_box_type_id=box_type.box_type_id WHERE `product_product_id`='$pid' AND `box_type_box_type_id`='$bid'");
+
+                                        if ($rs->num_rows > 0) {
+                                            $d = $rs->fetch_assoc();
+                                        ?>
+                                            <tr>
+                                                <td><img src="assets/images/widgets/news1.jpg" alt="Product"></td>
+                                                <td><span class="title"><?php echo $d["product_name"]; ?> <?php echo $d["box_type_name"]; ?></span></td>
+                                                <td><span class="price">$<?php echo $d["price"]; ?></span></td>
+                                                <td>
+                                                    <div class="quantity-input">
+                                                        <button class="quantity-down">--</button>
+                                                        <input class="quantity" type="text" value="1" name="quantity">
+                                                        <button class="quantity-up">+</button>
+                                                    </div>
+                                                </td>
+                                                <td><b class="price">$<?php echo $d["price"] * $qty; ?></b></td>
+                                                <td><button type="button" class="close">×</button></td>
+                                            </tr>
+                            <?php
+                                        }
+                                    }
+                                } else {
+                                    echo "no cart ses";
+                                }
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -177,6 +228,7 @@ headerContent(1);
                         <div class="update-shopping mb-30 text-lg-end wow fadeInRight delay-0-2s">
                             <a href="shop.html" class="theme-btn style-two my-5">shopping <i class="fas fa-angle-double-right"></i></a>
                             <a href="shop.html" class="theme-btn my-5">update cart <i class="fas fa-angle-double-right"></i></a>
+                            <a class="theme-btn bg-secondary my-5" onclick="clearCart();">Clear cart <i class="fas fa-angle-double-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -211,16 +263,16 @@ headerContent(1);
             </div>
         </section>
         <!-- Shopping Cart Area start -->
-          
-           
-   <?php 
-   require "footer.php"
-   ?>
+
+
+        <?php
+        require "footer.php"
+        ?>
 
     </div>
     <!--End pagewrapper-->
-   
-    
+
+
     <!-- Jquery -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap -->
@@ -247,6 +299,8 @@ headerContent(1);
     <script src="assets/js/aos.js"></script>
     <!-- Custom script -->
     <script src="assets/js/script.js"></script>
+    <script src="harry.js" defer></script>
 
 </body>
+
 </html>
