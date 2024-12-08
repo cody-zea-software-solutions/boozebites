@@ -37,6 +37,42 @@
 </head>
 
 <body>
+  <style>
+    .gallery-img {
+      width: 100px;
+      height: 100px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .popup-image {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 80%;
+      max-height: 80%;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border: 1px solid #ccc;
+      z-index: 1000;
+    }
+
+    .popup-image img {
+      width: 100%;
+      height: auto;
+    }
+
+    .popup-image .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
   <div class="page-wrapper">
     <!-- Preloader -->
     <div class="preloader">
@@ -156,6 +192,11 @@
               </div>
             </div>
           </div>
+        </div>
+        <!-- Popup Image Modal -->
+        <div class="popup-image" id="popupImage">
+          <span class="close">&times;</span>
+          <img src="" alt="Popup Image">
         </div>
         <ul class="nav nav tab-style-one mt-125 rmt-95 mb-40" data-aos="fade-up" data-aos-duration="1500"
           data-aos-offset="50">
@@ -462,7 +503,23 @@
       ?>
   </div>
   <!--End pagewrapper-->
+  <!-- jQuery and JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Click event for sub-images
+      $('.gallery-img').on('click', function () {
+        var fullImageUrl = $(this).data('full-image');
+        $('#popupImage img').attr('src', fullImageUrl);
+        $('#popupImage').fadeIn();
+      });
 
+      // Close popup
+      $('.close').on('click', function () {
+        $('#popupImage').fadeOut();
+      });
+    });
+  </script>
   <!-- Jquery -->
   <script src="assets/js/jquery-3.6.0.min.js"></script>
   <!-- Bootstrap -->
