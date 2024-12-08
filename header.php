@@ -17,7 +17,7 @@ function headerContent($theme)
 
                     <div class="header-inner rel d-flex align-items-center">
                         <div class="logo-outer">
-                            <div class="logo"><a href="index.html"><img src="assets/images/logos/logo.png" alt="Logo" title="Logo"></a></div>
+                            <div class="logo"><a href="index.php"><img src="assets/images/logos/logo-white.png" alt="Logo" title="Logo"></a></div>
                         </div>
 
                         <div class="nav-outer ms-lg-5 ps-xxl-4 clearfix">
