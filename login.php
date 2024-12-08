@@ -77,7 +77,7 @@ headerContent(0);
               </div>
               </div>
             
-              <button class="theme-btn style-two" type="submit" onclick="signup();">Create Account</button>
+              <p class="theme-btn style-two" onclick="signup();">Create Account</p>
               <p class="text-center text-body">
                 Already have an account? 
                 <span onclick="toggleForms()" class="font-primary cursor-pointer">Login here</span>
@@ -102,7 +102,7 @@ headerContent(0);
                 <p class="text-body">Password</p>
                 <input class="form-control mt-1" id="password1" type="password" placeholder="Enter Password" required />
               </div>
-              <button class="theme-btn style-two" onclick="login();" type="submit">Login</button>
+              <p class="theme-btn style-two" onclick="login();">login</p>
               <p class="text-center text-body">
                 Don't have an account? 
                 <span onclick="toggleForms()" class="font-primary cursor-pointer">Create one</span>

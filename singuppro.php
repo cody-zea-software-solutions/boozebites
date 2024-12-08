@@ -79,7 +79,7 @@ class sql
         $this->fname = $fname;
         $this->lname = $lname;
         $this->email = $email;
-        $this->password = password_hash($password, PASSWORD_BCRYPT);
+        $this->password = $password;
     }
 
     public function insert(): string
