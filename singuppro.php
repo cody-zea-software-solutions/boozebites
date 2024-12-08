@@ -16,11 +16,11 @@ class main
                if (empty($this->fname)) {
                     return "pleace enter your first name";
                } else if (strlen($this->lname) > 45) {
-                    echo ("Last name must be 45 characters or less");
+                    return ("Last name must be 45 characters or less");
                } else if (empty($this->lname)) {
                     return "pleace enter your last name";
                } elseif (strlen($this->lname) > 45) {
-                    echo ("Last name must be 45 characters or less");
+                    return ("Last name must be 45 characters or less");
                } else if (empty($this->email)) {
                     return "pleace enter your email";
                } else if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
@@ -98,13 +98,13 @@ class sql
                $stmt->bind_param("sssssi", $this->fname, $this->lname, $this->email, $this->password, $date, $status);
                $result = $stmt->execute();
                if ($result) {
-                    echo "User inserted successfully.";
+                    return "User inserted successfully.";
                } else {
-                    echo "Error inserting user: " . $stmt->error;
+                    return "Error inserting user: " . $stmt->error;
                }
                $stmt->close();
           } else {
-               echo "Error preparing statement: " . Database::$connection->error;
+               return "Error preparing statement: " . Database::$connection->error;
           }
           #insert
      }
