@@ -112,7 +112,7 @@ function headerContent($theme)
                         <!-- Menu Button -->
                         <div class="menu-btns">
                         
-                        <button><i class="far fa-shopping-cart"></i> <span>2</span></button>
+                        <button><i class="far fa-shopping-cart" onclick="gotoCart();"></i> <span>+</span></button>
                             <a href="contact.html" class="theme-btn">Book now <i class="far fa-arrow-alt-right"></i></a>
                             <!-- menu sidbar -->
                          
