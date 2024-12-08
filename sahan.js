@@ -23,4 +23,22 @@ function signup() {
          alert("An error occurred!");
      });
  }
- 
+ function login() {
+    var email = document.getElementById("email1").value;
+    var password = document.getElementById("password1").value;
+    var form = new FormData();
+    form.append("email", email);
+    form.append("password", password);
+
+    fetch("loginpro.php", {
+        method: "POST",
+        body: form,
+    })
+    .then(res => res.text())
+    .then(x => {
+        alert(x); 
+    })
+    .catch(error => {
+        alert("Error: " + error); 
+    });
+}
