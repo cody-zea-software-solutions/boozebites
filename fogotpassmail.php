@@ -142,12 +142,12 @@ class EmailSender
         </body>
         </html>
         ';
-        
+
         $mail->Body = $bodyContent;
         if (!$mail->send()) {
             return "Error" ;
         } else {
-            return "success";
+            return "check your gmailbox";
         }
     }
 }
