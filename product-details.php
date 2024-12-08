@@ -232,6 +232,7 @@ if (isset($_GET["pid"])) {
             </div>
             <ul class="nav nav tab-style-one mt-125 rmt-95 mb-40" data-aos="fade-up" data-aos-duration="1500"
               data-aos-offset="50">
+<<<<<<< HEAD
               <li>
                 <a href="#details" data-bs-toggle="tab" class="active show">Descrptions</a>
               </li>
@@ -239,6 +240,158 @@ if (isset($_GET["pid"])) {
                 <a href="#information" data-bs-toggle="tab">Additional Information's</a>
               </li>
               <!-- <li><a href="#reviews" data-bs-toggle="tab">Reviews(3)</a></li> -->
+=======
+              <img src="./admin-panel/product_img/product-img-1.jpg" alt="Product Details" class="w-100 img-fluid zoom-image" />
+            </div>
+            <div class="row">
+              <div class="col-6 col-md-6 col-lg-4 mt-2">
+                <img src="./admin-panel/product_img/product-img-3.jpg" alt="Product Details" />
+              </div>
+              <div class="col-6 col-md-6 col-lg-4 mt-2">
+                <img src="./admin-panel/product_img/product-img-2.jpg" alt="Product Details" />
+              </div>
+              <div class="col-6 col-md-6 col-lg-4 mt-2">
+                <img src="./admin-panel/product_img/product-img-8.jpg" alt="Product Details" />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="product-details-content" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
+              <div class="section-title">
+                <h2>Italian beef pizza</h2>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, corporis minus? Corporis ut sequi
+                fugiat? Illo laboriosam ut voluptates dolores nobis rem tempore nihil quia.
+              </p>
+              <!-- SPICY LEVEL -->
+              <h5 class="pt-4">Spicy Level 🌶️</h5>
+              <div class="row">
+                <!-- Example Spicy Levels -->
+                <!-- Replace these with dynamic values using a template engine or JavaScript -->
+                <div
+                  class="px-4 py-2 rounded-pill border d-flex justify-content-center align-items-center me-2 text-dark col-4"
+                  style="cursor: pointer">
+                  Medium 🌶️
+                </div>
+                <div
+                  class="px-4 py-2 rounded-pill border d-flex justify-content-center align-items-center me-2 text-dark col-4"
+                  style="cursor: pointer">
+                  Hot 🌶️🌶️
+                </div>
+
+              </div>
+              <!-- SIZES LEVEL -->
+              <h5 class="pt-4">Sizes available 🍽️</h5>
+              <div class="row">
+                <!-- Example Spicy Levels -->
+                <!-- Replace these with dynamic values using a template engine or JavaScript -->
+                <div
+                  class="px-4 py-2 rounded-pill border d-flex justify-content-center align-items-center me-2 text-dark col-3"
+                  style="cursor: pointer">
+                  750ml 📦
+                </div>
+                <div
+                  class="px-4 py-2 rounded-pill border d-flex justify-content-center align-items-center me-2 text-dark col-3"
+                  style="cursor: pointer">
+                  1000ml 📦📦
+                </div>
+                <div
+                  class="px-4 py-2 rounded-pill border d-flex justify-content-center align-items-center me-2 text-dark col-3"
+                  style="cursor: pointer">
+                  1.3kg 📦📦📦
+                </div>
+
+              </div>
+
+
+              <span class="price mb-15 mt-4">$58.63</span>
+
+              <form action="#" class="add-to-cart py-25">
+                <h5>Quantity</h5>
+                <input type="number" value="2" min="1" max="20"
+                  onchange="if(parseInt(this.value,10)<10)this.value='0'+this.value;" required />
+                <button type="submit" class="theme-btn mb-15">
+                  Add to Cart <i class="far fa-arrow-alt-right"></i>
+                </button>
+              </form>
+              <ul class="category-tags pt-20 pb-30">
+                <li>
+                  <h6>Categories</h6>
+                  :
+                  <a href="#">Restaurant</a>
+                </li>
+                <li>
+                  <h6>Tags</h6>
+                  :
+                  <a href="#">Pizza</a>
+                  <a href="#">Burger</a>
+                  <a href="#">Soup</a>
+                </li>
+              </ul>
+              <div class="social-style-one">
+                <h5>Share</h5>
+                <a href="contact.html"><i class="fab fa-twitter"></i></a>
+                <a href="contact.html"><i class="fab fa-facebook-f"></i></a>
+                <a href="contact.html"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Popup Image Modal -->
+        <div class="popup-image" id="popupImage">
+          <span class="close">&times;</span>
+          <img src="" alt="Popup Image">
+        </div>
+        <ul class="nav nav tab-style-one mt-125 rmt-95 mb-40" data-aos="fade-up" data-aos-duration="1500"
+          data-aos-offset="50">
+          <li>
+            <a href="#details" data-bs-toggle="tab" class="active show">Descrptions</a>
+          </li>
+          <li>
+            <a href="#information" data-bs-toggle="tab">Additional Information's</a>
+          </li>
+          <!-- <li><a href="#reviews" data-bs-toggle="tab">Reviews(3)</a></li> -->
+        </ul>
+        <div class="tab-content pb-60" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
+          data-aos-offset="50">
+          <div class="tab-pane fade active show" id="details">
+            <p>
+              Sorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor
+              nulla id sit neque scelerisque pulvinar. Mus amet interdum
+              turpis consequat adipiscing. Elementum feugiat sed duis
+              consectetur varius et cras mattis. Lobortis auctor sit in eu
+              nisl fusce augue venenatis, dui. Phasellus eget sagittis mauris,
+              nibh augue cursus pellentesque amet elementum. Tristique amet
+              sollicitudin sit nulla aliquam, imperdiet sed ut diam.
+              Suspendisse ipsum rhoncus nulla lectus. Id neque in urna neque
+              non amet. Tortor sed aliquam in faucibus enim, posuere. Sed et
+              accumsan, neque posuere tempus in cras. Ornare lectus pretium,
+              est eget purus, enim quam purus netus. Turpis nunc
+            </p>
+            <p>
+              Dictum ultrices et suspendisse amet mattis in pellentesque.
+              Vulputate arcu, consectetur odio donec nec duis ultrices
+              facilisi. Mauris cursus elit diam, urna suspendisse et, amet.
+              Vitae ligula ultrices nulla justo, enim lorem duis. Volutpat sit
+              et neque, aliquam, diam at at neque. Lacus augue
+            </p>
+          </div>
+          <div class="tab-pane fade" id="information">
+            <p>
+              Circumstances occur in which toil and pain can procure him some
+              great pleasure. To take a trivial example, which of us ever
+              undertakes laborious physical exercise, except to obtain some
+              advantage from it? But who has any right to find fault with a
+              man who chooses
+            </p>
+            <ul class="list-style-one mt-20 mb-15">
+              <li>Fresh Chicken Burger</li>
+              <li>Pizza With Mushrooms</li>
+              <li>Double Burger & Fries</li>
+>>>>>>> 6730cbc91e60a276d17867eee3b8652e50648603
             </ul>
             <div class="tab-content pb-60" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
               data-aos-offset="50">
@@ -546,6 +699,7 @@ if (isset($_GET["pid"])) {
             $('#popupImage').fadeIn();
           });
 
+<<<<<<< HEAD
           // Close popup
           $('.close').on('click', function() {
             $('#popupImage').fadeOut();
@@ -580,6 +734,51 @@ if (isset($_GET["pid"])) {
       <script src="assets/js/script.js"></script>
       <script src="harry.js" defer></script>
     </body>
+=======
+      // Close popup
+      $('.close').on('click', function () {
+        $('#popupImage').fadeOut();
+      });
+    });
+
+    $(document).ready(function() {
+    $('.zoom-image').bZoom({
+        zoomFactor: 3, // Custom zoom factor for larger magnification
+        magnifierSize: 200, // Customize the size of the magnifier
+        magnifierOpacity: 0.7 // Customize the opacity of the magnifier
+    });
+});
+
+  </script>
+  
+  <!-- Jquery -->
+  <script src="assets/js/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="assets/js/bootstrap.min.js"></script>
+  <!-- Appear Js -->
+  <script src="assets/js/appear.min.js"></script>
+  <!-- Slick -->
+  <script src="assets/js/slick.min.js"></script>
+  <!-- jQuery UI -->
+  <script src="assets/js/jquery-ui.min.js"></script>
+  <!-- Magnific Popup -->
+  <script src="assets/js/jquery.magnific-popup.min.js"></script>
+  <!-- Nice Select -->
+  <script src="assets/js/jquery.nice-select.min.js"></script>
+  <!-- Image Loader -->
+  <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+  <!-- Circle Progress -->
+  <script src="assets/js/circle-progress.min.js"></script>
+  <!-- Skillbar -->
+  <script src="assets/js/skill.bars.jquery.min.js"></script>
+  <!-- Isotope -->
+  <script src="assets/js/isotope.pkgd.min.js"></script>
+  <!--  AOS Animation -->
+  <script src="assets/js/aos.js"></script>
+  <!-- Custom script -->
+  <script src="assets/js/script.js"></script>
+</body>
+>>>>>>> 6730cbc91e60a276d17867eee3b8652e50648603
 
     </html>
 <?php

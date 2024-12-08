@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zxx">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -12,8 +13,9 @@
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="assets/images/logos/favicon.png" type="image/x-icon">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
     <!-- Flaticon -->
     <link rel="stylesheet" href="assets/css/flaticon.min.css">
     <!-- Font Awesome -->
@@ -32,21 +34,24 @@
     <link rel="stylesheet" href="assets/css/slick.min.css">
     <!-- Main Style -->
     <link rel="stylesheet" href="assets/css/style.css">
-    
+
 </head>
+
 <body>
     <div class="page-wrapper">
 
         <!-- Preloader -->
-        <div class="preloader"><div class="custom-loader"></div></div>
-        <?php  
-require_once("header.php");
-headerContent(1); 
-?>
+        <div class="preloader">
+            <div class="custom-loader"></div>
+        </div>
+        <?php
+        require_once("header.php");
+        headerContent(1);
+        ?>
 
         <!--Form Back Drop-->
         <div class="form-back-drop"></div>
-        
+
         <!-- Hidden Sidebar -->
         <section class="hidden-bar">
             <div class="inner-box text-center">
@@ -83,49 +88,66 @@ headerContent(1);
             </div>
         </section>
         <!--End Hidden Sidebar -->
-        
-        
+
+
         <!-- Page Banner Start -->
-        <section class="page-banner-area overlay pt-215 rpt-150 pb-160 rpb-120 rel z-1 bgs-cover text-center" style="background-image: url(assets/images/background/banner.jpg);">
+        <section class="page-banner-area overlay pt-215 rpt-150 pb-160 rpb-120 rel z-1 bgs-cover text-center"
+            style="background-image: url(assets/images/background/banner.jpg);">
             <div class="container">
                 <div class="banner-inner text-white">
-                    <h1 class="page-title" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">Shop With sidebar</h1>
+                    <h1 class="page-title" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">Booze
+                        Bites-Shop</h1>
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                        <ol class="breadcrumb justify-content-center" data-aos="fade-up" data-aos-delay="200"
+                            data-aos-duration="1500" data-aos-offset="50">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active">Shop With sidebar</li>
+                            <li class="breadcrumb-item active">Booze Bites-Shop</li>
                         </ol>
                     </nav>
                 </div>
             </div>
         </section>
         <!-- Page Banner End -->
-        
-        
+
+
         <!-- Shop Area Start -->
         <section class="shop-area py-130 rpy-100">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-3 col-lg-4 col-md-8">
                         <div class="shop-sidebar rmb-75">
-                            <div class="widget widget-search" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="widget widget-search" data-aos="fade-up" data-aos-duration="1500"
+                                data-aos-offset="50">
                                 <h4 class="widget-title">Search</h4>
                                 <form action="#" class="default-search-form">
                                     <input type="text" placeholder="Search here" required>
                                     <button type="submit" class="searchbutton far fa-search"></button>
                                 </form>
                             </div>
-                            <div class="widget widget-category" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
-                                <h4 class="widget-title">Category</h4>
-                                <ul>
-                                    <li><a href="shop.html">Beef & Chicken Hamburger <span class="count">8</span></a></li>
-                                    <li><a href="shop.html">Italian Pizza <span class="count">3</span></a></li>
-                                    <li><a href="shop.html">Sandwich <span class="count">5</span></a></li>
-                                    <li><a href="shop.html">Chicken Roll <span class="count">2</span></a></li>
-                                    <li><a href="shop.html">Soup <span class="count">5</span></a></li>
+                            <div class="widget widget-category" data-aos="fade-up" data-aos-delay="50"
+                                data-aos-duration="1500" data-aos-offset="50">
+                                <h4 class="widget-title">meat type</h4>
+                                <ul class="text-dark">
+                                    <!-- sahan this meat types please load database and make filtering process -->
+                                    <li><a>Beef<span class="count">8</span></a></li>
+                                    <li><a>Lamb<span class="count">3</span></a></li>
+                                    <li><a>Chicken <span class="count">5</span></a></li>
+                                    <li><a>Pork<span class="count">2</span></a></li>
                                 </ul>
                             </div>
-                            <div class="widget widget-filter" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="widget widget-category" data-aos="fade-up" data-aos-delay="50"
+                                data-aos-duration="1500" data-aos-offset="50">
+                                <h4 class="widget-title">category</h4>
+                                <ul>
+
+                                    <!-- sahan this meat types please load database and make filtering process -->
+                                    <li><a>Stew<span class="count">8</span></a></li>
+                                    <li><a>Devilled<span class="count">3</span></a></li>
+                                    <li><a>Dried <span class="count">5</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="widget widget-filter" data-aos="fade-up" data-aos-delay="50"
+                                data-aos-duration="1500" data-aos-offset="50">
                                 <h4 class="widget-title">Pricing</h4>
                                 <div class="price-filter-wrap">
                                     <div class="price-slider-range"></div>
@@ -135,8 +157,9 @@ headerContent(1);
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="widget widget-products" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+
+                            <!-- <div class="widget widget-products" data-aos="fade-up" data-aos-duration="1500"
+                                data-aos-offset="50">
                                 <h4 class="widget-title">Best Seller</h4>
                                 <ul>
                                     <li>
@@ -188,8 +211,9 @@ headerContent(1);
                                         </div>
                                     </li>
                                 </ul>
-                            </div>
-                            <div class="widget widget-tag-cloud" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                            </div> -->
+                            <!-- <div class="widget widget-tag-cloud" data-aos="fade-up" data-aos-duration="1500"
+                                data-aos-offset="50">
                                 <h4 class="widget-title">Popular Tags</h4>
                                 <div class="tag-coulds">
                                     <a href="shop.html">Spicy</a>
@@ -201,10 +225,12 @@ headerContent(1);
                                     <a href="shop.html">Juice</a>
                                     <a href="shop.html">Bread</a>
                                 </div>
-                            </div>
-                            
-                            <div class="widget widget-banner" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                                <div class="category-banner-item" style="background-image: url(assets/images/widgets/banner-bg.jpg);">
+                            </div> -->
+
+                            <div class="widget widget-banner" data-aos="fade-up" data-aos-duration="1500"
+                                data-aos-offset="50">
+                                <div class="category-banner-item"
+                                    style="background-image: url(assets/images/widgets/banner-bg.jpg);">
                                     <span class="price">only $59</span>
                                     <h3>SPECIALTY PIZZAS</h3>
                                     <div class="ratting">
@@ -215,7 +241,8 @@ headerContent(1);
                                         <i class="fas fa-star"></i>
                                         <span>(5k)</span>
                                     </div>
-                                    <a href="shop.html" class="theme-btn style-two">Order now <i class="far fa-arrow-alt-right"></i></a>
+                                    <a href="shop.html" class="theme-btn style-two">Order now <i
+                                            class="far fa-arrow-alt-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -223,10 +250,12 @@ headerContent(1);
                     <div class="col-xl-9 col-lg-8">
                         <div class="shop-page-wrap">
                             <div class="shop-shorter rel z-3 mb-35">
-                                <div class="sort-text mb-15" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="sort-text mb-15" data-aos="fade-left" data-aos-duration="1500"
+                                    data-aos-offset="50">
                                     Showing 1–12 of 27 results
                                 </div>
-                                <div class="products-dropdown mb-15" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="products-dropdown mb-15" data-aos="fade-right" data-aos-duration="1500"
+                                    data-aos-offset="50">
                                     <select>
                                         <option value="default" selected="">Default Sorting</option>
                                         <option value="new">Newness Sorting</option>
@@ -237,7 +266,8 @@ headerContent(1);
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500"
+                                    data-aos-offset="50">
                                     <div class="product-item-two">
                                         <div class="image">
                                             <img src="assets/images/dishes/dish1.png" alt="Dish">
@@ -254,10 +284,12 @@ headerContent(1);
                                             <h5><a href="product-details.html">fresh chicken burger</a></h5>
                                             <span class="price"><del>$50</del> $25</span>
                                         </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i class="far fa-arrow-alt-right"></i></a>
+                                        <a href="shop.html" class="theme-btn">add to cart <i
+                                                class="far fa-arrow-alt-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="50"
+                                    data-aos-duration="1500" data-aos-offset="50">
                                     <div class="product-item-two">
                                         <div class="image">
                                             <img src="assets/images/dishes/dish2.png" alt="Dish">
@@ -274,10 +306,12 @@ headerContent(1);
                                             <h5><a href="product-details.html">pizza with mushrooms</a></h5>
                                             <span class="price"><del>$50</del> $25</span>
                                         </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i class="far fa-arrow-alt-right"></i></a>
+                                        <a href="shop.html" class="theme-btn">add to cart <i
+                                                class="far fa-arrow-alt-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100"
+                                    data-aos-duration="1500" data-aos-offset="50">
                                     <div class="product-item-two">
                                         <div class="image">
                                             <img src="assets/images/dishes/dish3.png" alt="Dish">
@@ -294,10 +328,12 @@ headerContent(1);
                                             <h5><a href="product-details.html">double burger & fries</a></h5>
                                             <span class="price"><del>$50</del> $25</span>
                                         </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i class="far fa-arrow-alt-right"></i></a>
+                                        <a href="shop.html" class="theme-btn">add to cart <i
+                                                class="far fa-arrow-alt-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500"
+                                    data-aos-offset="50">
                                     <div class="product-item-two">
                                         <div class="image">
                                             <img src="assets/images/dishes/dish5.png" alt="Dish">
@@ -314,10 +350,12 @@ headerContent(1);
                                             <h5><a href="product-details.html">Italian beef pizza</a></h5>
                                             <span class="price"><del>$50</del> $25</span>
                                         </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i class="far fa-arrow-alt-right"></i></a>
+                                        <a href="shop.html" class="theme-btn">add to cart <i
+                                                class="far fa-arrow-alt-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="50"
+                                    data-aos-duration="1500" data-aos-offset="50">
                                     <div class="product-item-two">
                                         <div class="image">
                                             <img src="assets/images/dishes/dish6.png" alt="Dish">
@@ -334,10 +372,12 @@ headerContent(1);
                                             <h5><a href="product-details.html">fried chicken burger</a></h5>
                                             <span class="price"><del>$50</del> $25</span>
                                         </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i class="far fa-arrow-alt-right"></i></a>
+                                        <a href="shop.html" class="theme-btn">add to cart <i
+                                                class="far fa-arrow-alt-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100"
+                                    data-aos-duration="1500" data-aos-offset="50">
                                     <div class="product-item-two">
                                         <div class="image">
                                             <img src="assets/images/dishes/dish4.png" alt="Dish">
@@ -354,10 +394,12 @@ headerContent(1);
                                             <h5><a href="product-details.html">fried chicken french</a></h5>
                                             <span class="price"><del>$50</del> $25</span>
                                         </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i class="far fa-arrow-alt-right"></i></a>
+                                        <a href="shop.html" class="theme-btn">add to cart <i
+                                                class="far fa-arrow-alt-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500"
+                                    data-aos-offset="50">
                                     <div class="product-item-two">
                                         <div class="image">
                                             <img src="assets/images/dishes/dish7.png" alt="Dish">
@@ -374,10 +416,12 @@ headerContent(1);
                                             <h5><a href="product-details.html">fried chicken french</a></h5>
                                             <span class="price"><del>$50</del> $25</span>
                                         </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i class="far fa-arrow-alt-right"></i></a>
+                                        <a href="shop.html" class="theme-btn">add to cart <i
+                                                class="far fa-arrow-alt-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="50"
+                                    data-aos-duration="1500" data-aos-offset="50">
                                     <div class="product-item-two">
                                         <div class="image">
                                             <img src="assets/images/dishes/dish8.png" alt="Dish">
@@ -394,10 +438,12 @@ headerContent(1);
                                             <h5><a href="product-details.html">fried chicken drench</a></h5>
                                             <span class="price"><del>$50</del> $25</span>
                                         </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i class="far fa-arrow-alt-right"></i></a>
+                                        <a href="shop.html" class="theme-btn">add to cart <i
+                                                class="far fa-arrow-alt-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100"
+                                    data-aos-duration="1500" data-aos-offset="50">
                                     <div class="product-item-two">
                                         <div class="image">
                                             <img src="assets/images/dishes/dish9.png" alt="Dish">
@@ -414,10 +460,12 @@ headerContent(1);
                                             <h5><a href="product-details.html">roasted chicken</a></h5>
                                             <span class="price"><del>$50</del> $25</span>
                                         </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i class="far fa-arrow-alt-right"></i></a>
+                                        <a href="shop.html" class="theme-btn">add to cart <i
+                                                class="far fa-arrow-alt-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500"
+                                    data-aos-offset="50">
                                     <div class="product-item-two">
                                         <div class="image">
                                             <img src="assets/images/dishes/dish10.png" alt="Dish">
@@ -434,10 +482,12 @@ headerContent(1);
                                             <h5><a href="product-details.html">Italian beef pizza</a></h5>
                                             <span class="price"><del>$50</del> $25</span>
                                         </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i class="far fa-arrow-alt-right"></i></a>
+                                        <a href="shop.html" class="theme-btn">add to cart <i
+                                                class="far fa-arrow-alt-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="50"
+                                    data-aos-duration="1500" data-aos-offset="50">
                                     <div class="product-item-two">
                                         <div class="image">
                                             <img src="assets/images/dishes/dish11.png" alt="Dish">
@@ -454,10 +504,12 @@ headerContent(1);
                                             <h5><a href="product-details.html">Italian beef pizza</a></h5>
                                             <span class="price"><del>$50</del> $25</span>
                                         </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i class="far fa-arrow-alt-right"></i></a>
+                                        <a href="shop.html" class="theme-btn">add to cart <i
+                                                class="far fa-arrow-alt-right"></i></a>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100"
+                                    data-aos-duration="1500" data-aos-offset="50">
                                     <div class="product-item-two">
                                         <div class="image">
                                             <img src="assets/images/dishes/dish12.png" alt="Dish">
@@ -474,11 +526,13 @@ headerContent(1);
                                             <h5><a href="product-details.html">top fried chicken</a></h5>
                                             <span class="price"><del>$50</del> $25</span>
                                         </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i class="far fa-arrow-alt-right"></i></a>
+                                        <a href="shop.html" class="theme-btn">add to cart <i
+                                                class="far fa-arrow-alt-right"></i></a>
                                     </div>
                                 </div>
                             </div>
-                            <ul class="pagination pt-30 flex-wrap" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                            <ul class="pagination pt-30 flex-wrap" data-aos="fade-up" data-aos-duration="1500"
+                                data-aos-offset="50">
                                 <li class="page-item disabled">
                                     <span class="page-link"><i class="fal fa-arrow-left"></i></span>
                                 </li>
@@ -502,22 +556,26 @@ headerContent(1);
             </div>
         </section>
         <!-- Shop Area End -->
-          
-           
+
+
         <!-- footer area start -->
-        <footer class="main-footer bgc-black rel z-1" style="background-image: url(assets/images/background/footer-bg.png);">
+        <footer class="main-footer bgc-black rel z-1"
+            style="background-image: url(assets/images/background/footer-bg.png);">
             <div class="footer-top py-130 rpy-100">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-xl-7 col-lg-9">
-                            <div class="section-title text-white text-center mb-35" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
+                            <div class="section-title text-white text-center mb-35" data-aos="fade-up"
+                                data-aos-duration="1500" data-aos-offset="0">
                                 <span class="sub-title mb-10">join our newsletter</span>
                                 <h2>subscribe follow our newsletter to get more updates</h2>
                             </div>
-                            <form class="newsletter-form" action="#" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                            <form class="newsletter-form" action="#" data-aos="fade-up" data-aos-delay="50"
+                                data-aos-duration="1500" data-aos-offset="50">
                                 <label for="news-email"><i class="fas fa-envelope"></i></label>
                                 <input id="news-email" type="email" placeholder="Email Address" required>
-                                <button class="theme-btn" type="submit">Subscribe <i class="far fa-arrow-alt-right"></i></button>
+                                <button class="theme-btn" type="submit">Subscribe <i
+                                        class="far fa-arrow-alt-right"></i></button>
                             </form>
                         </div>
                     </div>
@@ -526,12 +584,14 @@ headerContent(1);
             <div class="widget-area pb-70">
                 <div class="container">
                     <div class="row justify-content-between">
-                        <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
+                        <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500"
+                            data-aos-offset="0">
                             <div class="footer-widget footer-text">
                                 <div class="footer-logo mb-25">
                                     <a href="index.html"><img src="assets/images/logos/logo.png" alt="Logo"></a>
                                 </div>
-                                <p>Temporibus autem quibusdam officiis aut rerum necessitatibus eveniet voluta repudiandae molestiae recusandae</p>
+                                <p>Temporibus autem quibusdam officiis aut rerum necessitatibus eveniet voluta
+                                    repudiandae molestiae recusandae</p>
                                 <div class="social-style-one mt-15">
                                     <a href="contact.html"><i class="fab fa-facebook-f"></i></a>
                                     <a href="contact.html"><i class="fab fa-twitter"></i></a>
@@ -540,7 +600,8 @@ headerContent(1);
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-5 col-sm-6" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="0">
+                        <div class="col-xl-4 col-lg-5 col-sm-6" data-aos="fade-up" data-aos-delay="50"
+                            data-aos-duration="1500" data-aos-offset="0">
                             <div class="footer-widget footer-links">
                                 <div class="footer-title">
                                     <h5>popular food</h5>
@@ -561,7 +622,8 @@ headerContent(1);
                         </div>
                         <div class="col-xl-5">
                             <div class="row justify-content-between">
-                                <div class="col-xl-6 col-lg-5 col-sm-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="0">
+                                <div class="col-xl-6 col-lg-5 col-sm-6" data-aos="fade-up" data-aos-delay="100"
+                                    data-aos-duration="1500" data-aos-offset="0">
                                     <div class="footer-widget footer-contact">
                                         <div class="footer-title">
                                             <h5>contact us</h5>
@@ -573,7 +635,8 @@ headerContent(1);
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-xl-6 col-lg-5 col-sm-6" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500" data-aos-offset="0">
+                                <div class="col-xl-6 col-lg-5 col-sm-6" data-aos="fade-up" data-aos-delay="150"
+                                    data-aos-duration="1500" data-aos-offset="0">
                                     <div class="footer-widget opening-hour">
                                         <div class="footer-title">
                                             <h5>opening hour</h5>
@@ -584,7 +647,8 @@ headerContent(1);
                                         </ul>
                                         <div class="any-question mt-20">
                                             <h5>Have any questions?</h5>
-                                            <a href="#" class="theme-btn style-two">let’s talk us <i class="far fa-arrow-alt-right"></i></a>
+                                            <a href="#" class="theme-btn style-two">let’s talk us <i
+                                                    class="far fa-arrow-alt-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -596,20 +660,21 @@ headerContent(1);
             <div class="footer-bottom pt-30 pb-15">
                 <div class="container">
                     <div class="row">
-                       <div class="col-lg-5">
+                        <div class="col-lg-5">
                             <div class="copyright-text text-center text-lg-start">
                                 <p>Copyright 2024 <a href="index.html">Wellfood</a>. All Rights Reserved </p>
                             </div>
-                       </div>
-                       <div class="col-lg-7 text-center text-lg-end">
-                           <ul class="footer-bottom-nav">
-                               <li><a href="#">Privacy Policy</a></li>
-                               <li><a href="#">Terms & Condition</a></li>
-                           </ul>
-                       </div>
+                        </div>
+                        <div class="col-lg-7 text-center text-lg-end">
+                            <ul class="footer-bottom-nav">
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms & Condition</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <!-- Scroll Top Button -->
-                    <button class="scroll-top scroll-to-target" data-target="html"><i class="fas fa-arrow-alt-up"></i></button>
+                    <button class="scroll-top scroll-to-target" data-target="html"><i
+                            class="fas fa-arrow-alt-up"></i></button>
                 </div>
             </div>
             <div class="footer-shapes">
@@ -628,8 +693,8 @@ headerContent(1);
 
     </div>
     <!--End pagewrapper-->
-   
-    
+
+
     <!-- Jquery -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap -->
@@ -658,4 +723,5 @@ headerContent(1);
     <script src="assets/js/script.js"></script>
 
 </body>
+
 </html>

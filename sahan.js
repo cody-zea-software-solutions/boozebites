@@ -19,8 +19,26 @@ function signup() {
      .then(data => {
          alert(data); 
      })
-     .catch(error => {
-         alert("An error occurred!");
-     });
+    .catch(error => {
+        alert("Error: " + error); 
+    });
  }
- 
+ function login() {
+    var email = document.getElementById("email1").value;
+    var password = document.getElementById("password1").value;
+    var form = new FormData();
+    form.append("email", email);
+    form.append("password", password);
+
+    fetch("loginpro.php", {
+        method: "POST",
+        body: form,
+    })
+    .then(res => res.text())
+    .then(x => {
+        alert(x); 
+    })
+    .catch(error => {
+        alert("Error: " + error); 
+    });
+}

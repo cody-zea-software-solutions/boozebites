@@ -61,23 +61,23 @@ headerContent(0);
               <div class="row">
                 <div class="col-12 col-lg-6">
                 <p class="text-body">First Name</p>
-                <input class="form-control mt-1" type="text" placeholder="Full Name" required />
+                <input id="fname" class="form-control mt-1" type="text" placeholder="Full Name" required />
               </div>
               <div class="col-12 col-lg-6">
                 <p class="text-body">Last Name</p>
-                <input class="form-control mt-1" type="text" placeholder="Full Name" required />
+                <input id="lname" class="form-control mt-1" type="text" placeholder="Full Name" required />
               </div>
               <div class="col-12 col-lg-12">
                 <p class="text-body">Email</p>
-                <input class="form-control mt-1" type="email" placeholder="Enter Email Address" required />
+                <input id="email" class="form-control mt-1" type="email" placeholder="Enter Email Address" required />
               </div>
               <div class="col-12 col-lg-12">
                 <p class="text-body">Password</p>
-                <input class="form-control mt-1" type="password" placeholder="Enter Password" required />
+                <input id="password" class="form-control mt-1" type="password" placeholder="Enter Password" required />
               </div>
               </div>
             
-              <button class="theme-btn style-two" type="submit" onclick="signup();">Create Account</button>
+              <p class="theme-btn style-two" onclick="signup();">Create Account</p>
               <p class="text-center text-body">
                 Already have an account? 
                 <span onclick="toggleForms()" class="font-primary cursor-pointer">Login here</span>
@@ -96,13 +96,13 @@ headerContent(0);
               </p>
               <div class="w-100">
                 <p class="text-body">Email</p>
-                <input class="form-control mt-1" type="email" placeholder="Enter Email Address" required />
+                <input class="form-control mt-1" id="email1" type="email" placeholder="Enter Email Address" required />
               </div>
               <div class="w-100">
                 <p class="text-body">Password</p>
-                <input class="form-control mt-1" type="password" placeholder="Enter Password" required />
+                <input class="form-control mt-1" id="password1" type="password" placeholder="Enter Password" required />
               </div>
-              <button class="theme-btn style-two" type="submit">Login</button>
+              <p class="theme-btn style-two" onclick="login();">login</p>
               <p class="text-center text-body">
                 Don't have an account? 
                 <span onclick="toggleForms()" class="font-primary cursor-pointer">Create one</span>
