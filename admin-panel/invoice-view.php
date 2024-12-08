@@ -5,9 +5,9 @@ if (isset($_SESSION["a"])) {
 
     include "db.php";
 
-    $uemail = $_SESSION["a"]["user_name"];
+    $uemail = $_SESSION["a"]["email"];
 
-    $u_detail = Databases::search("SELECT * FROM `admin` WHERE `user_name`='" . $uemail . "'");
+    $u_detail = Databases::search("SELECT * FROM `admin` WHERE `email`='" . $uemail . "'");
 
     if ($u_detail->num_rows == 1) {
         session_abort();
@@ -19,8 +19,8 @@ if (isset($_SESSION["a"])) {
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>CEYNAP New Zealand || Admin-Panel</title>
-            <link rel="shortcut icon" href="../assets/img/logo-icon.ico" type="image/x-icon">
+            <title>BOOZEBITES New Zealand || Admin-Panel</title>
+            <link rel="shortcut icon" href="../assets/images/logos/favicon.png" type="image/x-icon">
 
             <link rel="stylesheet" href="../admin-panel/assets-admin/css/styles.min.css" />
             <!---Icons-->
@@ -51,7 +51,7 @@ if (isset($_SESSION["a"])) {
                                 <div class="row d-flex flex-row justify-content-center">
 
                                     <div class="col-12 col-md-6 order-2 order-md-1 mt-3 mt-md-0 text-center">
-                                        <img src="../admin-panel/assets-admin/images/contact/invoice-check.svg"
+                                        <img src="assets-admin\images\backgrounds\Invoice-bro.svg"
                                             class="img-fluid" width="400px">
                                     </div>
 
@@ -64,7 +64,7 @@ if (isset($_SESSION["a"])) {
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-12 text-end pe-4 pt-1">
-                                                        <img src="../assets/img/avatar.svg" class="img-fluid" width="90px"
+                                                        <img src="assets-admin\images\backgrounds\Invoice-bro.svg" class="img-fluid" width="90px"
                                                             alt="" srcset="">
                                                     </div>
                                                     <div class="col-12 mt-3 ps-4 text-start">
@@ -93,7 +93,7 @@ if (isset($_SESSION["a"])) {
                                             <div class="modal-header">
                                                 <div class="modal-title fs-4 fw-bold" id="exampleModalLabel"><i
                                                         class="fa-solid fa-receipt"></i>&nbsp;
-                                                    Invoice Management Ceynap</div>
+                                                    Invoice Management BoozeBites</div>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
@@ -106,7 +106,7 @@ if (isset($_SESSION["a"])) {
                                                                 <input type="search" class="form-control border-0 border-end"
                                                                     placeholder="Search by Invoice Id" aria-label="Search"
                                                                     aria-describedby="search-addon" id="keyword" />
-                                                                <span class="input-group-text bg-green btn border-0"
+                                                                <span class="input-group-text bg-danger btn border-0"
                                                                     id="search-addon" onclick="SearchInvoice();">
                                                                     <i class="fas fa-search"></i>
                                                                 </span>
@@ -131,13 +131,15 @@ if (isset($_SESSION["a"])) {
                                                                                         <th scope="col">Customer Name</th>
                                                                                         <th scope="col">Total Price</th>
                                                                                         <th scope="col">Date</th>
-                                                                                        <th scope="col">Download</th>
+                                                                                        <th scope="col">View</th>
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
 
                                                                                     <?php
-                                                                                    $invoice_rs = Databases::search("SELECT * FROM `invoice` INNER JOIN `user` ON `user`.`email` = `invoice`.`user_email`");
+                                                                                    $invoice_rs = Databases::search("SELECT * FROM invoice
+                                                                                    INNER JOIN `order` ON `order`.id=invoice.order_id
+                                                                                    INNER JOIN `user` ON `user`.`email`=`order`.user_email");
                                                                                     $invoice_num = $invoice_rs->num_rows;
                                                                                     for ($x = 1; $x <= $invoice_num; $x++) {
                                                                                         $invoice_data = $invoice_rs->fetch_assoc();
@@ -150,16 +152,16 @@ if (isset($_SESSION["a"])) {
                                                                                                 <?php echo $invoice_data['invoice_id'] ?>
                                                                                             </th>
                                                                                             <td>
-                                                                                                <?php echo $invoice_data["fname"] . " " . $invoice_data["lname"] ?>
+                                                                                                <?php echo $invoice_data["first_name"] . " " . $invoice_data["last_name"] ?></br>
+                                                                                                <?php echo $invoice_data["email"]; ?>
                                                                                             </td>
                                                                                             <td>NZD
-                                                                                                <?php echo number_format($invoice_data["total_amount"],2) * $invoice_data["qty"] ?>
+                                                                                                <?php echo $invoice_data["invoice_total"]; ?>
                                                                                             </td>
                                                                                             <td>
-                                                                                                <?php echo $invoice_data["date"] ?>
+                                                                                                <?php echo $invoice_data["invoice_date"] ?>
                                                                                             </td>
-                                                                                            <td><a
-                                                                                                    class="btn x py-1 px-3 rounded-1"><i
+                                                                                            <td><a class="btn x py-1 px-3 rounded-1" href="invoice.php?in_id=<?php echo $invoice_data['invoice_id']?>" target="_blank"><i
                                                                                                         class="fa fa-download"
                                                                                                         aria-hidden="true"></i></a>
                                                                                             </td>

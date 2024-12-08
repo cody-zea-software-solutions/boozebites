@@ -44,23 +44,106 @@ if (isset($_SESSION["a"])) {
                     require "nav.php";
                     ?>
                     <!--  Header End -->
-                    <div class="container-fluid">
+                    <div class="container-fluid mt-6">
 
-                    <div class="row">
-                    <div class="col-12 text-center mb-3">
-                                <div class="mb-1"><span class="h4 mb-9 fw-semibold">Manage Products&nbsp;&nbsp;<i
-                                            class="fa fa-list" aria-hidden="true"></i></span>
+                        <div class="row">
+
+                            <div class="col-12 text-center mb-3">
+                                <div class="mb-1"><span class="h4 mb-9 fw-semibold">Manage Variations&nbsp;&nbsp;<i
+                                            class="fa fa-database" aria-hidden="true"></i></span>
                                 </div>
-                                <div><span class="mb-9 text-dark-emphasis">You can change or remove products here</span>
+                                <div><span class="mb-9 text-dark-emphasis">You can add or change product variations</span>
                                 </div>
                             </div>
-                    </div>
-                        
-                        <div class="row d-flex justify-content-center mt-5" id="ProductResult">
+
+                            <div class="col-12 border shadow">
+
+                                <div class="row m-3">
+                                    <div class="col-12 text-center mt-3">
+                                        <span class="fw-500 fw-bold">Add new variations</span>
+                                    </div>
+
+                                    <div class="col-12 mt-3">
+                                        <div class="form-floating">
+                                            <select class="form-select rounded-0" id="addvname"
+                                                aria-label="Floating label select example">
+                                                <option selected value="0">Select Product</option>
+                                                <?php
+
+                                                $category_rs = Databases::search("SELECT * FROM `product`
+                                                INNER JOIN cook_type ON cook_type.cook_type_id=product.cook_type_id
+                                                INNER JOIN meat_type ON meat_type.meat_type_id=product.meat_type_id WHERE `on_delete`='1' ");
+                                                $category_num = $category_rs->num_rows;
+
+                                                for ($i = 0; $i < $category_num; $i++) {
+                                                    $category_data = $category_rs->fetch_assoc();
+                                                    ?>
+                                                    <option value="<?php echo $category_data["product_id"] ?>">
+                                                        <?php echo $category_data["product_name"], ' ', $category_data["cook_type_name"], ' ', $category_data["meat_type_name"] ?>
+                                                    </option>
+                                                    <?php
+                                                }
+
+                                                ?>
+                                            </select>
+                                            <label for="floatingSelect">Select your product here</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-lg-6 mt-3">
+                                        <div class="form-floating">
+                                            <select class="form-select rounded-0" id="addvbox"
+                                                aria-label="Floating label select example">
+                                                <option selected value="0">Select Variation</option>
+                                                <?php
+
+                                                $categor_rs = Databases::search("SELECT * FROM `box_type` ");
+                                                $categor_num = $categor_rs->num_rows;
+
+                                                for ($i = 0; $i < $categor_num; $i++) {
+                                                    $categor_data = $categor_rs->fetch_assoc();
+                                                    ?>
+                                                    <option value="<?php echo $categor_data["box_type_id"]; ?>">
+                                                        <?php echo $categor_data["box_type_name"] ?>
+                                                    </option>
+                                                    <?php
+                                                }
+
+                                                ?>
+                                            </select>
+                                            <label for="floatingSelect">Select your variation here</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-lg-6 mt-3" id="inputset">
+                                        <div class="input-group">
+                                            <span class="input-group-text">NZD</span>
+                                            <div class="form-floating is-invalid">
+                                                <input type="number" class="form-control" id="addvprice"
+                                                    placeholder="Enter Amount" required>
+                                                <label for="price">Price</label>
+                                            </div>
+                                            <span class="input-group-text">.00</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4 col-md-2 mt-3 d-flex flex-column justify-content-center">
+                                        <button class="btn x rounded-0 mb-2" onclick="AddVar();">Add</button>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-center" id="ProductResult">
                             <?php
-                            $product_rs = Databases::search("SELECT * FROM product
+                            $product_rs = Databases::search("SELECT * FROM price_table 
+                    INNER JOIN box_type ON box_type.box_type_id=price_table.box_type_box_type_id
+                    INNER JOIN product ON product.product_id=price_table.product_product_id
                     INNER JOIN cook_type ON cook_type.cook_type_id=product.cook_type_id
-                    INNER JOIN meat_type ON meat_type.meat_type_id=product.meat_type_id");
+                    INNER JOIN meat_type ON meat_type.meat_type_id=product.meat_type_id WHERE `on_delete` = '1'");
                             $product_num = $product_rs->num_rows;
 
 
@@ -92,24 +175,18 @@ if (isset($_SESSION["a"])) {
                                         </div>
                                         <div class="card-body pt-3 p-4">
                                             <h6 class="fs-4">
-                                                <?php echo $product_data['product_name'], "</br>", $product_data['cook_type_name'], " ", $product_data['meat_type_name'] ?>
+                                                <?php echo $product_data['product_name'], "</br>", $product_data['cook_type_name'], " ", $product_data['meat_type_name'], " ", $product_data['box_type_name'] ?>
                                             </h6>
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <h6 class="fw-semibold fs-4 mb-0">
+                                                    <?php echo number_format($product_data['price'], 2) ?>
+                                                </h6>
+                                            </div>
                                             <div class="d-flex justify-content-end mt-2">
                                                 <button class="btn tex-g p-1 mx-1 rounded-0-5" data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal<?php echo $product_data["product_id"] ?>">UPDATE
-                                                </button><?php
-                                                    if($product_data["on_delete"]==1){
-                                                        ?>
-                                                        <button class='btn text-danger p-1 mx-1 rounded-0-5' onclick="disablePr(<?php echo $product_data['product_id'],',',$product_data['on_delete'] ?>)">DISABLE</button>
-                                                        <?php
-                                                    }else{
-                                                        ?>
-                                                        <button class='btn text- p-1 mx-1 rounded-0-5'  onclick="disablePr(<?php echo $product_data['product_id'],',',$product_data['on_delete'] ?>)">ENABLE</button>
-                                                        <?php
-                                                    }
-                                                    ?>
+                                                    data-bs-target="#exampleModal<?php echo $product_data["product_product_id"], $product_data["box_type_box_type_id"] ?>">UPDATE</button>
                                                 <?php
-                                                $productid = $product_data['product_id'];
+                                                $productid = $product_data['product_product_id'] . $product_data['box_type_box_type_id'];
                                                 ?>
                                             </div>
                                         </div>
@@ -117,8 +194,9 @@ if (isset($_SESSION["a"])) {
                                 </div>
 
                                 <!-- Update product popup -->
-                                <div class="modal fade" id="exampleModal<?php echo $productid ?>" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade"
+                                    id="exampleModal<?php echo $product_data["product_product_id"], $product_data["box_type_box_type_id"] ?>"
+                                    tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-xl modal-dialog modal-dialog-scrollable">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -133,30 +211,16 @@ if (isset($_SESSION["a"])) {
                                                     <div class="col-12 col-lg-9 border shadow">
                                                         <div class="row m-3">
 
-                                                            <div class="col-12 my-3">
-                                                                <div class="row d-flex justify-content-center">
-                                                                    <div class="col-8 col-md-4 mb-2" style="height: 200px;">
-                                                                        <input type="file" class="d-none" id="img_input_1<?php echo $productid; ?>">
-                                                                        <div class="border-x log-link d-flex justify-content-center align-items-center h-100 outer-div"
-                                                                            onclick="cProductImage(<?php echo $productid; ?>);">
-                                                                            <img src="<?php echo $img ?>" class="img-fluid" id="img_div_1<?php echo $productid; ?>">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                             <div class="col-3 mt-3">
                                                                 <div class="form-floating">
-                                                                    <input type="text" class="form-control rounded-0"
-                                                                        id="<?php echo $productid; ?>sku"
-                                                                        placeholder="title of the product"
+                                                                    <input type="text" class="form-control rounded-0" readonly
                                                                         value="<?php echo $product_data['product_id'] ?>">
                                                                     <label for="floatingInput">ProductID</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-9 mt-3">
                                                                 <div class="form-floating">
-                                                                    <input type="text" class="form-control rounded-0"
-                                                                        id="<?php echo $productid; ?>pt"
+                                                                    <input type="text" class="form-control rounded-0" readonly
                                                                         value="<?php echo $product_data["product_name"] ?>"
                                                                         placeholder="title of the product">
                                                                     <label for="floatingInput">Product Title</label>
@@ -164,68 +228,61 @@ if (isset($_SESSION["a"])) {
                                                             </div>
                                                             <div class="col-6 mt-3">
                                                                 <div class="form-floating">
+                                                                    <input type="text" class="form-control rounded-0" readonly
+                                                                        value="<?php echo $product_data["cook_type_name"] ?>"
+                                                                        placeholder="title of the product">
+                                                                    <label for="floatingInput">Product Cook Type</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6 mt-3">
+                                                                <div class="form-floating">
+                                                                    <input type="text" class="form-control rounded-0" readonly
+                                                                        value="<?php echo $product_data["meat_type_name"] ?>"
+                                                                        placeholder="title of the product">
+                                                                    <label for="floatingInput">Product Meat Type</label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6 mt-4">
+                                                                <div class="form-floating">
                                                                     <select class="form-select rounded-0"
-                                                                        id="<?php echo $productid; ?>pc"
+                                                                        id="<?php echo $productid; ?>pb"
                                                                         aria-label="Floating label select example">
                                                                         <option selected
-                                                                            value="<?php echo $product_data["cook_type_id"] ?>">
-                                                                            <?php echo $product_data["cook_type_name"] ?>
+                                                                            value="<?php echo $product_data["box_type_id"] ?>">
+                                                                            <?php echo $product_data["box_type_name"] ?>
                                                                         </option>
                                                                         <?php
-                                                                        $category_rs = Databases::search("SELECT * FROM `cook_type`");
-                                                                        $category_num = $category_rs->num_rows;
-                                                                        for ($i = 0; $i < $category_num; $i++) {
-                                                                            $category_data = $category_rs->fetch_assoc();
+                                                                        $catego_rs = Databases::search("SELECT * FROM `box_type`");
+                                                                        $catego_num = $catego_rs->num_rows;
+                                                                        for ($i = 0; $i < $catego_num; $i++) {
+                                                                            $catego_data = $catego_rs->fetch_assoc();
                                                                             ?>
-                                                                            <option value="<?php echo $category_data["cook_type_id"] ?>">
-                                                                                <?php echo $category_data["cook_type_name"] ?></option>
+                                                                            <option value="<?php echo $catego_data["box_type_id"] ?>">
+                                                                                <?php echo $catego_data["box_type_name"] ?>
+                                                                            </option>
 
                                                                             <?php
                                                                         }
                                                                         ?>
 
                                                                     </select>
-                                                                    <label for="floatingSelect">Select your product cook type
+                                                                    <label for="floatingSelect">Select your product box type
                                                                         here</label>
                                                                 </div>
                                                             </div>
                                                             <div class="col-6 mt-3">
                                                                 <div class="form-floating">
-                                                                    <select class="form-select rounded-0"
-                                                                        id="<?php echo $productid; ?>pm"
-                                                                        aria-label="Floating label select example">
-                                                                        <option selected
-                                                                            value="<?php echo $product_data["meat_type_id"] ?>">
-                                                                            <?php echo $product_data["meat_type_name"] ?>
-                                                                        </option>
-                                                                        <?php
-                                                                        $categor_rs = Databases::search("SELECT * FROM `meat_type`");
-                                                                        $categor_num = $categor_rs->num_rows;
-                                                                        for ($i = 0; $i < $categor_num; $i++) {
-                                                                            $categor_data = $categor_rs->fetch_assoc();
-                                                                            ?>
-                                                                            <option value="<?php echo $categor_data["meat_type_id"] ?>">
-                                                                                <?php echo $categor_data["meat_type_name"] ?></option>
-
-                                                                            <?php
-                                                                        }
-                                                                        ?>
-
-                                                                    </select>
-                                                                    <label for="floatingSelect">Select your product meat type
-                                                                        here</label>
+                                                                    <input type="text" class="form-control rounded-0"
+                                                                        id="<?php echo $productid; ?>pp"
+                                                                        value="<?php echo $product_data["price"] ?>"
+                                                                        placeholder="title of the product">
+                                                                    <label for="floatingInput">Price in NZD</label>
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-12 mt-3 mb-3">
-                                                                <textarea class="form-control rounded-0"
-                                                                    placeholder="Product Description"
-                                                                    id="<?php echo $productid; ?>pld"
-                                                                    style="height: 100px"><?php echo $product_data["description"] ?></textarea>
-                                                            </div>
-                                                            <div class="col-12 text-end">
+                                                            <div class="col-12 text-end mt-3">
                                                                 <button class="btn rounded-1 fw-bold x col-md-2"
-                                                                    onclick="update_product_real(<?php  echo $productid; ?>)"><i
+                                                                    onclick="update_product(<?php echo $product_data['product_product_id'], ',', $product_data['box_type_box_type_id'] ?>)"><i
                                                                         class="fa fa-floppy-o" aria-hidden="true"></i>
                                                                     SAVE</button>
                                                             </div>

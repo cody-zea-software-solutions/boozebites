@@ -12,14 +12,18 @@ if (isset($_SESSION["a"])) {
 
 
         $orderID = $_POST["pid"];
-        $status = $_POST["sid"];
+        $status = $_POST["s"];
+
+        if($status==1){
+            $status=0;
+        }else{
+            $status=1;
+        }
 
 
-        Databases::iud("UPDATE `order` SET `order_status_id` = '" . $status . "' WHERE `id` = '" . $orderID . "' ");
+        Databases::iud("UPDATE `product` SET `on_delete` = '" . $status . "' WHERE `product_id` = '" . $orderID . "' ");
 
-
-
-        echo "success";
+        echo "Product status updated.";
 
     }
 }

@@ -1,17 +1,16 @@
 <?php 
+require "db.php";
+$cname = $_GET["cname"];
 
-require "../connection.php";
+// echo $cname;
 
-$weight = $_GET["wname"];
-
-if (empty($weight)) {
-   echo "Please Add Weight Amount (KG)";
+if (empty($cname)) {
+    echo "Please Enter Meat Name";
 }else{
 
-    Database::iud("INSERT INTO `weight` (`Amount`) VALUES ('".$weight."')");
+Databases::iud("INSERT INTO `meat_type` (`meat_type_name`) VALUES ('".$cname."')");
 
-    echo "success";
-
+echo "success";
 }
 
 ?>

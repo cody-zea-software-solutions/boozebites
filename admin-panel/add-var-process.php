@@ -11,22 +11,26 @@ if (isset($_SESSION["a"])) {
     if ($u_detail->num_rows == 1) {
 
         // Capture form inputs
-        $pid = $_POST['pid'];  // Product ID
-        $bid = $_POST['bid'];    // Meat Type ID
-        $pb = $_POST['pb'];    // Box Type ID
-        $pp = $_POST['pp'];    // Price
+        $vn = $_POST['vn'];  // Product ID
+        $vb = $_POST['vb'];    // Meat Type ID
+        $vp = $_POST['vp'];    // Price
 
         // Validate inputs
-        if (empty($pid) || empty($bid) || empty($pb) || empty($pp)) {
+        if (empty($vn) || empty($vb) || empty($vp)) {
             echo "All fields are required.";
             exit();
         }
 
         // Validate price is not 0 or decimal with more than one decimal place
-        if ($pp == 0 || !preg_match('/^\d+$/', $pp)) {
+        if ($vn == 0 || $vb == 0 || $vp == 0 ) {
+            echo "Invalid values.";
+            exit();
+        }
+        
+        if ($vp == 0 || !preg_match('/^\d+$/', $vp)) {
             echo "Invalid price. Price canot have decimals.";
             exit();
-        }        
+        } 
 
         // Set up the database connection
         Databases::setUpConnection();
@@ -39,24 +43,21 @@ if (isset($_SESSION["a"])) {
 
         if ($stmt = Databases::$connection->prepare($sql)) {
             // Bind parameters and execute query
-            $stmt->bind_param("ii", $pid, $bid);
+            $stmt->bind_param("ii", $vn, $vb);
             $stmt->execute();
             $result = $stmt->get_result();
 
             // Check if a matching row was found
-            if ($result->num_rows == 1) {
+            if ($result->num_rows == 0) {
                 // Update product details
-                $update_sql = "UPDATE price_table
-                               INNER JOIN box_type ON box_type.box_type_id = price_table.box_type_box_type_id
-                               INNER JOIN product ON product.product_id = price_table.product_product_id 
-                               SET price_table.price = ?, 
-                                   price_table.box_type_box_type_id = ?
-                               WHERE price_table.product_product_id = ? AND price_table.box_type_box_type_id = ? AND product.on_delete=1";
+                $update_sql = "INSERT INTO price_table (price, box_type_box_type_id, product_product_id) 
+                VALUES (?, ?, ?)
+                ";
 
                 try {
                     if ($update_stmt = Databases::$connection->prepare($update_sql)) {
                         // Bind parameters for the update query
-                        $update_stmt->bind_param("iiii", $pp, $pb, $pid, $bid);
+                        $update_stmt->bind_param("iii", $vp, $vb, $vn);
 
                         // Execute the update query
                         if ($update_stmt->execute()) {
@@ -78,7 +79,7 @@ if (isset($_SESSION["a"])) {
                     }
                 }
             } else {
-                echo "No matching row found to update.";
+                echo "This variation is already in the list.";
             }
 
             // Close the select statement
