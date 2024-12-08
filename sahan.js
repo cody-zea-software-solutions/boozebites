@@ -19,9 +19,9 @@ function signup() {
      .then(data => {
          alert(data); 
      })
-     .catch(error => {
-         alert("An error occurred!");
-     });
+    .catch(error => {
+        alert("Error: " + error); 
+    });
  }
  function login() {
     var email = document.getElementById("email1").value;

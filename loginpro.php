@@ -11,7 +11,7 @@ class main {
        $x = $this->submain();
        if($x == "true"){
           $instance = new check($this->email, $this->password);
-          echo $instance->check();
+          return $instance->check();
        }else{
         return $x;
        }
