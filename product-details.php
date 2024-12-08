@@ -94,7 +94,7 @@
           <div class="col-lg-6">
             <div class="product-details-image rmb-55 bg-body p-5" data-aos="fade-left" data-aos-duration="1500"
               data-aos-offset="50">
-              <img src="./admin-panel/product_img/product-img-1.jpg" alt="Product Details" class="w-100 img-fluid" />
+              <img src="./admin-panel/product_img/product-img-1.jpg" alt="Product Details" class="w-100 img-fluid zoom-image" />
             </div>
             <div class="row">
               <div class="col-6 col-md-6 col-lg-4 mt-2">
@@ -519,7 +519,17 @@
         $('#popupImage').fadeOut();
       });
     });
+
+    $(document).ready(function() {
+    $('.zoom-image').bZoom({
+        zoomFactor: 3, // Custom zoom factor for larger magnification
+        magnifierSize: 200, // Customize the size of the magnifier
+        magnifierOpacity: 0.7 // Customize the opacity of the magnifier
+    });
+});
+
   </script>
+  
   <!-- Jquery -->
   <script src="assets/js/jquery-3.6.0.min.js"></script>
   <!-- Bootstrap -->
