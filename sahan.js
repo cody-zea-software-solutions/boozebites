@@ -11,17 +11,14 @@ function signup() {
      formData.append("email", email);
      formData.append("password", password);
 
-     fetch("singuppro.php", {
-         method: "POST",
-         body: formData,
-     })
-     .then(response => response.text())
-     .then(data => {
-         alert(data); 
-     })
-    .catch(error => {
-        alert("Error: " + error); 
-    });
+    var x = new XMLHttpRequest();
+    x.onreadystatechange = function(){
+        if(x.readyState == 4 && x.status == 200){
+            alert(x.responseText);
+        }
+    }
+    x.open("POST", "singuppro.php", true);
+    x.send(formData);
  }
  function login() {
     var email = document.getElementById("email1").value;
