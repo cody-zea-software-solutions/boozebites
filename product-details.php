@@ -1,5 +1,5 @@
 <?php
-require "C:/xampp/htdocs/meatShop/connection.php";
+require "connection.php";
 session_start();
 if (isset($_GET["pid"])) {
   $pid = $_GET["pid"];
