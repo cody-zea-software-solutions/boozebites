@@ -1,5 +1,5 @@
 <?php
-require "C:/xampp/htdocs/meatShop/connection.php";
+require "connection.php";
 require "CartItem.php";
 session_start();
 

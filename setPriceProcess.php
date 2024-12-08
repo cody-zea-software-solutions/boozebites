@@ -1,5 +1,5 @@
 <?php
-require "C:/xampp/htdocs/meatShop/connection.php";
+require "connection.php";
 
 $pid = $_POST["pid"];
 $bid = $_POST["bid"];
