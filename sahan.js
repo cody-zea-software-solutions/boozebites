@@ -17,7 +17,16 @@ function signup() {
     })
         .then(response => response.text())
         .then(data => {
-            alert(data);
+            if(data=="User inserted successfully."){
+                alert(data);
+                toggleForms();
+                document.getElementById("email1").value = email;
+                document.getElementById("password1").value = password;
+                document.getElementById("password1").focus();
+                login();
+            }else{
+                alert(data);
+            }
         })
         .catch(error => {
             alert("Error: " + error);
@@ -37,6 +46,7 @@ function login() {
         .then(res => res.text())
         .then(x => {
             alert(x);
+            window.location.href = "index.php";
         })
         .catch(error => {
             alert("Error: " + error);
@@ -90,10 +100,10 @@ function confirmPasswordDetails() {
         return;
     }
     form = new FormData();
-    form.append("email",email);
-    form.append("verificationCode",verificationCode);
-    form.append("newPassword",newPassword);
-    form.append("confirmPassword",confirmPassword);
+    form.append("email", email);
+    form.append("verificationCode", verificationCode);
+    form.append("newPassword", newPassword);
+    form.append("confirmPassword", confirmPassword);
 
     fetch("forgotpr.php", {
         method: "POST",
