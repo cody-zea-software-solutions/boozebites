@@ -1,6 +1,6 @@
 <?php
 
-require "connect.php";
+require "connection.php";
 
 // Import PHPMailer classes
 use PHPMailer\PHPMailer\PHPMailer;

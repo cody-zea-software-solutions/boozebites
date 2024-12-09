@@ -1,5 +1,5 @@
 <?php
-require "connect.php";
+require "connection.php";
 
 class main
 {
