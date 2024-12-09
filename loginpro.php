@@ -47,7 +47,7 @@ class check extends main {
         $this->password = $password;
     }
     public function check(): string {
-        require_once "connect.php";
+        require_once "connection.php";
         Database::setUpConnection();
         $stmt = Database::$connection->prepare(
             "SELECT * FROM `user` WHERE `email` = ? AND `password` = ?"

@@ -146,8 +146,7 @@ headerContent(0);
   </div>
 </div>
 
-<!-- Link to trigger the Forgot Password Modal -->
-<a class="link-primary fw-bold" onclick="forgot();">Forgot password?</a>
+
 
   <?php  
   require "footer.php"
