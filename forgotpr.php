@@ -1,5 +1,5 @@
 <?php
-require "connection.php";
+require "connect.php";
 $email = $_POST["email"];
 $vcode = $_POST["verificationCode"];
 $newpass = $_POST["newPassword"];

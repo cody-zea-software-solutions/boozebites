@@ -1,10 +1,3 @@
-<?php
-session_start();
-include "connection.php";
-if (isset($_SESSION["user_boost"])) {
-    $user = Database::Search("SELECT * FROM boost_bite.user WHERE `email`='".$_SESSION["user_boost"]["email"]."' ");
-    $user_data = $user->fetch_assoc();
-    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -103,35 +96,31 @@ if (isset($_SESSION["user_boost"])) {
                         <div class="row">
                             <div class="col-12 col-lg-6">
                                 <p class="text-body">First Name</p>
-                                <input id="fname" value="<?php echo $user_data["first_name"] ?>" class="form-control mt-1" type="text" placeholder="Full Name" required />
+                                <input class="form-control mt-1" type="text" placeholder="Full Name" required />
                             </div>
                             <div class="col-12 col-lg-6">
                                 <p class="text-body">Last Name</p>
-                                <input id="lname" value="<?php echo $user_data["last_name"] ?>" class="form-control mt-1" type="text" placeholder="Full Name" required />
+                                <input class="form-control mt-1" type="text" placeholder="Full Name" required />
                             </div>
                             <div class="col-12 col-lg-6">
                                 <p class="text-body">Email</p>
-                                <input id="email" value="<?php echo $user_data["email"] ?>" class="form-control mt-1" type="email" placeholder="Email Address" required />
+                                <input class="form-control mt-1" type="email" placeholder="Email Address" required />
                             </div>
                             <div class="col-12 col-lg-6">
                                 <p class="text-body">Mobile Number</p>
-                                <input id="mobile" value="<?php echo $user_data["mobile"] ?>" class="form-control mt-1" type="text" placeholder="Mobile Number" required />
+                                <input class="form-control mt-1" type="text" placeholder="Mobile Number" required />
                             </div>
-                            <?php
-                            $xm = Database::Search("SELECT * FROM `address` WHERE `user_email`='".$user_data["email"]."'");
-                            $adress = $xm->fetch_assoc();
-                            ?>
                             <div class="col-12 col-lg-6">
                                 <p class="text-body">Address Line 1</p>
-                                <input id="a_line_1" value="<?php echo  $adress["first_line"] ?>" class="form-control mt-1" type="text" placeholder="Address Line 01" required />
+                                <input class="form-control mt-1" type="text" placeholder="Address Line 01" required />
                             </div>
                             <div class="col-12 col-lg-6">
                                 <p class="text-body">Address Line 2</p>
-                                <input id="a_line_2" value="<?php echo  $adress["second_line"] ?>" class="form-control mt-1" type="text" placeholder="Address Line 02" required />
+                                <input class="form-control mt-1" type="text" placeholder="Address Line 02" required />
                             </div>
                             <div class="col-12 d-flex justify-content-center">
                                 <div class="col-12 col-lg-10 mt-10">
-                                    <button onclick="updateprofie();" class="theme-btn style-two col-12">Update Your Profile <i
+                                    <button class="theme-btn style-two col-12">Update Your Profile <i
                                             class="far fa-arrow-alt-right"></i></button>
                                 </div>
                             </div>
@@ -203,6 +192,3 @@ if (isset($_SESSION["user_boost"])) {
 </body>
 
 </html>
-    <?php
-}
- ?>
