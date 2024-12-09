@@ -112,7 +112,6 @@ function confirmPasswordDetails() {
         .then(res => res.text())
         .then(x => {
             alert(x);
-            alert("Password reset successful!");
             var myModal = bootstrap.Modal.getInstance(document.getElementById('forgotPasswordModal'));
             myModal.hide();
         })
