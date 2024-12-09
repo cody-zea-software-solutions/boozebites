@@ -97,13 +97,13 @@ function headerContent($theme)
                         </div>
                         
                         <div class="header-number">
-                            <i class="far fa-phone"></i>Call : <a href="callto:+88012345688">+880 123 456 88</a>
+                            <i class="far fa-phone"></i>Call : <a href="callto:+(64)273144080">+(64) 27 314 4080</a>
                         </div>
                         
                         <!-- Nav Search -->
                         <div class="nav-search py-10">
                             <button class="far fa-search"></button>
-                            <form action="#" class="hide">
+                            <form action="shop.php" class="hide">
                                 <input type="text" placeholder="Search" class="searchbox" required="">
                                 <button type="submit" class="searchbutton far fa-search"></button>
                             </form>
