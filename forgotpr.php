@@ -16,7 +16,13 @@ if(empty($email)){
 }else if($newpass!=$comformp){
      echo("new password and coformpassword is not same");
 }else{
+     $x =Database::Search("SELECT * FROM `user` WHERE `email`='".$email."'");
+    $xx = $x->fetch_assoc();
+    if($xx["v_code"]== $vcode){
      Database::iud("UPDATE `user` SET `password`='".$newpass."' WHERE `email`='".$email."'");
      echo("Password is updated now");
+    }else{
+     echo "pleace enter true verification code";
+    }
 }
  ?>

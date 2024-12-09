@@ -120,3 +120,43 @@ function confirmPasswordDetails() {
             alert("Error: " + error);
         });
 }
+function updateProfile() {
+    var fname = document.getElementById("fname").value;
+    var lname = document.getElementById("lname").value;
+    var email = document.getElementById("email").value;
+    var mobile = document.getElementById("mobile").value;
+    var city = document.getElementById("city").value;
+    var addressLine1 = document.getElementById("a_line_1").value;
+    var addressLine2 = document.getElementById("a_line_2").value;
+
+    var formData = {
+        fname: fname,
+        lname: lname,
+        email: email,
+        mobile: mobile,
+        city : city ,
+        addressLine1: addressLine1,
+        addressLine2: addressLine2
+    };
+
+    fetch("updateprofilepro.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        return response.text(); 
+    })
+    .then(data => {
+        alert(data); 
+    })
+    .catch(error => {
+        alert("An error occurred: " + error.message);
+    });
+}
+

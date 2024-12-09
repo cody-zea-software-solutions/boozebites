@@ -78,7 +78,7 @@ class check extends main {
         }
     }
 
-    
+
 }
 $instance = new main();
 $result = $instance->main();
