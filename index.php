@@ -4,6 +4,7 @@ session_start();
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -12,12 +13,12 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>WellFood - Resturent HTML Template || Pizza</title>
+    <title>Booze Bites</title>
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="assets/images/logos/favicon.png" type="image/x-icon">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    
+
     <!-- Flaticon -->
     <link rel="stylesheet" href="assets/css/flaticon.min.css">
     <!-- Font Awesome -->
@@ -36,37 +37,38 @@ session_start();
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
 
-<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css">
 
-<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css">
 
-<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css">
 
-<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
     <script src="https://js.stripe.com/v3/"></script>
 
 </head>
+
 <body>
     <div class="page-wrapper">
 
         <!-- Preloader -->
         <!-- <div class="preloader"><div class="custom-loader"></div></div> -->
-<?php  
-require_once("header.php");
-headerContent(1); 
-?>
+        <?php
+        require_once("header.php");
+        headerContent(1);
+        ?>
 
         <!--Form Back Drop-->
         <div class="form-back-drop"></div>
-   
-       
-        
+
+
+
         <!-- Hero Area Start -->
         <section class="hero-area-three pt-250 pb-220 rpb-100 rel z-1" style="background-image: url(assets/images/background/hero-three.png)">
-           <span class="marquee-wrap style-two text-white">
-               <span class="marquee-inner left">Booze Bites</span>
-               <span class="marquee-inner left">Booze Bites</span>
-               <span class="marquee-inner left">Booze Bites</span>
+            <span class="marquee-wrap style-two text-white">
+                <span class="marquee-inner left">Booze Bites</span>
+                <span class="marquee-inner left">Booze Bites</span>
+                <span class="marquee-inner left">Booze Bites</span>
             </span>
             <div class="container">
                 <div class="row align-items-end">
@@ -89,8 +91,8 @@ headerContent(1);
             </div>
         </section>
         <!-- Hero Area End -->
-        
-        
+
+
         <!-- Food Category Area start -->
         <section class="food-category-area pb-90 rpb-65 rel z-1">
             <div class="container">
@@ -148,35 +150,35 @@ headerContent(1);
             </div>
         </section>
         <!-- Food Category Area end -->
-        
-        
+
+
         <!-- Headline area start -->
         <div class="headline-area mb-50 rmb-20 rel z-1">
             <span class="marquee-wrap">
-               <span class="marquee-inner left">
+                <span class="marquee-inner left">
                     <span class="marquee-item">Sri Lankan Spiced Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                     <span class="marquee-item">Booze Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                     <span class="marquee-item">Weekend Food Pairings</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-               </span>
-               <span class="marquee-inner left">
+                </span>
+                <span class="marquee-inner left">
                     <span class="marquee-item">Booze Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                     <span class="marquee-item">Where Every Bite Meets a Sip</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                     <span class="marquee-item">Delight</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-               </span>
-               <span class="marquee-inner left">
+                </span>
+                <span class="marquee-inner left">
                     <span class="marquee-item">Booze Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                     <span class="marquee-item">Booze Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                     <span class="marquee-item">Booze Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-               </span>
+                </span>
             </span>
             <div class="headline-shapes">
                 <div class="shape one">
@@ -188,8 +190,8 @@ headerContent(1);
             </div>
         </div>
         <!-- Headline Area end -->
-       
-        
+
+
         <!-- About Us Area start -->
         <section class="about-us-area pb-100 rpb-70 rel z-1">
             <div class="container">
@@ -244,72 +246,46 @@ headerContent(1);
             </div>
         </section>
         <!-- About Us Area end -->
-        
-        
+
+
         <!-- Category Banner area start -->
         <div class="category-banner-area-two">
-           <div class="container-fluid">
-               <div class="row row-cols-lg-3 row-cols-sm-2 row-cols-1 justify-content-center">
-                    <div class="col" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="category-banner-item style-two" style="background-image: url(assets/images/banner/category-banner-two1.png);">
-                            <span class="price">only $59</span>
-                            <h3>SPECIALTY Beef steak</h3>
-                            <div class="ratting">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(5k)</span>
-                            </div>
-                            <a href="shop.html" class="theme-btn style-two">Order now <i class="far fa-arrow-alt-right"></i></a>
-                            <div class="food-image">
-                                <img src="assets/images/banner/category-banner-food1.png" alt="Food">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="category-banner-item style-two color-black" style="background-image: url(assets/images/banner/category-banner-two2.png);">
-                            <span class="price">only $43</span>
-                            <h3>SPECIALTY Italian pizza</h3>
-                            <div class="ratting">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(5k)</span>
-                            </div>
-                            <a href="shop.html" class="theme-btn">Order now <i class="far fa-arrow-alt-right"></i></a>
-                            <div class="food-image">
-                                <img src="assets/images/banner/category-banner-food2.png" alt="Food">
+            <div class="container-fluid">
+                <div class="row row-cols-lg-3 row-cols-sm-2 row-cols-1 justify-content-center">
+                    <?php
+                    $product_rs = Database::search("SELECT `product_name`, `product_id` AS `pid`, 
+                    (SELECT `product_img_path` FROM `product_img` WHERE `product_id`=`pid` LIMIT 1) AS `product_img_path`, 
+                    (SELECT `price` FROM `price_table` WHERE `product_product_id`=`pid` order BY `price` ASC LIMIT 1) AS `price` FROM product ");
+                    for ($x = 0; $x < $product_rs->num_rows; $x++) {
+                        $product_d = $product_rs->fetch_assoc();
+                    ?>
+                        <div class="col" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="category-banner-item style-two" style="background-image: url(assets/images/banner/category-banner-two1.png);">
+                                <span class="price">only $<?php echo $product_d["price"]; ?></span>
+                                <h3><?php echo $product_d["product_name"]; ?></h3>
+                                <div class="ratting">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>(5k)</span>
+                                </div>
+                                <a href="product-details.php?pid=<?php echo $product_d["pid"]; ?>" class="theme-btn style-two">Order now <i class="far fa-arrow-alt-right"></i></a>
+                                <div class="food-image">
+                                    <img src="<?php echo $product_d["product_img_path"]; ?>" alt="<?php echo $product_d["product_name"]; ?>">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="category-banner-item style-two" style="background-image: url(assets/images/banner/category-banner-two1.png);">
-                            <span class="price">only $35</span>
-                            <h3>vegetable burger</h3>
-                            <div class="ratting">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(5k)</span>
-                            </div>
-                            <a href="shop.html" class="theme-btn style-two">Order now <i class="far fa-arrow-alt-right"></i></a>
-                            <div class="food-image">
-                                <img src="assets/images/banner/category-banner-food3.png" alt="Food">
-                            </div>
-                        </div>
-                    </div>
-               </div>
-           </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
         </div>
         <!-- Category Banner area end -->
-        
-        
+
+
         <!-- Burger Area start -->
         <section class="burger-area pt-100 rpt-70 pb-130 rpb-100 rel z-1">
             <div class="container">
@@ -323,139 +299,40 @@ headerContent(1);
                 </div>
                 <div class="pizza-active">
                     <?php
-                    $product_rs=Database::search("");
+                    $product_rs = Database::search("SELECT `product_name`, `product_id` AS `pid`, 
+                    (SELECT `product_img_path` FROM `product_img` WHERE `product_id`=`pid` LIMIT 1) AS `product_img_path`, 
+                    (SELECT `price` FROM `price_table` WHERE `product_product_id`=`pid` order BY `price` ASC LIMIT 1) AS `price` FROM product ");
+                    for ($x = 0; $x < $product_rs->num_rows; $x++) {
+                        $product_d = $product_rs->fetch_assoc();
                     ?>
-                    <div class="product-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="image">
-                            <img src="assets/images/products/burger1.jpg" alt="Burger">
-                            <span class="pizza-badge">hot</span>
-                        </div>
-                        <div class="content">
-                            <div class="ratting">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(5k)</span>
+                        <div class="product-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="image">
+                                <img src="<?php echo $product_d["product_img_path"]; ?>" alt="<?php echo $product_d["product_name"]; ?>">
+                                <span class="pizza-badge">hot</span>
                             </div>
-                            <h5><a href="product-details.html">vegetable beef Burger</a></h5>
-                            <span class="price"><del>$50</del> $25</span>
-                        </div>
-                    </div>
-                    <div class="product-item" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="image">
-                            <img src="assets/images/products/burger2.jpg" alt="Burger">
-                            <span class="pizza-badge">-10%</span>
-                        </div>
-                        <div class="content">
-                            <div class="ratting">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(5k)</span>
+                            <div class="content">
+                                <div class="ratting">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <span>(5k)</span>
+                                </div>
+                                <h5><a href="product-details.php?pid=<?php echo $product_d["pid"]; ?>"><?php echo $product_d["product_name"]; ?></a></h5>
+                                <span class="price"><del>$<?php echo $product_d["price"] + 10; ?></del> $<?php echo $product_d["price"]; ?></span>
                             </div>
-                            <h5><a href="product-details.html">beef checken burger</a></h5>
-                            <span class="price"><del>$50</del> $25</span>
                         </div>
-                    </div>
-                    <div class="product-item" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="image">
-                            <img src="assets/images/products/burger3.jpg" alt="Burger">
-                        </div>
-                        <div class="content">
-                            <div class="ratting">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(5k)</span>
-                            </div>
-                            <h5><a href="product-details.html">burgers black bread</a></h5>
-                            <span class="price"><del>$50</del> $25</span>
-                        </div>
-                    </div>
-                    <div class="product-item" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500" data-aos-offset="50">
-                        <div class="image">
-                            <img src="assets/images/products/burger4.jpg" alt="Burger">
-                            <span class="pizza-badge">new</span>
-                        </div>
-                        <div class="content">
-                            <div class="ratting">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(5k)</span>
-                            </div>
-                            <h5><a href="product-details.html">delicious burger with beef</a></h5>
-                            <span class="price"><del>$50</del> $25</span>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="image">
-                            <img src="assets/images/products/burger1.jpg" alt="Burger">
-                            <span class="pizza-badge">hot</span>
-                        </div>
-                        <div class="content">
-                            <div class="ratting">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(5k)</span>
-                            </div>
-                            <h5><a href="product-details.html">vegetable beef Burger</a></h5>
-                            <span class="price"><del>$50</del> $25</span>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="image">
-                            <img src="assets/images/products/burger2.jpg" alt="Burger">
-                            <span class="pizza-badge">-10%</span>
-                        </div>
-                        <div class="content">
-                            <div class="ratting">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(5k)</span>
-                            </div>
-                            <h5><a href="product-details.html">beef checken burger</a></h5>
-                            <span class="price"><del>$50</del> $25</span>
-                        </div>
-                    </div>
-                    <div class="product-item">
-                        <div class="image">
-                            <img src="assets/images/products/burger3.jpg" alt="Burger">
-                        </div>
-                        <div class="content">
-                            <div class="ratting">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <span>(5k)</span>
-                            </div>
-                            <h5><a href="product-details.html">burgers black bread</a></h5>
-                            <span class="price"><del>$50</del> $25</span>
-                        </div>
-                    </div>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </section>
         <!-- Burger Area end -->
-        
-        
-        
+
+
+
         <!-- Headline area start -->
         <!-- <div class="headline-area bgc-black pt-120 rpt-90 rel z-2">
             <span class="marquee-wrap white-text">
@@ -494,8 +371,8 @@ headerContent(1);
             </div>
         </div> -->
         <!-- Headline Area end -->
-        
-        
+
+
         <!-- Special Offer Area start -->
         <!-- <section class="special-offer-area-two bgc-black pt-105 rpt-85 pb-130 rpb-100 rel z-1">
             <div class="container">
@@ -539,8 +416,8 @@ headerContent(1);
             </div>
         </section> -->
         <!-- Special Offer Area end -->
-        
-        
+
+
         <!-- Popular Menu Area start -->
         <!-- <section class="popular-menu-area-three pt-130 rpt-100 pb-115 rpb-90 rel z-1">
             <div class="container">
@@ -663,8 +540,8 @@ headerContent(1);
             </div>
         </section> -->
         <!-- Popular Menu Area end -->
-        
-        
+
+
         <!-- Headline area start -->
         <!-- <div class="headline-area mb-105 rmb-85 rel z-1">
             <span class="marquee-wrap">
@@ -703,15 +580,15 @@ headerContent(1);
             </div>
         </div> -->
         <!-- Headline Area end -->
-        
-        
+
+
         <!-- Testimonials Three Area start -->
         <section class="testimonials-three rel z-1 bgc-primary pt-130 rpt-100 pb-215 rpb-150" style="background-image: url(assets/images/testimonials/testimonials-two-bg.png);">
             <div class="container">
                 <div class="row justify-content-center rmb-30">
                     <div class="col-xl-10 col-lg-11">
                         <div class="testimonials-three-content rel z-1 text-white">
-                           <div class="section-title text-center mb-45" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="section-title text-center mb-45" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                                 <span class="sub-title text-white mb-5">customer feedback</span>
                                 <h2>what our customer’s say us</h2>
                             </div>
@@ -784,8 +661,8 @@ headerContent(1);
             </div>
         </section>
         <!-- Testimonials Three Area end -->
-        
-        
+
+
         <!-- Client Area start -->
         <div class="client-area rel z-2">
             <div class="container container-1520">
@@ -832,8 +709,8 @@ headerContent(1);
             </div>
         </div>
         <!-- Client Area end -->
-        
-        
+
+
         <!-- Blog Area start -->
         <!-- <section class="blog-area pt-130 rpt-100 pb-80 rpb-50 rel z-1">
             <div class="container">
@@ -919,35 +796,35 @@ headerContent(1);
             </div>
         </section> -->
         <!-- Blog Area end -->
-        
-        
+
+
         <!-- Headline area start -->
         <div class="headline-area rel z-1">
             <span class="marquee-wrap">
-               <span class="marquee-inner left">
+                <span class="marquee-inner left">
                     <span class="marquee-item">newsletter subscribe</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                     <span class="marquee-item">newsletter subscribe</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                     <span class="marquee-item">newsletter subscribe</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-               </span>
-               <span class="marquee-inner left">
+                </span>
+                <span class="marquee-inner left">
                     <span class="marquee-item">newsletter subscribe</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                     <span class="marquee-item">newsletter subscribe</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                     <span class="marquee-item">newsletter subscribe</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-               </span>
-               <span class="marquee-inner left">
+                </span>
+                <span class="marquee-inner left">
                     <span class="marquee-item">newsletter subscribe</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                     <span class="marquee-item">newsletter subscribe</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                     <span class="marquee-item">newsletter subscribe</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-               </span>
+                </span>
             </span>
             <div class="headline-shapes">
                 <div class="shape one">
@@ -956,8 +833,8 @@ headerContent(1);
             </div>
         </div>
         <!-- Headline Area end -->
-       
-        
+
+
         <!-- Newsletter Area start -->
         <section class="newsletter-area py-65 mb-5 rel z-1">
             <div class="container">
@@ -971,13 +848,13 @@ headerContent(1);
                     <div class="col-lg-6">
                         <div class="newsletter-form-wrap" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
                             <h6>Share your WhatsApp number, and the Booze Bites team will get in touch with you soon!
-                            Shape</h6>
+                                Shape</h6>
                             <form class="newsletter-form style-two mt-15" action="#">
                                 <label for="news-email"><i class="fa-brands fa-whatsapp"></i></label>
                                 <input id="news-email" type="text" placeholder="enter your whatsapp number" required>
                                 <button class="theme-btn style-two" type="submit">Submit <i class="far fa-arrow-alt-right"></i></button>
                             </form>
-                         
+
                         </div>
                     </div>
                 </div>
@@ -989,11 +866,11 @@ headerContent(1);
             </div>
         </section>
         <!-- Newsletter Area end -->
-         
-         
+
+
         <!-- Instagram area start -->
         <div class="instagram-area">
-           <div class="row no-gap row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 row-cols-1 justify-content-center">
+            <div class="row no-gap row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 row-cols-1 justify-content-center">
                 <div class="col" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                     <div class="instagram-item">
                         <img src="assets/images/instagram/instagram1.jpg" alt="Instagram">
@@ -1024,18 +901,18 @@ headerContent(1);
                         <a href="assets/images/instagram/instagram5.jpg"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
-           </div>
+            </div>
         </div>
         <!-- Instagram area end -->
-          
-    <?php  
-    
-    require "footer.php"
-    ?>
+
+        <?php
+
+        require "footer.php"
+        ?>
 
     </div>
     <!--End pagewrapper-->
-   <!-- Header -->
+    <!-- Header -->
     <!-- Jquery -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap -->
@@ -1062,4 +939,5 @@ headerContent(1);
     <script src="assets/js/script.js"></script>
 
 </body>
+
 </html>

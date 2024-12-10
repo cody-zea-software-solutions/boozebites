@@ -82,8 +82,6 @@ if (true) { //check if the user logged in
             </div>
             <div class="col-lg-6">
                 <div class="update-shopping mb-30 text-lg-end wow fadeInRight delay-0-2s">
-                    <a href="shop.html" class="theme-btn style-two my-5">shopping <i class="fas fa-angle-double-right"></i></a>
-                    <a href="shop.html" class="theme-btn my-5">update cart <i class="fas fa-angle-double-right"></i></a>
                     <a class="theme-btn bg-secondary my-5" onclick="clearCart();">Clear cart <i class="fas fa-angle-double-right"></i></a>
                 </div>
             </div>
