@@ -284,8 +284,6 @@ include "connection.php";
                                 <div class="products-dropdown mb-15" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
                                     <select onchange="filtersearch();" id="sort">
                                         <option value="default" selected="">Default Sorting</option>
-                                        <option value="new">Newness Sorting</option>
-                                        <option value="old">Oldest Sorting</option>
                                         <option value="hight-to-low">High To Low</option>
                                         <option value="low-to-high">Low To High</option>
                                     </select>

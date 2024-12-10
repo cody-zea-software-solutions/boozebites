@@ -48,14 +48,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                $conditions[] = "`product_id` IN (0)";
           }
      }
+
      if (!empty($meatTypes)) {
-          $meatTypesStr = implode(',', array_map('intval', $meatTypes));
-          $conditions[] = "`meat_type_id` IN ($meatTypesStr)";
-     }
-     if (!empty($cookTypes)) {
-          $cookTypesStr = implode(',', array_map('intval',  $cookTypes));
-          $conditions[] = "`meat_type_id` IN ($cookTypesStr)";
-     }
+          $meatTypesConditions = array_map(function($type) {
+              return "`meat_type_id` = " . intval($type);
+          }, $meatTypes);
+          $conditions[] = "(" . implode(" OR ", $meatTypesConditions) . ")";
+      }
+      
+      if (!empty($cookTypes)) {
+          $cookTypesConditions = array_map(function($type) {
+              return "`cook_type_id` = " . intval($type);
+          }, $cookTypes);
+          $conditions[] = "(" . implode(" OR ", $cookTypesConditions) . ")";
+      }
+      
 
      if (count($conditions) > 0) {
           $query .= " WHERE " . implode(" AND ", $conditions);
@@ -63,27 +70,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
      switch ($sortOption) {
-          case 'new':
-               $query .= " ORDER BY `date` DESC";
-               break;
-          case 'old':
-               $query .= " ORDER BY `date` ASC";
-               break;
-          case 'popular':
-               $query = "SELECT p.*, COUNT(i.product_id) AS sales_count
-                   FROM product p
-                   LEFT JOIN invoice i ON p.product_id = i.product_id
-                   WHERE p.`on_delete`='0'
-                   GROUP BY p.product_id
-                   ORDER BY sales_count DESC";
-               break;
           case 'high-to-low':
-               $query .= " ORDER BY (SELECT MIN(price) 
+               $query .= "ORDER BY (SELECT MIN(price) 
                       FROM boost_bite.price_table 
                       WHERE product_product_id = product.product_id) DESC";
                break;
           case 'low-to-high':
-               $query .= " ORDER BY (SELECT MIN(price) 
+               $query .= "ORDER BY (SELECT MIN(price) 
                       FROM boost_bite.price_table 
                       WHERE product_product_id = product.product_id) ASC";
                break;
