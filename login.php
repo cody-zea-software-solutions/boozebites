@@ -101,6 +101,7 @@ headerContent(0);
               <div class="w-100">
                 <p class="text-body">Password</p>
                 <input class="form-control mt-1" id="password1" type="password" placeholder="Enter Password" required />
+                <a class="link-primary fw-bold" onclick="forgot();">Forgot password ?</a>
               </div>
               <p class="theme-btn style-two" onclick="login();">login</p>
               <p class="text-center text-body">
@@ -113,6 +114,40 @@ headerContent(0);
       </div>
     </div>
   </div>
+
+  <!-- Forgot Password Modal -->
+<div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="forgotPasswordModalLabel">Forgot Password</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Form for Forgot Password -->
+        <div class="mb-3">
+          <label for="verificationCode" class="form-label">Verification Code</label>
+          <input type="text" class="form-control" id="verificationCode" placeholder="Enter your verification code" required>
+        </div>
+        <div class="mb-3">
+          <label for="newPassword" class="form-label">New Password</label>
+          <input type="password" class="form-control" id="newPassword" placeholder="Enter your new password" required>
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Re-enter Password</label>
+          <input type="password" class="form-control" id="confirmPassword" placeholder="Re-enter your new password" required>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="confirmPasswordDetails()">Confirm Details</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
   <?php  
   require "footer.php"
   ?>

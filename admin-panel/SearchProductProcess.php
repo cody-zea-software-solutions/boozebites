@@ -1,5 +1,5 @@
 <?php
-require_once "../connection.php";
+require_once "db.php";
 session_start();
 
 if (isset($_GET["pkey"])) {
@@ -8,7 +8,9 @@ if (isset($_GET["pkey"])) {
     $key = $_GET["pkey"];
 
 
-    $product_rs = Database::search("SELECT * FROM `products`  WHERE `title` LIKE '%" . $key . "%' AND `on_delete` = 0");
+    $product_rs = Databases::search("SELECT * FROM price_table 
+    INNER JOIN box_type ON box_type.box_type_id=price_table.box_type_box_type_id
+    INNER JOIN product ON product.product_id=price_table.product_product_id WHERE `product_name` LIKE '%" . $key . "%' AND `on_delete` = 0");
     $product_num = $product_rs->num_rows;
 
 
@@ -20,7 +22,7 @@ if (isset($_GET["pkey"])) {
             $product_data = $product_rs->fetch_assoc();
 
 
-            $product_img_rs = Database::search("SELECT * FROM `product_img`  WHERE `product_id` = '" . $product_data["product_id"] . "'");
+            $product_img_rs = Databases::search("SELECT * FROM `product_img`  WHERE `product_id` = '" . $product_data["product_id"] . "'");
             $product_img_data = $product_img_rs->fetch_assoc();
             ?>
 

@@ -1,16 +1,29 @@
 <?php
+session_start();
+if (isset($_SESSION["a"])) {
 
-require_once "../connection.php";
+    require_once "db.php";
 
-$orderID = $_POST["oid"];
-$status = $_POST["sid"];
+    $uemail = $_SESSION["a"]["email"];
+
+    $u_detail = Databases::search("SELECT * FROM `admin` WHERE `email`='" . $uemail . "'");
+
+    if ($u_detail->num_rows == 1) {
 
 
-Database::iud("UPDATE `orders` SET `order_status` = '".$status."' WHERE `order_id` = '".$orderID."'");
+        $orderID = $_POST["pid"];
+        $status = $_POST["sid"];
+
+
+        Databases::iud("UPDATE `order` SET `order_status_id` = '" . $status . "' WHERE `id` = '" . $orderID . "' ");
 
 
 
-echo "success";
+        echo "success";
+
+    }
+}
+
 
 
 

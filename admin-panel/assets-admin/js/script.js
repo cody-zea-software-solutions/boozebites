@@ -19,24 +19,100 @@ function tProductImage(x) {
 }
 
 function tUpdateImage(x) {
+    var imageInput = document.getElementById("img_update_" + x);
+    imageInput.click(); // Trigger the file input dialog
 
-    var image = document.getElementById("img_update_" + x);
-    image.click();
+    imageInput.addEventListener("change", function handleImageChange() {
+        var fileCount = imageInput.files.length;
 
-    image.onchange = function () {
-        var file_count = image.files.length;
-        if (file_count == 1) {
-            var file = image.files[0];
-            var url = window.URL.createObjectURL(file);
-            document.getElementById("update_span_" + x).className = "d-none";
-            document.getElementById("update_div_" + x).src = url;
+        if (fileCount === 1) {
+            var file = imageInput.files[0];
 
+            // Validate file type
+            var allowedTypes = ["image/jpg", "image/jpeg", "image/png", "image/webp"];
+            if (!allowedTypes.includes(file.type)) {
+                alert("Invalid file type. Please select a JPG, JPEG, PNG, or WEBP image.");
+                imageInput.value = ""; // Clear the invalid input
+                return;
+            }
+
+            // Validate file size (e.g., max 5MB)
+            var maxSize = 5 * 1024 * 1024; // 5MB
+            if (file.size > maxSize) {
+                alert("File size exceeds 5MB. Please select a smaller image.");
+                imageInput.value = ""; // Clear the invalid input
+                return;
+            }
+
+            // Create object URL for preview
+            var url = URL.createObjectURL(file);
+            document.getElementById("update_span_" + x).className = "d-none"; // Hide placeholder
+            var imgPreview = document.getElementById("update_div_" + x);
+            imgPreview.src = url;
+
+            // Clean up the previous object URL when the image changes
+            imgPreview.onload = function () {
+                if (imgPreview.dataset.oldUrl) {
+                    URL.revokeObjectURL(imgPreview.dataset.oldUrl);
+                }
+                imgPreview.dataset.oldUrl = url; // Store the current URL for cleanup
+            };
         } else {
             alert("Please select an image.");
         }
-    }
 
+        // Remove the event listener after handling the change event
+        imageInput.removeEventListener("change", handleImageChange);
+    });
 }
+
+function cProductImage(x) {
+    var imageInput = document.getElementById("img_input_1" + x);
+    imageInput.click(); // Trigger the file input dialog
+
+    imageInput.addEventListener("change", function handleImageChange() {
+        var fileCount = imageInput.files.length;
+
+        if (fileCount === 1) {
+            var file = imageInput.files[0];
+
+            // Validate file type
+            var allowedTypes = ["image/jpg", "image/jpeg", "image/png", "image/webp"];
+            if (!allowedTypes.includes(file.type)) {
+                alert("Invalid file type. Please select a JPG, JPEG, PNG, or WEBP image.");
+                imageInput.value = ""; // Clear the invalid input
+                return;
+            }
+
+            // Validate file size (e.g., max 5MB)
+            var maxSize = 5 * 1024 * 1024; // 5MB
+            if (file.size > maxSize) {
+                alert("File size exceeds 5MB. Please select a smaller image.");
+                imageInput.value = ""; // Clear the invalid input
+                return;
+            }
+
+            // Create object URL for preview
+            var url = URL.createObjectURL(file); // Hide placeholder
+            var imgPreview = document.getElementById("img_div_1" + x);
+            imgPreview.src = url;
+
+            // Clean up the previous object URL when the image changes
+            imgPreview.onload = function () {
+                if (imgPreview.dataset.oldUrl) {
+                    URL.revokeObjectURL(imgPreview.dataset.oldUrl);
+                }
+                imgPreview.dataset.oldUrl = url; // Store the current URL for cleanup
+            };
+        } else {
+            alert("Please select an image.");
+        }
+
+        // Remove the event listener after handling the change event
+        imageInput.removeEventListener("change", handleImageChange);
+    });
+}
+
 
 function changevm() {
 
@@ -57,6 +133,100 @@ function changevm() {
     r.send(form);
 
 }
+
+function AddDis() {
+    // Get input values
+    var dname = document.getElementById("dname").value.trim();
+    var damount = document.getElementById("damount").value.trim();
+    var dper = document.getElementById("dper").value.trim();
+
+    // Create a new XMLHttpRequest object
+    var r = new XMLHttpRequest();
+
+    // Create a FormData object to send the data
+    var form = new FormData();
+    form.append("dname", dname);
+    form.append("damount", damount);
+    form.append("dper", dper);
+
+    // Set up the response handler
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            var response = r.responseText;
+            if (response == "success") {
+                alert("Discount added");
+                window.location.reload();  // Reload the page
+            } else {
+                alert(response);  // Show the response from the server
+            }
+        }
+    };
+
+    // Open a POST request to the target PHP file
+    r.open("POST", "AddSingleDiscount.php", true);
+
+    // Send the form data
+    r.send(form);
+}
+
+function DelDis() {
+    // Get the selected value from the ddelete selection
+    var ddelete = document.getElementById("ddelete").value;
+
+    // Validate if a value is selected (non-empty)
+    if (ddelete === "") {
+        alert("Please select a discount to delete.");
+        return;
+    }
+
+    // Create a new XMLHttpRequest object
+    var r = new XMLHttpRequest();
+
+    // Create a FormData object to send the data
+    var form = new FormData();
+    form.append("ddelete", ddelete);
+
+    // Set up the response handler
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            var response = r.responseText;
+            alert(response);  // Show the response from the server
+
+            if (response === "deleted") {
+                window.location.reload();  // Reload the page if the deletion is successful
+            }
+        }
+    };
+
+    // Open a POST request to the target PHP file (deletedis.php)
+    r.open("POST", "deletedis.php", true);
+
+    // Send the form data
+    r.send(form);
+}
+
+function SearchProduct() {
+    var pkeyword = document.getElementById("pkey").value;
+    var pview = document.getElementById("ProductResult");
+
+    var x = new XMLHttpRequest();
+
+
+    x.onreadystatechange = function () {
+        if (x.readyState == 4 && x.status == 200) {
+            var response = x.responseText;
+
+            pview.innerHTML = response;
+
+
+
+        }
+    };
+    x.open("GET", "SearchProductProcess.php?pkey=" + encodeURIComponent(pkeyword), true);
+    x.send();
+}
+
+
 
 function change_branch() {
 
@@ -445,45 +615,24 @@ function triggerFileInput() {
     document.getElementById('newsFileInput').click();
 }
 
-function update_product(pid) {
-    var pld = tinymce.get('pld' + pid).getContent();
-    var psd = tinymce.get(pid + 'psd').getContent();
-
-    var sku = document.getElementById(pid + "sku");
+function update_product_real(pid) {
     var pt = document.getElementById(pid + "pt");
     var pc = document.getElementById(pid + "pc");
-    var pp = document.getElementById(pid + "pp");
-    var pq = document.getElementById(pid + "pq");
-    var ps = document.getElementById(pid + "ps");
-
-    var img1 = document.getElementById("img_update_" + pid + "1");
-    var img2 = document.getElementById("img_update_" + pid + "2");
-    var img3 = document.getElementById("img_update_" + pid + "3");
+    var pm = document.getElementById(pid + "pm");
+    var pld = document.getElementById(pid + "pld");
+    var img_input = document.getElementById("img_input_1"+pid); // Image input field
 
     var r = new XMLHttpRequest();
     var form = new FormData();
     form.append("pid", pid);
-    form.append("sku", sku.value);
-    form.append("pt", pt.value);
     form.append("pc", pc.value);
-    form.append("pp", pp.value);
-    form.append("pq", pq.value);
-    form.append("ps", ps.value);
-    form.append("psd", psd);
-    form.append("pld", pld);
+    form.append("pm", pm.value);
+    form.append("pt", pt.value);
+    form.append("pld", pld.value);
 
-    var image_file_count1 = img1.files.length;
-    var image_file_count2 = img2.files.length;
-    var image_file_count3 = img3.files.length;
-
-    if (image_file_count1 == 1) {
-        form.append("img1", img1.files[0]);
-    }
-    if (image_file_count2 == 1) {
-        form.append("img2", img2.files[0]);
-    }
-    if (image_file_count3 == 1) {
-        form.append("img3", img3.files[0]);
+    // Add image to the form data if it's selected
+    if (img_input.files.length > 0) {
+        form.append("img1", img_input.files[0]); // Include the image file
     }
 
     r.onreadystatechange = function () {
@@ -495,11 +644,251 @@ function update_product(pid) {
         }
     }
 
+    r.open("POST", "update-product-real-process.php", true);
+    r.send(form);
+}
+
+function disablePr(x,y){
+
+    var r = new XMLHttpRequest();
+    var form = new FormData();
+    form.append("pid", x);
+    form.append("s", y);
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            alert(r.responseText);
+            if (r.responseText == 'Product status updated.') {
+                window.location.reload();
+            }
+        }
+    }
+
+    r.open("POST", "update-product-status.php", true);
+    r.send(form);
+
+}
+
+
+function update_product(pid,bid) {
+    var pb = document.getElementById(String(pid) + String(bid)+ "pb");
+    var pp = document.getElementById(String(pid) + String(bid)+ "pp");
+
+    var r = new XMLHttpRequest();
+    var form = new FormData();
+    form.append("pid", pid);
+    form.append("bid", bid);
+    form.append("pb", pb.value);
+    form.append("pp", pp.value);
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            alert(r.responseText);
+            if (r.responseText == 'Variation has been updated.') {
+                window.location.reload();
+            }
+        }
+    }
+
     r.open("POST", "update-product-process.php", true);
     r.send(form);
 
+}
+
+function AddVar() {
+    var vn = document.getElementById('addvname');
+    var vb = document.getElementById('addvbox');
+    var vp = document.getElementById('addvprice');
+
+    var r = new XMLHttpRequest();
+    var form = new FormData();
+    form.append("vp", vp.value);
+    form.append("vn", vn.value);
+    form.append("vb", vb.value);
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4 && r.status == 200) {
+            alert(r.responseText);
+            if (r.responseText == 'Variation has been updated.') {
+                window.location.reload();
+            }
+        }
+    }
+
+    r.open("POST", "add-var-process.php", true);
+    r.send(form);
 
 }
+
+function OrderStatusSave(pid,mid) {
+    var name = "statusChangeProduct"+mid+"3";
+    var status = document.getElementById(name);
+
+    var x = new XMLHttpRequest();
+
+    var form = new FormData();
+    form.append("pid", pid);
+    form.append("sid", status.value);
+
+
+    x.onreadystatechange = function () {
+        if (x.readyState == 4 && x.status == 200) {
+            var response = x.responseText;
+            if (response === "success") {
+                window.location.reload();
+            } else {
+                alert(response);
+            }
+        }
+    };
+    x.open("POST", "ChangeOrderStatusProcess.php", true);
+    x.send(form);
+}
+
+function userblockandunblcok(ue,st) {
+
+    var x = new XMLHttpRequest();
+
+    var form = new FormData();
+    form.append("ue", ue);
+    form.append("st", st);
+
+
+    x.onreadystatechange = function () {
+        if (x.readyState == 4 && x.status == 200) {
+            var response = x.responseText;
+            alert (response);
+            if (response == "User status changed.") {
+                window.location.reload();
+            } else {
+                alert(response);
+            }
+        }
+    };
+    x.open("POST", "ChangeUserStatusProcess.php", true);
+    x.send(form);
+}
+
+function SearchUser() {
+    var ukeyword = document.getElementById("ukey").value;
+    var uview = document.getElementById("userarea");
+
+    var x = new XMLHttpRequest();
+
+
+    x.onreadystatechange = function () {
+        if (x.readyState == 4 && x.status == 200) {
+            var response = x.responseText;
+
+            uview.innerHTML = response;
+
+
+
+        }
+    };
+    x.open("GET", "SearchUserProcess.php?ukey=" + encodeURIComponent(ukeyword), true);
+    x.send();
+}
+
+function SearchInvoice() {
+    var keyword = document.getElementById("keyword").value;
+    var view = document.getElementById("UserResult");
+
+    var x = new XMLHttpRequest();
+
+
+    x.onreadystatechange = function () {
+        if (x.readyState == 4 && x.status == 200) {
+            var response = x.responseText;
+
+            view.innerHTML = response;
+
+
+
+        }
+    };
+    x.open("GET", "SearchInvoiceProcess.php?key=" + encodeURIComponent(keyword), true);
+    x.send();
+
+}
+
+function AddCategory() {
+    var cname = document.getElementById("cname").value;
+
+    var x = new XMLHttpRequest();
+
+
+    x.onreadystatechange = function () {
+        if (x.readyState == 4 && x.status == 200) {
+            var response = x.responseText;
+            if (response === "success") {
+                window.location.reload();
+            } else {
+                alert(response);
+            }
+        }
+    };
+    x.open("GET", "AddCategoryProcess.php?cname=" + encodeURIComponent(cname), true);
+    x.send();
+}
+
+function AddMeat() {
+    var cname = document.getElementById("wname").value;
+
+    var x = new XMLHttpRequest();
+
+
+    x.onreadystatechange = function () {
+        if (x.readyState == 4 && x.status == 200) {
+            var response = x.responseText;
+            if (response === "success") {
+                window.location.reload();
+            } else {
+                alert(response);
+            }
+        }
+    };
+    x.open("GET", "AddWeightProcess.php?cname=" + encodeURIComponent(cname), true);
+    x.send();
+}
+
+function addProduct() {
+    var title = document.getElementById("title");
+    var sd = document.getElementById("sd");
+    var c = document.getElementById("category");
+    var weight = document.getElementById("weight");
+    var image1 = document.getElementById("img_input_1");
+
+    var f = new FormData();
+
+    f.append("t", title.value);
+    f.append("cat", c.value);
+    f.append("weight", weight.value);
+    f.append("s_des", sd.value); // Corrected from innerHTML to value
+    f.append("img1", image1.files[0]); // Corrected from files["0"] to files[0]
+
+    var r = new XMLHttpRequest();
+
+    r.onreadystatechange = function () {
+        if (r.readyState == 4) { // Ensures request is complete
+            if (r.status == 200) { // Checks for success
+                var response = r.responseText;
+
+                if (response == "success") {
+                    alert("Product Added Successfully");
+                    window.location.reload();
+                } else {
+                    alert(response);
+                }
+            } else {
+                console.error("Error with the request:", r.status);
+            }
+        }
+    };
+
+    r.open("POST", "addProductProcess.php", true);
+    r.send(f);
+}
+
 
 function adminLogin() {
     var username = document.getElementById("u");

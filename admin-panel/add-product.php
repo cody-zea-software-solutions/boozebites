@@ -5,9 +5,9 @@ if (isset($_SESSION["a"])) {
 
   include "db.php";
 
-  $uemail = $_SESSION["a"]["user_name"];
+  $uemail = $_SESSION["a"]["email"];
 
-  $u_detail = Databases::search("SELECT * FROM `admin` WHERE `user_name`='" . $uemail . "'");
+  $u_detail = Databases::search("SELECT * FROM `admin` WHERE `email`='" . $uemail . "'");
 
   if ($u_detail->num_rows == 1) {
     session_abort();
@@ -19,10 +19,10 @@ if (isset($_SESSION["a"])) {
     <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>CEYNAP New Zealand || Admin-Panel</title>
-      <link rel="shortcut icon" type="image/png" href="../admin-panel/assets-admin/images/logos/ceynap_logo.webp" />
+      <title>BOOZEBITES New Zealand || Admin-Panel</title>
+      <link rel="shortcut icon" href="../assets/images/logos/favicon.png" type="image/x-icon">
       <link rel="stylesheet" href="../admin-panel/assets-admin/css/styles.min.css" />
-
+      <link rel="stylesheet" href="../admin-panel/assets-admin/css/styles.min.css" />
       <!---Icons-->
       <script src="https://kit.fontawesome.com/dfdb94433e.js" crossorigin="anonymous"></script>
 
@@ -57,6 +57,17 @@ if (isset($_SESSION["a"])) {
               </div>
               <div class="col-12 col-lg-9 border shadow">
                 <div class="row m-3">
+                  <div class="col-12 my-3">
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-8 col-md-4 mb-2" style="height: 200px;">
+                        <input type="file" class="d-none" id="img_input_1">
+                        <div class="border-x log-link d-flex justify-content-center align-items-center h-100 outer-div"
+                          onclick="tProductImage(1);"><span class="small" id="img_span_1">Main Image</span>
+                          <img src="" class="img-fluid" id="img_div_1">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   <div class="col-12 mt-3">
                     <div class="form-floating">
                       <input type="text" class="form-control rounded-0" id="title" placeholder="title of the product">
@@ -66,17 +77,17 @@ if (isset($_SESSION["a"])) {
                   <div class="col-6 mt-3">
                     <div class="form-floating">
                       <select class="form-select rounded-0" id="category" aria-label="Floating label select example">
-                        <option selected>Select product category</option>
+                        <option selected value="0">Select cook type</option>
                         <?php
 
-                        $category_rs = Databases::search("SELECT * FROM `category`");
+                        $category_rs = Databases::search("SELECT * FROM `cook_type` ORDER BY `cook_type_name` ASC");
                         $category_num = $category_rs->num_rows;
 
                         for ($i = 0; $i < $category_num; $i++) {
                           $category_data = $category_rs->fetch_assoc();
                           ?>
-                          <option value="<?php echo $category_data["category_id"] ?>">
-                            <?php echo $category_data["name"] ?>
+                          <option value="<?php echo $category_data["cook_type_id"] ?>">
+                            <?php echo $category_data["cook_type_name"] ?>
                           </option>
                           <?php
                         }
@@ -85,11 +96,11 @@ if (isset($_SESSION["a"])) {
 
 
                       </select>
-                      <label for="floatingSelect">Select your product category here</label>
+                      <label for="floatingSelect">Select your cook type here</label>
                     </div>
 
                     <button class="btn x rounded-0 mt-2 d-grid col-12" data-bs-toggle="modal"
-                      data-bs-target="#exampleModal">Add New Category</button>
+                      data-bs-target="#exampleModal">Add New Cook Type</button>
 
                     <!--Add New Category Modal-->
 
@@ -99,7 +110,7 @@ if (isset($_SESSION["a"])) {
                         <div class="modal-content">
                           <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa fa-plus-circle"
-                                aria-hidden="true"></i> Add New Category</h1>
+                                aria-hidden="true"></i> Add New Cook Type</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
@@ -107,7 +118,7 @@ if (isset($_SESSION["a"])) {
                               <div class="form-floating">
                                 <input type="text" class="form-control rounded-0" id="cname"
                                   placeholder="title of the product">
-                                <label for="cname">Category Name</label>
+                                <label for="cname">CookType Name</label>
                               </div>
                             </div>
 
@@ -124,43 +135,32 @@ if (isset($_SESSION["a"])) {
                     <!--Add New Category Modal-->
                   </div>
 
-                  <div class="col-6 mt-3" id="inputset">
-                    <div class="input-group">
-                      <span class="input-group-text">NZD</span>
-                      <div class="form-floating is-invalid">
-                        <input type="text" class="form-control" id="price" placeholder="Enter Amount" required>
-                        <label for="price">Product Price</label>
-                      </div>
-                      <span class="input-group-text">.00</span>
-                    </div>
-                  </div>
-
                   <div class="col-6 mt-3">
                     <div class="form-floating">
                       <select class="form-select rounded-0" aria-label="Floating label select example" id="weight">
-                        <option selected>Select Product Weight</option>
+                        <option value="0" selected>Select meat type</option>
                         <?php
 
-                        $weight_rs = Databases::search("SELECT * FROM `weight`");
+                        $weight_rs = Databases::search("SELECT * FROM `meat_type` ORDER BY `meat_type_name` ASC");
                         $weight_num = $weight_rs->num_rows;
 
                         for ($i = 0; $i < $weight_num; $i++) {
 
                           $weight_data = $weight_rs->fetch_assoc();
                           ?>
-                          <option value="<?php echo $weight_data["id"] ?>">
-                            <?php echo $weight_data["Amount"] ?> Kg
+                          <option value="<?php echo $weight_data["meat_type_id"] ?>">
+                            <?php echo $weight_data["meat_type_name"] ?>
                           </option>
                           <?php
                         }
 
                         ?>
                       </select>
-                      <label for="floatingSelect">Select Product Weight (*Optional*)</label>
+                      <label for="floatingSelect">Select meat type</label>
                     </div>
 
                     <button class="btn x rounded-0 mt-2 d-grid col-12" data-bs-toggle="modal"
-                      data-bs-target="#weightModal">Add New Weight</button>
+                      data-bs-target="#weightModal">Add New Meat Type</button>
 
                     <!--Add Weight Modal-->
 
@@ -170,7 +170,7 @@ if (isset($_SESSION["a"])) {
                         <div class="modal-content">
                           <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="fa fa-plus-circle"
-                                aria-hidden="true"></i> Add New Weight</h1>
+                                aria-hidden="true"></i> Add New Meat Type</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
@@ -178,7 +178,7 @@ if (isset($_SESSION["a"])) {
                               <div class="form-floating">
                                 <input type="text" class="form-control rounded-0" id="wname"
                                   placeholder="title of the product">
-                                <label for="wname">Weight (Kg)</label>
+                                <label for="wname">Meat Name</label>
                               </div>
                             </div>
 
@@ -186,7 +186,7 @@ if (isset($_SESSION["a"])) {
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn x" onclick="AddWeight();"><i class="fa fa-plus-circle"
+                            <button type="button" class="btn x" onclick="AddMeat();"><i class="fa fa-plus-circle"
                                 aria-hidden="true"></i> Add</button>
                           </div>
                         </div>
@@ -195,106 +195,16 @@ if (isset($_SESSION["a"])) {
                     <!--Add Weight Modal-->
                   </div>
 
-
-                  <div class="col-6 mt-3">
-                    <div class="form-floating">
-                      <input type="text" class="form-control rounded-0" id="sku" placeholder="SKU Code">
-                      <label for="sku">Product SKU Code</label>
-                    </div>
-                  </div>
-                  <div class="col-6 mt-3">
-                    <div class="form-floating">
-                      <input type="text" class="form-control rounded-0" id="qty" placeholder="Product Qty">
-                      <label for="qty">Product Qty</label>
-                    </div>
-                  </div>
-
-                  <div class="col-6 mt-3">
-                    <div class="form-floating">
-                      <select class="form-select rounded-0" aria-label="Floating label select example" id="stock">
-                        <?php
-
-                        $stock_rs = Databases::search("SELECT * FROM `stock`");
-                        $stock_num = $stock_rs->num_rows;
-
-                        for ($a = 0; $a < $stock_num; $a++) {
-
-                          $stock_data = $stock_rs->fetch_assoc();
-                          ?>
-                          <option value="<?php echo $stock_data["stock_id"] ?>">
-                            <?php echo $stock_data["status_name"] ?>
-                          </option>
-                          <?php
-                        }
-
-                        ?>
-                      </select>
-                      <label for="floatingSelect">Select Product Status</label>
-                    </div>
-                  </div>
-                  <div class="col-12 mt-3">
-                    <div class="form-floating">
-                      <select class="form-select rounded-0" aria-label="Floating label select example" id="solution">
-                        <?php
-
-                        $s_rs = Databases::search("SELECT * FROM `solutions`");
-                        $s_num = $s_rs->num_rows;
-
-                        for ($a = 0; $a < $s_num; $a++) {
-
-                          $s_data = $s_rs->fetch_assoc();
-                          ?>
-                          <option value="<?php echo $s_data["solution_id"] ?>">
-                            <?php echo $s_data["solution_name"] ?>
-                          </option>
-                          <?php
-                        }
-
-                        ?>
-                      </select>
-                      <label for="floatingSelect">Select Product Solution Type</label>
-                    </div>
-                  </div>
-
                   <div class="col-12 mt-3">
                     <div class="form-floating">
                       <textarea class="form-control rounded-0" placeholder="Short Description" id="sd"
                         style="height: 100px"></textarea>
-                      <label for="sd">Short Description</label>
+                      <label for="sd">Description</label>
                     </div>
                   </div>
 
-                  <div class="col-12 mt-3 mb-3">
-                    <textarea class="form-control rounded-0" placeholder="Product Description" id="description"
-                      style="height: 100px"></textarea>
-                  </div>
 
-                  <div class="col-12 mb-3">
-                    <div class="row d-flex justify-content-center">
-                      <div class="col-8 col-md-4 mb-2" style="height: 200px;">
-                        <input type="file" class="d-none" id="img_input_1">
-                        <div class="border-x log-link d-flex justify-content-center align-items-center h-100 outer-div"
-                          onclick="tProductImage(1);"><span class="small" id="img_span_1">Main Image</span>
-                          <img src="" class="img-fluid" id="img_div_1">
-                        </div>
-                      </div>
-                      <div class="col-8 col-md-4  mb-2" style="height: 200px;">
-                        <input type="file" class="d-none" id="img_input_2">
-                        <div class="border-x log-link d-flex justify-content-center align-items-center h-100"
-                          onclick="tProductImage(2);"><span class="small" id="img_span_2">Sub Image</span>
-                          <img src="" class="img-fluid" id="img_div_2">
-                        </div>
-                      </div>
-                      <div class="col-8 col-md-4 mb-2" style="height: 200px;">
-                        <input type="file" class="d-none" id="img_input_3">
-                        <div class="border-x log-link d-flex justify-content-center align-items-center h-100"
-                          onclick="tProductImage(3);"><span class="small" id="img_span_3">Sub Image</span>
-                          <img src="" class="img-fluid" id="img_div_3">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-12 text-end">
+                  <div class="col-12 text-end mt-4">
                     <button class="btn rounded-1 fw-bold x col-md-2" onclick="addProduct();"><i class="fa fa-plus-circle"
                         aria-hidden="true"></i>
                       ADD</button>
@@ -305,21 +215,6 @@ if (isset($_SESSION["a"])) {
           </div>
         </div>
       </div>
-
-      <script src="https://cdn.tiny.cloud/1/v6ya2mxbd70fn22v774qp5fw78t114ccnejem2vy8oriyj04/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-      <script>
-        // Wait for the document to be ready
-        document.addEventListener("DOMContentLoaded", function () {
-          // Initialize TinyMCE with API key
-          tinymce.init({
-            selector: 'textarea',
-            apiKey: 'v6ya2mxbd70fn22v774qp5fw78t114ccnejem2vy8oriyj04', // Replace 'YOUR_API_KEY_HERE' with your actual API key
-            plugins: 'autosave autolink lists link',
-            toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | link',
-            menubar: false,
-          });
-        });
-      </script>
 
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -347,9 +242,6 @@ if (isset($_SESSION["a"])) {
       <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
 
 
-
-      <script src="../script.js"></script>
-      <script src="../denu.js"></script>
     </body>
 
     </html>

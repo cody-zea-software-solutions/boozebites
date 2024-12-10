@@ -1,5 +1,5 @@
 <?php 
-require "../connection.php";
+require "db.php";
 $cname = $_GET["cname"];
 
 // echo $cname;
@@ -8,7 +8,7 @@ if (empty($cname)) {
     echo "Please Enter Category Name";
 }else{
 
-Database::iud("INSERT INTO `category` (`name`) VALUES ('".$cname."')");
+Databases::iud("INSERT INTO `cook_type` (`cook_type_name`) VALUES ('".$cname."')");
 
 echo "success";
 }

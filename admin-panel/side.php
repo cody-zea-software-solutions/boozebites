@@ -53,6 +53,23 @@ session_start();
               </a>
             </li>
             <li class="sidebar-item">
+              <a class="sidebar-link" href="manage-product.php" aria-expanded="false">
+                <span>
+                <i class="fa fa-list" aria-hidden="true"></i>
+                </span>
+                <span class="hide-menu">manage Products</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="add-variations.php" aria-expanded="false">
+                <span>
+                <i class="fa fa-database" aria-hidden="true"></i>
+
+                </span>
+                <span class="hide-menu">Manage Variations</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
               <a class="sidebar-link" href="add-discount.php" aria-expanded="false">
                 <span>
                 <i class="fa fa-money" aria-hidden="true"></i>
@@ -68,14 +85,7 @@ session_start();
                 <span class="hide-menu"> User Management</span>
               </a>
             </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="manage-product.php" aria-expanded="false">
-                <span>
-                <i class="fa fa-list" aria-hidden="true"></i>
-                </span>
-                <span class="hide-menu">Manage Products</span>
-              </a>
-            </li>
+            
             <li class="sidebar-item">
               <a class="sidebar-link" href="invoice-view.php" aria-expanded="false">
                 <span>

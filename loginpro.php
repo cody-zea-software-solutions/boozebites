@@ -1,4 +1,5 @@
 <?php
+session_start();
 class main {
     public $email;
     public $password;
@@ -46,7 +47,7 @@ class check extends main {
         $this->password = $password;
     }
     public function check(): string {
-        require_once "connect.php";
+        require_once "connection.php";
         Database::setUpConnection();
         $stmt = Database::$connection->prepare(
             "SELECT * FROM `user` WHERE `email` = ? AND `password` = ?"
@@ -77,7 +78,7 @@ class check extends main {
         }
     }
 
-    
+
 }
 $instance = new main();
 $result = $instance->main();

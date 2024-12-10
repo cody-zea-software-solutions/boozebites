@@ -5,9 +5,9 @@ if (isset($_SESSION["a"])) {
 
     include "db.php";
 
-    $uemail = $_SESSION["a"]["user_name"];
+    $uemail = $_SESSION["a"]["email"];
 
-    $u_detail = Databases::search("SELECT * FROM `admin` WHERE `user_name`='" . $uemail . "'");
+    $u_detail = Databases::search("SELECT * FROM `admin` WHERE `email`='" . $uemail . "'");
 
     if ($u_detail->num_rows == 1) {
         session_abort();
@@ -20,7 +20,7 @@ if (isset($_SESSION["a"])) {
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title>CEYNAP New Zealand || Admin-Panel</title>
-            <link rel="shortcut icon" type="image/png" href="../admin-panel/assets-admin/images/logos/ceynap_logo.webp" />
+            <link rel="shortcut icon" href="../assets/images/logos/favicon.png" type="image/x-icon">
             <link rel="stylesheet" href="../admin-panel/assets-admin/css/styles.min.css" />
 
             <!---Icons-->
@@ -62,215 +62,88 @@ if (isset($_SESSION["a"])) {
                                         <span class="fw-500 fw-bold">Discount per amount</span>
                                     </div>
 
-                                    <div class="col-6 mt-3">
+                                    <div class="col-12 mt-3">
                                         <div class="form-floating">
-                                            <select class="form-select rounded-0" id="product"
-                                                aria-label="Floating label select example">
-                                                <option selected>Select Product</option>
-                                                <?php
-
-                                                $product_rs = Databases::search("SELECT * FROM `products` WHERE `on_delete`= 0");
-                                                $product_num = $product_rs->num_rows;
-
-                                                for ($i = 0; $i < $product_num; $i++) {
-                                                    $product_data = $product_rs->fetch_assoc();
-                                                    ?>
-                                                    <option value="<?php echo $product_data["product_id"] ?>">
-                                                        <?php echo $product_data["sku_code"];
-                                                        echo " || ";
-                                                        echo $product_data["title"] ?>
-                                                    </option>
-                                                    <?php
-                                                }
-
-                                                ?>
-                                            </select>
-                                            <label for="floatingSelect">Select your product here</label>
+                                            <input type="text" class="form-control rounded-0" id="dname"
+                                                placeholder="title of the product">
+                                            <label for="title">Discount Name</label>
                                         </div>
                                     </div>
 
                                     <div class="col-6 mt-3">
                                         <div class="form-floating">
-                                            <input type="number" class="form-control rounded-0" id="qty"
-                                                placeholder="qty of the product">
-                                            <label for="price">Quantity</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 mt-3">
-                                        <div class="form-floating">
-                                            <select class="form-select rounded-0" id="unit" onchange="SetInput();"
-                                                aria-label="Floating label select example">
-                                                <?php
-
-                                                $unit_rs = Databases::search("SELECT * FROM `units`");
-                                                $unit_num = $unit_rs->num_rows;
-
-                                                for ($i = 0; $i < $unit_num; $i++) {
-                                                    $unit_data = $unit_rs->fetch_assoc();
-                                                    ?>
-                                                    <option value="<?php echo $unit_data["unit_id"] ?>">
-                                                        <?php echo $unit_data["unit_name"];
-                                                        ?>
-                                                    </option>
-                                                    <?php
-                                                }
-
-                                                ?>
-                                            </select>
-                                            <label for="floatingSelect">Select your product here</label>
+                                            <input type="number" class="form-control rounded-0" id="damount"
+                                                placeholder="title of the product">
+                                            <label for="title">Discount Amount</label>
                                         </div>
                                     </div>
 
                                     <div class="col-6 mt-3" id="inputset">
                                         <div class="input-group">
-                                            <span class="input-group-text">NZD</span>
                                             <div class="form-floating is-invalid">
-                                                <input type="text" class="form-control" id="discount1"
-                                                    placeholder="Enter Amount" required>
-                                                <label for="discount1">Discount</label>
+                                                <input type="number" class="form-control" id="dper" placeholder="Enter Amount"
+                                                    required>
+                                                <label for="price">Discount Percentage</label>
                                             </div>
-                                            <span class="input-group-text">.00</span>
+                                            <span class="input-group-text">%</span>
                                         </div>
                                     </div>
 
-                                    <div class="col-12 mt-3 text-end">
-                                        <button class="btn col-4 x rounded-0 mb-2" onclick="AddBulkDiscount();">Add</button>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="row d-flex justify-content-center">
-                                            <div class="col-8 col-md-6 mt-3">
-                                                <div class="form-floating">
-                                                    <select class="form-select rounded-0" id="select_am"
-                                                        aria-label="Floating label select example">
-                                                        <option value="0">Discount</option>
-                                                        <?php
-
-                                                        $unit_rs = Databases::search("SELECT discount.* , products.sku_code , `units`.`unit_name` FROM discount
-                                                        INNER JOIN products ON products.product_id=discount.product_id
-                                                        INNER JOIN `units` ON `units`.`unit_id`=`discount`.`unit_id`");
-                                                        $unit_num = $unit_rs->num_rows;
-
-                                                        for ($i = 0; $i < $unit_num; $i++) {
-                                                            $unit_data = $unit_rs->fetch_assoc();
-                                                            ?>
-                                                            <option value="<?php echo $unit_data["discount_id"] ?>">
-                                                                <?php echo $unit_data["sku_code"]." * ".$unit_data["qty"]." ".$unit_data["unit_name"]." - ( ".$unit_data["discount_price"]." )";
-                                                                ?>
-                                                            </option>
-                                                            <?php
-                                                        }
-
-                                                        ?>
-                                                    </select>
-                                                    <label for="select_am">Select discount here</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-4 col-md-2 mt-3 d-flex flex-column justify-content-center">
-                                                <button class="btn ub-btn rounded-0 mb-2" onclick="deleteDIS1();">Delete</button>
-                                            </div>
-                                        </div>
+                                    <div class="col-4 col-md-2 mt-3 d-flex flex-column justify-content-center">
+                                        <button class="btn x rounded-0 mb-2" onclick="AddDis();">Add</button>
                                     </div>
 
                                 </div>
-                                <hr class="mt-3">
-                                <div class="row m-3">
-                                    <div class="col-12 text-center mt-3">
-                                        <span class="fw-500 fw-bold">Single item discount</span>
-                                    </div>
 
-                                    <div class="col-12">
-                                        <div class="row d-flex justify-content-center">
-                                            <div class="col-8 col-md-6 mt-3">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control rounded-0" id="discount2"
-                                                        placeholder="discount">
-                                                    <label for="discount2">Discount</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-4 col-md-2 mt-3 d-flex flex-column justify-content-center">
-                                                <button class="btn x rounded-0 mb-2" onclick="AddSingleDiscount();">Add</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="row d-flex justify-content-center">
-                                            <div class="col-8 col-md-6 mt-3">
-                                                <div class="form-floating">
-                                                    <select class="form-select rounded-0" id="select_sd"
-                                                        aria-label="Floating label select example">
-                                                        <option value="0">Discount</option>
-                                                        <?php
-
-                                                        $unit_rs = Databases::search("SELECT discount.* , products.sku_code , `units`.`unit_name` FROM discount
-                                                        INNER JOIN products ON products.product_id=discount.product_id
-                                                        INNER JOIN `units` ON `units`.`unit_id`=`discount`.`unit_id` WHERE `discount`.`qty`=1");
-                                                        $unit_num = $unit_rs->num_rows;
-
-                                                        for ($i = 0; $i < $unit_num; $i++) {
-                                                            $unit_data = $unit_rs->fetch_assoc();
-                                                            ?>
-                                                            <option value="<?php echo $unit_data["discount_id"] ?>">
-                                                                <?php echo $unit_data["sku_code"]." * ".$unit_data["qty"]." ".$unit_data["unit_name"]." - ( ".$unit_data["discount_price"]." )";
-                                                                ?>
-                                                            </option>
-                                                            <?php
-                                                        }
-
-                                                        ?>
-                                                    </select>
-                                                    <label for="select_sd">Select discount here</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-4 col-md-2 mt-3 d-flex flex-column justify-content-center">
-                                                <button class="btn ub-btn rounded-0 mb-2" onclick="deleteDIS2();">Delete</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <hr class="mt-3">
-                                </div>
-
-                                <div class="row m-3 mb-5">
-                                    <div class="col-12 text-center mt-3">
-                                        <span class="fw-500 fw-bold">Tax calculator</span>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="row d-flex justify-content-center">
-                                            <div class="col-8 col-md-6 mt-3">
-                                                <div class="form-floating">
-                                                    <input type="text" class="form-control rounded-0" id="tax"
-                                                        placeholder="tax">
-                                                    <label for="tax">Tax amount</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-4 col-md-2 mt-3 d-flex flex-column justify-content-center">
-                                                <button class="btn x rounded-0 mb-2" onclick="Addtax();">Add</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div>
+
+                            <div class="col-12 col-lg-9 border shadow mt-5">
+
+                                <div class="row m-3">
+                                    <div class="col-12 text-center mt-3">
+                                        <span class="fw-500 fw-bold">Delete Discount</span>
+                                    </div>
+
+                                    <div class="col-12 mt-3">
+                                        <div class="form-floating">
+                                            <select class="form-select rounded-0" id="ddelete"
+                                                aria-label="Floating label select example">
+                                                <option selected value="0">Select Discount</option>
+                                                <?php
+
+                                                $category_rs = Databases::search("SELECT * FROM `discount`");
+                                                $category_num = $category_rs->num_rows;
+
+                                                for ($i = 0; $i < $category_num; $i++) {
+                                                    $category_data = $category_rs->fetch_assoc();
+                                                    ?>
+                                                    <option value="<?php echo $category_data["discount_id"] ?>">
+                                                        <?php echo $category_data["discount_name"]," || ",$category_data["percentage"]," % off per ",$category_data["amount"]," items" ?>
+                                                    </option>
+                                                    <?php
+                                                }
+
+                                                ?>
+                                            </select>
+                                            <label for="floatingSelect">Select your Discount here</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4 col-md-2 mt-3 d-flex flex-column justify-content-center">
+                                        <button class="btn btn-danger rounded-0 mb-2" onclick="DelDis();">Delete</button>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
 
-            <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
-            <script>
-                ClassicEditor
-                    .create(document.querySelector('#floatingTextarea2'))
-                    .then(editor => {
-                        console.log(editor);
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-            </script>
             <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
                 integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
                 crossorigin="anonymous"></script>

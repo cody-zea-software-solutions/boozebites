@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../connection.php";
+require "db.php";
 
     if(isset($_SESSION["a"])){
         session_unset();

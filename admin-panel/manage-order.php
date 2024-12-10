@@ -20,8 +20,7 @@ if (isset($_SESSION["a"])) {
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <title>BOOZEBITES New Zealand || Admin-Panel</title>
-            <link rel="shortcut icon" href="../assets/img/logo-icon.ico" type="image/x-icon">
-
+            <link rel="shortcut icon" href="../assets/images/logos/favicon.png" type="image/x-icon">
             <link rel="stylesheet" href="../admin-panel/assets-admin/css/styles.min.css" />
             <!---Icons-->
             <script src="https://kit.fontawesome.com/dfdb94433e.js" crossorigin="anonymous"></script>
@@ -61,423 +60,179 @@ if (isset($_SESSION["a"])) {
                                         <div class="container">
 
                                             <div class="row">
-
-                                            </div>
-
-                                            <div class="row justify-content-center">
-                                                <div class="col-12 border shadow px-3 pt-4 pb-5 rounded-2">
-                                                    <div class="table-responsive bg-white">
-                                                        <table class="table mb-0">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th scope="col"></th>
-                                                                    <th></th>
-                                                                    <th scope="col">ITEM</th>
-                                                                    <th scope="col">CUSTOMER</th>
-                                                                    <th scope="col">DETAILS</th>
-                                                                    <th scope="col">PRICE</th>
-                                                                    <th scope="col">STATUS</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <?php
-                                                                $order_rs = Databases::search("SELECT * FROM `orders` INNER JOIN `payment-method` ON `orders`.`payment-method` = `payment-method`.`method_id`
-                                                        INNER JOIN `products` ON `products`.`product_id` = `orders`.`products_id` INNER JOIN `user` ON `user`.`email` = `orders`.`user_email`
-                                                        INNER JOIN `town` ON `user`.`town` = `town`.`id` INNER JOIN `order_status` ON `orders`.`order_status` = `order_status`.`order_status_id`");
-                                                                $order_num = $order_rs->num_rows;
-
-                                                                for ($x = 0; $x < $order_num; $x++) {
-
-
-                                                                    $order_data = $order_rs->fetch_assoc();
-                                                                    $pid = $order_data["product_id"];
-                                                                    ?>
-                                                                    <tr class="table-row-with-border">
-                                                                        <td>
-                                                                            <?php echo $x + 1 ?>
-                                                                        </td>
-                                                                        <?php
-                                                                        $p_img_rs = Databases::search("SELECT * FROM `product_img` WHERE `product_id` = '" . $pid . "'");
-                                                                        $p_img_num = $p_img_rs->num_rows;
-                                                                       
-                                                                        $product_img_data = $p_img_rs->fetch_assoc();
-                                                                        ?>
-                                                                        <th><img src="<?php echo $product_img_data["path_code"] ?>" class="img-fluid rounded-3"
-                                                                                alt="Shopping item" style="width: 65px;"></th>
-                                                                        <?php
-
-                                                                        ?>
-
-
-                                                                        <th scope="row">
-                                                                            <?php echo $order_data['title']; ?></br><span
-                                                                                class="fs-2">SKU
-                                                                                Code :
-                                                                               
-                                                                                <?php echo $order_data["sku_code"] ?>
-                                                                            </span>
-                                                                        </th>
-                                                                        <td>
-                                                                            <?php echo $order_data["fname"] . " " . $order_data["lname"] ?></br><span
-                                                                                class="fs-2">
-                                                                                <?php $order_data["user_email"] ?>
-                                                                            </span>
-                                                                        </td>
-                                                                        <td><a class="vd-btn log-link fw-bold" id="triggerme"
-                                                                                data-bs-toggle="modal"
-                                                                                data-bs-target="#exampleModal<?php echo $order_data["order_id"] ?>">SHOW</a>
-                                                                        </td>
-                                                                        <td>NZD
-                                                                            <?php echo number_format($order_data["total_amount"],2) ?>
-                                                                        </td>
-                                                                        <?php
-
-                                                                        $status_check_rs = Databases::search("SELECT * FROM `orders` WHERE `order_id` = '" . $order_data["order_id"] . "'");
-                                                                        $status_check_data = $status_check_rs->fetch_assoc();
-
-                                                                        if ($status_check_data["order_status"] == 1) {
-                                                                            ?>
-                                                                            <td><a class="btn btn-warning p-1" data-bs-toggle="modal"
-                                                                                    data-bs-target="#exampleModal<?php echo $x ?>3">PENDING</a>
-                                                                            </td>
+                                                <?php
+                                                $order_cou = Databases::search("SELECT `order`.`id`,order.order_status_id,order_date,order_status_name,CONCAT(first_name,' ',last_name) AS user_name,mobile,
+                                                CONCAT(first_line,',',second_line,',',city_name) AS `address` FROM `order`
+                                                INNER JOIN order_status ON `order`.order_status_id=order_status.order_status_id
+                                                INNER JOIN user ON user.email = `order`.user_email
+                                                INNER JOIN address ON address.user_email=user.email
+                                                INNER JOIN city ON city.city_id=address.city_id
+                                                ORDER BY order_date DESC");
+                                                for ($cvb = 0; $cvb < $order_cou->num_rows; $cvb++) {
+                                                    $order_cou_fetch = $order_cou->fetch_assoc();
+                                                    $ocf = $order_cou_fetch['id'];
+                                                    ?>
+                                                    <div class="col-12 border-bottom border-dark-subtle shadow mt-3 ">
+                                                        <div class="row">
+                                                            <div class="d-flex">
+                                                                <div class="p-2 w-100">
+                                                                    <div class="">Name:
+                                                                        <b><?php echo $order_cou_fetch['user_name'] ?></b>
+                                                                    </div>
+                                                                    <div class="">Mobile:
+                                                                        <b><?php echo $order_cou_fetch['mobile'] ?></b>
+                                                                    </div>
+                                                                    <div class="">Address:
+                                                                        <b><?php echo $order_cou_fetch['address'] ?></b>
+                                                                    </div>
+                                                                    <div class="">Date Time:
+                                                                        <b><?php echo $order_cou_fetch['order_date'] ?></b>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="p-2"><a class="btn btn-warning" data-bs-toggle="modal"
+                                                                        data-bs-target="#exampleModal<?php echo $cvb ?>3"><?php echo $order_cou_fetch['order_status_name'] ?></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row justify-content-center">
+                                                            <div class="col-12 px-3 pt-4 pb-5 rounded-2">
+                                                                <div class="table-responsive bg-white">
+                                                                    <table class="table mb-0">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th scope="col"></th>
+                                                                                <th></th>
+                                                                                <th scope="col">ITEM</th>
+                                                                                <th scope="col">CUSTOMER</th>
+                                                                                <th scope="col">DETAILS</th>
+                                                                                <th scope="col">PRICE</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
                                                                             <?php
-                                                                        } else if ($status_check_data["order_status"] == 2) {
-                                                                            ?>
-                                                                                <td><a class="btn btn-warning p-1" data-bs-toggle="modal"
-                                                                                        data-bs-target="#exampleModal<?php echo $x ?>3">PROCESSING</a>
-                                                                                </td>
-                                                                            <?php
+                                                                            $order_rs = Databases::search("SELECT price_table.product_product_id AS product_id,price_table.box_type_box_type_id AS box_id,CONCAT(product.product_name,' ',meat_type.meat_type_name,' ',cook_type.cook_type_name) AS `p_name`,`order`.user_email,product.description,price_table.price,`order`.order_status_id,product_img.product_img_path,preference.preference_name
+                                                                FROM order_item INNER JOIN product ON product.product_id=order_item.price_table_product_product_id
+                                                                INNER JOIN `order` ON `order`.id=order_item.order_id
+                                                                INNER JOIN product_img ON product_img.product_id=product.product_id
+                                                                INNER JOIN price_table ON price_table.box_type_box_type_id=order_item.price_table_box_type_box_type_id AND price_table.product_product_id=product.product_id
+                                                                INNER JOIN meat_type ON meat_type.meat_type_id=product.meat_type_id
+                                                                INNER JOIN cook_type ON cook_type.cook_type_id=product.cook_type_id
+                                                                INNER JOIN preference ON preference.preference_id=order_item.preference_preference_id WHERE `order`.`id`=$ocf AND product.on_delete=1");
+                                                                            $order_num = $order_rs->num_rows;
 
-                                                                        } else if ($status_check_data["order_status"] == 3) {
-                                                                            ?>
-                                                                                    <td><a class="btn btn-primary p-1" data-bs-toggle="modal"
-                                                                                            data-bs-target="#exampleModal<?php echo $x ?>3">DELIVERING</a>
+                                                                            for ($x = 0; $x < $order_num; $x++) {
+
+                                                                                $order_data = $order_rs->fetch_assoc();
+                                                                                $pid = $order_data["product_id"];
+                                                                                ?>
+                                                                                <tr class="table-row-with-border">
+                                                                                    <td>
+                                                                                        <?php echo $x + 1 ?>
                                                                                     </td>
-                                                                            <?php
-                                                                        } else if ($status_check_data["order_status"] == 4) {
+                                                                                    <th><img src="<?php echo $order_data["product_img_path"] ?>"
+                                                                                            class="img-fluid rounded-3"
+                                                                                            alt="Shopping item" style="width: 65px;">
+                                                                                    </th>
+
+
+                                                                                    <th scope="row">
+                                                                                        <?php echo $order_data['p_name'],' ',$order_data['preference_name']; ?>
+                                                                                    </th>
+                                                                                    <td>
+                                                                                        <?php echo $order_data["user_email"] ?>
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td><?php echo $order_data["description"] ?></td>
+                                                                                    <td>NZD
+                                                                                        <?php echo number_format($order_data["price"], 2) ?>
+                                                                                    </td>
+
+
+                                                                                </tr>
+
+                                                                                <?php
+                                                                            }
                                                                             ?>
-                                                                                        <td><a class="btn btn-success p-1" data-bs-toggle="modal"
-                                                                                                data-bs-target="#exampleModal<?php echo $x ?>3">DELIVERED</a>
-                                                                                        </td>
-                                                                            <?php
-                                                                        } else if ($status_check_data["order_status"] == 5) {
-                                                                            ?>
-                                                                                            <td><a class="btn ub-btn p-1" data-bs-toggle="modal"
-                                                                                                    data-bs-target="#exampleModal<?php echo $x ?>3">CANCELED</a>
-                                                                                            </td>
-                                                                            <?php
-                                                                        }
-                                                                        ?>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <!-- status update modal -->
+                                                            <div class="modal fade" id="exampleModal<?php echo $cvb ?>3"
+                                                                tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                                aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <div class="modal-title fs-4 fw-bold"
+                                                                                id="exampleModalLabel">
+                                                                            </div>
+                                                                            <button type="button" class="btn-close"
+                                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div class="col-12 mb-3">
+                                                                            
+                                                                                <div class="form-floating mb-1">
+                                                                                
+                                                                                    <select class="form-select rounded-0"
+                                                                                        aria-label="Floating label select example"
+                                                                                        id="statusChangeProduct<?php echo $cvb ?>3">
+                                                                                        <?php
 
+                                                                                        $status_rs = Databases::search("SELECT * FROM `order_status`");
+                                                                                        $status_num = $status_rs->num_rows;
 
-                                                                    </tr>
+                                                                                        $c = 0;
+                                                                                        while ($c < $status_num) {
 
-                                                                    <!-- status update modal -->
-                                                                    <div class="modal fade" id="exampleModal<?php echo $x ?>3"
-                                                                        tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                                        aria-hidden="true">
-                                                                        <div class="modal-dialog modal-dialog-centered">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header">
-                                                                                    <div class="modal-title fs-4 fw-bold"
-                                                                                        id="exampleModalLabel">
-                                                                                    </div>
-                                                                                    <button type="button" class="btn-close"
-                                                                                        data-bs-dismiss="modal"
-                                                                                        aria-label="Close"></button>
+                                                                                            $c++;
+
+                                                                                            $status_data = $status_rs->fetch_assoc();
+                                                                                            ?>
+                                                                                            <option
+                                                                                                value="<?php echo $status_data["order_status_id"]; ?>" 
+                                                                                                <?php if ($order_cou_fetch['order_status_id'] == $status_data["order_status_id"])
+                                                                                                    echo 'selected'; ?>>
+                                                                                                <?php echo $status_data["order_status_name"]; ?>
+                                                                                            </option>
+
+                                                                                            <?php
+
+                                                                                        }
+
+                                                                                        ?>
+
+                                                                                    </select>
+                                                                                    <label for="statusChange">Change This
+                                                                                        order status here.</label>
                                                                                 </div>
-                                                                                <div class="modal-body">
-                                                                                    <div class="col-12 mb-3">
-                                                                                        <div class="form-floating mb-1">
-                                                                                            <select class="form-select rounded-0"
-                                                                                                aria-label="Floating label select example"
-                                                                                                id="statusChange<?php echo $order_data["order_id"] ?>">
-                                                                                                <?php
-
-                                                                                                $status_rs = Databases::search("SELECT * FROM `order_status`");
-                                                                                                $status_num = $status_rs->num_rows;
-
-                                                                                                $c = 0;
-                                                                                                while ($c < $status_num) {
-
-                                                                                                    $c++;
-
-                                                                                                    $status_data = $status_rs->fetch_assoc();
-                                                                                                    ?>
-                                                                                                    <option
-                                                                                                        value="<?php echo $status_data["order_status_id"] ?>">
-                                                                                                        <?php echo $status_data["status_name"] ?>
-                                                                                                    </option>
-                                                                                                    <?php
-
-                                                                                                }
-
-                                                                                                ?>
-
-
-
-
-                                                                                            </select>
-                                                                                            <label for="statusChange">Change This
-                                                                                                order status here.</label>
-                                                                                        </div>
-                                                                                        <label class="small">Warning : Please be
-                                                                                            carefull when you selecting <b>
-                                                                                                CANCELED
-                                                                                            </b>.</label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <?php
-
-                                                                                    $oid = $order_data["order_id"];
-
-                                                                                    ?>
-                                                                                    <button type="button" class="btn x"
-                                                                                        onclick="OrderStatusSave(<?php echo $oid ?>);">Save</button>
-                                                                                </div>
+                                                                                <label class="small">Order of <b>
+                                                                                        <?php echo $order_data['user_email'] ?>
+                                                                                    </b>.</label><br>
+                                                                                <label class="small">Warning : Please be
+                                                                                    carefull when you selecting <b>
+                                                                                        CANCELED
+                                                                                    </b>.</label>
                                                                             </div>
                                                                         </div>
-                                                                    </div>
-                                                                    <!-- status update modal end -->
-
-                                                                    <!-- order details modal -->
-                                                                    <div class="modal fade"
-                                                                        id="exampleModal<?php echo $order_data["order_id"] ?>"
-                                                                        tabindex="-1" aria-labelledby="exampleModalLabel"
-                                                                        data-bs-backdrop="static" data-bs-keyboard="false"
-                                                                        aria-hidden="true">
-                                                                        <div class="modal-dialog modal-dialog-scrollable modal-lg">
-                                                                            <div class="modal-content">
-                                                                                <div class="modal-header">
-                                                                                    <div class="modal-title fs-4 fw-bold"
-                                                                                        id="exampleModalLabel">
-                                                                                        Order Details&nbsp;<i class="fa fa-archive"
-                                                                                            aria-hidden="true"></i></div>
-                                                                                    <button type="button" class="btn-close"
-                                                                                        data-bs-dismiss="modal"
-                                                                                        aria-label="Close"></button>
-                                                                                </div>
-                                                                                <div class="modal-body pt-4">
-                                                                                    <div class="card mb-0">
-                                                                                        <div class="row pt-3 px-2">
-                                                                                            <div class="col-12 text-end mb-3">
-                                                                                                PRODUCT DETAILS
-                                                                                                <hr class="m-0 mt-2">
-                                                                                            </div>
-                                                                                            <div
-                                                                                                class="col-12 col-md-2 d-flex justify-content-center align-items-center mb-3">
-                                                                                                <img src="../<?php echo $product_img_data["path_code"] ?>"
-                                                                                                    class="img-fluid" width="90px"
-                                                                                                    alt="" srcset="">
-                                                                                            </div>
-                                                                                            <div class="col-12 col-md-10">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-6 mb-3">
-                                                                                                        <div class="form-floating">
-                                                                                                            <input type="text"
-                                                                                                                class="form-control rounded-0"
-                                                                                                                id="floatingInput"
-                                                                                                                placeholder="title of the product"
-                                                                                                                value="<?php echo $order_data["title"] ?>"
-                                                                                                                readonly>
-                                                                                                            <label
-                                                                                                                for="floatingInput">Product
-                                                                                                                Name</label>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="col-6 mb-3">
-                                                                                                        <div class="form-floating">
-                                                                                                            <input type="text"
-                                                                                                                class="form-control rounded-0"
-                                                                                                                id="floatingInput"
-                                                                                                                placeholder="title of the product"
-                                                                                                                value="<?php echo $order_data["sku_code"] ?>"
-                                                                                                                readonly>
-                                                                                                            <label
-                                                                                                                for="floatingInput">SKU
-                                                                                                                Code</label>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="col-6 mb-3">
-                                                                                                        <div class="form-floating">
-                                                                                                            <input type="text"
-                                                                                                                class="form-control rounded-0"
-                                                                                                                id="floatingInput"
-                                                                                                                placeholder="title of the product"
-                                                                                                                value="NZD <?php echo number_format($order_data["total_amount"],2)?>"
-                                                                                                                readonly>
-                                                                                                            <label
-                                                                                                                for="floatingInput">Unit
-                                                                                                                Price</label>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="col-6 mb-3">
-                                                                                                        <div class="form-floating">
-                                                                                                            <?php
-
-                                                                                                            $productQty = $order_data["qty"];
-                                                                                                            $orderQty = $order_data["order_qty"];
-
-
-
-                                                                                                            ?>
-                                                                                                            <input type="text"
-                                                                                                                class="form-control rounded-0"
-                                                                                                                id="floatingInput"
-                                                                                                                placeholder="title of the product"
-                                                                                                                value="<?php echo $productQty - $orderQty ?> Units left"
-                                                                                                                readonly>
-                                                                                                            <label
-                                                                                                                for="floatingInput">Availability</label>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="row pt-3 px-2">
-                                                                                            <div class="col-12 text-end mb-3">
-                                                                                                CUSTOMER DETAILS
-                                                                                                <hr class="m-0 mt-2">
-                                                                                            </div>
-                                                                                            <div class="col-6 mb-3">
-                                                                                                <div class="row">
-                                                                                                    <div class="mb-3">
-                                                                                                        <div class="form-floating">
-                                                                                                            <input type="text"
-                                                                                                                class="form-control rounded-0"
-                                                                                                                id="floatingInput"
-                                                                                                                placeholder="title of the product"
-                                                                                                                value="<?php echo $order_data["fname"] . " " . $order_data["lname"] ?>"
-                                                                                                                readonly>
-                                                                                                            <label
-                                                                                                                for="floatingInput">Customer
-                                                                                                                Name</label>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="mb-3">
-                                                                                                        <div class="form-floating">
-                                                                                                            <input type="text"
-                                                                                                                class="form-control rounded-0"
-                                                                                                                id="floatingInput"
-                                                                                                                placeholder="title of the product"
-                                                                                                                value="<?php echo $order_data["mobile"] ?>"
-                                                                                                                readonly>
-                                                                                                            <label
-                                                                                                                for="floatingInput">Mobile
-                                                                                                                1</label>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                    <div class="mb-3">
-                                                                                                        <div class="form-floating">
-                                                                                                            <input type="text"
-                                                                                                                class="form-control rounded-0"
-                                                                                                                id="floatingInput"
-                                                                                                                placeholder="title of the product"
-                                                                                                                value="<?php echo $order_data["mobile"] ?>"
-                                                                                                                readonly>
-                                                                                                            <label
-                                                                                                                for="floatingInput">Mobile
-                                                                                                                2</label>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-6 mb-3">
-                                                                                                <div class="form-floating mb-3">
-                                                                                                    <textarea
-                                                                                                        class="form-control rounded-0"
-                                                                                                        placeholder="address"
-                                                                                                        readonly
-                                                                                                        id="floatingTextarea2"
-                                                                                                        style="height: 205px">
-                                                                                            <?php echo $order_data["fname"] . " " . $order_data["lname"] ?>,
-                                                                                            <?php echo $order_data["number"] ?>,
-                                                                                            <?php echo $order_data["lane"] ?>,
-                                                                                            <?php echo $order_data["t_name"] ?>.</textarea>
-                                                                                                    <label
-                                                                                                        for="floatingTextarea2">Address</label>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="row pt-3 px-2">
-                                                                                            <div class="col-12 text-end mb-3">
-                                                                                                ORDER DETAILS
-                                                                                                <hr class="m-0 mt-2">
-                                                                                            </div>
-                                                                                            <div class="col-6 mb-3">
-                                                                                                <div class="form-floating">
-                                                                                                    <input type="text"
-                                                                                                        class="form-control rounded-0"
-                                                                                                        id="floatingInput"
-                                                                                                        placeholder="title of the product"
-                                                                                                        value="<?php echo $order_data["order_code"] ?>"
-                                                                                                        readonly>
-                                                                                                    <label
-                                                                                                        for="floatingInput">Invoice
-                                                                                                        ID</label>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-6 mb-3">
-                                                                                                <div class="form-floating">
-                                                                                                    <input type="datetime-local"
-                                                                                                        class="form-control rounded-0"
-                                                                                                        id="floatingInput"
-                                                                                                        placeholder="title of the product"
-                                                                                                        value="<?php echo $order_data["date"] ?>"
-                                                                                                        readonly>
-                                                                                                    <label
-                                                                                                        for="floatingInput">Ordered
-                                                                                                        On</label>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-6 mb-3">
-                                                                                                <div class="form-floating">
-                                                                                                    <input type="number"
-                                                                                                        class="form-control rounded-0"
-                                                                                                        id="floatingInput"
-                                                                                                        placeholder="title of the product"
-                                                                                                        value="<?php echo $order_data["order_qty"] ?>"
-                                                                                                        readonly>
-                                                                                                    <label
-                                                                                                        for="floatingInput">Quantity</label>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-6 mb-3">
-                                                                                                <div class="form-floating">
-                                                                                                    <input type="text"
-                                                                                                        class="form-control rounded-0"
-                                                                                                        id="floatingInput"
-                                                                                                        placeholder="title of the product"
-                                                                                                        value="NZD <?php echo number_format($order_data["price"],2) ?>"
-                                                                                                        readonly>
-                                                                                                    <label for="floatingInput">Sub
-                                                                                                        Total</label>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="modal-footer">
-                                                                                    <div class="col-12 mt-3 text-end">
-                                                                                        <button class="btn fw-bold x">Save
-                                                                                            Changes</button>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn x"
+                                                                                onclick="OrderStatusSave(<?php echo $ocf ?>,<?php echo $cvb ?>);">Save</button>
                                                                         </div>
                                                                     </div>
-                                                                    <!-- order details modal end-->
-
-
-                                                                    <?php
-                                                                }
-                                                                ?>
-                                                            </tbody>
-                                                        </table>
+                                                                </div>
+                                                            </div>
+                                                            <!-- status update modal end -->
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                    <?php
+                                                }
+                                                ?>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -509,8 +264,6 @@ if (isset($_SESSION["a"])) {
             <script src="../admin-panel/assets-admin/libs/apexcharts/dist/apexcharts.min.js"></script>
             <script src="../admin-panel/assets-admin/libs/simplebar/dist/simplebar.js"></script>
             <script src="../admin-panel/assets-admin/js/dashboard.js"></script>
-            <script src="../denu.js"></script>
-            <script src="../script.js"></script>
 
         </body>
 
