@@ -545,8 +545,6 @@ if (isset($_GET["pid"])) {
             $('#popupImage img').attr('src', fullImageUrl);
             $('#popupImage').fadeIn();
           });
-
-<<<<<<< HEAD
           // Close popup
           $('.close').on('click', function() {
             $('#popupImage').fadeOut();

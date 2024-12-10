@@ -1,3 +1,7 @@
+<?php
+require "connection.php";
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -344,6 +348,9 @@ headerContent(1);
                     </div>
                 </div>
                 <div class="pizza-active">
+                    <?php
+                    $product_rs=Database::search("");
+                    ?>
                     <div class="product-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                         <div class="image">
                             <img src="assets/images/products/burger1.jpg" alt="Burger">

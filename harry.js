@@ -58,7 +58,7 @@ function addToCart(pid) {
   r.send(f);
 }
 
-function showCart() {
+function loadCart() {
   let r = new XMLHttpRequest();
 
   r.onreadystatechange = function () {
@@ -67,7 +67,7 @@ function showCart() {
     }
   };
 
-  r.open("GET", "showCartProcess.php", true);
+  r.open("GET", "loadCartProcess.php", true);
   r.send();
 }
 
@@ -82,12 +82,37 @@ function removeItem(pid, bid, sid, rid) {
   r.onreadystatechange = function () {
     if (r.readyState == 4 && r.status == 200) {
       if (r.responseText == "success") {
-        document.getElementById("cartRow"+rid).remove();
+        loadCart();
       }
     }
   };
 
   r.open("POST", "removeItemProcess.php", true);
+  r.send(f);
+}
+function setCartQty(pid, bid, sid, qty) {
+  let f = new FormData();
+  f.append("pid", pid);
+  f.append("bid", bid);
+  f.append("sid", sid);
+
+  if (qty > 0) {
+    f.append("qty", qty);
+  } else {
+    f.append("qty", 1);
+  }
+
+  let r = new XMLHttpRequest();
+
+  r.onreadystatechange = function () {
+    if (r.readyState == 4 && r.status == 200) {
+      if (r.responseText == "success") {
+        loadCart();
+      }
+    }
+  };
+
+  r.open("POST", "setCartQtyProcess.php", true);
   r.send(f);
 }
 

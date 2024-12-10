@@ -8,6 +8,10 @@ $bid = $_POST["bid"];
 $sid = $_POST["sid"];
 $qty = $_POST["qty"];
 
+if ($qty <= 0) {
+    $qty = 1;
+}
+
 $rs = Database::Search("SELECT `product_name`, `box_type_name`, `price` FROM `price_table` INNER JOIN `product` ON
 price_table.product_product_id=product.product_id INNER JOIN `box_type` ON
 price_table.box_type_box_type_id=box_type.box_type_id WHERE `product_product_id`='$pid' AND `box_type_box_type_id`='$bid'");
