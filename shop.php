@@ -1,3 +1,6 @@
+<?php
+include "connection.php";
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -13,8 +16,7 @@
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="assets/images/logos/favicon.png" type="image/x-icon">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Flaticon -->
     <link rel="stylesheet" href="assets/css/flaticon.min.css">
@@ -91,15 +93,13 @@
 
 
         <!-- Page Banner Start -->
-        <section class="page-banner-area overlay pt-215 rpt-150 pb-160 rpb-120 rel z-1 bgs-cover text-center"
-            style="background-image: url(assets/images/background/banner.jpg);">
+        <section class="page-banner-area overlay pt-215 rpt-150 pb-160 rpb-120 rel z-1 bgs-cover text-center" style="background-image: url(assets/images/background/banner.jpg);">
             <div class="container">
                 <div class="banner-inner text-white">
                     <h1 class="page-title" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">Booze
                         Bites-Shop</h1>
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center" data-aos="fade-up" data-aos-delay="200"
-                            data-aos-duration="1500" data-aos-offset="50">
+                        <ol class="breadcrumb justify-content-center" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                             <li class="breadcrumb-item active">Booze Bites-Shop</li>
                         </ol>
@@ -116,47 +116,78 @@
                 <div class="row">
                     <div class="col-xl-3 col-lg-4 col-md-8">
                         <div class="shop-sidebar rmb-75">
-                            <div class="widget widget-search" data-aos="fade-up" data-aos-duration="1500"
-                                data-aos-offset="50">
+                            <div class="widget widget-search" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                                 <h4 class="widget-title">Search</h4>
                                 <form action="#" class="default-search-form">
-                                    <input type="text" placeholder="Search here" required>
+                                    <input type="text" oninput="filtersearch();" placeholder="Search here" required>
                                     <button type="submit" class="searchbutton far fa-search"></button>
                                 </form>
                             </div>
-                            <div class="widget widget-category" data-aos="fade-up" data-aos-delay="50"
-                                data-aos-duration="1500" data-aos-offset="50">
-                                <h4 class="widget-title">meat type</h4>
-                                <ul class="text-dark">
-                                    <!-- sahan this meat types please load database and make filtering process -->
-                                    <li><a>Beef<span class="count">8</span></a></li>
-                                    <li><a>Lamb<span class="count">3</span></a></li>
-                                    <li><a>Chicken <span class="count">5</span></a></li>
-                                    <li><a>Pork<span class="count">2</span></a></li>
-                                </ul>
-                            </div>
-                            <div class="widget widget-category" data-aos="fade-up" data-aos-delay="50"
-                                data-aos-duration="1500" data-aos-offset="50">
-                                <h4 class="widget-title">category</h4>
+                            <div class="widget widget-category" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                                <h4 class="widget-title">meet Types</h4>
                                 <ul>
-
-                                    <!-- sahan this meat types please load database and make filtering process -->
-                                    <li><a>Stew<span class="count">8</span></a></li>
-                                    <li><a>Devilled<span class="count">3</span></a></li>
-                                    <li><a>Dried <span class="count">5</span></a></li>
+                                    <?php
+                                    $meet = Database::Search("SELECT * FROM `meat_type`");
+                                    $meet_num = $meet->num_rows;
+                                    if ($meet_num > 0) {
+                                        while ($meet_data = $meet->fetch_assoc()) {
+                                    ?>
+                                            <li>
+                                                <label>
+                                                    <input onchange="filtersearch();" id="meat_type" type="checkbox" name="meat_type[]" value="<?php echo $meet_data["meat_type_id"]; ?>" />
+                                                    <?php echo htmlspecialchars($meet_data["meat_type_name"], ENT_QUOTES, 'UTF-8'); ?>
+                                                </label>
+                                            </li>
+                                    <?php
+                                        }
+                                    } else {
+                                        echo "<li>No cook types found.</li>";
+                                    }
+                                    ?>
                                 </ul>
                             </div>
-                            <div class="widget widget-filter" data-aos="fade-up" data-aos-delay="50"
-                                data-aos-duration="1500" data-aos-offset="50">
+
+                            <div class="widget widget-category" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                                <h4 class="widget-title">Cook Types</h4>
+                                <ul>
+                                    <?php
+                                    $cook = Database::Search("SELECT * FROM `cook_type`");
+                                    $cook_num = $cook->num_rows;
+
+                                    if ($cook_num > 0) {
+                                        while ($cook_data = $cook->fetch_assoc()) {
+                                    ?>
+                                            <li>
+                                                <label>
+                                                    <input onchange="filtersearch();" id="cook_type" type="checkbox" name="cook_type[]" value="<?php echo $cook_data["cook_type_id"]; ?>" />
+                                                    <?php echo htmlspecialchars($cook_data["cook_type_name"], ENT_QUOTES, 'UTF-8'); ?>
+                                                </label>
+                                            </li>
+                                    <?php
+                                        }
+                                    } else {
+                                        echo "<li>No cook types found.</li>";
+                                    }
+                                    ?>
+                                </ul>
+                            </div>
+
+                            <div class="widget widget-filter" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
                                 <h4 class="widget-title">Pricing</h4>
                                 <div class="price-filter-wrap">
+                                    <!-- Price Slider Range -->
                                     <div class="price-slider-range"></div>
+                                    <!-- Price Display -->
                                     <div class="price">
                                         <span>Price </span>
-                                        <input type="text" id="price" readonly>
+                                        <input type="text" id="price" readonly> <!-- Display selected price range -->
                                     </div>
+                                    <!-- Min & Max Price Inputs -->
+                                    <input type="hidden" id="minPrice" value="0">
+                                    <input type="hidden" id="maxPrice" value="1000">
                                 </div>
                             </div>
+
 
                             <!-- <div class="widget widget-products" data-aos="fade-up" data-aos-duration="1500"
                                 data-aos-offset="50">
@@ -227,10 +258,8 @@
                                 </div>
                             </div> -->
 
-                            <div class="widget widget-banner" data-aos="fade-up" data-aos-duration="1500"
-                                data-aos-offset="50">
-                                <div class="category-banner-item"
-                                    style="background-image: url(assets/images/widgets/banner-bg.jpg);">
+                            <div class="widget widget-banner" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="category-banner-item" style="background-image: url(assets/images/widgets/banner-bg.jpg);">
                                     <span class="price">only $59</span>
                                     <h3>SPECIALTY PIZZAS</h3>
                                     <div class="ratting">
@@ -241,8 +270,7 @@
                                         <i class="fas fa-star"></i>
                                         <span>(5k)</span>
                                     </div>
-                                    <a href="shop.html" class="theme-btn style-two">Order now <i
-                                            class="far fa-arrow-alt-right"></i></a>
+                                    <a href="shop.html" class="theme-btn style-two">Order now <i class="far fa-arrow-alt-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -250,13 +278,11 @@
                     <div class="col-xl-9 col-lg-8">
                         <div class="shop-page-wrap">
                             <div class="shop-shorter rel z-3 mb-35">
-                                <div class="sort-text mb-15" data-aos="fade-left" data-aos-duration="1500"
-                                    data-aos-offset="50">
+                                <div class="sort-text mb-15" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
                                     Showing 1–12 of 27 results
                                 </div>
-                                <div class="products-dropdown mb-15" data-aos="fade-right" data-aos-duration="1500"
-                                    data-aos-offset="50">
-                                    <select>
+                                <div class="products-dropdown mb-15" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
+                                    <select onchange="filtersearch();" id="sort">
                                         <option value="default" selected="">Default Sorting</option>
                                         <option value="new">Newness Sorting</option>
                                         <option value="old">Oldest Sorting</option>
@@ -265,274 +291,63 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500"
-                                    data-aos-offset="50">
-                                    <div class="product-item-two">
-                                        <div class="image">
-                                            <img src="assets/images/dishes/dish1.png" alt="Dish">
-                                        </div>
-                                        <div class="content">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(5k)</span>
+                            <div class="row" id="filtered-results">
+                                <?php
+                                $product_rs = Database::search("SELECT * FROM `product`  WHERE  `on_delete` = '0'");
+                                $product_num = $product_rs->num_rows;
+                                for ($i = 0; $i < $product_num; $i++) {
+                                    $product_data = $product_rs->fetch_assoc();
+                                    $product_img = Database::search("SELECT * FROM `product_img` WHERE `product_id`='" . $product_data['product_id'] . "'");
+                                    $product_img_num = $product_img->num_rows;
+                                    if ($product_img_num != 0) {
+                                        $pimg = $product_img->fetch_assoc();
+                                        $img = $pimg['product_img_path'];
+                                    } else {
+                                        $img = "assets/images/dishes/dish12.png";
+                                    }
+                                ?>
+                                    <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                                        <div class="product-item-two">
+                                            <div class="image">
+                                                <img src="<?php echo $img ?>" alt="Dish">
                                             </div>
-                                            <h5><a href="product-details.html">fresh chicken burger</a></h5>
-                                            <span class="price"><del>$50</del> $25</span>
-                                        </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i
-                                                class="far fa-arrow-alt-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="50"
-                                    data-aos-duration="1500" data-aos-offset="50">
-                                    <div class="product-item-two">
-                                        <div class="image">
-                                            <img src="assets/images/dishes/dish2.png" alt="Dish">
-                                        </div>
-                                        <div class="content">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(5k)</span>
+                                            <div class="content">
+                                                <div class="ratting">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <span>(5k)</span>
+                                                </div>
+                                                <h5><a href="product-details.html"><?php echo $product_data["product_name"] ?></a></h5>
+                                                <?php
+                                                $price = Database::Search("SELECT * FROM price_table WHERE `box_type_box_type_id`='1' AND `product_product_id`='".$product_data["product_id"]."' ");
+                                                $price_row = $price->num_rows;
+                                                if ($price_row != 0) {
+                                                    $price_data = $price->fetch_assoc();
+                                                ?>
+                                                    <span class="price"><del><?php echo "$" . "" . $price_data["price"] + 50; ?></del><?php echo "$" . "" . $price_data["price"]; ?></span>
+                                                    <?php
+                                                    $box = Database::Search("SELECT * FROM boost_bite.box_type WHERE `box_type_id`='1'");
+                                                    $box_data = $box->fetch_assoc();
+                                                    ?>
+                                                    <br>
+                                                    <p><?php echo $box_data["box_type_name"] ?></p>
+                                                <?php
+                                                } else {
+                                                    echo "no price available";
+                                                }
+                                                ?>
                                             </div>
-                                            <h5><a href="product-details.html">pizza with mushrooms</a></h5>
-                                            <span class="price"><del>$50</del> $25</span>
+                                            <a href="shop.html" class="theme-btn">add to cart <i class="far fa-arrow-alt-right"></i></a>
                                         </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i
-                                                class="far fa-arrow-alt-right"></i></a>
                                     </div>
-                                </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100"
-                                    data-aos-duration="1500" data-aos-offset="50">
-                                    <div class="product-item-two">
-                                        <div class="image">
-                                            <img src="assets/images/dishes/dish3.png" alt="Dish">
-                                        </div>
-                                        <div class="content">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(5k)</span>
-                                            </div>
-                                            <h5><a href="product-details.html">double burger & fries</a></h5>
-                                            <span class="price"><del>$50</del> $25</span>
-                                        </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i
-                                                class="far fa-arrow-alt-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500"
-                                    data-aos-offset="50">
-                                    <div class="product-item-two">
-                                        <div class="image">
-                                            <img src="assets/images/dishes/dish5.png" alt="Dish">
-                                        </div>
-                                        <div class="content">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(5k)</span>
-                                            </div>
-                                            <h5><a href="product-details.html">Italian beef pizza</a></h5>
-                                            <span class="price"><del>$50</del> $25</span>
-                                        </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i
-                                                class="far fa-arrow-alt-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="50"
-                                    data-aos-duration="1500" data-aos-offset="50">
-                                    <div class="product-item-two">
-                                        <div class="image">
-                                            <img src="assets/images/dishes/dish6.png" alt="Dish">
-                                        </div>
-                                        <div class="content">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(5k)</span>
-                                            </div>
-                                            <h5><a href="product-details.html">fried chicken burger</a></h5>
-                                            <span class="price"><del>$50</del> $25</span>
-                                        </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i
-                                                class="far fa-arrow-alt-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100"
-                                    data-aos-duration="1500" data-aos-offset="50">
-                                    <div class="product-item-two">
-                                        <div class="image">
-                                            <img src="assets/images/dishes/dish4.png" alt="Dish">
-                                        </div>
-                                        <div class="content">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(5k)</span>
-                                            </div>
-                                            <h5><a href="product-details.html">fried chicken french</a></h5>
-                                            <span class="price"><del>$50</del> $25</span>
-                                        </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i
-                                                class="far fa-arrow-alt-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500"
-                                    data-aos-offset="50">
-                                    <div class="product-item-two">
-                                        <div class="image">
-                                            <img src="assets/images/dishes/dish7.png" alt="Dish">
-                                        </div>
-                                        <div class="content">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(5k)</span>
-                                            </div>
-                                            <h5><a href="product-details.html">fried chicken french</a></h5>
-                                            <span class="price"><del>$50</del> $25</span>
-                                        </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i
-                                                class="far fa-arrow-alt-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="50"
-                                    data-aos-duration="1500" data-aos-offset="50">
-                                    <div class="product-item-two">
-                                        <div class="image">
-                                            <img src="assets/images/dishes/dish8.png" alt="Dish">
-                                        </div>
-                                        <div class="content">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(5k)</span>
-                                            </div>
-                                            <h5><a href="product-details.html">fried chicken drench</a></h5>
-                                            <span class="price"><del>$50</del> $25</span>
-                                        </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i
-                                                class="far fa-arrow-alt-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100"
-                                    data-aos-duration="1500" data-aos-offset="50">
-                                    <div class="product-item-two">
-                                        <div class="image">
-                                            <img src="assets/images/dishes/dish9.png" alt="Dish">
-                                        </div>
-                                        <div class="content">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(5k)</span>
-                                            </div>
-                                            <h5><a href="product-details.html">roasted chicken</a></h5>
-                                            <span class="price"><del>$50</del> $25</span>
-                                        </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i
-                                                class="far fa-arrow-alt-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500"
-                                    data-aos-offset="50">
-                                    <div class="product-item-two">
-                                        <div class="image">
-                                            <img src="assets/images/dishes/dish10.png" alt="Dish">
-                                        </div>
-                                        <div class="content">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(5k)</span>
-                                            </div>
-                                            <h5><a href="product-details.html">Italian beef pizza</a></h5>
-                                            <span class="price"><del>$50</del> $25</span>
-                                        </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i
-                                                class="far fa-arrow-alt-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="50"
-                                    data-aos-duration="1500" data-aos-offset="50">
-                                    <div class="product-item-two">
-                                        <div class="image">
-                                            <img src="assets/images/dishes/dish11.png" alt="Dish">
-                                        </div>
-                                        <div class="content">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(5k)</span>
-                                            </div>
-                                            <h5><a href="product-details.html">Italian beef pizza</a></h5>
-                                            <span class="price"><del>$50</del> $25</span>
-                                        </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i
-                                                class="far fa-arrow-alt-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100"
-                                    data-aos-duration="1500" data-aos-offset="50">
-                                    <div class="product-item-two">
-                                        <div class="image">
-                                            <img src="assets/images/dishes/dish12.png" alt="Dish">
-                                        </div>
-                                        <div class="content">
-                                            <div class="ratting">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(5k)</span>
-                                            </div>
-                                            <h5><a href="product-details.html">top fried chicken</a></h5>
-                                            <span class="price"><del>$50</del> $25</span>
-                                        </div>
-                                        <a href="shop.html" class="theme-btn">add to cart <i
-                                                class="far fa-arrow-alt-right"></i></a>
-                                    </div>
-                                </div>
+                                <?php
+                                }
+                                ?>
                             </div>
-                            <ul class="pagination pt-30 flex-wrap" data-aos="fade-up" data-aos-duration="1500"
-                                data-aos-offset="50">
+                            <ul class="pagination pt-30 flex-wrap" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                                 <li class="page-item disabled">
                                     <span class="page-link"><i class="fal fa-arrow-left"></i></span>
                                 </li>
@@ -559,23 +374,19 @@
 
 
         <!-- footer area start -->
-        <footer class="main-footer bgc-black rel z-1"
-            style="background-image: url(assets/images/background/footer-bg.png);">
+        <footer class="main-footer bgc-black rel z-1" style="background-image: url(assets/images/background/footer-bg.png);">
             <div class="footer-top py-130 rpy-100">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-xl-7 col-lg-9">
-                            <div class="section-title text-white text-center mb-35" data-aos="fade-up"
-                                data-aos-duration="1500" data-aos-offset="0">
+                            <div class="section-title text-white text-center mb-35" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
                                 <span class="sub-title mb-10">join our newsletter</span>
                                 <h2>subscribe follow our newsletter to get more updates</h2>
                             </div>
-                            <form class="newsletter-form" action="#" data-aos="fade-up" data-aos-delay="50"
-                                data-aos-duration="1500" data-aos-offset="50">
+                            <form class="newsletter-form" action="#" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
                                 <label for="news-email"><i class="fas fa-envelope"></i></label>
                                 <input id="news-email" type="email" placeholder="Email Address" required>
-                                <button class="theme-btn" type="submit">Subscribe <i
-                                        class="far fa-arrow-alt-right"></i></button>
+                                <button class="theme-btn" type="submit">Subscribe <i class="far fa-arrow-alt-right"></i></button>
                             </form>
                         </div>
                     </div>
@@ -584,8 +395,7 @@
             <div class="widget-area pb-70">
                 <div class="container">
                     <div class="row justify-content-between">
-                        <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500"
-                            data-aos-offset="0">
+                        <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="0">
                             <div class="footer-widget footer-text">
                                 <div class="footer-logo mb-25">
                                     <a href="index.html"><img src="assets/images/logos/logo.png" alt="Logo"></a>
@@ -600,8 +410,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-5 col-sm-6" data-aos="fade-up" data-aos-delay="50"
-                            data-aos-duration="1500" data-aos-offset="0">
+                        <div class="col-xl-4 col-lg-5 col-sm-6" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="0">
                             <div class="footer-widget footer-links">
                                 <div class="footer-title">
                                     <h5>popular food</h5>
@@ -622,8 +431,7 @@
                         </div>
                         <div class="col-xl-5">
                             <div class="row justify-content-between">
-                                <div class="col-xl-6 col-lg-5 col-sm-6" data-aos="fade-up" data-aos-delay="100"
-                                    data-aos-duration="1500" data-aos-offset="0">
+                                <div class="col-xl-6 col-lg-5 col-sm-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="0">
                                     <div class="footer-widget footer-contact">
                                         <div class="footer-title">
                                             <h5>contact us</h5>
@@ -635,8 +443,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-xl-6 col-lg-5 col-sm-6" data-aos="fade-up" data-aos-delay="150"
-                                    data-aos-duration="1500" data-aos-offset="0">
+                                <div class="col-xl-6 col-lg-5 col-sm-6" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500" data-aos-offset="0">
                                     <div class="footer-widget opening-hour">
                                         <div class="footer-title">
                                             <h5>opening hour</h5>
@@ -647,8 +454,7 @@
                                         </ul>
                                         <div class="any-question mt-20">
                                             <h5>Have any questions?</h5>
-                                            <a href="#" class="theme-btn style-two">let’s talk us <i
-                                                    class="far fa-arrow-alt-right"></i></a>
+                                            <a href="#" class="theme-btn style-two">let’s talk us <i class="far fa-arrow-alt-right"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -673,8 +479,7 @@
                         </div>
                     </div>
                     <!-- Scroll Top Button -->
-                    <button class="scroll-top scroll-to-target" data-target="html"><i
-                            class="fas fa-arrow-alt-up"></i></button>
+                    <button class="scroll-top scroll-to-target" data-target="html"><i class="fas fa-arrow-alt-up"></i></button>
                 </div>
             </div>
             <div class="footer-shapes">
@@ -721,7 +526,8 @@
     <script src="assets/js/aos.js"></script>
     <!-- Custom script -->
     <script src="assets/js/script.js"></script>
-
+    <!-- !-->
+    <script src="sahan.js"></script>
 </body>
 
 </html>
