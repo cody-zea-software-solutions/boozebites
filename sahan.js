@@ -17,14 +17,14 @@ function signup() {
     })
         .then(response => response.text())
         .then(data => {
-            if(data=="User inserted successfully."){
+            if (data == "User inserted successfully.") {
                 alert(data);
                 toggleForms();
                 document.getElementById("email1").value = email;
                 document.getElementById("password1").value = password;
                 document.getElementById("password1").focus();
                 login();
-            }else{
+            } else {
                 alert(data);
             }
         })
@@ -133,7 +133,7 @@ function updateProfile() {
         lname: lname,
         email: email,
         mobile: mobile,
-        city : city ,
+        city: city,
         addressLine1: addressLine1,
         addressLine2: addressLine2
     };
@@ -145,17 +145,58 @@ function updateProfile() {
         },
         body: JSON.stringify(formData)
     })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Network response was not ok");
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.text();
+        })
+        .then(data => {
+            alert(data);
+        })
+        .catch(error => {
+            alert("An error occurred: " + error.message);
+        });
+}
+$(function () {
+    $(".price-slider-range").slider({
+        range: true,
+        min: 0,
+        max: 1000,
+        values: [0, 500],
+        slide: function (event, ui) {
+            $("#price").val("$" + ui.values[0] + " - $" + ui.values[1]);
+            $("#minPrice").val(ui.values[0]);
+            $("#maxPrice").val(ui.values[1]);
         }
-        return response.text(); 
-    })
-    .then(data => {
-        alert(data); 
-    })
-    .catch(error => {
-        alert("An error occurred: " + error.message);
     });
+    $("#price").val("$" + $(".price-slider-range").slider("values", 0) + " - $" + $(".price-slider-range").slider("values", 1));
+});
+function filtersearch() {
+    const search = document.querySelector('.default-search-form input').value.trim();
+    const meatTypes = Array.from(document.querySelectorAll('input[name="meat_type[]"]:checked')).map(cb => cb.value);
+    const cookTypes = Array.from(document.querySelectorAll('input[name="cook_type[]"]:checked')).map(cb => cb.value);
+    const minPrice = document.getElementById('minPrice').value;
+    const maxPrice = document.getElementById('maxPrice').value;
+    const sortOption = document.getElementById('sort').value;
+    
+    const formData = new FormData();
+
+    formData.append('search', search);
+    formData.append('meatTypes', JSON.stringify(meatTypes));
+    formData.append('cookTypes', JSON.stringify(cookTypes));
+    formData.append('minPrice', minPrice);
+    formData.append('maxPrice', maxPrice);
+    formData.append('sort', sortOption);
+
+    fetch('filter.php', {
+        method: 'POST',
+        body: formData,
+    })
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('filtered-results').innerHTML = data;
+        })
+        .catch(error => console.error('Error:', error));
 }
 
