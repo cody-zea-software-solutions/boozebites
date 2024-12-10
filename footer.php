@@ -1,6 +1,3 @@
-<?php  
-require "connection.php"
-?>
 <footer class="main-footer bgc-black rel z-1" style="background-image: url(assets/images/background/footer-bg.png);">
     <div class="footer-top py-130 rpy-100">
         <div class="container">
