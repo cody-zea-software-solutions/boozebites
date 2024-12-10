@@ -84,7 +84,7 @@ function headerContent($theme)
                                             <!-- <ul>
                                                 <li><a href="shop.html">Products</a></li>
                                                 <li><a href="product-details.html">Product Details</a></li>
-                                                <li><a href="cart.html">Shopping Cart</a></li>
+                                                <li><a href="cart.php">Shopping Cart</a></li>
                                                 <li><a href="checkout.html">Checkout Page</a></li>
                                             </ul> -->
                                         </li>

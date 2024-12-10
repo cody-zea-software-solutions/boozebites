@@ -14,7 +14,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>WellFood - Resturent HTML Template</title>
+    <title>Cart</title>
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="assets/images/logos/favicon.png" type="image/x-icon">
     <!-- Google Fonts -->
@@ -43,7 +43,7 @@ session_start();
 
 </head>
 
-<body>
+<body onload="loadCart();">
     <div class="page-wrapper">
 
         <!-- Preloader -->
@@ -118,7 +118,7 @@ session_start();
 
 
         <!-- Shopping Cart Area start -->
-        <section class="shopping-cart-area py-130 rel z-1">
+        <section class="shopping-cart-area py-130 rel z-1" id="cartBody">
             <?php
             if (true) { //check if the user logged in
                 $user_email = 'user@gmail.com';
