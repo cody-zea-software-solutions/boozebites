@@ -2,7 +2,7 @@ var stripecart;
 
 document.addEventListener("DOMContentLoaded", function () {
   stripecart = Stripe(
-    "pk_test_51OmXPbEXnEGngP01DIWyWPHZNPkojqBeBDu614mR4uAhh7CXsGUknLvyBDBhkc7vTAjeNKfqgNgbTJvodcZeyMXp00wNisxn8D"
+    "pk_test_51QRJPfRwa2ApijVLVnDDlnTQo8aYtHLefoS5nPMjyxfc5qxzoVCHEwmXmUtVsxUFQF3EJUR2thUe6vKuQ79kzDDq00qGfaOFVx"
   );
 });
 function payout(total, user, discount, shipping) {
@@ -40,3 +40,4 @@ function payout(total, user, discount, shipping) {
 
   xhr.send(form);
 }
+

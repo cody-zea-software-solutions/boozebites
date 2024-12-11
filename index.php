@@ -17,7 +17,8 @@ session_start();
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="assets/images/logos/favicon.png" type="image/x-icon">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
 
     <!-- Flaticon -->
     <link rel="stylesheet" href="assets/css/flaticon.min.css">
@@ -64,7 +65,8 @@ session_start();
 
 
         <!-- Hero Area Start -->
-        <section class="hero-area-three pt-250 pb-220 rpb-100 rel z-1" style="background-image: url(assets/images/background/hero-three.png)">
+        <section class="hero-area-three pt-250 pb-220 rpb-100 rel z-1"
+            style="background-image: url(assets/images/background/hero-three.png)">
             <span class="marquee-wrap style-two text-white">
                 <span class="marquee-inner left">Booze Bites</span>
                 <span class="marquee-inner left">Booze Bites</span>
@@ -73,16 +75,19 @@ session_start();
             <div class="container">
                 <div class="row align-items-end">
                     <div class="col-lg-6">
-                        <div class="hero-content-three mt-250 rmt-0 rmb-55 text-white" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                        <div class="hero-content-three mt-250 rmt-0 rmb-55 text-white" data-aos="fade-up"
+                            data-aos-duration="1500" data-aos-offset="50">
                             <h1>Savor Boldly</h1>
                             <p>Flavors that Pair Perfectly with Your Drink</p>
-                            <a href="shop.php" class="theme-btn style-two">order now <i class="far fa-arrow-alt-right"></i></a>
+                            <a href="shop.php" class="theme-btn style-two">order now <i
+                                    class="far fa-arrow-alt-right"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="hero-three-image">
                             <img src="assets/images/hero/hero-three.png" alt="Hero">
-                            <div class="offer-badge" style="background-image: url(assets/images/shapes/offer-circle-shape.png)">
+                            <div class="offer-badge"
+                                style="background-image: url(assets/images/shapes/offer-circle-shape.png)">
                                 <span>50% <br>off</span>
                             </div>
                         </div>
@@ -98,7 +103,8 @@ session_start();
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-9">
-                        <div class="section-title text-center mb-50" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                        <div class="section-title text-center mb-50" data-aos="fade-up" data-aos-duration="1500"
+                            data-aos-offset="50">
                             <span class="sub-title mb-5">popular food category</span>
                             <h2>Elevate Your Dining & Experience with Booze Bites</h2>
                         </div>
@@ -116,7 +122,8 @@ session_start();
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <div class="featured-item">
                             <div class="icon">
                                 <i class="flaticon-fast-delivery"></i>
@@ -127,7 +134,8 @@ session_start();
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <div class="featured-item">
                             <div class="icon">
                                 <i class="flaticon-cashback"></i>
@@ -199,7 +207,8 @@ session_start();
                     <div class="col-xl-8">
                         <div class="row">
                             <div class="col-lg-8">
-                                <div class="section-title mt-55 mb-25" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                                <div class="section-title mt-55 mb-25" data-aos="fade-up" data-aos-duration="1500"
+                                    data-aos-offset="50">
                                     <span class="sub-title mb-5">learn About Booze Bites</span>
                                     <h2>Serving Bold Flavors to Boost Your Moments</h2>
                                 </div>
@@ -209,15 +218,19 @@ session_start();
                             <div class="col-md-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                                 <div class="about-video mb-30">
                                     <img src="assets/images/about/about-video-bg.jpg" alt="About Video">
-                                    <a href="https://www.youtube.com/watch?v=9Y7ma241N8k" class="mfp-iframe video-play"><i class="fas fa-play"></i></a>
+                                    <a href="https://www.youtube.com/watch?v=9Y7ma241N8k"
+                                        class="mfp-iframe video-play"><i class="fas fa-play"></i></a>
                                 </div>
                             </div>
-                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500"
+                                data-aos-offset="50">
                                 <div class="about-middle-content mb-30">
                                     <h4>we have 25+ Years Of Experience</h4>
-                                    <p>Welcome too restaurant, where culinary excellence meets warm hospitality in every dish we nestled in the heart of City name our eatery invites</p>
+                                    <p>Welcome too restaurant, where culinary excellence meets warm hospitality in every
+                                        dish we nestled in the heart of City name our eatery invites</p>
                                     <div class="about-btn-customer mt-40">
-                                        <a href="about.html" class="theme-btn style-two">learn more us <i class="far fa-arrow-alt-right"></i></a>
+                                        <a href="about.html" class="theme-btn style-two">learn more us <i
+                                                class="far fa-arrow-alt-right"></i></a>
                                         <div class="customer">
                                             <h6>5m+ Happy customer</h6>
                                             <div class="customer-image">
@@ -233,10 +246,12 @@ session_start();
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="col-xl-4" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <div class="about-image-part style-three mb-30">
                             <img src="assets/images/about/about2.jpg" alt="About">
-                            <div class="quality-food" style="background-image: url(assets/images/shapes/about-star.png)">
+                            <div class="quality-food"
+                                style="background-image: url(assets/images/shapes/about-star.png)">
                                 <span class="for-border"></span>
                                 <span class="text">quality <br>food</span>
                             </div>
@@ -256,11 +271,13 @@ session_start();
                     $product_rs = Database::search("SELECT `product_name`, `product_id` AS `pid`, 
                     (SELECT `product_img_path` FROM `product_img` WHERE `product_id`=`pid` LIMIT 1) AS `product_img_path`, 
                     (SELECT `price` FROM `price_table` WHERE `product_product_id`=`pid` order BY `price` ASC LIMIT 1) AS `price` FROM product ");
-                    for ($x = 0; $x < $product_rs->num_rows; $x++) {
+                    $product_load_count = $product_rs->num_rows >= 3 ? 3 : $product_rs->num_rows;
+                    for ($x = 0; $x < $product_load_count; $x++) {
                         $product_d = $product_rs->fetch_assoc();
-                    ?>
+                        ?>
                         <div class="col" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                            <div class="category-banner-item style-two" style="background-image: url(assets/images/banner/category-banner-two1.png);">
+                            <div class="category-banner-item style-two"
+                                style="background-image: url(assets/images/banner/category-banner-two1.png);">
                                 <span class="price">only $<?php echo $product_d["price"]; ?></span>
                                 <h3><?php echo $product_d["product_name"]; ?></h3>
                                 <div class="ratting">
@@ -271,13 +288,15 @@ session_start();
                                     <i class="fas fa-star"></i>
                                     <span>(5k)</span>
                                 </div>
-                                <a href="product-details.php?pid=<?php echo $product_d["pid"]; ?>" class="theme-btn style-two">Order now <i class="far fa-arrow-alt-right"></i></a>
+                                <a href="product-details.php?pid=<?php echo $product_d["pid"]; ?>"
+                                    class="theme-btn style-two">Order now <i class="far fa-arrow-alt-right"></i></a>
                                 <div class="food-image">
-                                    <img src="<?php echo $product_d["product_img_path"]; ?>" alt="<?php echo $product_d["product_name"]; ?>">
+                                    <img src="<?php echo $product_d["product_img_path"]; ?>"
+                                        alt="<?php echo $product_d["product_name"]; ?>">
                                 </div>
                             </div>
                         </div>
-                    <?php
+                        <?php
                     }
                     ?>
                 </div>
@@ -291,7 +310,8 @@ session_start();
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
-                        <div class="section-title text-center mb-50" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                        <div class="section-title text-center mb-50" data-aos="fade-up" data-aos-duration="1500"
+                            data-aos-offset="50">
                             <span class="sub-title mb-5">popular burger</span>
                             <h2>popular delicious burger</h2>
                         </div>
@@ -302,12 +322,14 @@ session_start();
                     $product_rs = Database::search("SELECT `product_name`, `product_id` AS `pid`, 
                     (SELECT `product_img_path` FROM `product_img` WHERE `product_id`=`pid` LIMIT 1) AS `product_img_path`, 
                     (SELECT `price` FROM `price_table` WHERE `product_product_id`=`pid` order BY `price` ASC LIMIT 1) AS `price` FROM product ");
-                    for ($x = 0; $x < $product_rs->num_rows; $x++) {
+                    $product_load_count = $product_rs->num_rows >= 5 ? 5 : $product_rs->num_rows;
+                    for ($x = 0; $x < $product_load_count; $x++) {
                         $product_d = $product_rs->fetch_assoc();
-                    ?>
+                        ?>
                         <div class="product-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <div class="image">
-                                <img src="<?php echo $product_d["product_img_path"]; ?>" alt="<?php echo $product_d["product_name"]; ?>">
+                                <img src="<?php echo $product_d["product_img_path"]; ?>"
+                                    alt="<?php echo $product_d["product_name"]; ?>">
                                 <span class="pizza-badge">hot</span>
                             </div>
                             <div class="content">
@@ -319,11 +341,14 @@ session_start();
                                     <i class="fas fa-star"></i>
                                     <span>(5k)</span>
                                 </div>
-                                <h5><a href="product-details.php?pid=<?php echo $product_d["pid"]; ?>"><?php echo $product_d["product_name"]; ?></a></h5>
-                                <span class="price"><del>$<?php echo $product_d["price"] + 10; ?></del> $<?php echo $product_d["price"]; ?></span>
+                                <h5><a
+                                        href="product-details.php?pid=<?php echo $product_d["pid"]; ?>"><?php echo $product_d["product_name"]; ?></a>
+                                </h5>
+                                <span class="price"><del>$<?php echo $product_d["price"] + 10; ?></del>
+                                    $<?php echo $product_d["price"]; ?></span>
                             </div>
                         </div>
-                    <?php
+                        <?php
                     }
                     ?>
                 </div>
@@ -583,23 +608,28 @@ session_start();
 
 
         <!-- Testimonials Three Area start -->
-        <section class="testimonials-three rel z-1 bgc-primary pt-130 rpt-100 pb-215 rpb-150" style="background-image: url(assets/images/testimonials/testimonials-two-bg.png);">
+        <section class="testimonials-three rel z-1 bgc-primary pt-130 rpt-100 pb-215 rpb-150"
+            style="background-image: url(assets/images/testimonials/testimonials-two-bg.png);">
             <div class="container">
                 <div class="row justify-content-center rmb-30">
                     <div class="col-xl-10 col-lg-11">
                         <div class="testimonials-three-content rel z-1 text-white">
-                            <div class="section-title text-center mb-45" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="section-title text-center mb-45" data-aos="fade-up" data-aos-duration="1500"
+                                data-aos-offset="50">
                                 <span class="sub-title text-white mb-5">customer feedback</span>
                                 <h2>what our customer’s say us</h2>
                             </div>
-                            <div class="testimonials-two-carousel" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                            <div class="testimonials-two-carousel" data-aos="fade-up" data-aos-duration="1500"
+                                data-aos-offset="50">
                                 <div class="testimonial-two-item style-two">
                                     <div class="image">
                                         <div class="quote"><i class="flaticon-quote"></i></div>
                                         <img src="assets/images/testimonials/author-three.jpg" alt="Author">
                                     </div>
                                     <div class="content">
-                                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can prepared in various ways, from simple steaming or boiling to elaborate preparations such as grilling incorporating weather loving</div>
+                                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can
+                                            prepared in various ways, from simple steaming or boiling to elaborate
+                                            preparations such as grilling incorporating weather loving</div>
                                         <span class="author">Randy R. Pennington</span>
                                         <span class="designation">web designer</span>
                                     </div>
@@ -610,7 +640,9 @@ session_start();
                                         <img src="assets/images/testimonials/author-three.jpg" alt="Author">
                                     </div>
                                     <div class="content">
-                                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can prepared in various ways, from simple steaming or boiling to elaborate preparations such as grilling incorporating weather loving</div>
+                                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can
+                                            prepared in various ways, from simple steaming or boiling to elaborate
+                                            preparations such as grilling incorporating weather loving</div>
                                         <span class="author">Salvador I. Burton</span>
                                         <span class="designation">Manager</span>
                                     </div>
@@ -621,7 +653,9 @@ session_start();
                                         <img src="assets/images/testimonials/author-three.jpg" alt="Author">
                                     </div>
                                     <div class="content">
-                                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can prepared in various ways, from simple steaming or boiling to elaborate preparations such as grilling incorporating weather loving</div>
+                                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can
+                                            prepared in various ways, from simple steaming or boiling to elaborate
+                                            preparations such as grilling incorporating weather loving</div>
                                         <span class="author">Randy R. Pennington</span>
                                         <span class="designation">web designer</span>
                                     </div>
@@ -632,7 +666,9 @@ session_start();
                                         <img src="assets/images/testimonials/author-three.jpg" alt="Author">
                                     </div>
                                     <div class="content">
-                                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can prepared in various ways, from simple steaming or boiling to elaborate preparations such as grilling incorporating weather loving</div>
+                                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can
+                                            prepared in various ways, from simple steaming or boiling to elaborate
+                                            preparations such as grilling incorporating weather loving</div>
                                         <span class="author">Salvador I. Burton</span>
                                         <span class="designation">Manager</span>
                                     </div>
@@ -840,19 +876,22 @@ session_start();
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6">
-                        <div class="section-title rmb-25" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                        <div class="section-title rmb-25" data-aos="fade-up" data-aos-duration="1500"
+                            data-aos-offset="50">
                             <span class="sub-title mb-5">GET IN TOUCH WITH US ON WHATSAPP</span>
                             <h2>Share your WhatsApp number, and we will contact you shortly</h2>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="newsletter-form-wrap" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                        <div class="newsletter-form-wrap" data-aos="fade-up" data-aos-delay="50"
+                            data-aos-duration="1500" data-aos-offset="50">
                             <h6>Share your WhatsApp number, and the Booze Bites team will get in touch with you soon!
                                 Shape</h6>
                             <form class="newsletter-form style-two mt-15" action="#">
                                 <label for="news-email"><i class="fa-brands fa-whatsapp"></i></label>
                                 <input id="news-email" type="text" placeholder="enter your whatsapp number" required>
-                                <button class="theme-btn style-two" type="submit">Submit <i class="far fa-arrow-alt-right"></i></button>
+                                <button class="theme-btn style-two" type="submit">Submit <i
+                                        class="far fa-arrow-alt-right"></i></button>
                             </form>
 
                         </div>
@@ -870,7 +909,8 @@ session_start();
 
         <!-- Instagram area start -->
         <div class="instagram-area">
-            <div class="row no-gap row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 row-cols-1 justify-content-center">
+            <div
+                class="row no-gap row-cols-xxl-5 row-cols-xl-4 row-cols-lg-3 row-cols-sm-2 row-cols-1 justify-content-center">
                 <div class="col" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                     <div class="instagram-item">
                         <img src="assets/images/instagram/instagram1.jpg" alt="Instagram">
@@ -908,7 +948,7 @@ session_start();
         <?php
 
         require "footer.php"
-        ?>
+            ?>
 
     </div>
     <!--End pagewrapper-->

@@ -1,6 +1,6 @@
 <?php
 require "connection.php";
-require_once 'vender/autoload.php'; // Include Stripe PHP library
+require_once 'vendor/autoload.php'; // Include Stripe PHP library
 session_start();
 $total = $_POST["total"];
 $umail = $_POST["umail"];
@@ -15,11 +15,11 @@ $coupon_id = uniqid();
 
 $response = []; // Initialize an empty array to hold the response
 
-if (!isset($_SESSION["u"])) {
+if (isset($_SESSION["user_boost"])) {
     if (!is_null($total) && !is_null($umail)) {
         if ($total != '0.00') {
             try {
-                \Stripe\Stripe::setApiKey('sk_test_51OmXPbEXnEGngP01xcch1UHJMAO9Vj18MULj8dhUO68gAlIU3IXr0Ibwq5IODHWUBdfAr54Avo72jL2ipzcVvLJ900PlKAkdcK');
+                \Stripe\Stripe::setApiKey('sk_test_51QRJPfRwa2ApijVLwBjDgHzsem3ZmaFJqJ4cYXja289L3yNGr9r40SQTA6409bbbHNRZ93Pp9AjhDjcBk6AW1z6t00dKZSALgD');
                 // Create a coupon with the specified discount amount
                 if ($discount != '0.00') {
                     $coupon = \Stripe\Coupon::create([
@@ -49,10 +49,11 @@ if (!isset($_SESSION["u"])) {
 
 
                 // Fetch product details from the database
-                $cart_rs = Database::search("SELECT * FROM `cart_item` INNER JOIN `price_table`
-                ON `cart_item`.`price_table_product_product_id`  = `price_table`.`product_product_id` INNER JOIN
-                `product` ON `price_table`.`product_product_id` = `product`.`product_id`
-					 WHERE `user_email` = '".$umail."'");
+                $cart_rs = Database::search("SELECT * FROM `cart_item` INNER JOIN `price_table` ON
+                                cart_item.price_table_product_product_id=price_table.product_product_id AND cart_item.price_table_box_type_box_type_id=price_table.box_type_box_type_id INNER JOIN `product` ON
+                                price_table.product_product_id=product.product_id INNER JOIN `box_type` ON
+                                cart_item.price_table_box_type_box_type_id=box_type.box_type_id INNER JOIN `preference` ON 
+                                cart_item.preference_preference_id=preference.preference_id WHERE `user_email`='". $umail."'");
                 $cart_num = $cart_rs->num_rows;
 
                 $lineItems = [];
@@ -84,17 +85,7 @@ if (!isset($_SESSION["u"])) {
                     ],
                     'quantity' => 1, // Assuming only one shipping charge
                 ];
-                // Add shipping charge as a separate line item
-                $lineItems[] = [
-                    'price_data' => [
-                        'currency' => 'nzd',
-                        'product_data' => [
-                            'name' => 'Total Tax',
-                        ],
-                        'unit_amount' => intval($tax * 100), // Shipping charge in cents
-                    ],
-                    'quantity' => 1, // Assuming only one shipping charge
-                ];
+   
 
                 // Create Stripe Checkout session with the coupon applied
                 if ($discount != '0.00') {

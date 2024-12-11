@@ -8,7 +8,7 @@ if (isset($_SESSION["user_boost"]["email"])) { //check if the user logged in
     $shipFee = 6.0;
     $discount = 0.0;
     $subTotal = 0.0;
-?>
+    ?>
     <div class="container">
         <div class="shoping-table mb-50 wow fadeInUp delay-0-2s">
             <table>
@@ -33,36 +33,43 @@ if (isset($_SESSION["user_boost"]["email"])) { //check if the user logged in
                         for ($x = 0; $x < $cart_rs->num_rows; $x++) {
                             $cart_d = $cart_rs->fetch_assoc();
                             $cartTotal += $cart_d["price"] * $cart_d["cart_qty"];
-                    ?>
+                            ?>
                             <tr id="cartRow<?php echo $x; ?>">
                                 <td>
                                     <?php
                                     $img_rs = Database::Search("SELECT * FROM `product_img` WHERE `product_id`='" . $cart_d["product_id"] . "'");
                                     if ($img_rs->num_rows > 0) {
                                         $img_d = $img_rs->fetch_assoc();
-                                    ?>
+                                        ?>
                                         <img src="<?php echo $img_d["product_img_path"]; ?>" alt="Product Details">
-                                    <?php
+                                        <?php
                                     } else {
-                                    ?>
+                                        ?>
                                         <img src="assets/images/widgets/news1.jpg" alt="Product">
-                                    <?php
+                                        <?php
                                     }
                                     ?>
                                 </td>
-                                <td><span class="title"><?php echo $cart_d["product_name"]; ?> <?php echo $cart_d["box_type_name"]; ?> (<?php echo $cart_d["preference_name"]; ?>)</span></td>
+                                <td><span class="title"><?php echo $cart_d["product_name"]; ?>
+                                        <?php echo $cart_d["box_type_name"]; ?> (<?php echo $cart_d["preference_name"]; ?>)</span>
+                                </td>
                                 <td><span class="price"><?php echo $cart_d["price"]; ?></span></td>
                                 <td>
                                     <div class="quantity-input">
-                                        <button class="quantity-down" onclick="setCartQty('<?php echo $cart_d['product_id']; ?>', '<?php echo $cart_d['box_type_id']; ?>', '<?php echo $cart_d['preference_id']; ?>', '<?php echo $cart_d['cart_qty'] - 1; ?>')">--</button>
-                                        <input class="quantity" type="number" min="1" value="<?php echo $cart_d["cart_qty"]; ?>" name="quantity" disabled>
-                                        <button class="quantity-up" onclick="setCartQty('<?php echo $cart_d['product_id']; ?>', '<?php echo $cart_d['box_type_id']; ?>', '<?php echo $cart_d['preference_id']; ?>', '<?php echo $cart_d['cart_qty'] + 1; ?>')">+</button>
+                                        <button class="quantity-down"
+                                            onclick="setCartQty('<?php echo $cart_d['product_id']; ?>', '<?php echo $cart_d['box_type_id']; ?>', '<?php echo $cart_d['preference_id']; ?>', '<?php echo $cart_d['cart_qty'] - 1; ?>')">--</button>
+                                        <input class="quantity" type="number" min="1" value="<?php echo $cart_d["cart_qty"]; ?>"
+                                            name="quantity" disabled>
+                                        <button class="quantity-up"
+                                            onclick="setCartQty('<?php echo $cart_d['product_id']; ?>', '<?php echo $cart_d['box_type_id']; ?>', '<?php echo $cart_d['preference_id']; ?>', '<?php echo $cart_d['cart_qty'] + 1; ?>')">+</button>
                                     </div>
                                 </td>
                                 <td><b class="price"><?php echo $cart_d["price"] * $cart_d["cart_qty"]; ?></b></td>
-                                <td><button type="button" class="close" onclick="removeItem('<?php echo $cart_d['product_id']; ?>', '<?php echo $cart_d['box_type_id']; ?>', '<?php echo $cart_d['preference_id']; ?>', '<?php echo $x; ?>');">×</button></td>
+                                <td><button type="button" class="close"
+                                        onclick="removeItem('<?php echo $cart_d['product_id']; ?>', '<?php echo $cart_d['box_type_id']; ?>', '<?php echo $cart_d['preference_id']; ?>', '<?php echo $x; ?>');">×</button>
+                                </td>
                             </tr>
-                    <?php
+                            <?php
                         }
                     } else {
                         echo "no items in the cart";
@@ -73,16 +80,12 @@ if (isset($_SESSION["user_boost"]["email"])) { //check if the user logged in
         </div>
         <div class="row text-center text-lg-left align-items-center">
             <div class="col-lg-6">
-                <div class="discount-wrapper mb-30 wow fadeInLeft delay-0-2s">
-                    <form action="#" class="d-sm-flex justify-content-center justify-content-lg-start">
-                        <input type="text" placeholder="Coupon Code" required>
-                        <button class="theme-btn flex-none" type="submit">apply Coupon <i class="fas fa-angle-double-right"></i></button>
-                    </form>
-                </div>
+           
             </div>
             <div class="col-lg-6">
                 <div class="update-shopping mb-30 text-lg-end wow fadeInRight delay-0-2s">
-                    <a class="theme-btn bg-secondary my-5" onclick="clearCart();">Clear cart <i class="fas fa-angle-double-right"></i></a>
+                    <a class="theme-btn bg-secondary my-5" onclick="clearCart();">Clear cart <i
+                            class="fas fa-angle-double-right"></i></a>
                 </div>
             </div>
         </div>
@@ -105,12 +108,12 @@ if (isset($_SESSION["user_boost"]["email"])) { //check if the user logged in
                             if ($discount_rs->num_rows > 0) {
                                 $discount_d = $discount_rs->fetch_assoc();
                                 $discount = $cartTotal * ($discount_d["percentage"] / 100);
-                            ?>
+                                ?>
                                 <tr>
-                                    <td>Discount <?php echo $discount_d["percentage"];?>%</td>
+                                    <td>Discount <?php echo $discount_d["percentage"]; ?>%</td>
                                     <td><span class="price"><?php echo $discount; ?></span></td>
                                 </tr>
-                            <?php
+                                <?php
                             }
 
                             $subTotal = ($cartTotal + $shipFee) - $discount;
@@ -135,21 +138,24 @@ if (isset($_SESSION["user_boost"]["email"])) { //check if the user logged in
                         //echo $userName . "</br>";
                         //echo $mobile . "</br>";
                         //echo $address;
-                    ?>
-                        <a href="checkout.php" class="theme-btn style-two mt-100 w-100">Proceed to checkout</a>
-                    <?php
+                        $payout = "payout('" . number_format($subTotal, 2) . "','" . $user_email . "','" . number_format($discount, 2) . "','" . number_format($shipFee, 2) . "');";
+
+                        ?>
+
+                        <a onclick="<?php echo $payout ?>" class="theme-btn style-two mt-100 w-100">Proceed to checkout</a>
+                        <?php
                     } else {
-                    ?>
+                        ?>
                         <div class="text-center my-100">
                             <div class="theme-btn">You need to have your address set in your profile</div>
                         </div>
-                    <?php
+                        <?php
                     }
                     ?>
                 </div>
             </div>
         </div>
     </div>
-<?php
+    <?php
 }
 ?>

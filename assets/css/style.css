@@ -1154,6 +1154,9 @@ a.theme-btn.style-three:hover {
 .color-two {
   --primary-color: #e65a11;
 }
+.inbg {
+  background-color: #f28951;
+}
 .color-two .theme-btn {
   color: white;
 }

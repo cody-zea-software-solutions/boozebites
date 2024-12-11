@@ -533,7 +533,7 @@ a {
 }
 
 a:hover {
-    color: #2ad19d;
+    color: #ffb936;
 }
 
 button {
@@ -1005,7 +1005,7 @@ kbd {
 
 .cs-accent_bg,
 .cs-accent_bg_hover:hover {
-    background-color: #2ad19d;
+    background-color: #ec3d08;
 }
 
 .cs-primary_color {
@@ -1021,7 +1021,7 @@ kbd {
 }
 
 .cs-dip_green_color {
-    color: #2AD19D;
+    color: #ec3d08;
 }
 
 .cs-ternary_color {
@@ -1219,20 +1219,20 @@ kbd {
 
 .cs-invoice_btn.cs-color1 {
     color: #111111;
-    background: rgba(42, 209, 157, 0.15);
+    background: #ffb936;
 }
 
 .cs-invoice_btn.cs-color1:hover {
-    background-color: rgba(42, 209, 157, 0.3);
+    background-color: #ffa600;
 }
 
 .cs-invoice_btn.cs-color2 {
     color: #fff;
-    background: #2ad19d;
+    background: #ec3d08;
 }
 
 .cs-invoice_btn.cs-color2:hover {
-    background-color: rgba(42, 209, 157, 0.8);
+    background-color: #f05f33;
 }
 
 .cs-table_responsive {
@@ -1522,7 +1522,7 @@ kbd {
 }
 
 .tm-button-primary {
-    background-color: #2ad19d;
+    background-color: #ec3d08;
     border-radius: 8px;
     padding: 12px 26px 12px 26px !important;
 }
@@ -1846,7 +1846,7 @@ kbd {
 }
 
 .cs-text-cap {
-    border-bottom: 1px solid #2ad19d;
+    border-bottom: 1px solid #ec3d08;
     margin-top: 20px;
 }
 

@@ -1,16 +1,16 @@
 <?php
 session_start();
 require "../connection.php";
-if (!isset($_SESSION["u"])) {
+if (isset($_SESSION["user_boost"])) {
 
-  $umail = "user@gmail.com";
-  if (!isset($_GET["coupon_id"])) {
+  $umail = $_SESSION["user_boost"]["email"];
+  if (isset($_GET["coupon_id"])) {
     $cid = $_GET["coupon_id"];
   }
 
 
   require '../vendor/autoload.php';
-  $stripe = new \Stripe\StripeClient('sk_test_51OmXPbEXnEGngP01xcch1UHJMAO9Vj18MULj8dhUO68gAlIU3IXr0Ibwq5IODHWUBdfAr54Avo72jL2ipzcVvLJ900PlKAkdcK');
+  $stripe = new \Stripe\StripeClient('sk_test_51QRJPfRwa2ApijVLwBjDgHzsem3ZmaFJqJ4cYXja289L3yNGr9r40SQTA6409bbbHNRZ93Pp9AjhDjcBk6AW1z6t00dKZSALgD');
 
 
   $session = $stripe->checkout->sessions->retrieve($_GET['session_id']);
@@ -43,11 +43,12 @@ if (!isset($_SESSION["u"])) {
       <meta charset="utf-8">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="author" content="ThemeMarch">
+      <meta name="author" content="CODY ZEA SOFTWARE SOLUTIONS">
       <!-- Site Title -->
-      <title>Ceynap - Invoice</title>
+      <title>Booze Bites - Invoice</title>
       <link rel="stylesheet" href="assets/css/style.css">
-    </head>
+      <link rel="shortcut icon" href="../assets/images/logos/favicon.png" type="image/x-icon">
+      </head>
     <?php
     foreach ($items as $item1) {
 
@@ -59,9 +60,9 @@ if (!isset($_SESSION["u"])) {
 
     }
 
-    $check_record = Database::search("SELECT * FROM `invoice` WHERE `invoice_id` = '" . $session->payment_intent . "'");
+    $check_record = Database::search("SELECT * FROM `invoice` WHERE `payment_intent` = '" . $session->payment_intent . "'");
     $check_record_num = $check_record->num_rows;
-    $discount_amount = $coupon->amount_off / 100;
+    $discount_amount = number_format($coupon->amount_off / 100, 2);
     if ($check_record_num == 0) {
       ?>
 
@@ -96,25 +97,22 @@ if (!isset($_SESSION["u"])) {
                   </p>
                 </div>
                 <div class="cs-invoice_right cs-text_right">
-                  <div class="cs-logo cs-mb5"><img src="assets/img/logo.png" alt="Logo"></div>
+                  <div class="cs-logo cs-mb5"><img src="../assets/images/logos/logo-black.png" alt="Logo"></div>
                 </div>
               </div>
               <div class="cs-invoice_head cs-mb10">
                 <div class="cs-invoice_left">
                   <oic class="cs-primary_color"><b>Invoice To:</b>
                     <?php
-                    $user_rs = Database::search("SELECT * FROM `user` INNER JOIN `town` ON `user`.`town` = `town`.`id`  WHERE `email` = '" . $umail . "' ");
+                    $user_rs = Database::search("SELECT * FROM `user` INNER JOIN `address` ON `user`.`email` = `address`.`user_email`  WHERE `email` = '" . $umail . "'");
                     $user_num = $user_rs->num_rows;
                     if ($user_num == 1) {
                       $user_data = $user_rs->fetch_assoc();
                       ?>
                       <p>
-                        <?php echo $user_data["fname"] . " " . $user_data['lname'] ?><br>
-                        <?php echo $user_data["number"] ?>,
-                        <?php echo $user_data['lane'] ?>,
-                        <?php echo $user_data["t_name"] ?>
-
-
+                        <?php echo $user_data["first_name"] . " " . $user_data['last_name'] ?><br>
+                        <?php echo $user_data["first_line"] ?>,
+                        <?php echo $user_data['second_line'] ?>,
                       </p>
                       <?php
                     }
@@ -124,10 +122,10 @@ if (!isset($_SESSION["u"])) {
                 <div class="cs-invoice_right cs-text_right">
                   <b class="cs-primary_color">Pay To:</b>
                   <p>
-                    Ceynap - New Zealand<br>
-                    6A, Tidey Road, Mount Wellington, <br>
-                    Auckland. <br>
-                    sales@ceynap.com
+                    Booze Bites - New Zealand<br>
+                    89B Cascades Road,<br/>
+                    Pakuranga Heights,<br/>
+                    Auckland 2010. <br/>
                   </p>
                 </div>
               </div>
@@ -147,7 +145,6 @@ if (!isset($_SESSION["u"])) {
                       <tbody>
                         <?php
                         $ship = null;
-                        $totalTax = null;
                         foreach ($items as $item) {
                           $itemName = $item->description;
                           // If the item is 'Shipping Charge', store its amount in $ship and skip displaying it
@@ -156,10 +153,10 @@ if (!isset($_SESSION["u"])) {
                             continue; // Skip displaying this item
                           }
                           // If the item is 'Total Tax', store its amount in $totalTax and skip displaying it
-                          if ($itemName === 'Total Tax') {
-                            $totalTax = $item->amount_subtotal;
-                            continue; // Skip displaying this item
-                          }
+                          // if ($itemName === 'Total Tax') {
+                          //   $totalTax = $item->amount_subtotal;
+                          //   continue; 
+                          // }
                           ?>
                           <tr>
                             <td class="cs-width_3">
@@ -176,7 +173,7 @@ if (!isset($_SESSION["u"])) {
                             <td class="cs-width_1">
                               NZD <?php echo number_format($item->amount_subtotal / 100, 2) ?>
                             </td>
-                            <td class="cs-width_2 cs-text_right">Ceynap</td>
+                            <td class="cs-width_2 cs-text_right">Booze Bites</td>
                           </tr>
                           <?php
                         }
@@ -200,9 +197,12 @@ if (!isset($_SESSION["u"])) {
                       <table>
                         <tbody>
                           <tr class="cs-border_left">
-                            <td class="cs-width_3 cs-semi_bold cs-primary_color cs-focus_bg">Subtoal</td>
+                            <td class="cs-width_3 cs-semi_bold cs-primary_color cs-focus_bg">Subtotal</td>
                             <td class="cs-width_3 cs-semi_bold cs-focus_bg cs-primary_color cs-text_right">
-                              <?php echo number_format($session->amount_subtotal / 100, 2) ?>
+
+                              <?php
+                              $s_total = number_format($session->amount_subtotal / 100, 2)  - $ship /100; 
+                              echo number_format($s_total,2) ?>
                             </td>
                           </tr>
                           <tr class="cs-border_left">
@@ -231,15 +231,7 @@ if (!isset($_SESSION["u"])) {
                             ?>
 
                           </tr>
-                          <tr class="cs-border_left">
-                            <td class="cs-width_3 cs-semi_bold cs-primary_color cs-focus_bg">Tax</td>
-
-
-                            <td class="cs-width_3 cs-semi_bold cs-focus_bg cs-primary_color cs-text_right">
-                              <?php echo number_format($totalTax / 100, 2) ?>
-                            </td>
-
-                          </tr>
+                         
                         </tbody>
                       </table>
                     </div>
@@ -309,7 +301,7 @@ if (!isset($_SESSION["u"])) {
         <script src="assets/js/jspdf.min.js"></script>
         <script src="assets/js/html2canvas.min.js"></script>
         <script src="assets/js/main.js"></script>
-        <script src="../script.js"></script>
+        <script src="invoice.js"></script>
       </body>
 
     </html>
