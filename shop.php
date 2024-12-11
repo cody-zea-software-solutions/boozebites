@@ -320,7 +320,7 @@ include "connection.php";
                                                 </div>
                                                 <h5><a href="product-details.html"><?php echo $product_data["product_name"] ?></a></h5>
                                                 <?php
-                                                $price = Database::Search("SELECT * FROM price_table WHERE `box_type_box_type_id`='1' AND `product_product_id`='".$product_data["product_id"]."' ");
+                                                $price = Database::Search("SELECT * FROM price_table WHERE `box_type_box_type_id`='1' AND `product_product_id`='" . $product_data["product_id"] . "' ");
                                                 $price_row = $price->num_rows;
                                                 if ($price_row != 0) {
                                                     $price_data = $price->fetch_assoc();
@@ -338,7 +338,14 @@ include "connection.php";
                                                 }
                                                 ?>
                                             </div>
-                                            <a href="shop.html" class="theme-btn">add to cart <i class="far fa-arrow-alt-right"></i></a>
+                                            <?php $product_id = $product_data["product_id"]; ?>
+                                            <a onclick="singlepr(<?php echo $product_id; ?>);" class="theme-btn">By now<i class="far fa-arrow-alt-right"></i></a>
+                                            <script>
+                                                function singlepr(productId) {
+                                                    window.location.href = "product-details.php?pid=" + productId;
+                                                }
+                                            </script>
+
                                         </div>
                                     </div>
                                 <?php
