@@ -63,8 +63,8 @@ if (isset($_SESSION["user_boost"])) {
 
     <body>
         <?php
-        require "header.php";
-        headerContent(0);
+     //   require "header.php";
+     //   headerContent(0);
         ?>
         <div class="container-fluid vh-100 d-flex align-items-center">
             <div class="row d-flex justify-content-center">
@@ -87,7 +87,7 @@ if (isset($_SESSION["user_boost"])) {
                                 </button>
                             </div>
                             <p class="text-danger lead mt-10 text-center">
-                                <i class="fas fa-sign-out"></i> Log Out
+                                <i onclick="logoutUser();" class="fas fa-sign-out"></i> Log Out
                             </p>
                         </div>
                     </div>
@@ -231,6 +231,10 @@ if (isset($_SESSION["user_boost"])) {
     </html>
 <?php
 }else{
-    echo "rejister first";
+    ?>
+    <script>
+        window.location.href = 'index.php';
+    </script>
+    <?php
 }
 ?>

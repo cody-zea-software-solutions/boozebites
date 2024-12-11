@@ -168,6 +168,7 @@ $(function () {
             $("#price").val("$" + ui.values[0] + " - $" + ui.values[1]);
             $("#minPrice").val(ui.values[0]);
             $("#maxPrice").val(ui.values[1]);
+            filtersearch();
         }
     });
     $("#price").val("$" + $(".price-slider-range").slider("values", 0) + " - $" + $(".price-slider-range").slider("values", 1));
@@ -200,3 +201,19 @@ function filtersearch() {
         .catch(error => console.error('Error:', error));
 }
 
+function logoutUser() {
+    fetch('logout.php', {
+        method: 'POST'
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.href = 'index.php';
+        } else {
+            alert('Logout failed. Please try again.');
+        }
+    })
+    .catch(error => {
+        console.error('Error during logout:', error);
+        alert('An error occurred. Please try again.');
+    });
+}

@@ -183,8 +183,8 @@ include "connection.php";
                                         <input type="text" id="price" readonly> <!-- Display selected price range -->
                                     </div>
                                     <!-- Min & Max Price Inputs -->
-                                    <input type="hidden" id="minPrice" value="0">
-                                    <input type="hidden" id="maxPrice" value="1000">
+                                    <input oninput="filtersearch();" type="hidden" id="minPrice" value="0">
+                                    <input oninput="filtersearch();" type="hidden" id="maxPrice" value="1000">
                                 </div>
                             </div>
 
