@@ -22,7 +22,7 @@ if (empty($email)) {
      $xx = $x->fetch_assoc();
      if ($xx["v_code"] == $vcode) {
           Database::IUD("UPDATE `user` SET `password`='" . $newpass . "' WHERE `email`='" . $email . "'");
-          echo ("Password is updated now");
+          echo (1);
      } else {
           echo "pleace enter true verification code";
      }
