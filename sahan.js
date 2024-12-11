@@ -111,9 +111,13 @@ function confirmPasswordDetails() {
     })
         .then(res => res.text())
         .then(x => {
-            alert(x);
-            var myModal = bootstrap.Modal.getInstance(document.getElementById('forgotPasswordModal'));
-            myModal.hide();
+            if(x == 1){
+                var myModal = bootstrap.Modal.getInstance(document.getElementById('forgotPasswordModal'));
+                myModal.hide();
+                alert("password updated");
+            }else{
+                alert(x);
+            }  
         })
         .catch(error => {
             alert("Error: " + error);
