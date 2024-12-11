@@ -32,6 +32,7 @@
 </head>
 <body>
 <?php  
+require "connection.php";
 require_once("header.php");
 headerContent(0); 
 ?>

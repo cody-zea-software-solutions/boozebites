@@ -1,8 +1,8 @@
 <?php
-require "C:/xampp/htdocs/meatShop/connection.php";
+require "connection.php";
 session_start();
-if (true) { //check if the user logged in
-    $user_email = 'user@gmail.com';
+if (isset($_SESSION["user_boost"]["email"])) { //check if the user logged in
+    $user_email = $_SESSION["user_boost"]["email"];
 
     $cartTotal = 0.0;
     $shipFee = 6.0;
