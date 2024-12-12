@@ -70,7 +70,7 @@ INTO `order_item` (`order_id`,`price_table_product_product_id`,`price_table_box_
     $orderi->bind_param("iiiii", $order_id, $price_table_product_product_id, $price_table_box_type_box_type_id, $preference_preference_id, $qty);
     $orderi->execute();
 }
-echo "Okay Checkout Successed";
+// echo "Okay Checkout Successed";
 $s = new EmailSender();
 echo $s->send($umail);
 
@@ -110,10 +110,10 @@ class EmailSender
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
 
-        $mail->setFrom('codylanka00@gmail.com', 'Ceynap');
+        $mail->setFrom('codylanka00@gmail.com', 'Booze Bites');
         $mail->addAddress($umail);
         $mail->isHTML(true);
-        $mail->Subject = '🍢 Hello ' . $user_data["first_name"] . ',Booze Bites Invoice is Ready! 🍢';
+        $mail->Subject = 'Hello ' . $user_data["first_name"] . ',Booze Bites Invoice is Ready!';
         $bodyContent = "<!DOCTYPE html>
         <html lang=\"en\">
         <head>
@@ -125,7 +125,7 @@ class EmailSender
                     padding: 0;
                     font-family: Montserrat , sans-serif;
                     background-color: #f4f4f4;
-                    color: #333;
+                    color: #000000;
                 }
                 .email-container {
                     max-width: 600px;
@@ -175,7 +175,7 @@ class EmailSender
                     padding: 10px;
                     text-align: center;
                     font-size: 14px;
-                    color: #666;
+                    color: #000000;
                 }
                 .footer a {
                     color: black;
@@ -189,6 +189,7 @@ class EmailSender
         <body>
             <div class=\"email-container\">
                 <div class=\"header\">
+                
                     <h1>Booze Bites Order Confirmation</h1>
                 </div>
                 <div class=\"content\">
@@ -214,7 +215,7 @@ class EmailSender
                 <td>" . htmlspecialchars($item->description) . "</td>
                 <td>" . htmlspecialchars($item->quantity) . "</td>
                 <td>$" . number_format($item->amount_subtotal / 100, 2) . "</td>
-                <td>$" . number_format($itemTotal / 100, 2) . "</td>
+                <td>$" . number_format($item->amount_subtotal / 100 / $item->quantity, 2) . "</td>
             </tr>";
         }
 
@@ -227,7 +228,7 @@ class EmailSender
                 </div>
                 <div class=\"footer\">
                     <p>&copy; 2024 Booze Bites. All rights reserved.</p>
-                    <p><a href=\"#\">Visit our website</a></p>
+                    <p><a href=\"boozebites.co.nz\">Visit our website</a></p>
                 </div>
             </div>
         </body>
@@ -237,13 +238,13 @@ class EmailSender
         if (!$mail->send()) {
             return "Error";
         } else {
-            return "check your gmailbox";
+            return "1";
         }
 
     }
 }
 
-echo "success";
+
 
 
 

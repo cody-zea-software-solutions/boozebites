@@ -41,3 +41,6 @@ function payout(total, user, discount, shipping) {
   xhr.send(form);
 }
 
+function gotoCart() {
+  window.location = "cart.php";
+}

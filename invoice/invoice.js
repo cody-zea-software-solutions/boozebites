@@ -22,9 +22,15 @@ function cartInvoice(
   request.onreadystatechange = function () {
     if (request.readyState == 4 && request.status == 200) {
       const response = request.responseText;
-      alert(response);
-      if ((response = 1)) {
-        alert("Success");
+   if (response === "1") {
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Payment Successful! 🎉",
+      text: "Thank you for your payment! Your transaction has been successfully processed.",
+      showConfirmButton: false,
+      timer: 1500
+    });
       }
     }
   };

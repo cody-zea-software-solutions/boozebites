@@ -58,25 +58,19 @@ function headerContent($theme)
                     </div>
                     
                     <!-- Nav Search -->
-                    <div class="nav-search py-10">
-                        <button class="far fa-search"></button>
-                        <form action="shop.php" class="hide">
-                            <input type="text" placeholder="Search" class="searchbox" required>
-                            <button type="submit" class="searchbutton far fa-search"></button>
-                        </form>
-                    </div>
+                   
                     
                     <!-- Menu Button -->
                     <div class="menu-btns">
-                        <button><i class="far fa-shopping-cart" onclick="gotoCart();"></i> <span>' . (isset($_SESSION["user_boost"]) ? $cart_data["num_cart"] : '0' ) .'</span></button>
-                        <a href="contact.php" class="theme-btn">Book now <i class="far fa-arrow-alt-right"></i></a>
-                        
-                        <!-- User Profile / Login -->
+                        <button onclick="gotoCart();"><i class="far fa-shopping-cart"></i> <span>' . (isset($_SESSION["user_boost"]) ? $cart_data["num_cart"] : '0' ) .'</span></button>
+                        <a href="contact.php" class="theme-btn">Order now <i class="far fa-arrow-alt-right"></i></a>
+                                <!-- User Profile / Login -->
                         ' . (isset($_SESSION["user_boost"]) ? '
-                        <button onclick="window.location=\'profile.php\'"><i class="fa-thin fa-circle-user"></i></button>
+                        <button onclick="window.location=\'profile.php\'"><i class="fa-thin fa-circle-user h3 text-white"></i></button>
                         ' : '
                         <button onclick="window.location=\'login.php\'"><i class="fa-thin fa-circle-user h3 text-white"></i></button>
                         ') . '
+                
                     </div>
                 </div>
             </div>

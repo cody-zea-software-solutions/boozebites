@@ -187,6 +187,7 @@ headerContent(0);
     <script src="assets/js/isotope.pkgd.min.js"></script>
     <!--  AOS Animation -->
     <script src="assets/js/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- Custom script -->
     <script src="assets/js/script.js"></script>
     <!-- -->

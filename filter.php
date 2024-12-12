@@ -83,7 +83,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      }
      $product_rs = Database::search($query);
      $results_num = $product_rs->num_rows;
-     echo $results_num;
      $product_num = $product_rs->num_rows;
      for ($i = 0; $i < $product_num; $i++) {
           $results_data = $product_rs->fetch_assoc();
@@ -103,14 +102,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                          <img src="<?php echo $img ?>" alt="Dish">
                     </div>
                     <div class="content">
-                         <div class="ratting">
+                         <!-- <div class="ratting">
                               <i class="fas fa-star"></i>
                               <i class="fas fa-star"></i>
                               <i class="fas fa-star"></i>
                               <i class="fas fa-star"></i>
                               <i class="fas fa-star"></i>
                               <span>(5k)</span>
-                         </div>
+                         </div> -->
                          <h5><a href="product-details.html"><?php echo $results_data["product_name"] ?></a></h5>
                          <?php
                          $price = Database::Search("SELECT * FROM price_table WHERE `box_type_box_type_id`='1' AND `product_product_id`='" . $results_data["product_id"] . "' ");

@@ -36,15 +36,7 @@ session_start();
     <link rel="stylesheet" href="assets/css/slick.min.css">
     <!-- Main Style -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css">
 
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css">
-
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css">
-
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css">
-
-    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css">
     <script src="https://js.stripe.com/v3/"></script>
 
 </head>
@@ -312,8 +304,8 @@ session_start();
                     <div class="col-lg-12">
                         <div class="section-title text-center mb-50" data-aos="fade-up" data-aos-duration="1500"
                             data-aos-offset="50">
-                            <span class="sub-title mb-5">popular burger</span>
-                            <h2>popular delicious burger</h2>
+                            <span class="sub-title mb-5">popular Booze Bites</span>
+                            <h2>popular delicious Booze Bites</h2>
                         </div>
                     </div>
                 </div>
@@ -977,6 +969,7 @@ session_start();
     <script src="assets/js/aos.js"></script>
     <!-- Custom script -->
     <script src="assets/js/script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 

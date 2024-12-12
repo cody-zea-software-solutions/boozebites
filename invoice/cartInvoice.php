@@ -302,6 +302,7 @@ if (isset($_SESSION["user_boost"])) {
         <script src="assets/js/html2canvas.min.js"></script>
         <script src="assets/js/main.js"></script>
         <script src="invoice.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       </body>
 
     </html>

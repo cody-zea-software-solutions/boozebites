@@ -63,8 +63,8 @@ if (isset($_SESSION["user_boost"])) {
 
     <body>
         <?php
-     //   require "header.php";
-     //   headerContent(0);
+       require "header.php";
+       headerContent(0);
         ?>
         <div class="container-fluid vh-100 d-flex align-items-center">
             <div class="row d-flex justify-content-center">
@@ -115,9 +115,9 @@ if (isset($_SESSION["user_boost"])) {
                                     <p class="text-body">Mobile Number</p>
                                     <input id="mobile" value="<?php echo $user_data["mobile"] ?>" class="form-control mt-1" type="text" placeholder="Mobile Number" required />
                                 </div>
-                                <div class="col-6 col-lg-6">
-                                    <p class="text-body">CITY</p>
-                                    <select class="form-select" id="city">
+                                <div class="col-12 col-lg-6">
+                                    <p class="text-body">City</p>
+                                    <select class="" id="city">
                                     <?php
                                     $rs = Database::search("SELECT * FROM `city`");
                                     $n = $rs->num_rows;
@@ -129,9 +129,9 @@ if (isset($_SESSION["user_boost"])) {
 
                                     }
                                     ?>
-                                </select>
+                                  </select>
                                 </div>
-                                <hr/>
+                                <!-- <hr/> -->
                                 <?php
                                 $xm = Database::Search("SELECT * FROM `address` WHERE `user_email`='" . $user_data["email"] . "'");
                                 $adress = $xm->fetch_assoc();
@@ -141,7 +141,7 @@ if (isset($_SESSION["user_boost"])) {
                                         <p class="text-body">Address Line 1</p>
                                         <input id="a_line_1"  class="form-control mt-1" type="text" placeholder="Address Line 01" required />
                                     </div>
-                                    <div class="col-12 col-lg-6">
+                                    <div class="col-12 col-lg-12">
                                         <p class="text-body">Address Line 2</p>
                                         <input id="a_line_2"  class="form-control mt-1" type="text" placeholder="Address Line 02" required />
                                     </div>
@@ -152,7 +152,7 @@ if (isset($_SESSION["user_boost"])) {
                                         <p class="text-body">Address Line 1</p>
                                         <input id="a_line_1" value="<?php echo  $adress["first_line"] ?>" class="form-control mt-1" type="text" placeholder="Address Line 01" required />
                                     </div>
-                                    <div class="col-12 col-lg-6">
+                                    <div class="col-12 col-lg-12">
                                         <p class="text-body">Address Line 2</p>
                                         <input id="a_line_2" value="<?php echo  $adress["second_line"] ?>" class="form-control mt-1" type="text" placeholder="Address Line 02" required />
                                     </div>
@@ -187,7 +187,7 @@ if (isset($_SESSION["user_boost"])) {
             </div>
         </div>
         <?php
-       // require "footer.php"
+       require "footer.php"
         ?>
 
         <script>

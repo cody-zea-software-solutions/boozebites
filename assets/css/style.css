@@ -83,6 +83,9 @@ body {
 .secondary-color {
   color: #ec3d08;
 }
+.bg-color {
+  background-color: #ec3d08;
+}
 
 a {
   color: var(--base-color);
@@ -4483,11 +4486,11 @@ h6,
     margin-right: 35px;
   }
 }
-@media only screen and (max-width: 479px) {
+/* @media only screen and (max-width: 479px) {
   .menu-btns > button {
     display: none;
   }
-}
+} */
 .menu-btns > button span {
   position: absolute;
   left: 95%;

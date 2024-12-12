@@ -1,5 +1,7 @@
 <?php  
-require "connection.php"
+session_start();
+require "connection.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="zxx">

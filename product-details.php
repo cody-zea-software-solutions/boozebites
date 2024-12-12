@@ -6,7 +6,7 @@ if (isset($_GET["pid"])) {
   $p_rs = Database::Search("SELECT * FROM `product` WHERE `product_id`='" . $pid . "'");
   if ($p_rs->num_rows > 0) {
     $p_d = $p_rs->fetch_assoc();
-?>
+    ?>
     <!DOCTYPE html>
     <html lang="zxx">
 
@@ -94,7 +94,7 @@ if (isset($_GET["pid"])) {
         <?php
         require_once("header.php");
         headerContent(0)
-        ?>
+          ?>
 
         <!-- Product Details Start -->
         <section class="product-details pb-10 pt-130 rpt-100">
@@ -107,9 +107,9 @@ if (isset($_GET["pid"])) {
                   $img_rs = Database::Search("SELECT * FROM `product_img` WHERE `product_id`='" . $pid . "'");
                   if ($img_rs->num_rows > 0) {
                     $img_d = $img_rs->fetch_assoc();
-                  ?>
+                    ?>
                     <img src="<?php echo $img_d["product_img_path"]; ?>" class="img-fluid w-100" alt="Product Details">
-                  <?php
+                    <?php
                   } else {
                     echo "no image set";
                   }
@@ -119,11 +119,11 @@ if (isset($_GET["pid"])) {
                   <?php
                   for ($x = 1; $x < $img_rs->num_rows; $x++) {
                     $img_d = $img_rs->fetch_assoc();
-                  ?>
+                    ?>
                     <div class="col-6 col-md-6 col-lg-4 mt-2">
                       <img src="<?php echo $img_d["product_img_path"]; ?>" alt="Product Details" />
                     </div>
-                  <?php
+                    <?php
                   }
                   ?>
                 </div>
@@ -136,7 +136,7 @@ if (isset($_GET["pid"])) {
                   </div>
                   <p><?php echo $p_d["description"]; ?></p>
                   <!-- SPICY LEVEL -->
-                  <h5 class="pt-4">Spicy Level 🌶️<span id="prefRef">1</span></h5>
+                  <h5 class="pt-4">Spicy Level 🌶️<span id="prefRef"></span></h5>
                   <div class="row row-cols-3 g-2">
                     <!-- Example Spicy Levels -->
                     <!-- Replace these with dynamic values using a template engine or JavaScript -->
@@ -144,20 +144,21 @@ if (isset($_GET["pid"])) {
                     $pref_rs = Database::Search("SELECT * FROM `preference`");
                     for ($x = 0; $x < $pref_rs->num_rows; $x++) {
                       $pref_d = $pref_rs->fetch_assoc();
-                    ?>
+                      ?>
                       <div class="col">
                         <div
-                          class="px-4 py-2 rounded-pill border d-flex justify-content-center align-items-center text-dark"
-                          style="cursor: pointer" onclick="setPref('<?php echo $pref_d['preference_id']; ?>')">
+                          class="pref px-4 py-2 rounded-pill border d-flex justify-content-center align-items-center text-dark"
+                          id="prefSelected<?php echo $pref_d['preference_id'];?>" style="cursor: pointer"
+                          onclick="setPref('<?php echo $pref_d['preference_id']; ?>')">
                           <?php echo $pref_d["preference_name"]; ?>
                         </div>
                       </div>
-                    <?php
+                      <?php
                     }
                     ?>
                   </div>
                   <!-- SIZES LEVEL -->
-                  <h5 class="pt-4">Sizes available 🍽️<span id="sizeRef">1</span></h5>
+                  <h5 class="pt-4">Sizes available 🍽️<span id="sizeRef"></span></h5>
                   <div class="row row-cols-3 g-2">
                     <!-- Example Spicy Levels -->
                     <!-- Replace these with dynamic values using a template engine or JavaScript -->
@@ -166,15 +167,16 @@ if (isset($_GET["pid"])) {
                                                 price_table.box_type_box_type_id=box_type.box_type_id WHERE `product_product_id`='" . $pid . "'");
                     for ($x = 0; $x < $size_rs->num_rows; $x++) {
                       $size_d = $size_rs->fetch_assoc();
-                    ?>
-                    <div class="col">
+                      ?>
+                      <div class="col" id="selecter">
                         <div
-                          class="px-4 py-2 rounded-pill border d-flex justify-content-center align-items-center text-dark"
-                          style="cursor: pointer" onclick="setSize('<?php echo $p_d['product_id']; ?>', '<?php echo $size_d['box_type_id']; ?>')">
+                          class="box px-4 py-2 rounded-pill border d-flex justify-content-center align-items-center text-dark"
+                          id="selected<?php echo $size_d['box_type_id']; ?>" style="cursor: pointer"
+                          onclick="setSize('<?php echo $p_d['product_id']; ?>', '<?php echo $size_d['box_type_id']; ?>')">
                           <?php echo $size_d["box_type_name"]; ?>
                         </div>
                       </div>
-                    <?php
+                      <?php
                     }
                     ?>
                   </div>
@@ -184,9 +186,9 @@ if (isset($_GET["pid"])) {
                   $price_rs = Database::Search("SELECT * FROM `price_table` WHERE `product_product_id`='" . $pid . "'");
                   if ($price_rs->num_rows > 0) {
                     $price_d = $price_rs->fetch_assoc();
-                  ?>
+                    ?>
                     <span class="price mb-15 mt-4" id="priceT">$<?php echo $price_d['price']; ?></span>
-                  <?php
+                    <?php
                   } else {
                     echo "coming soon...";
                   }
@@ -200,7 +202,7 @@ if (isset($_GET["pid"])) {
                     <button class="theme-btn mb-15" onclick="addToCart('<?php echo $p_d['product_id']; ?>');">
                       Add to Cart <i class="far fa-arrow-alt-right"></i>
                     </button>
-                </div>
+                  </div>
                   <ul class="category-tags pt-20 pb-30">
                     <li>
                       <h6>Categories</h6>
@@ -210,18 +212,18 @@ if (isset($_GET["pid"])) {
                     <li>
                       <h6>Tags</h6>
                       :
-                      <a href="#">Pizza</a>
-                      <a href="#">Burger</a>
-                      <a href="#">Soup</a>
+                      <a href="#">Booze Bites</a>
+                      <a href="#">Sri Lankan Taste</a>
+                      <a href="#">Authentic</a>
                     </li>
                   </ul>
-                  <div class="social-style-one">
+                  <!-- <div class="social-style-one">
                     <h5>Share</h5>
                     <a href="contact.html"><i class="fab fa-twitter"></i></a>
                     <a href="contact.html"><i class="fab fa-facebook-f"></i></a>
                     <a href="contact.html"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
@@ -233,38 +235,19 @@ if (isset($_GET["pid"])) {
             <ul class="nav nav tab-style-one mt-125 rmt-95 mb-40" data-aos="fade-up" data-aos-duration="1500"
               data-aos-offset="50">
               <li>
-                <a href="#details" data-bs-toggle="tab" class="active show">Descrptions</a>
+                <a href="#details" data-bs-toggle="tab" class="active show">Descrption</a>
               </li>
-              <li>
-                <a href="#information" data-bs-toggle="tab">Additional Information's</a>
-              </li>
+
               <!-- <li><a href="#reviews" data-bs-toggle="tab">Reviews(3)</a></li> -->
             </ul>
             <div class="tab-content pb-60" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
               data-aos-offset="50">
               <div class="tab-pane fade active show" id="details">
                 <p>
-                  Sorem ipsum dolor sit amet, consectetur adipiscing elit. Tortor
-                  nulla id sit neque scelerisque pulvinar. Mus amet interdum
-                  turpis consequat adipiscing. Elementum feugiat sed duis
-                  consectetur varius et cras mattis. Lobortis auctor sit in eu
-                  nisl fusce augue venenatis, dui. Phasellus eget sagittis mauris,
-                  nibh augue cursus pellentesque amet elementum. Tristique amet
-                  sollicitudin sit nulla aliquam, imperdiet sed ut diam.
-                  Suspendisse ipsum rhoncus nulla lectus. Id neque in urna neque
-                  non amet. Tortor sed aliquam in faucibus enim, posuere. Sed et
-                  accumsan, neque posuere tempus in cras. Ornare lectus pretium,
-                  est eget purus, enim quam purus netus. Turpis nunc
-                </p>
-                <p>
-                  Dictum ultrices et suspendisse amet mattis in pellentesque.
-                  Vulputate arcu, consectetur odio donec nec duis ultrices
-                  facilisi. Mauris cursus elit diam, urna suspendisse et, amet.
-                  Vitae ligula ultrices nulla justo, enim lorem duis. Volutpat sit
-                  et neque, aliquam, diam at at neque. Lacus augue
+                  <?php echo $p_d["description"]; ?>
                 </p>
               </div>
-              <div class="tab-pane fade" id="information">
+              <!-- <div class="tab-pane fade" id="information">
                 <p>
                   Circumstances occur in which toil and pain can procure him some
                   great pleasure. To take a trivial example, which of us ever
@@ -283,7 +266,7 @@ if (isset($_GET["pid"])) {
                   tempora incidunt ut labore et dolore magnam aliquam quaerat
                   voluptatem.
                 </p>
-              </div>
+              </div> -->
               <!-- <div class="tab-pane fade" id="reviews">
               <h5>Reviews (3)</h5>
               <div class="comments rattings mt-25">
@@ -532,21 +515,21 @@ if (isset($_GET["pid"])) {
         <!-- Related Products Area end -->
         <?php
         require("footer.php")
-        ?>
+          ?>
       </div>
       <!--End pagewrapper-->
       <!-- jQuery and JavaScript -->
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
           // Click event for sub-images
-          $('.gallery-img').on('click', function() {
+          $('.gallery-img').on('click', function () {
             var fullImageUrl = $(this).data('full-image');
             $('#popupImage img').attr('src', fullImageUrl);
             $('#popupImage').fadeIn();
           });
           // Close popup
-          $('.close').on('click', function() {
+          $('.close').on('click', function () {
             $('#popupImage').fadeOut();
           });
         });
@@ -580,8 +563,8 @@ if (isset($_GET["pid"])) {
       <script src="harry.js" defer></script>
     </body>
 
-  </script>
-<?php
+    </script>
+    <?php
   }
 }
 ?>
