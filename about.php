@@ -13,7 +13,7 @@ require "connection.php";
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>WellFood - Resturent HTML Template</title>
+    <title>Booze Bites About Us</title>
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="assets/images/logos/favicon.png" type="image/x-icon">
     <!-- Google Fonts -->
@@ -145,7 +145,7 @@ headerContent(1);
                         <div class="about-image-four style-two mb-30" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
                             <div class="row">
                                 <div class="col">
-                                    <img src="assets/images/about/about-four1.jpg" alt="About">
+                                    <img src="assets/images/yogiImage.jpg" alt="About">
                                 </div>
                                 <div class="col mt-80">
                                     <img src="assets/images/about/about-four2.jpg" alt="About">

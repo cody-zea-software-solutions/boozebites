@@ -80,7 +80,7 @@ session_start();
                             <img src="assets/images/hero/hero-three.png" alt="Hero">
                             <div class="offer-badge"
                                 style="background-image: url(assets/images/shapes/offer-circle-shape.png)">
-                                <span>50% <br>off</span>
+                                <span>No <br>MSG</span>
                             </div>
                         </div>
                     </div>
@@ -218,14 +218,16 @@ session_start();
                             <div class="col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500"
                                 data-aos-offset="50">
                                 <div class="about-middle-content mb-30">
-                                    <h4>we have 25+ Years Of Experience</h4>
-                                    <p>Welcome too restaurant, where culinary excellence meets warm hospitality in every
-                                        dish we nestled in the heart of City name our eatery invites</p>
+                                    <h4>we have 02+ Years Of Experience</h4>
+                                    <p>Bringing the authentic taste of Sri Lanka to New Zealand! Perfectly crafted bites
+                                        to complement your after-work drinks, with no added MSG, wholesome ingredients,
+                                        and flavors that take you home.
+                                    </p>
                                     <div class="about-btn-customer mt-40">
                                         <a href="about.html" class="theme-btn style-two">learn more us <i
                                                 class="far fa-arrow-alt-right"></i></a>
                                         <div class="customer">
-                                            <h6>5m+ Happy customer</h6>
+                                            <h6>100+ Happy customer</h6>
                                             <div class="customer-image">
                                                 <img src="assets/images/about/customer1.png" alt="Customer">
                                                 <img src="assets/images/about/customer2.png" alt="Customer">
@@ -242,7 +244,7 @@ session_start();
                     <div class="col-xl-4" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="about-image-part style-three mb-30">
-                            <img src="assets/images/about/about2.jpg" alt="About">
+                            <img src="assets/images/yogiImage.jpg" alt="About">
                             <div class="quality-food"
                                 style="background-image: url(assets/images/shapes/about-star.png)">
                                 <span class="for-border"></span>
@@ -693,7 +695,7 @@ session_start();
 
 
         <!-- Client Area start -->
-        <div class="client-area rel z-2">
+        <!-- <div class="client-area rel z-2">
             <div class="container container-1520">
                 <div class="client-wrap">
                     <div class="client-active">
@@ -736,7 +738,7 @@ session_start();
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Client Area end -->
 
 
@@ -828,30 +830,30 @@ session_start();
 
 
         <!-- Headline area start -->
-        <div class="headline-area rel z-1">
+        <div class="headline-area rel z-1 mt-5">
             <span class="marquee-wrap">
                 <span class="marquee-inner left">
-                    <span class="marquee-item">newsletter subscribe</span>
+                    <span class="marquee-item">Get in Touch – We're Here to Serve You!</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">newsletter subscribe</span>
+                    <span class="marquee-item">Get in Touch – We're Here to Serve You!</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">newsletter subscribe</span>
-                    <span class="marquee-item"><i class="flaticon-star"></i></span>
-                </span>
-                <span class="marquee-inner left">
-                    <span class="marquee-item">newsletter subscribe</span>
-                    <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">newsletter subscribe</span>
-                    <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">newsletter subscribe</span>
+                    <span class="marquee-item">Get in Touch – We're Here to Serve You!</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                 </span>
                 <span class="marquee-inner left">
-                    <span class="marquee-item">newsletter subscribe</span>
+                    <span class="marquee-item">Get in Touch – We're Here to Serve You!</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">newsletter subscribe</span>
+                    <span class="marquee-item">Get in Touch – We're Here to Serve You!</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">newsletter subscribe</span>
+                    <span class="marquee-item">Get in Touch – We're Here to Serve You!</span>
+                    <span class="marquee-item"><i class="flaticon-star"></i></span>
+                </span>
+                <span class="marquee-inner left">
+                    <span class="marquee-item">Get in Touch – We're Here to Serve You!</span>
+                    <span class="marquee-item"><i class="flaticon-star"></i></span>
+                    <span class="marquee-item">Get in Touch – We're Here to Serve You!</span>
+                    <span class="marquee-item"><i class="flaticon-star"></i></span>
+                    <span class="marquee-item">Get in Touch – We're Here to Serve You!</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
                 </span>
             </span>
@@ -881,10 +883,10 @@ session_start();
                             <h6>Share your WhatsApp number, and the Booze Bites team will get in touch with you soon!
                                 Shape</h6>
                             <form class="newsletter-form style-two mt-15" action="#">
-                            <label for="news-email1"><i class="fa-thin fa-messages"></i></label>
-                            <input id="news-email" type="text" placeholder="enter your message" required>
-                                <a href="" id="link2" onclick="singleSend();" class="theme-btn style-two" type="submit">Submit <i
-                                        class="far fa-arrow-alt-right"></i></a>
+                                <label for="news-email1"><i class="fa-thin fa-messages"></i></label>
+                                <input id="news-email" type="text" placeholder="enter your message" required>
+                                <a href="" id="link2" onclick="singleSend();" class="theme-btn style-two"
+                                    type="submit">Submit <i class="far fa-arrow-alt-right"></i></a>
                             </form>
 
                         </div>

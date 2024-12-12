@@ -62,7 +62,7 @@ function headerContent($theme)
                     
                     <!-- Menu Button -->
                     <div class="menu-btns">
-                        <button onclick="gotoCart();"><i class="far fa-shopping-cart"></i> <span>' . (isset($_SESSION["user_boost"]) ? $cart_data["num_cart"] : '0' ) .'</span></button>
+                        <button onclick="gotoCart();"><i class="far fa-shopping-cart"></i><span>' . (isset($_SESSION["user_boost"]) ? $cart_data["num_cart"] : "0" ) .'</span></button>
                         <a href="contact.php" class="theme-btn">Order now <i class="far fa-arrow-alt-right"></i></a>
                                 <!-- User Profile / Login -->
                         ' . (isset($_SESSION["user_boost"]) ? '
