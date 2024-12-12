@@ -2,7 +2,10 @@
 require "connection.php";
 require "CartItem.php";
 session_start();
-$user_email = $_SESSION["user_boost"]["email"];
+if (isset($_SESSION["user_boost"]["email"])) {
+    $user_email = $_SESSION["user_boost"]["email"];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -85,17 +88,32 @@ $user_email = $_SESSION["user_boost"]["email"];
 
         <!-- Shopping Cart Area start -->
         <?php
-        $cart_rs = Database::Search("SELECT * FROM `cart_item` INNER JOIN `price_table` ON
+        if (isset($_SESSION["user_boost"])) {
+            $cart_rs = Database::Search("SELECT * FROM `cart_item` INNER JOIN `price_table` ON
                cart_item.price_table_product_product_id=price_table.product_product_id AND cart_item.price_table_box_type_box_type_id=price_table.box_type_box_type_id INNER JOIN `product` ON
                price_table.product_product_id=product.product_id INNER JOIN `box_type` ON
                cart_item.price_table_box_type_box_type_id=box_type.box_type_id INNER JOIN `preference` ON 
                cart_item.preference_preference_id=preference.preference_id WHERE `user_email`='$user_email'");
-        $cart_num = $cart_rs->num_rows;
-        if ($cart_num > 0) {
-            ?>
-            <section class="shopping-cart-area py-130 rel z-1" id="cartBody">
-            </section>
-            <?php
+            $cart_num = $cart_rs->num_rows;
+            if ($cart_num > 0) {
+                ?>
+                <section class="shopping-cart-area py-130 rel z-1" id="cartBody">
+                </section>
+                <?php
+            } else if ($cart_num === 0) {
+                ?>
+                    <div class="container bg-white p-5">
+                        <div class="row d-flex justify-content-center">
+                            <img src="assets/images/emcart.png" class="w-50" alt="CartEmptyImage">
+                            <p class="h1 text-center">Your Cart is Empty</p>
+                            <a href="shop.php" class="theme-btn style-two col-4" type="submit">Shop <i
+                                    class="far fa-arrow-alt-right"></i></a>
+
+                        </div>
+                    </div>
+
+                <?php
+            }
         } else {
             ?>
             <div class="container-fluid bg-white p-5">
@@ -124,6 +142,7 @@ $user_email = $_SESSION["user_boost"]["email"];
 
             <?php
         }
+
 
         ?>
 
