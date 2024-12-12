@@ -62,8 +62,22 @@ if (isset($_SESSION["a"])) {
                       <div class="col-8 col-md-4 mb-2" style="height: 200px;">
                         <input type="file" class="d-none" id="img_input_1">
                         <div class="border-x log-link d-flex justify-content-center align-items-center h-100 outer-div"
-                          onclick="tProductImage(1);"><span class="small" id="img_span_1">Main Image</span>
+                          onclick="tProductImage(1);"><span class="small" id="img_span_1">First Image</span>
                           <img src="" class="img-fluid" id="img_div_1">
+                        </div>
+                      </div>
+                      <div class="col-8 col-md-4 mb-2" style="height: 200px;">
+                        <input type="file" class="d-none" id="img_input_2">
+                        <div class="border-x log-link d-flex justify-content-center align-items-center h-100 outer-div"
+                          onclick="tProductImage(2);"><span class="small" id="img_span_2">Second Image</span>
+                          <img src="" class="img-fluid" id="img_div_2">
+                        </div>
+                      </div>
+                      <div class="col-8 col-md-4 mb-2" style="height: 200px;">
+                        <input type="file" class="d-none" id="img_input_3">
+                        <div class="border-x log-link d-flex justify-content-center align-items-center h-100 outer-div"
+                          onclick="tProductImage(3);"><span class="small" id="img_span_3">Third Image</span>
+                          <img src="" class="img-fluid" id="img_div_3">
                         </div>
                       </div>
                     </div>

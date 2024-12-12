@@ -14,10 +14,10 @@ if (isset($_SESSION["a"])) {
         $orderID = $_POST["pid"];
         $status = $_POST["s"];
 
-        if($status==1){
-            $status=0;
-        }else{
+        if($status==0){
             $status=1;
+        }else{
+            $status=0;
         }
 
 

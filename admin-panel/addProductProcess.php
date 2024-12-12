@@ -20,9 +20,11 @@ if (isset($_SESSION["a"])) {
         $s_des = $_POST["s_des"];
 
         // Validate image
-        if (!isset($_FILES["img1"]) || $_FILES["img1"]["error"] !== UPLOAD_ERR_OK) {
-            echo "Image is empty or not uploaded correctly.";
-            exit();
+        for ($i = 1; $i <= 3; $i++) {
+            if (!isset($_FILES["img" . $i]) || $_FILES["img" . $i]["error"] !== UPLOAD_ERR_OK) {
+                echo "Image $i is empty or not uploaded correctly.";
+                exit();
+            }
         }
 
         // Validate inputs for empty values
@@ -50,11 +52,13 @@ if (isset($_SESSION["a"])) {
 
         // Validate image type
         $allowed_image_extensions = array("image/jpg", "image/jpeg", "image/png", "image/svg+xml", "image/webp");
-        $file_type = $_FILES["img1"]["type"];
 
-        if (!in_array($file_type, $allowed_image_extensions)) {
-            echo "Invalid image type. Allowed types are JPG, JPEG, PNG, SVG, WEBP.";
-            exit();
+        for ($i = 1; $i <= 3; $i++) {
+            $file_type = $_FILES["img" . $i]["type"];
+            if (!in_array($file_type, $allowed_image_extensions)) {
+                echo "Invalid image type for Image $i. Allowed types are JPG, JPEG, PNG, SVG, WEBP.";
+                exit();
+            }
         }
 
         // Initializing unique ID for images
@@ -75,20 +79,24 @@ if (isset($_SESSION["a"])) {
             $product_id = $stmt->insert_id;
 
             // Process the image upload
-            $new_file_type = pathinfo($_FILES["img1"]['name'], PATHINFO_EXTENSION);
-            $file_name = "assets-admin/images/product_img/" . $img_id_uni . "_" . uniqid() . "." . $new_file_type;
+            for ($i = 1; $i <= 3; $i++) {
+                $new_file_type = pathinfo($_FILES["img" . $i]['name'], PATHINFO_EXTENSION);
+                $file_name = "assets-admin/images/product_img/" . $img_id_uni . "_img" . $i . "_" . uniqid() . "." . $new_file_type;
 
-            if (move_uploaded_file($_FILES["img1"]["tmp_name"], $file_name)) {
-                // Insert image path into database
-                $stmt_img = Databases::$connection->prepare("INSERT INTO `product_img` (`product_img_path`, `product_id`) VALUES (?, ?)");
-                $stmt_img->bind_param("si", $file_name, $product_id);
-                $stmt_img->execute();
-                $stmt_img->close();
-
-                echo "success";
-            } else {
-                echo "Error uploading image.";
+                if (move_uploaded_file($_FILES["img" . $i]["tmp_name"], $file_name)) {
+                    // Insert image path into database
+                    $stmt_img = Databases::$connection->prepare("INSERT INTO `product_img` (`product_img_path`, `product_id`) VALUES (?, ?)");
+                    $stmt_img->bind_param("si", $file_name, $product_id);
+                    $stmt_img->execute();
+                    $stmt_img->close();
+                } else {
+                    echo "Error uploading Image $i.";
+                    exit();
+                }
             }
+
+            echo "Product Added Successfully";
+
         } else {
             echo "Error inserting product into database.";
         }

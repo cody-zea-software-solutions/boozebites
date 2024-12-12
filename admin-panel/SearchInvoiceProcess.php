@@ -38,7 +38,7 @@ if (isset($_GET["key"])) {
                                         <?php echo $x ?>
                                     </td>
                                     <th scope="row">
-                                        <?php echo $invoice_data['invoice_id'] ?>
+                                        <?php echo $invoice_data['payment_intent'] ?>
                                     </th>
                                     <td>
                                         <?php echo $invoice_data["first_name"] . " " . $invoice_data["last_name"] ?></br>

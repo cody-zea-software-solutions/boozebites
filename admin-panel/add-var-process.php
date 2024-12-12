@@ -27,10 +27,10 @@ if (isset($_SESSION["a"])) {
             exit();
         }
         
-        if ($vp == 0 || !preg_match('/^\d+$/', $vp)) {
-            echo "Invalid price. Price canot have decimals.";
+        if ($vp != 0 && !preg_match('/^\d+(\.\d{1,2})?$/', $vp)) {
+            echo "Invalid price. Price can only have up to two decimal places.";
             exit();
-        } 
+        }
 
         // Set up the database connection
         Databases::setUpConnection();
@@ -57,7 +57,7 @@ if (isset($_SESSION["a"])) {
                 try {
                     if ($update_stmt = Databases::$connection->prepare($update_sql)) {
                         // Bind parameters for the update query
-                        $update_stmt->bind_param("iii", $vp, $vb, $vn);
+                        $update_stmt->bind_param("dii", $vp, $vb, $vn);
 
                         // Execute the update query
                         if ($update_stmt->execute()) {

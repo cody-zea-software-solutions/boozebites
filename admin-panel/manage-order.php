@@ -53,6 +53,16 @@ if (isset($_SESSION["a"])) {
                     <!--  Header End -->
                     <div class="container-fluid">
 
+                    <div class="row">
+                    <div class="col-12 text-center mb-3">
+                    <div class="mb-1"><span class="h4 mb-9 fw-semibold">Manage Orders&nbsp;&nbsp;<i class="fa fa-archive"
+                      aria-hidden="true"></i></span>
+                    </div>
+                            <div><span class="mb-9 text-dark-emphasis">You can manage your orders here</span>
+                        </div>
+                    </div>
+                    </div>
+
                         <div class="row">
                             <section>
                                 <div class="gradient-custom-1 h-100">
@@ -117,7 +127,7 @@ if (isset($_SESSION["a"])) {
                                                                 INNER JOIN price_table ON price_table.box_type_box_type_id=order_item.price_table_box_type_box_type_id AND price_table.product_product_id=product.product_id
                                                                 INNER JOIN meat_type ON meat_type.meat_type_id=product.meat_type_id
                                                                 INNER JOIN cook_type ON cook_type.cook_type_id=product.cook_type_id
-                                                                INNER JOIN preference ON preference.preference_id=order_item.preference_preference_id WHERE `order`.`id`=$ocf AND product.on_delete=1");
+                                                                INNER JOIN preference ON preference.preference_id=order_item.preference_preference_id WHERE `order`.`id`=$ocf AND product.on_delete=0");
                                                                             $order_num = $order_rs->num_rows;
 
                                                                             for ($x = 0; $x < $order_num; $x++) {
