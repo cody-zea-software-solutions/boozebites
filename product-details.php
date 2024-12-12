@@ -462,7 +462,7 @@ if (isset($_GET["pid"])) {
                         <span
                           class="price"><del><?php echo "$" . "" . $price_data["price"] + 50; ?></del><?php echo "$" . "" . $price_data["price"]; ?></span>
                         <?php
-                        $box = Database::Search("SELECT * FROM boost_bite.box_type WHERE `box_type_id`='1'");
+                        $box = Database::Search("SELECT * FROM box_type WHERE `box_type_id`='1'");
                         $box_data = $box->fetch_assoc();
                         ?>
                         <br>
