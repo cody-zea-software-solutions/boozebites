@@ -60,7 +60,7 @@ if (isset($_SESSION["a"])) {
                             <?php
                             $product_rs = Databases::search("SELECT * FROM product
                     INNER JOIN cook_type ON cook_type.cook_type_id=product.cook_type_id
-                    INNER JOIN meat_type ON meat_type.meat_type_id=product.meat_type_id");
+                    INNER JOIN meat_type ON meat_type.meat_type_id=product.meat_type_id ORDER BY `product_id` DESC");
                             $product_num = $product_rs->num_rows;
 
 
@@ -69,13 +69,15 @@ if (isset($_SESSION["a"])) {
 
                                 $product_data = $product_rs->fetch_assoc();
 
-                                $img_q = Databases::search("SELECT * FROM `product_img` WHERE `product_id`='" . $product_data["product_id"] . "'");
-                                if ($img_q->num_rows >= 1) {
-                                    $img_d = $img_q->fetch_assoc();
+                                $img_m = Databases::search("SELECT * FROM `product_img` WHERE `product_id`='" . $product_data["product_id"] . "' ORDER BY `product_img_id` ASC");
+                                $img_q = Databases::search("SELECT * FROM `product_img` WHERE `product_id`='" . $product_data["product_id"] . "' ORDER BY `product_img_id` ASC");
+                                if ($img_m->num_rows >= 1) {
+                                    $img_d = $img_m->fetch_assoc();
                                     $img = $img_d["product_img_path"];
                                 } else {
                                     $img = null;
                                 }
+
 
                                 // $price = { () $product_data["price"] + 5% }
                     
@@ -98,7 +100,7 @@ if (isset($_SESSION["a"])) {
                                                 <button class="btn tex-g p-1 mx-1 rounded-0-5" data-bs-toggle="modal"
                                                     data-bs-target="#exampleModal<?php echo $product_data["product_id"] ?>">UPDATE
                                                 </button><?php
-                                                    if($product_data["on_delete"]==1){
+                                                    if($product_data["on_delete"]==0){
                                                         ?>
                                                         <button class='btn text-danger p-1 mx-1 rounded-0-5' onclick="disablePr(<?php echo $product_data['product_id'],',',$product_data['on_delete'] ?>)">DISABLE</button>
                                                         <?php
@@ -135,13 +137,28 @@ if (isset($_SESSION["a"])) {
 
                                                             <div class="col-12 my-3">
                                                                 <div class="row d-flex justify-content-center">
+
+                                                                <?php
+                                                                
+                                                                for($cvn=1;$cvn<=$img_q->num_rows;$cvn++){
+
+                                                                    $img_data = $img_q->fetch_assoc();
+                                                                    $img = $img_data["product_img_path"];
+                                                                    ?>
+
                                                                     <div class="col-8 col-md-4 mb-2" style="height: 200px;">
-                                                                        <input type="file" class="d-none" id="img_input_1<?php echo $productid; ?>">
+                                                                        <input type="file" class="d-none" id="img_input_<?php echo $cvn; echo $productid; ?>">
                                                                         <div class="border-x log-link d-flex justify-content-center align-items-center h-100 outer-div"
-                                                                            onclick="cProductImage(<?php echo $productid; ?>);">
-                                                                            <img src="<?php echo $img ?>" class="img-fluid" id="img_div_1<?php echo $productid; ?>">
+                                                                            onclick="cProductImage(<?php echo $cvn; ?>,<?php echo $productid; ?>);">
+                                                                            <img src="<?php echo $img ?>" class="img-fluid" id="img_div_<?php echo $cvn; echo $productid; ?>">
                                                                         </div>
                                                                     </div>
+
+                                                                    <?php
+                                                                }
+                                                                
+                                                                ?>
+
                                                                 </div>
                                                             </div>
                                                             <div class="col-3 mt-3">

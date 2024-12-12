@@ -1,20 +1,50 @@
 function tProductImage(x) {
 
-    var image = document.getElementById("img_input_" + x);
-    image.click();
+    var imageInput = document.getElementById("img_input_" + x);
+    imageInput.click();
 
-    image.onchange = function () {
-        var file_count = image.files.length;
-        if (file_count == 1) {
-            var file = image.files[0];
-            var url = window.URL.createObjectURL(file);
-            document.getElementById("img_span_" + x).className = "d-none";
-            document.getElementById("img_div_" + x).src = url;
+    imageInput.addEventListener("change", function handleImageChange() {
+        var fileCount = imageInput.files.length;
 
+        if (fileCount === 1) {
+            var file = imageInput.files[0];
+
+            // Validate file type
+            var allowedTypes = ["image/jpg", "image/jpeg", "image/png", "image/webp"];
+            if (!allowedTypes.includes(file.type)) {
+                alert("Invalid file type. Please select a JPG, JPEG, PNG, or WEBP image.");
+                imageInput.value = ""; // Clear the invalid input
+                return;
+            }
+
+            // Validate file size (e.g., max 5MB)
+            var maxSize = 5 * 1024 * 1024; // 5MB
+            if (file.size > maxSize) {
+                alert("File size exceeds 5MB. Please select a smaller image.");
+                imageInput.value = ""; // Clear the invalid input
+                return;
+            }
+
+            // Create object URL for preview
+            var url = URL.createObjectURL(file);
+            document.getElementById("img_span_" + x).className = "d-none"; // Hide placeholder
+            var imgPreview = document.getElementById("img_div_" + x);
+            imgPreview.src = url;
+
+            // Clean up the previous object URL when the image changes
+            imgPreview.onload = function () {
+                if (imgPreview.dataset.oldUrl) {
+                    URL.revokeObjectURL(imgPreview.dataset.oldUrl);
+                }
+                imgPreview.dataset.oldUrl = url; // Store the current URL for cleanup
+            };
         } else {
             alert("Please select an image.");
         }
-    }
+
+        // Remove the event listener after handling the change event
+        imageInput.removeEventListener("change", handleImageChange);
+    });
 
 }
 
@@ -66,8 +96,8 @@ function tUpdateImage(x) {
     });
 }
 
-function cProductImage(x) {
-    var imageInput = document.getElementById("img_input_1" + x);
+function cProductImage(cvn,x) {
+    var imageInput = document.getElementById("img_input_" + cvn + x);
     imageInput.click(); // Trigger the file input dialog
 
     imageInput.addEventListener("change", function handleImageChange() {
@@ -94,7 +124,7 @@ function cProductImage(x) {
 
             // Create object URL for preview
             var url = URL.createObjectURL(file); // Hide placeholder
-            var imgPreview = document.getElementById("img_div_1" + x);
+            var imgPreview = document.getElementById("img_div_" + cvn + x);
             imgPreview.src = url;
 
             // Clean up the previous object URL when the image changes
@@ -342,14 +372,14 @@ function add_new_town() {
     var tnid = [];
     for (let i = 1; i <= town_col_count; i++) {
         tnid[i] = document.getElementById("tc_" + i).value;
-        form.append("tnid"+i, tnid[i]);
+        form.append("tnid" + i, tnid[i]);
     }
     form.append("town_col_count", town_col_count);
 
     r.onreadystatechange = function () {
         if (r.readyState == 4 && r.status == 200) {
             alert(r.responseText);
-            if(r.responseText=="Towns added successfully !"){
+            if (r.responseText == "Towns added successfully !") {
                 location.reload();
             }
         }
@@ -620,21 +650,37 @@ function update_product_real(pid) {
     var pc = document.getElementById(pid + "pc");
     var pm = document.getElementById(pid + "pm");
     var pld = document.getElementById(pid + "pld");
-    var img_input = document.getElementById("img_input_1"+pid); // Image input field
+    var img_input1 = document.getElementById("img_input_1" + pid);
+    var img_input2 = document.getElementById("img_input_2" + pid);
+    var img_input3 = document.getElementById("img_input_3" + pid);
 
-    var r = new XMLHttpRequest();
+    // Declare the FormData object before using it
     var form = new FormData();
+
+    if (img_input1) {
+        if (img_input1.files.length > 0) {
+            form.append("img1", img_input1.files[0]); // Include the image file
+        }
+    }
+    if (img_input2) {
+        if (img_input2.files.length > 0) {
+            form.append("img2", img_input2.files[0]); // Include the image file
+        }
+    }
+    if (img_input3) {
+        if (img_input3.files.length > 0) {
+            form.append("img3", img_input3.files[0]); // Include the image file
+        }
+    }
+
+    // Append other form data
     form.append("pid", pid);
     form.append("pc", pc.value);
     form.append("pm", pm.value);
     form.append("pt", pt.value);
     form.append("pld", pld.value);
 
-    // Add image to the form data if it's selected
-    if (img_input.files.length > 0) {
-        form.append("img1", img_input.files[0]); // Include the image file
-    }
-
+    var r = new XMLHttpRequest();
     r.onreadystatechange = function () {
         if (r.readyState == 4 && r.status == 200) {
             alert(r.responseText);
@@ -642,13 +688,14 @@ function update_product_real(pid) {
                 window.location.reload();
             }
         }
-    }
+    };
 
     r.open("POST", "update-product-real-process.php", true);
     r.send(form);
 }
 
-function disablePr(x,y){
+
+function disablePr(x, y) {
 
     var r = new XMLHttpRequest();
     var form = new FormData();
@@ -669,9 +716,9 @@ function disablePr(x,y){
 }
 
 
-function update_product(pid,bid) {
-    var pb = document.getElementById(String(pid) + String(bid)+ "pb");
-    var pp = document.getElementById(String(pid) + String(bid)+ "pp");
+function update_product(pid, bid) {
+    var pb = document.getElementById(String(pid) + String(bid) + "pb");
+    var pp = document.getElementById(String(pid) + String(bid) + "pp");
 
     var r = new XMLHttpRequest();
     var form = new FormData();
@@ -719,8 +766,8 @@ function AddVar() {
 
 }
 
-function OrderStatusSave(pid,mid) {
-    var name = "statusChangeProduct"+mid+"3";
+function OrderStatusSave(pid, mid) {
+    var name = "statusChangeProduct" + mid + "3";
     var status = document.getElementById(name);
 
     var x = new XMLHttpRequest();
@@ -744,7 +791,7 @@ function OrderStatusSave(pid,mid) {
     x.send(form);
 }
 
-function userblockandunblcok(ue,st) {
+function userblockandunblcok(ue, st) {
 
     var x = new XMLHttpRequest();
 
@@ -756,7 +803,7 @@ function userblockandunblcok(ue,st) {
     x.onreadystatechange = function () {
         if (x.readyState == 4 && x.status == 200) {
             var response = x.responseText;
-            alert (response);
+            alert(response);
             if (response == "User status changed.") {
                 window.location.reload();
             } else {
@@ -857,6 +904,8 @@ function addProduct() {
     var c = document.getElementById("category");
     var weight = document.getElementById("weight");
     var image1 = document.getElementById("img_input_1");
+    var image2 = document.getElementById("img_input_2");
+    var image3 = document.getElementById("img_input_3");
 
     var f = new FormData();
 
@@ -865,6 +914,8 @@ function addProduct() {
     f.append("weight", weight.value);
     f.append("s_des", sd.value); // Corrected from innerHTML to value
     f.append("img1", image1.files[0]); // Corrected from files["0"] to files[0]
+    f.append("img2", image2.files[0]);
+    f.append("img3", image3.files[0]);
 
     var r = new XMLHttpRequest();
 

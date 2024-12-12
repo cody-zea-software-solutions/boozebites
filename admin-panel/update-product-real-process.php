@@ -66,37 +66,115 @@ if (isset($_SESSION["a"])) {
 
             // Execute query
             if ($stmt->execute()) {
-                $product_id = $stmt->insert_id;
+                $product_id = $pid;
+                // $product_id = $stmt->insert_id;
 
-                if (isset($_FILES["img1"]) && $_FILES["img1"]["error"] === UPLOAD_ERR_OK) {
-                    $allowed_image_extensions = array("image/jpg", "image/jpeg", "image/png", "image/svg+xml", "image/webp");
-                    $file_type = $_FILES["img1"]["type"];
-
-                    if (!in_array($file_type, $allowed_image_extensions)) {
-                        echo "Invalid image type. Allowed types are JPG, JPEG, PNG, SVG, WEBP.";
-                        exit();
-                    }
+                if (isset($_FILES["img1"]) && $_FILES["img1"]["error"] == UPLOAD_ERR_OK) {
 
                     $new_file_type = pathinfo($_FILES["img1"]['name'], PATHINFO_EXTENSION);
-                    $file_name = "assets-admin/images/product_img/" . $img_id_uni . "_" . uniqid() . "." . $new_file_type;
+                    $file_name = "assets-admin/images/product_img/" . $img_id_uni . "_img1_" . uniqid() . "." . $new_file_type;
 
                     if (move_uploaded_file($_FILES["img1"]["tmp_name"], $file_name)) {
                         // Insert image path into database
-                        $stmt_img = Databases::$connection->prepare("UPDATE `product_img` 
-                    SET `product_img_path` = ? 
-                    WHERE `product_id` = ?");
-                        $stmt_img->bind_param("si", $file_name, $pid);
-                        $stmt_img->execute();
-                        $stmt_img->close();
+                        $pa = Databases::Search("SELECT * FROM `product_img` WHERE `product_id` = '$product_id' ORDER BY `product_img_id` ASC LIMIT 1 OFFSET 0");
+                        if ($pa->num_rows == 1) {
+                            $pa_row = $pa->fetch_assoc();
+                            $paid=$pa_row['product_img_id'];
+                            $stmt_img = Databases::$connection->prepare("UPDATE `product_img` 
+                            SET `product_img_path` = ? 
+                            WHERE `product_id` = ? AND `product_img_id` = ?");
+                            $stmt_img->bind_param("sii", $file_name, $product_id, $paid);
+                            $stmt_img->execute();
+                            $stmt_img->close();
 
-                        echo "Product has been updated.";
+                            $file_path = $pa_row['product_img_path'];
+                            if (file_exists(filename: $file_path)) {
+                                if (unlink($file_path)) {
+                                }
+                            }
+
+                        } else {
+                            echo "Error getting product image 1.";
+                            exit();
+                        }
+
                     } else {
-                        echo "Error uploading image.";
+                        echo "Error uploading Image 1.";
+                        exit();
                     }
 
-                }else{
-                    echo "Product has been updated.";
                 }
+
+                if (isset($_FILES["img2"]) && $_FILES["img2"]["error"] == UPLOAD_ERR_OK) {
+
+                    $new_file_type = pathinfo($_FILES["img2"]['name'], PATHINFO_EXTENSION);
+                    $file_name = "assets-admin/images/product_img/" . $img_id_uni . "_img2_" . uniqid() . "." . $new_file_type;
+
+                    if (move_uploaded_file($_FILES["img2"]["tmp_name"], $file_name)) {
+                        // Insert image path into database
+                        $pa = Databases::Search("SELECT * FROM `product_img` WHERE `product_id` = '$product_id' ORDER BY `product_img_id` ASC LIMIT 1 OFFSET 1");
+                        if ($pa->num_rows == 1) {
+                            $pa_row = $pa->fetch_assoc();
+                            $paid=$pa_row['product_img_id'];
+                            $stmt_img = Databases::$connection->prepare("UPDATE `product_img` 
+                            SET `product_img_path` = ? 
+                            WHERE `product_id` = ? AND `product_img_id` = ?");
+                            $stmt_img->bind_param("sii", $file_name, $product_id, $paid);
+                            $stmt_img->execute();
+                            $stmt_img->close();
+                            $file_path = $pa_row['product_img_path'];
+                            if (file_exists(filename: $file_path)) {
+                                if (unlink($file_path)) {
+                                }
+                            }
+                        } else {
+                            echo "Error getting product image 2.";
+                            exit();
+                        }
+
+                    } else {
+                        echo "Error uploading Image 2.";
+                        exit();
+                    }
+
+                }
+
+                if (isset($_FILES["img3"]) && $_FILES["img3"]["error"] == UPLOAD_ERR_OK) {
+
+                    $new_file_type = pathinfo($_FILES["img3"]['name'], PATHINFO_EXTENSION);
+                    $file_name = "assets-admin/images/product_img/" . $img_id_uni . "_img3_" . uniqid() . "." . $new_file_type;
+
+                    if (move_uploaded_file($_FILES["img3"]["tmp_name"], $file_name)) {
+                        // Insert image path into database
+                        $pa = Databases::Search("SELECT * FROM `product_img` WHERE `product_id` = '$product_id' ORDER BY `product_img_id` ASC LIMIT 1 OFFSET 2");
+                        if ($pa->num_rows == 1) {
+                            $pa_row = $pa->fetch_assoc();
+                            $paid=$pa_row['product_img_id'];
+                            $stmt_img = Databases::$connection->prepare("UPDATE `product_img` 
+                            SET `product_img_path` = ? 
+                            WHERE `product_id` = ? AND `product_img_id` = ?");
+                            $stmt_img->bind_param("sii", $file_name, $product_id, $paid);
+                            $stmt_img->execute();
+                            $stmt_img->close();
+                            $file_path = $pa_row['product_img_path'];
+                            if (file_exists(filename: $file_path)) {
+                                if (unlink($file_path)) {
+                                }
+                            }
+                        } else {
+                            echo "Error getting product image 3.";
+                            exit();
+                        }
+
+                    } else {
+                        echo "Error uploading Image 3.";
+                        exit();
+                    }
+
+                }
+
+                echo "Product has been updated.";
+                
             } else {
                 echo "Error inserting product into database.";
             }

@@ -72,7 +72,7 @@ if (isset($_SESSION["a"])) {
 
                                                 $category_rs = Databases::search("SELECT * FROM `product`
                                                 INNER JOIN cook_type ON cook_type.cook_type_id=product.cook_type_id
-                                                INNER JOIN meat_type ON meat_type.meat_type_id=product.meat_type_id WHERE `on_delete`='1' ");
+                                                INNER JOIN meat_type ON meat_type.meat_type_id=product.meat_type_id WHERE `on_delete`='0' ");
                                                 $category_num = $category_rs->num_rows;
 
                                                 for ($i = 0; $i < $category_num; $i++) {
@@ -123,7 +123,6 @@ if (isset($_SESSION["a"])) {
                                                     placeholder="Enter Amount" required>
                                                 <label for="price">Price</label>
                                             </div>
-                                            <span class="input-group-text">.00</span>
                                         </div>
                                     </div>
 
@@ -137,13 +136,13 @@ if (isset($_SESSION["a"])) {
                             </div>
                         </div>
 
-                        <div class="row d-flex justify-content-center" id="ProductResult">
+                        <div class="row d-flex justify-content-center mt-5" id="ProductResult">
                             <?php
                             $product_rs = Databases::search("SELECT * FROM price_table 
                     INNER JOIN box_type ON box_type.box_type_id=price_table.box_type_box_type_id
                     INNER JOIN product ON product.product_id=price_table.product_product_id
                     INNER JOIN cook_type ON cook_type.cook_type_id=product.cook_type_id
-                    INNER JOIN meat_type ON meat_type.meat_type_id=product.meat_type_id WHERE `on_delete` = '1'");
+                    INNER JOIN meat_type ON meat_type.meat_type_id=product.meat_type_id WHERE `on_delete` = '0'");
                             $product_num = $product_rs->num_rows;
 
 
