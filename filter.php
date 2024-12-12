@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           $conditions[] = "`product_name` LIKE '%$search%'";
      }
      if (!empty($minPrice)) {
-          $pricequery = "SELECT `product_product_id` FROM boost_bite.price_table WHERE `price` >= $maxPrice";
+          $pricequery = "SELECT `product_product_id` FROM price_table WHERE `price` >= $maxPrice";
           $result = Database::Search($pricequery);
           $product_ids = [];
           while ($row = $result->fetch_assoc()) {
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      }
 
      if (!empty($maxPrice)) {
-          $pricequery = "SELECT `product_product_id` FROM boost_bite.price_table WHERE `price` <= $maxPrice";
+          $pricequery = "SELECT `product_product_id` FROM price_table WHERE `price` <= $maxPrice";
           $result = Database::Search($pricequery);
           $product_ids = [];
           while ($row = $result->fetch_assoc()) {
@@ -72,12 +72,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
      switch ($sortOption) {
           case 'high-to-low':
                $query .= "ORDER BY (SELECT MIN(price) 
-                      FROM boost_bite.price_table 
+                      FROM price_table 
                       WHERE product_product_id = product.product_id) DESC";
                break;
           case 'low-to-high':
                $query .= "ORDER BY (SELECT MIN(price) 
-                      FROM boost_bite.price_table 
+                      FROM price_table 
                       WHERE product_product_id = product.product_id) ASC";
                break;
      }
@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                          ?>
                               <span class="price"><del><?php echo "$" . "" . $price_data["price"] + 50; ?></del><?php echo "$" . "" . $price_data["price"]; ?></span>
                               <?php
-                              $box = Database::Search("SELECT * FROM boost_bite.box_type WHERE `box_type_id`='1'");
+                              $box = Database::Search("SELECT * FROM box_type WHERE `box_type_id`='1'");
                               $box_data = $box->fetch_assoc();
                               ?>
                               <br>
