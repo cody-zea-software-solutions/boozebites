@@ -232,7 +232,7 @@ require "connection.php";
                                 </div>
                             </div> -->
 
-                   
+
                         </div>
                     </div>
                     <div class="col-xl-9 col-lg-8">
@@ -293,7 +293,7 @@ require "connection.php";
                                                     <span
                                                         class="price"><del><?php echo "$" . "" . $price_data["price"] + 50; ?></del><?php echo "$" . "" . $price_data["price"]; ?></span>
                                                     <?php
-                                                    $box = Database::Search("SELECT * FROM boost_bite.box_type WHERE `box_type_id`='1'");
+                                                    $box = Database::Search("SELECT * FROM `box_type` WHERE `box_type_id`='1'");
                                                     $box_data = $box->fetch_assoc();
                                                     ?>
                                                     <br>
@@ -319,8 +319,8 @@ require "connection.php";
                                 }
                                 ?>
                             </div>
-                            <ul class="pagination pt-30 flex-wrap" data-aos="fade-up" data-aos-duration="1500"
-                                data-aos-offset="50">
+                            <ul class="pagination pt-30 flex-wrap d-flex justify-content-center" data-aos="fade-up"
+                                data-aos-duration="1500" data-aos-offset="50">
                                 <li class="page-item disabled">
                                     <span class="page-link"><i class="fal fa-arrow-left"></i></span>
                                 </li>

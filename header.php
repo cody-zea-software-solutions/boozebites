@@ -5,7 +5,7 @@ function headerContent($theme)
     $themeClass = $theme == 1 ? "white-menu" : "dark-menu";
     if (isset($_SESSION["user_boost"])) {
         $cart_rs = Database::Search("SELECT SUM(`cart_qty`) AS num_cart FROM `cart_item` WHERE `user_email` = '" . $_SESSION["user_boost"]["email"] . "'");
-        $cart_data = $cart_rs->fetch_assoc(); 
+        $cart_data = $cart_rs->fetch_assoc();
     }
 
 
@@ -62,8 +62,9 @@ function headerContent($theme)
                     
                     <!-- Menu Button -->
                     <div class="menu-btns">
-                        <button onclick="gotoCart();"><i class="far fa-shopping-cart"></i><span>' . (isset($_SESSION["user_boost"]) ? $cart_data["num_cart"] : "0" ) .'</span></button>
-                        <a href="contact.php" class="theme-btn">Order now <i class="far fa-arrow-alt-right"></i></a>
+<button onclick="gotoCart();"><i class="far fa-shopping-cart"></i><span>' .
+        (isset($_SESSION["user_boost"]) ? ($cart_data["num_cart"] === 0 ? "0" : $cart_data["num_cart"]) : "0") .
+        '</span></button>                        <a href="contact.php" class="theme-btn">Order now <i class="far fa-arrow-alt-right"></i></a>
                                 <!-- User Profile / Login -->
                         ' . (isset($_SESSION["user_boost"]) ? '
                         <button onclick="window.location=\'profile.php\'"><i class="fa-thin fa-circle-user h3 text-white"></i></button>
