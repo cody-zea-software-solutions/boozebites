@@ -44,3 +44,28 @@ function payout(total, user, discount, shipping) {
 function gotoCart() {
   window.location = "cart.php";
 }
+function send() {
+  // alert("hi");
+  var name = document.getElementById("n").value;
+  var email = document.getElementById("e").value;
+  var msg = document.getElementById("msg").value;
+  var link = document.getElementById("link2");
+
+  var msg =
+  "https://wa.me/+64273144080?text=🌶️ Name: " +
+  name +
+  "%0A📧 Email: " +
+  email +
+  "%0AI want to learn more about Booze Bites, the Sri Lankan taste in New Zealand. Here's what I'm curious about: %0A🍛 Flavor profiles, %0A📦 Delivery options, %0A🔄 Money-back guarantee details... %0AMessage: " +
+  msg +
+  "";
+
+
+  link.href = msg;
+}
+function sendSingle() {
+  var msg = document.getElementById("news-email1").value;
+  var link = document.getElementById("link2");
+  var whatsappLink = "https://wa.me/+64273144080?text=" + encodeURIComponent(msg);
+  link.href = whatsappLink;
+}

@@ -71,9 +71,7 @@ if (isset($_SESSION["user_boost"]["email"])) { //check if the user logged in
                             </tr>
                             <?php
                         }
-                    } else {
-                        echo "no items in the cart";
-                    }
+                  
                     ?>
                 </tbody>
             </table>
@@ -155,6 +153,11 @@ if (isset($_SESSION["user_boost"]["email"])) { //check if the user logged in
                 </div>
             </div>
         </div>
+        <?php  
+          } else {
+            echo "no items in the cart";
+        }
+        ?>
     </div>
     <?php
 }

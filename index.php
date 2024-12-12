@@ -106,11 +106,11 @@ session_start();
                     <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                         <div class="featured-item">
                             <div class="icon">
-                                <i class="flaticon-recommended-food"></i>
+                                <i class="fa-thin fa-meat"></i>
                             </div>
                             <div class="content">
-                                <h4>Best Quality Food</h4>
-                                <p>Sed ut perspiciatis unde omnis este natus sit voluptatem</p>
+                                <h4>No Added MSG</h4>
+                                <p>Enjoy delicious food without artificial ingredients.</p>
                             </div>
                         </div>
                     </div>
@@ -118,11 +118,11 @@ session_start();
                         data-aos-offset="50">
                         <div class="featured-item">
                             <div class="icon">
-                                <i class="flaticon-fast-delivery"></i>
+                                <i class="fa-thin fa-pot-food"></i>
                             </div>
                             <div class="content">
-                                <h4>fast food delivery</h4>
-                                <p>Sed ut perspiciatis unde omnis este natus sit voluptatem</p>
+                                <h4>Healthy Ingredients</h4>
+                                <p>Savor meals made with fresh and wholesome ingredients.</p>
                             </div>
                         </div>
                     </div>
@@ -130,11 +130,12 @@ session_start();
                         data-aos-offset="50">
                         <div class="featured-item">
                             <div class="icon">
-                                <i class="flaticon-cashback"></i>
+                                <i class="fa-thin fa-plate-utensils"></i>
                             </div>
                             <div class="content">
-                                <h4>money back guarantee</h4>
-                                <p>Sed ut perspiciatis unde omnis este natus sit voluptatem</p>
+                                <h4>Sustainable Sourcing</h4>
+                                <p>Ethical food practices with responsibly sourced products
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -272,14 +273,14 @@ session_start();
                                 style="background-image: url(assets/images/banner/category-banner-two1.png);">
                                 <span class="price">only $<?php echo $product_d["price"]; ?></span>
                                 <h3><?php echo $product_d["product_name"]; ?></h3>
-                                <div class="ratting">
+                                <!-- <div class="ratting">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <span>(5k)</span>
-                                </div>
+                                </div> -->
                                 <a href="product-details.php?pid=<?php echo $product_d["pid"]; ?>"
                                     class="theme-btn style-two">Order now <i class="far fa-arrow-alt-right"></i></a>
                                 <div class="food-image">
@@ -318,21 +319,21 @@ session_start();
                     for ($x = 0; $x < $product_load_count; $x++) {
                         $product_d = $product_rs->fetch_assoc();
                         ?>
-                        <div class="product-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                        <div class="product-item mx-5" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <div class="image">
                                 <img src="<?php echo $product_d["product_img_path"]; ?>"
                                     alt="<?php echo $product_d["product_name"]; ?>">
                                 <span class="pizza-badge">hot</span>
                             </div>
                             <div class="content">
-                                <div class="ratting">
+                                <!-- <div class="ratting">
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <i class="fas fa-star"></i>
                                     <span>(5k)</span>
-                                </div>
+                                </div> -->
                                 <h5><a
                                         href="product-details.php?pid=<?php echo $product_d["pid"]; ?>"><?php echo $product_d["product_name"]; ?></a>
                                 </h5>
@@ -880,10 +881,10 @@ session_start();
                             <h6>Share your WhatsApp number, and the Booze Bites team will get in touch with you soon!
                                 Shape</h6>
                             <form class="newsletter-form style-two mt-15" action="#">
-                                <label for="news-email"><i class="fa-brands fa-whatsapp"></i></label>
-                                <input id="news-email" type="text" placeholder="enter your whatsapp number" required>
-                                <button class="theme-btn style-two" type="submit">Submit <i
-                                        class="far fa-arrow-alt-right"></i></button>
+                            <label for="news-email1"><i class="fa-thin fa-messages"></i></label>
+                            <input id="news-email" type="text" placeholder="enter your message" required>
+                                <a href="" id="link2" onclick="singleSend();" class="theme-btn style-two" type="submit">Submit <i
+                                        class="far fa-arrow-alt-right"></i></a>
                             </form>
 
                         </div>

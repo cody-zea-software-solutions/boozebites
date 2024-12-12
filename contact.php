@@ -1,4 +1,4 @@
-<?php  
+<?php
 session_start();
 require "connection.php";
 
@@ -58,14 +58,13 @@ require "connection.php";
         <div class="form-back-drop"></div>
 
         <!-- Hidden Sidebar -->
-        <section class="hidden-bar">
+        <!-- <section class="hidden-bar">
             <div class="inner-box text-center">
                 <div class="cross-icon"><span class="fa fa-times"></span></div>
                 <div class="title">
                     <h4>Get Appointment</h4>
                 </div>
 
-                <!--Appointment Form-->
                 <div class="appointment-form">
                     <form method="post" action="contact.html">
                         <div class="form-group">
@@ -83,7 +82,6 @@ require "connection.php";
                     </form>
                 </div>
 
-                <!--Social Icons-->
                 <div class="social-style-one">
                     <a href="contact.html"><i class="fab fa-twitter"></i></a>
                     <a href="contact.html"><i class="fab fa-facebook-f"></i></a>
@@ -91,7 +89,7 @@ require "connection.php";
                     <a href="#"><i class="fab fa-pinterest-p"></i></a>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!--End Hidden Sidebar -->
 
 
@@ -143,7 +141,7 @@ require "connection.php";
                                     <div class="content">
                                         <span class="title">Email Address</span>
                                         <h6><a href="mailto:yudeeshafernando@gmail.com">yudeeshafernando@gmail.com
-                                            </a><br> <a href="mailto:finslaninfo.com">finslaninfo.com</a></h6>
+                                            </a><br> <a href="mailto:sugithnz91@gmail.com">sugithnz91@gmail.com</a></h6>
                                     </div>
                                 </div>
                                 <div class="contact-info-item">
@@ -152,8 +150,9 @@ require "connection.php";
                                     </div>
                                     <div class="content">
                                         <span class="title">Phone No</span>
-                                        <h6><a href="callto:+88012345688">+880 (123) 456 88</a><br> <a
-                                                href="callto:+00045685999">+000 (456) 859 99</a></h6>
+                                        <h6><a href="callto:+64273144080">+(64) 27 314 4080
+                                            </a><br> 
+                                            <!-- <a href="callto:+00045685999">+000 (456) 859 99</a></h6> -->
                                     </div>
                                 </div>
                             </div>
@@ -163,42 +162,27 @@ require "connection.php";
                         <div class="contact-page-form">
                             <h3>Send Us Message</h3>
                             <p>Your email address will not be published. Required fields are marked *</p>
-                            <form id="contactForm" class="contactForm" name="contactForm"
-                                action="assets/php/form-process.php" method="post">
+                            <form>
                                 <div class="row mt-30 gap-20">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input type="text" id="name" name="name" class="form-control" value=""
+                                            <input type="text" id="n" name="name" class="form-control" value=""
                                                 placeholder="Full Name" required data-error="Please enter your Name">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <input type="email" id="email" name="email" class="form-control" value=""
+                                            <input type="email" id="e" name="email" class="form-control" value=""
                                                 placeholder="Email Address" required
                                                 data-error="Please enter your Email">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <input type="text" id="phone_number" name="phone_number"
-                                                class="form-control" value="" placeholder="Phone" required
-                                                data-error="Please enter your Phone No">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <input type="text" id="subject" name="subject" class="form-control" value=""
-                                                placeholder="Subject" required data-error="Please enter your Subject">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
+
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            <textarea name="message" id="message" class="form-control" rows="4"
+                                            <textarea name="message" id="msg" class="form-control" rows="4"
                                                 placeholder="Write Message" required
                                                 data-error="Please enter your Message"></textarea>
                                             <div class="help-block with-errors"></div>
@@ -206,9 +190,11 @@ require "connection.php";
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group mb-0">
-                                            <button type="submit" class="theme-btn">Send Message Us <i
-                                                    class="far fa-arrow-alt-right"></i></button>
-                                            <div id="msgSubmit" class="hidden"></div>
+                                            <a href="" id="link2" onclick="send();" class="theme-btn">
+                                                Send Message Us
+
+                                            </a>
+
                                         </div>
                                     </div>
                                 </div>
@@ -263,6 +249,7 @@ require "connection.php";
     <script src="assets/js/aos.js"></script>
     <!-- Custom script -->
     <script src="assets/js/script.js"></script>
+    <script src="script.js"></script>
 
     <!-- For Contact Form -->
     <script src="assets/js/jquery.ajaxchimp.min.js"></script>

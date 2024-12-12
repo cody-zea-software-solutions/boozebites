@@ -148,7 +148,7 @@ if (isset($_GET["pid"])) {
                       <div class="col">
                         <div
                           class="pref px-4 py-2 rounded-pill border d-flex justify-content-center align-items-center text-dark"
-                          id="prefSelected<?php echo $pref_d['preference_id'];?>" style="cursor: pointer"
+                          id="prefSelected<?php echo $pref_d['preference_id']; ?>" style="cursor: pointer"
                           onclick="setPref('<?php echo $pref_d['preference_id']; ?>')">
                           <?php echo $pref_d["preference_name"]; ?>
                         </div>
@@ -422,93 +422,71 @@ if (isset($_GET["pid"])) {
               </div>
             </div>
             <div class="row justify-content-center">
-              <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
-                <div class="product-item-two">
-                  <div class="image">
-                    <img src="assets/images/dishes/dish1.png" alt="Dish" />
-                  </div>
-                  <div class="content">
-                    <div class="ratting">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <span>(5k)</span>
+              <?php
+              $product_rs = Database::search("SELECT * FROM `product`  WHERE  `on_delete` = '0' AND `meat_type_id` = '" . $p_d["meat_type_id"] . "'");
+              $product_num = $product_rs->num_rows;
+              for ($i = 0; $i < $product_num; $i++) {
+                $product_data = $product_rs->fetch_assoc();
+                $product_img = Database::search("SELECT * FROM `product_img` WHERE `product_id`='" . $product_data['product_id'] . "'");
+                $product_img_num = $product_img->num_rows;
+                if ($product_img_num != 0) {
+                  $pimg = $product_img->fetch_assoc();
+                  $img = $pimg['product_img_path'];
+                } else {
+                  $img = "assets/images/dishes/dish12.png";
+                }
+                ?>
+                <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500"
+                  data-aos-offset="50">
+                  <div class="product-item-two">
+                    <div class="image">
+                      <img src="<?php echo $img ?>" alt="Dish">
                     </div>
-                    <h5>
-                      <a href="product-details.html">fresh chicken burger</a>
-                    </h5>
-                    <span class="price"><del>$50</del> $25</span>
+                    <div class="content">
+                      <!-- <div class="ratting">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <span>(5k)</span>
+                                                </div> -->
+                      <h5><a onclick="singlepr(<?php echo $product_id; ?>);"><?php echo $product_data["product_name"] ?></a>
+                      </h5>
+                      <?php
+                      $price = Database::Search("SELECT * FROM price_table WHERE `box_type_box_type_id`='1' AND `product_product_id`='" . $product_data["product_id"] . "' ");
+                      $price_row = $price->num_rows;
+                      if ($price_row != 0) {
+                        $price_data = $price->fetch_assoc();
+                        ?>
+                        <span
+                          class="price"><del><?php echo "$" . "" . $price_data["price"] + 50; ?></del><?php echo "$" . "" . $price_data["price"]; ?></span>
+                        <?php
+                        $box = Database::Search("SELECT * FROM boost_bite.box_type WHERE `box_type_id`='1'");
+                        $box_data = $box->fetch_assoc();
+                        ?>
+                        <br>
+                        <p><?php echo $box_data["box_type_name"] ?></p>
+                        <?php
+                      } else {
+                        echo "no price available";
+                      }
+                      ?>
+                    </div>
+                    <?php $product_id = $product_data["product_id"]; ?>
+                    <a onclick="singlepr(<?php echo $product_id; ?>);" class="theme-btn">Buy now<i
+                        class="far fa-arrow-alt-right"></i></a>
+                    <script>
+                      function singlepr(productId) {
+                        window.location.href = "product-details.php?pid=" + productId;
+                      }
+                    </script>
+
                   </div>
                 </div>
-              </div>
-              <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
-                data-aos-offset="50">
-                <div class="product-item-two">
-                  <div class="image">
-                    <img src="assets/images/dishes/dish2.png" alt="Dish" />
-                  </div>
-                  <div class="content">
-                    <div class="ratting">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <span>(5k)</span>
-                    </div>
-                    <h5>
-                      <a href="product-details.html">pizza with mushrooms</a>
-                    </h5>
-                    <span class="price"><del>$50</del> $25</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500"
-                data-aos-offset="50">
-                <div class="product-item-two">
-                  <div class="image">
-                    <img src="assets/images/dishes/dish3.png" alt="Dish" />
-                  </div>
-                  <div class="content">
-                    <div class="ratting">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <span>(5k)</span>
-                    </div>
-                    <h5>
-                      <a href="product-details.html">double burger & fries</a>
-                    </h5>
-                    <span class="price"><del>$50</del> $25</span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-xl-3 col-lg-4 col-sm-6" data-aos="fade-up" data-aos-delay="150" data-aos-duration="1500"
-                data-aos-offset="50">
-                <div class="product-item-two">
-                  <div class="image">
-                    <img src="assets/images/dishes/dish4.png" alt="Dish" />
-                  </div>
-                  <div class="content">
-                    <div class="ratting">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <span>(5k)</span>
-                    </div>
-                    <h5>
-                      <a href="product-details.html">fried chicken french</a>
-                    </h5>
-                    <span class="price"><del>$50</del> $25</span>
-                  </div>
-                </div>
-              </div>
+                <?php
+              }
+              ?>
             </div>
           </div>
         </section>

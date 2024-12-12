@@ -17,11 +17,12 @@
                         <span class="sub-title mb-10">Stay Connected with Us!</span>
                         <h2>Contact us on WhatsApp for quick updates and support</h2>
                     </div>
-                    <form class="newsletter-form" action="#" data-aos="fade-up" data-aos-delay="50"
+                    <form class="newsletter-form"  data-aos="fade-up" data-aos-delay="50"
                         data-aos-duration="1500" data-aos-offset="50">
-                        <label for="news-email"><i class="fa-thin fa-messages"></i></label>
-                        <input id="news-email" type="mbile" placeholder="Enter Your Message" required>
-                        <button class="theme-btn" type="submit">Send <i class="far fa-arrow-alt-right"></i></button>
+                        <label for="news-email1"><i class="fa-thin fa-messages"></i></label>
+                        <input id="news-email1" type="text" placeholder="Enter Your Message" required>
+
+                        <a href="" id="link2" class="theme-btn" onclick="sendSingle();">Send <i class="far fa-arrow-alt-right"></i></a>
                     </form>
                 </div>
             </div>

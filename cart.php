@@ -2,6 +2,7 @@
 require "connection.php";
 require "CartItem.php";
 session_start();
+$user_email = $_SESSION["user_boost"]["email"];
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
@@ -59,42 +60,7 @@ session_start();
         <!--Form Back Drop-->
         <div class="form-back-drop"></div>
 
-        <!-- Hidden Sidebar -->
-        <section class="hidden-bar">
-            <div class="inner-box text-center">
-                <div class="cross-icon"><span class="fa fa-times"></span></div>
-                <div class="title">
-                    <h4>Get Appointment</h4>
-                </div>
 
-                <!--Appointment Form-->
-                <div class="appointment-form">
-                    <form method="post" action="contact.html">
-                        <div class="form-group">
-                            <input type="text" name="text" value="" placeholder="Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" value="" placeholder="Email Address" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Message" rows="5"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="theme-btn style-two">Submit now</button>
-                        </div>
-                    </form>
-                </div>
-
-                <!--Social Icons-->
-                <div class="social-style-one">
-                    <a href="contact.html"><i class="fab fa-twitter"></i></a>
-                    <a href="contact.html"><i class="fab fa-facebook-f"></i></a>
-                    <a href="contact.html"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                </div>
-            </div>
-        </section>
-        <!--End Hidden Sidebar -->
 
 
         <!-- Page Banner Start -->
@@ -118,8 +84,49 @@ session_start();
 
 
         <!-- Shopping Cart Area start -->
-        <section class="shopping-cart-area py-130 rel z-1" id="cartBody">
-        </section>
+        <?php
+        $cart_rs = Database::Search("SELECT * FROM `cart_item` INNER JOIN `price_table` ON
+               cart_item.price_table_product_product_id=price_table.product_product_id AND cart_item.price_table_box_type_box_type_id=price_table.box_type_box_type_id INNER JOIN `product` ON
+               price_table.product_product_id=product.product_id INNER JOIN `box_type` ON
+               cart_item.price_table_box_type_box_type_id=box_type.box_type_id INNER JOIN `preference` ON 
+               cart_item.preference_preference_id=preference.preference_id WHERE `user_email`='$user_email'");
+        $cart_num = $cart_rs->num_rows;
+        if ($cart_num > 0) {
+            ?>
+            <section class="shopping-cart-area py-130 rel z-1" id="cartBody">
+            </section>
+            <?php
+        } else {
+            ?>
+            <div class="container-fluid bg-white p-5">
+                <div class="row d-flex flex-row justify-content-center align-items-center h-100 px-3">
+                    <div class="col-md-6 pb-5">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="assets/images/signup.svg" class="img-fluid" />
+                            </div>
+                            <div class="col-md-6 d-flex flex-row justify-content-center align-items-center">
+                                <div class="row">
+                                    <div class="col-12 mb-3 text-center text-md-start">
+                                        <p class="h2">Welcome To Booze Bites</p>
+                                        <p class="secondary-color h5">Please signup first.</p>
+                                    </div>
+                                    <div class="col-12 text-center text-md-start">
+                                        <a href="login.php" class="theme-btn style-two" type="submit">Sign Up <i
+                                                class="far fa-arrow-alt-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <?php
+        }
+
+        ?>
+
         <!-- Shopping Cart Area start -->
 
 
