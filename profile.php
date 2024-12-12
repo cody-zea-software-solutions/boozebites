@@ -63,8 +63,8 @@ if (isset($_SESSION["user_boost"])) {
 
     <body>
         <?php
-       require "header.php";
-       headerContent(0);
+        require "header.php";
+        headerContent(0);
         ?>
         <div class="container-fluid vh-100 d-flex align-items-center">
             <div class="row d-flex justify-content-center">
@@ -118,18 +118,18 @@ if (isset($_SESSION["user_boost"])) {
                                 <div class="col-12 col-lg-6">
                                     <p class="text-body">City</p>
                                     <select class="" id="city">
-                                    <?php
-                                    $rs = Database::search("SELECT * FROM `city`");
-                                    $n = $rs->num_rows;
-                                    for ($x = 0; $x < $n; $x++) {
-                                        $d = $rs->fetch_assoc();
-                                    ?>
-                                        <option value="<?php echo $d["city_id"]; ?>" > <?php echo $d["city_name"]; ?> </option>
-                                    <?php
+                                        <?php
+                                        $rs = Database::search("SELECT * FROM `city`");
+                                        $n = $rs->num_rows;
+                                        for ($x = 0; $x < $n; $x++) {
+                                            $d = $rs->fetch_assoc();
+                                        ?>
+                                            <option value="<?php echo $d["city_id"]; ?>"> <?php echo $d["city_name"]; ?> </option>
+                                        <?php
 
-                                    }
-                                    ?>
-                                  </select>
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
                                 <!-- <hr/> -->
                                 <?php
@@ -139,11 +139,11 @@ if (isset($_SESSION["user_boost"])) {
                                 ?>
                                     <div class="col-12 col-lg-6">
                                         <p class="text-body">Address Line 1</p>
-                                        <input id="a_line_1"  class="form-control mt-1" type="text" placeholder="Address Line 01" required />
+                                        <input id="a_line_1" class="form-control mt-1" type="text" placeholder="Address Line 01" required />
                                     </div>
                                     <div class="col-12 col-lg-12">
                                         <p class="text-body">Address Line 2</p>
-                                        <input id="a_line_2"  class="form-control mt-1" type="text" placeholder="Address Line 02" required />
+                                        <input id="a_line_2" class="form-control mt-1" type="text" placeholder="Address Line 02" required />
                                     </div>
                                 <?php
                                 } else {
@@ -173,21 +173,42 @@ if (isset($_SESSION["user_boost"])) {
                     <div class="header bg-white shadow-lg rounded-3 p-25 col-12">
                         <p class="h2 fw-semibold text-center">My Orders</p>
                         <div class="row">
-                            <div class="col-12 col-lg-6 shadow-sm rounded-3 p-10">
-                                <img src="./assets/images/profile-icon.png" class="img-fluid w-50 col-12" alt="Profile Icon" />
-                                <p>Black Chicken Curry</p>
-                            </div>
-                            <div class="col-12 col-lg-6 shadow-sm rounded-3 p-10">
-                                <img src="./assets/images/profile-icon.png" class="img-fluid w-50 col-12" alt="Profile Icon" />
-                                <p>Black Chicken Curry</p>
-                            </div>
+                            <?php
+                            $order = Database::Search("SELECT * FROM `order` WHERE `user_email`='" . $user_data["email"] . "' ");
+                            $order_num = $order->num_rows;
+
+                            for ($i = 0; $i < $order_num; $i++) {
+                                $order_details = $order->fetch_assoc();
+                            ?>
+                                <div class="col-12 col-lg-6 shadow-sm rounded-3 p-4">
+                                    <?php
+                                    $order_item =  Database::Search("SELECT * FROM `order_item` WHERE `order_id`='".$order_details["id"]."' ");
+                                    $order_item_data = $order_item->fetch_assoc();
+                                    $product = Database::Search("SELECT * FROM `product` WHERE `product_id`='".$order_item_data["price_table_product_product_id"]."' ");
+                                    $product_data = $product->fetch_assoc();
+                                    $product_img = Database::Search("SELECT * FROM `product_img` WHERE `product_id`='".$order_item_data["price_table_product_product_id"]."' ");
+                                    $product_img_path = $product_img->fetch_assoc();
+                                     ?>
+                                    <img src="<?php echo isset($product_img_path['product_img_path']) ? $product_img_path['product_img_path'] : './assets/images/profile-icon.png'; ?>" class="img-fluid w-50 col-12" alt="Product Image" />
+                                    <p class="text-black fw-bold"><?php echo htmlspecialchars($product_data['product_name'] ?? 'Unknown Product'); ?></p>
+                                    <p><?php echo htmlspecialchars($product_data['description'] ?? 'Unknown Product'); ?></p>
+                                    <br/>
+                                    <?php
+                                    $status = Database::Search("SELECT * FROM `order_status` WHERE `order_status_id`='".$order_details["order_status_id"]."' ");
+                                    $status_data = $status->fetch_assoc();
+                                     ?>
+                                    <button class="btn btn-danger"><?php echo $status_data["order_status_name"]; ?></button>
+                                </div>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <?php
-       require "footer.php"
+        require "footer.php"
         ?>
 
         <script>
@@ -230,11 +251,11 @@ if (isset($_SESSION["user_boost"])) {
 
     </html>
 <?php
-}else{
-    ?>
+} else {
+?>
     <script>
         window.location.href = 'index.php';
     </script>
-    <?php
+<?php
 }
 ?>
