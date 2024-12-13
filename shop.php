@@ -266,7 +266,7 @@ require "connection.php";
                                         <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
                                             <div class="product-item-two">
                                                 <div class="image">
-                                                    <img src="admin-panel/assets-admin/images/product_img/675c9611e4d5f_img1_675c9611e4e65.jpg" alt="Dish">
+                                                    <img src="admin-panel/product_img/product-img-1.jpg" alt="Dish">
                                                 </div>
                                                 <div class="content">
                                                     <h5><a onclick="singlepr(<?php echo $product_data['product_id']; ?>);">
