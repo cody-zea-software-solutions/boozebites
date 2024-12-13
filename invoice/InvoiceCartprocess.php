@@ -19,7 +19,7 @@ $umail = $_POST["umail"];
 $paid = $_POST["payid"];
 $nzd = $_POST["currency"];
 $total = $_POST["total"]/100;
-$discount = $_POST["dis"]/100;
+$discount = $_POST["dis"];
 $ship_amount = $_POST["ship"];
 $tax_per;
 // $discount = 0;
