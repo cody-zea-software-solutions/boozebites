@@ -286,7 +286,7 @@ session_start();
                                 <a href="product-details.php?pid=<?php echo $product_d["pid"]; ?>"
                                     class="theme-btn style-two">Order now <i class="far fa-arrow-alt-right"></i></a>
                                 <div class="food-image">
-                                    <img src="<?php echo $product_d["product_img_path"]; ?>"
+                                    <img src="admin-panel/<?php echo $product_d["product_img_path"]; ?>"
                                         alt="<?php echo $product_d["product_name"]; ?>">
                                 </div>
                             </div>
@@ -323,7 +323,7 @@ session_start();
                         ?>
                         <div class="product-item mx-5" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                             <div class="image">
-                                <img src="<?php echo $product_d["product_img_path"]; ?>"
+                                <img src="admin-panel/<?php echo $product_d["product_img_path"]; ?>"
                                     alt="<?php echo $product_d["product_name"]; ?>">
                                 <span class="pizza-badge">hot</span>
                             </div>

@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
                <div class="product-item-two">
                     <div class="image">
-                         <img src="<?php echo $img ?>" alt="Dish">
+                         <img src="admin-panel/<?php echo $img ?>" alt="Dish">
                     </div>
                     <div class="content">
                          <!-- <div class="ratting">
