@@ -124,14 +124,29 @@ if (isset($_SESSION["a"])) {
                                                                         </thead>
                                                                         <tbody>
                                                                             <?php
-                                                                            $order_rs = Databases::search("SELECT price_table.product_product_id AS product_id,price_table.box_type_box_type_id AS box_id,qty,CONCAT(product.product_name,' ',meat_type.meat_type_name,' ',cook_type.cook_type_name) AS `p_name`,`order`.user_email,product.description,price_table.price,`order`.order_status_id,product_img.product_img_path,preference.preference_name
-                                                                FROM order_item INNER JOIN product ON product.product_id=order_item.price_table_product_product_id
-                                                                INNER JOIN `order` ON `order`.id=order_item.order_id
-                                                                INNER JOIN product_img ON product_img.product_id=product.product_id
-                                                                INNER JOIN price_table ON price_table.box_type_box_type_id=order_item.price_table_box_type_box_type_id AND price_table.product_product_id=product.product_id
-                                                                INNER JOIN meat_type ON meat_type.meat_type_id=product.meat_type_id
-                                                                INNER JOIN cook_type ON cook_type.cook_type_id=product.cook_type_id
-                                                                INNER JOIN preference ON preference.preference_id=order_item.preference_preference_id WHERE `order`.`id`=$ocf");
+                                                                            $order_rs = Databases::search("SELECT 
+                                                                            price_table.product_product_id AS product_id,
+                                                                            price_table.box_type_box_type_id AS box_id,
+                                                                            qty,
+                                                                            CONCAT(product.product_name, ' ', meat_type.meat_type_name, ' ', cook_type.cook_type_name) AS p_name,
+                                                                            `order`.user_email,
+                                                                            product.description,
+                                                                            price_table.price,
+                                                                            `order`.order_status_id,
+                                                                            (SELECT product_img.product_img_path 
+                                                                             FROM product_img 
+                                                                             WHERE product_img.product_id = product.product_id 
+                                                                             LIMIT 1) AS product_img_path,
+                                                                            preference.preference_name
+                                                                        FROM order_item
+                                                                        INNER JOIN product ON product.product_id = order_item.price_table_product_product_id
+                                                                        INNER JOIN `order` ON `order`.id = order_item.order_id
+                                                                        INNER JOIN price_table ON price_table.box_type_box_type_id = order_item.price_table_box_type_box_type_id 
+                                                                            AND price_table.product_product_id = product.product_id
+                                                                        INNER JOIN meat_type ON meat_type.meat_type_id = product.meat_type_id
+                                                                        INNER JOIN cook_type ON cook_type.cook_type_id = product.cook_type_id
+                                                                        INNER JOIN preference ON preference.preference_id = order_item.preference_preference_id
+                                                                        WHERE `order`.id = $ocf");
                                                                             $order_num = $order_rs->num_rows;
 
                                                                             for ($x = 0; $x < $order_num; $x++) {

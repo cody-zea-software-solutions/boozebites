@@ -139,7 +139,7 @@ if (isset($_SESSION["a"])) {
                                                                                     <?php
                                                                                     $invoice_rs = Databases::search("SELECT * FROM invoice
                                                                                     INNER JOIN `order` ON `order`.id=invoice.order_id
-                                                                                    INNER JOIN `user` ON `user`.`email`=`order`.user_email");
+                                                                                    INNER JOIN `user` ON `user`.`email`=`order`.user_email ORDER BY `invoice`.`invoice_date` DESC");
                                                                                     $invoice_num = $invoice_rs->num_rows;
                                                                                     for ($x = 1; $x <= $invoice_num; $x++) {
                                                                                         $invoice_data = $invoice_rs->fetch_assoc();

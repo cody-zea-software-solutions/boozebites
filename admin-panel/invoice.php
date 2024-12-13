@@ -383,6 +383,14 @@ if (isset($_SESSION["a"])) {
                                                     <tr>
                                                         <td
                                                             style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
+                                                            SHIPPING
+                                                        </td>
+                                                        <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; white-space:nowrap;"
+                                                            width="80"> +6.00</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td
+                                                            style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
                                                             DISCOUNT
                                                         </td>
                                                         <td
@@ -398,7 +406,7 @@ if (isset($_SESSION["a"])) {
                                                         <td
                                                             style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align:right; ">
                                                             <strong>
-                                                                <?php echo number_format($price - $in_det['discount'], 2); ?>
+                                                                <?php echo number_format($price + 6 - $in_det['discount'], 2); ?>
                                                             </strong>
                                                         </td>
                                                     </tr>
@@ -473,7 +481,7 @@ if (isset($_SESSION["a"])) {
                                                                     <tr>
                                                                         <td
                                                                             style="font-size: 11px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 1; vertical-align: top; ">
-                                                                            <strong> <a href="boozzebites.nz.co"
+                                                                            <strong> <a href="#"
                                                                                     class="">BOOZEBITES CO NZ</a> </strong>
                                                                         </td>
                                                                     </tr>
