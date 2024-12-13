@@ -74,7 +74,7 @@ if (isset($_SESSION["a"])) {
 
                     // Query for today's invoices
                     $invoice_rs = Databases::search("SELECT * FROM invoice WHERE DATE(invoice_date) = '$today'");
-                    if ($invoice_rs->num_rows == 1) {
+                    if ($invoice_rs->num_rows >= 1) {
                       $sdf = $invoice_rs->fetch_assoc();
                       $a = $sdf["invoice_total"];
                     }
@@ -83,7 +83,7 @@ if (isset($_SESSION["a"])) {
                     $invoice_rs2 = Databases::search("
                     SELECT * FROM invoice 
                     WHERE DATE_FORMAT(invoice_date, '%Y-%m') = '$thisyear-$thismonth'");
-                    if ($invoice_rs2->num_rows == 1) {
+                    if ($invoice_rs2->num_rows >= 1) {
                       $sdf = $invoice_rs2->fetch_assoc();
                       $b = $sdf["invoice_total"];
                     }
