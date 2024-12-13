@@ -286,6 +286,7 @@ $(function () {
       " - $" +
       $(".price-slider-range").slider("values", 1)
   );
+  filtersearch();
 });
 function filtersearch() {
   const search = document
