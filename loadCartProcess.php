@@ -71,93 +71,93 @@ if (isset($_SESSION["user_boost"]["email"])) { //check if the user logged in
                             </tr>
                             <?php
                         }
-                  
-                    ?>
-                </tbody>
-            </table>
-        </div>
-        <div class="row text-center text-lg-left align-items-center">
-            <div class="col-lg-6">
-           
+
+                        ?>
+                    </tbody>
+                </table>
             </div>
-            <div class="col-lg-6">
-                <div class="update-shopping mb-30 text-lg-end wow fadeInRight delay-0-2s">
-                    <a class="theme-btn bg-secondary my-5" onclick="clearCart();">Clear cart <i
-                            class="fas fa-angle-double-right"></i></a>
+            <div class="row text-center text-lg-left align-items-center">
+                <div class="col-lg-6">
+
+                </div>
+                <div class="col-lg-6">
+                    <div class="update-shopping mb-30 text-lg-end wow fadeInRight delay-0-2s">
+                        <a class="theme-btn bg-secondary my-5" onclick="clearCart();">Clear cart <i
+                                class="fas fa-angle-double-right"></i></a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="shoping-cart-total pt-20 wow fadeInUp delay-0-2s">
-                    <h4 class="form-title mb-25 text-center">Cart Totals</h4>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td>Cart Subtotal</td>
-                                <td><span class="price"><?php echo $cartTotal; ?></span></td>
-                            </tr>
-                            <tr>
-                                <td>Shipping Fee</td>
-                                <td><span class="price"><?php echo $shipFee; ?></span></td>
-                            </tr>
-                            <?php
-                            $discount_rs = Database::search("SELECT * FROM `discount` WHERE `amount` <= '$cartTotal' order BY `amount` DESC");
-                            if ($discount_rs->num_rows > 0) {
-                                $discount_d = $discount_rs->fetch_assoc();
-                                $discount = $cartTotal * ($discount_d["percentage"] / 100);
-                                ?>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="shoping-cart-total pt-20 wow fadeInUp delay-0-2s">
+                        <h4 class="form-title mb-25 text-center">Cart Totals</h4>
+                        <table>
+                            <tbody>
                                 <tr>
-                                    <td>Discount <?php echo $discount_d["percentage"]; ?>%</td>
-                                    <td><span class="price"><?php echo $discount; ?></span></td>
+                                    <td>Cart Subtotal</td>
+                                    <td><span class="price"><?php echo $cartTotal; ?></span></td>
+                                </tr>
+                                <tr>
+                                    <td>Shipping Fee</td>
+                                    <td><span class="price"><?php echo $shipFee; ?></span></td>
                                 </tr>
                                 <?php
-                            }
+                                $discount_rs = Database::search("SELECT * FROM `discount` WHERE `amount` <= '$cartTotal' order BY `amount` DESC");
+                                if ($discount_rs->num_rows > 0) {
+                                    $discount_d = $discount_rs->fetch_assoc();
+                                    $discount = $cartTotal * ($discount_d["percentage"] / 100);
+                                    ?>
+                                    <tr>
+                                        <td>Discount <?php echo $discount_d["percentage"]; ?>%</td>
+                                        <td><span class="price"><?php echo $discount; ?></span></td>
+                                    </tr>
+                                    <?php
+                                }
 
-                            $subTotal = ($cartTotal + $shipFee) - $discount;
-                            $subTotal = round($subTotal, 0, PHP_ROUND_HALF_UP);
-                            ?>
-                            <tr>
-                                <td><strong>Order Total</strong></td>
-                                <td><b class="price"><?php echo $subTotal; ?></b></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <?php
-                    $address_rs = Database::search("SELECT * FROM `address` INNER JOIN `city` ON
+                                $subTotal = ($cartTotal + $shipFee) - $discount;
+                                $subTotal = number_format($subTotal, 2);
+                                ?>
+                                <tr>
+                                    <td><strong>Order Total</strong></td>
+                                    <td><b class="price"><?php echo $subTotal ?></b></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <?php
+                        $address_rs = Database::search("SELECT * FROM `address` INNER JOIN `city` ON
                                 address.city_id=city.city_id INNER JOIN `user` ON
                                 address.user_email=user.email WHERE `user_email`='$user_email'");
-                    if ($address_rs->num_rows > 0) {
-                        $address_d = $address_rs->fetch_assoc();
-                        $userName = $address_d["first_name"] . " " . $address_d["last_name"];
-                        $mobile = $address_d["mobile"];
-                        $address = $address_d["first_line"] . ", " . $address_d["second_line"] . ", " . $address_d["city_name"];
+                        if ($address_rs->num_rows > 0) {
+                            $address_d = $address_rs->fetch_assoc();
+                            $userName = $address_d["first_name"] . " " . $address_d["last_name"];
+                            $mobile = $address_d["mobile"];
+                            $address = $address_d["first_line"] . ", " . $address_d["second_line"] . ", " . $address_d["city_name"];
 
-                        //echo $userName . "</br>";
-                        //echo $mobile . "</br>";
-                        //echo $address;
-                        $payout = "payout('" . number_format($subTotal, 2) . "','" . $user_email . "','" . number_format($discount, 2) . "','" . number_format($shipFee, 2) . "');";
+                            //echo $userName . "</br>";
+                            //echo $mobile . "</br>";
+                            //echo $address;
+                            $payout = "payout('" . number_format($subTotal, 2) . "','" . $user_email . "','" . number_format($discount, 2) . "','" . number_format($shipFee, 2) . "');";
 
+                            ?>
+
+                            <a onclick="<?php echo $payout ?>" class="theme-btn style-two mt-100 w-100">Proceed to checkout</a>
+                            <?php
+                        } else {
+                            ?>
+                            <div class="text-center my-100">
+                                <div class="theme-btn">You need to have your address set in your profile</div>
+                            </div>
+                            <?php
+                        }
                         ?>
-
-                        <a onclick="<?php echo $payout ?>" class="theme-btn style-two mt-100 w-100">Proceed to checkout</a>
-                        <?php
-                    } else {
-                        ?>
-                        <div class="text-center my-100">
-                            <div class="theme-btn">You need to have your address set in your profile</div>
-                        </div>
-                        <?php
-                    }
-                    ?>
+                    </div>
                 </div>
             </div>
-        </div>
-        <?php  
-          } else {
-            echo "no items in the cart";
-        }
-        ?>
+        <?php
+                    } else {
+                        echo "no items in the cart";
+                    }
+                    ?>
     </div>
     <?php
 }
