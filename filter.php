@@ -110,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                               <i class="fas fa-star"></i>
                               <span>(5k)</span>
                          </div> -->
-                         <h5><a href="product-details.html"><?php echo $results_data["product_name"] ?></a></h5>
+                         <h5><a   onclick="singlepr(<?php echo $results_data['product_id']; ?>);"><?php echo $results_data["product_name"] ?></a></h5>
                          <?php
                          $price = Database::Search("SELECT * FROM price_table WHERE `box_type_box_type_id`='1' AND `product_product_id`='" . $results_data["product_id"] . "' ");
                          $price_row = $price->num_rows;
@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                          }
                          ?>
                     </div>
-                    <a href="shop.html" class="theme-btn">add to cart <i class="far fa-arrow-alt-right"></i></a>
+                    <a onclick="singlepr(<?php echo $results_data['product_id']; ?>);" class="theme-btn">Buy Now<i class="far fa-arrow-alt-right"></i></a>
                </div>
           </div>
 <?php

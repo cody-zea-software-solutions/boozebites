@@ -2,7 +2,7 @@
 session_start();
 include "connection.php";
 if (isset($_SESSION["user_boost"])) {
-    $user = Database::Search("SELECT * FROM boost_bite.user WHERE `email`='" . $_SESSION["user_boost"]["email"] . "' ");
+    $user = Database::Search("SELECT * FROM user WHERE `email`='" . $_SESSION["user_boost"]["email"] . "' ");
     $user_data = $user->fetch_assoc();
 ?>
     <!DOCTYPE html>
@@ -180,7 +180,7 @@ if (isset($_SESSION["user_boost"])) {
                             for ($i = 0; $i < $order_num; $i++) {
                                 $order_details = $order->fetch_assoc();
                             ?>
-                                <div class="col-12 col-lg-6 shadow-sm rounded-3 p-4">
+                                <div class="col-12 col-lg-4 shadow-sm rounded-3 p-4">
                                     <?php
                                     $order_item =  Database::Search("SELECT * FROM `order_item` WHERE `order_id`='".$order_details["id"]."' ");
                                     $order_item_data = $order_item->fetch_assoc();
@@ -188,16 +188,20 @@ if (isset($_SESSION["user_boost"])) {
                                     $product_data = $product->fetch_assoc();
                                     $product_img = Database::Search("SELECT * FROM `product_img` WHERE `product_id`='".$order_item_data["price_table_product_product_id"]."' ");
                                     $product_img_path = $product_img->fetch_assoc();
+                                    $price_rs = Database::Search("SELECT `invoice_total` FROM `invoice` WHERE `order_id` = '".$order_details["id"]."'");
+                                    $price_data = $price_rs->fetch_assoc(); 
+                                    $price = $price_data['invoice_total'] / 100;
                                      ?>
-                                    <img src="<?php echo isset($product_img_path['product_img_path']) ? $product_img_path['product_img_path'] : './assets/images/profile-icon.png'; ?>" class="img-fluid w-50 col-12" alt="Product Image" />
-                                    <p class="text-black fw-bold"><?php echo htmlspecialchars($product_data['product_name'] ?? 'Unknown Product'); ?></p>
-                                    <p><?php echo htmlspecialchars($product_data['description'] ?? 'Unknown Product'); ?></p>
+                                    <img src="<?php echo isset($product_img_path['product_img_path']) ? $product_img_path['product_img_path'] : './assets/images/profile-icon.png'; ?>" class="img-fluid w-100 col-12 rounded-5" alt="Product Image" />
+                                    <p class="text-center secondary-color mt-3 h4"><?php echo htmlspecialchars($product_data['product_name'] ?? 'Unknown Product'); ?></p>
+                                    <p
+                                     class="lead text-black text-center h6">NZD<?php echo htmlspecialchars($price ?? 'Unknown Product'); ?>.00</p>
                                     <br/>
                                     <?php
                                     $status = Database::Search("SELECT * FROM `order_status` WHERE `order_status_id`='".$order_details["order_status_id"]."' ");
                                     $status_data = $status->fetch_assoc();
                                      ?>
-                                    <button class="btn btn-danger"><?php echo $status_data["order_status_name"]; ?></button>
+                                    <button class="btn btn-danger text-center bg-color rounded-0 col-12"><?php echo $status_data["order_status_name"]; ?></button>
                                 </div>
                             <?php
                             }
