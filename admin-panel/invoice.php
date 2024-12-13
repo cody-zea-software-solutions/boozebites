@@ -18,7 +18,7 @@ if (isset($_SESSION["a"])) {
         INNER JOIN `order` ON `order`.id=invoice.order_id
         INNER JOIN `user` ON `user`.`email`=`order`.user_email
         INNER JOIN address ON address.user_email=`user`.email
-        INNER JOIN city ON city.city_id=address.city_id WHERE `invoice_id`='$in_id'");
+        INNER JOIN city ON city.city_id=address.city_id WHERE `payment_intent`='$in_id'");
         $in_det = $in_data->fetch_assoc();
 
         $price = 0;
@@ -235,7 +235,7 @@ if (isset($_SESSION["a"])) {
                                                                 <td
                                                                     style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: right;">
                                                                     <small>ORDER</small>
-                                                                    <?php echo $in_det['invoice_id'] ?><br />
+                                                                    <?php echo $in_det['payment_intent'] ?><br />
                                                                     <small><?php echo $in_det['invoice_date'] ?></small>
                                                                 </td>
                                                             </tr>
@@ -279,8 +279,7 @@ if (isset($_SESSION["a"])) {
                                                         </th>
                                                         <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;"
                                                             align="left">
-                                                            <small>SKU</small>
-                                                        </th>
+                                                            UNIT PRICE </th>
                                                         <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;"
                                                             align="center">
                                                             Quantity
@@ -308,10 +307,11 @@ if (isset($_SESSION["a"])) {
                                                     INNER JOIN cook_type ON cook_type.cook_type_id=product.cook_type_id
                                                     INNER JOIN meat_type ON meat_type.meat_type_id=product.meat_type_id
                                                     INNER JOIN preference ON preference.preference_id=order_item.preference_preference_id
-                                                    WHERE `order_item`.order_id='$in_id' ");
+                                                    WHERE `order`.`order_code`='$in_id' ");
 
                                                     for ($x = 0; $x < $item_r->num_rows; $x++) {
                                                         $item = $item_r->fetch_assoc();
+                                                        $sp = $item['price']*$item['qty'];
                                                         ?>
 
                                                         <tr>
@@ -320,15 +320,15 @@ if (isset($_SESSION["a"])) {
                                                             <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #ff0000;  line-height: 18px;  vertical-align: top; padding:10px 0;"
                                                                 class="article">
                                                                 <?php echo $item['product_name'] ?>
+                                                                <small
+                                                                    style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;"><br><?php echo $item['cook_type_name'], ' ', $item['meat_type_name'], ' ', $item['box_type_name'], ' ', $item['preference_name'] ?></small>
                                                             </td>
-                                                            <td
-                                                                style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;">
-                                                                <small><?php echo $item['cook_type_name'], ' ', $item['meat_type_name'], ' ', $item['box_type_name'], ' ', $item['preference_name'] ?></small>
-                                                            </td>
+                                                            <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;"
+                                                                align="center">NZD <?php echo number_format($item['price'], 2) ?></td>
                                                             <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e;  line-height: 18px;  vertical-align: top; padding:10px 0;"
                                                                 align="center"><?php echo $item['qty'] ?></td>
                                                             <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;"
-                                                                align="right">NZD <?php echo $item['price'] ?></td>
+                                                                align="right">NZD <?php echo number_format($sp,2) ?></td>
                                                         </tr>
                                                         <tr>
                                                             <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
@@ -336,7 +336,7 @@ if (isset($_SESSION["a"])) {
 
                                                         <?php
 
-                                                        $price = $price + $item['price'];
+                                                        $price = $price + $sp;
                                                     }
 
                                                     ?>
@@ -373,31 +373,31 @@ if (isset($_SESSION["a"])) {
                                                     <tr>
                                                         <td
                                                             style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
-                                                            Subtotal
+                                                            SUBTOTAL in NZD 
                                                         </td>
                                                         <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; white-space:nowrap;"
                                                             width="80">
-                                                            NZD <?php echo number_format($price, 2) ?>
+                                                             <?php echo number_format($price, 2) ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td
                                                             style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
-                                                            Discount
+                                                            DISCOUNT
                                                         </td>
                                                         <td
                                                             style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
-                                                            NZD <?php echo number_format($in_det['discount'], 2) ?>
+                                                             -<?php echo number_format($in_det['discount'], 2) ?>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td
                                                             style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align:right; ">
-                                                            <strong>Grand Total</strong>
+                                                            <strong>GRAND TOTAL</strong>
                                                         </td>
                                                         <td
                                                             style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align:right; ">
-                                                            <strong>NZD
+                                                            <strong>
                                                                 <?php echo number_format($price - $in_det['discount'], 2); ?>
                                                             </strong>
                                                         </td>
@@ -453,8 +453,11 @@ if (isset($_SESSION["a"])) {
                                                                     <tr>
                                                                         <td
                                                                             style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; line-height: 20px; vertical-align: top; ">
-                                                                            <?php echo $in_det['first_name'],'  ',$in_det['last_name'] ?><br> <?php echo $in_det['first_line'],' , ',$in_det['second_line']; ?>, <br> 
-                                                                            <?php echo $in_det['city_name']; ?><br> T: <?php echo $in_det['mobile']; ?>
+                                                                            <?php echo $in_det['first_name'], '  ', $in_det['last_name'] ?><br>
+                                                                            <?php echo $in_det['first_line'], ' , ', $in_det['second_line']; ?>,
+                                                                            <br>
+                                                                            <?php echo $in_det['city_name']; ?><br> T:
+                                                                            <?php echo $in_det['mobile']; ?>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>

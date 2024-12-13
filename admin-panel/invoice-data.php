@@ -1,16 +1,16 @@
 <?php
-require "../connection.php";
+require "db.php";
 
 // Fetch sales counts for all months
-$sql = "SELECT
-            DATE_FORMAT(date, '%Y-%m') AS month,
+$sql = "SELECT 
+DATE_FORMAT(order_date, '%Y-%m') AS month,
             COUNT(*) AS sales_count
-        FROM
-            invoice
-        GROUP BY
-            DATE_FORMAT(date, '%Y-%m')
+FROM `order_item`
+INNER JOIN `order` ON `order`.`id`=`order_item`.`order_id`
+GROUP BY
+            DATE_FORMAT(order_date, '%Y-%m')
         ORDER BY
-            DATE_FORMAT(date, '%Y-%m')";
+            DATE_FORMAT(order_date, '%Y-%m')";
 $result = Database::search($sql);
 
 // Prepare data

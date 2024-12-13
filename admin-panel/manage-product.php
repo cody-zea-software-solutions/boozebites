@@ -88,7 +88,7 @@ if (isset($_SESSION["a"])) {
                                             <a href="javascript:void(0)"><img src="<?php echo $img ?>"
                                                     class="card-img-top rounded-0" alt="..."></a>
                                             <a href="javascript:void(0)"
-                                                class="bg-green rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
+                                                class="bg-orange rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3"
                                                 data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i
                                                     class="ti ti-basket fs-4"></i></a>
                                         </div>

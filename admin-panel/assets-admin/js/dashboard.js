@@ -29,7 +29,7 @@ $(function () {
                           columnWidth: '12%',
                           endingShape: 'rounded',
                           fill: {
-                              colors: ['#3ed650'] // Change color here
+                              colors: ['#e65b1b'] // Change color here
                           }
                       },
                   },
@@ -108,7 +108,7 @@ $(function () {
     legend: {
       show: false,
     },
-    colors: ["#3ed650", "#94eb9e", "#cef5d2"],
+    colors: ["#E6822D", "#EC9D5A", "#FBBE8B"],
 
     responsive: [
       {
@@ -150,7 +150,7 @@ $(function () {
     series: [
       {
         name: "Earnings",
-        color: "#3ed650",
+        color: "#FBBE8B",
         data: [25, 66, 20, 40, 12, 58, 20],
       },
     ],

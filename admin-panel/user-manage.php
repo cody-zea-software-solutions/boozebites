@@ -66,8 +66,8 @@ if (isset($_SESSION["a"])) {
                       <div class="input-group rounded border rounded-5">
                         <input type="search" class="form-control border-0 border-end" placeholder="Search by email"
                           aria-label="Search" id="ukey" aria-describedby="search-addon" />
-                        <span class="input-group-text bg-danger btn border-0" onclick="SearchUser();" id="search-addon">
-                          <i class="fas fa-search"></i>
+                        <span class="input-group-text bg-orange btn border-0" onclick="SearchUser();" id="search-addon">
+                          <i class="fas fa-search text-white"></i>
                         </span>
                       </div>
                     </form>

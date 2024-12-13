@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../admin-panel/assets-admin/css/styles.min.css" />
 </head>
 
-<body style="background-color: #E8FDE8;">
+<body style="background-color: #FBD1A9;">
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">

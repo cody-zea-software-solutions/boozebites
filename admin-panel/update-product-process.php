@@ -50,7 +50,7 @@ if (isset($_SESSION["a"])) {
                                INNER JOIN product ON product.product_id = price_table.product_product_id 
                                SET price_table.price = ?, 
                                    price_table.box_type_box_type_id = ?
-                               WHERE price_table.product_product_id = ? AND price_table.box_type_box_type_id = ? AND product.on_delete=1";
+                               WHERE price_table.product_product_id = ? AND price_table.box_type_box_type_id = ? AND product.on_delete=0";
 
                 try {
                     if ($update_stmt = Databases::$connection->prepare($update_sql)) {

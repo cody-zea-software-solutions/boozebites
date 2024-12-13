@@ -74,7 +74,7 @@ if (isset($_SESSION["a"])) {
                                                                 here</span></div>
                                                     </div>
                                                     <div class="col-12 mt-3">
-                                                        <button class="btn fw-bold col-8 btn-danger" data-bs-toggle="modal"
+                                                        <button class="btn fw-bold col-8 btn-orange" data-bs-toggle="modal"
                                                             data-bs-target="#exampleModal"><i class="fa-solid fa-receipt"></i>
                                                             Show Invoices</button>
                                                     </div>
@@ -106,9 +106,9 @@ if (isset($_SESSION["a"])) {
                                                                 <input type="search" class="form-control border-0 border-end"
                                                                     placeholder="Search by Invoice Id" aria-label="Search"
                                                                     aria-describedby="search-addon" id="keyword" />
-                                                                <span class="input-group-text bg-danger btn border-0"
+                                                                <span class="input-group-text bg-orange btn border-0 text-white"
                                                                     id="search-addon" onclick="SearchInvoice();">
-                                                                    <i class="fas fa-search"></i>
+                                                                    <i class="fas fa-search text-white"></i>
                                                                 </span>
                                                             </div>
                                                         </form>
@@ -161,7 +161,7 @@ if (isset($_SESSION["a"])) {
                                                                                             <td>
                                                                                                 <?php echo $invoice_data["invoice_date"] ?>
                                                                                             </td>
-                                                                                            <td><a class="btn x py-1 px-3 rounded-1" href="invoice.php?in_id=<?php echo $invoice_data['invoice_id']?>" target="_blank"><i
+                                                                                            <td><a class="btn x py-1 px-3 rounded-1" href="invoice.php?in_id=<?php echo $invoice_data['payment_intent']?>" target="_blank"><i
                                                                                                         class="fa fa-download"
                                                                                                         aria-hidden="true"></i></a>
                                                                                             </td>

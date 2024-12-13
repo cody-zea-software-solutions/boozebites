@@ -71,7 +71,7 @@ if (isset($_SESSION["a"])) {
 
                                             <div class="row">
                                                 <?php
-                                                $order_cou = Databases::search("SELECT `order`.`id`,order.order_status_id,order_date,order_status_name,CONCAT(first_name,' ',last_name) AS user_name,mobile,
+                                                $order_cou = Databases::search("SELECT `email`,`order`.`id`,order.order_status_id,order_date,order_status_name,CONCAT(first_name,' ',last_name) AS user_name,mobile,
                                                 CONCAT(first_line,',',second_line,',',city_name) AS `address` FROM `order`
                                                 INNER JOIN order_status ON `order`.order_status_id=order_status.order_status_id
                                                 INNER JOIN user ON user.email = `order`.user_email
@@ -82,21 +82,24 @@ if (isset($_SESSION["a"])) {
                                                     $order_cou_fetch = $order_cou->fetch_assoc();
                                                     $ocf = $order_cou_fetch['id'];
                                                     ?>
-                                                    <div class="col-12 border-bottom border-dark-subtle shadow mt-3 ">
-                                                        <div class="row">
+                                                    <div class="col-12 border border-dark-subtle shadow mt-3 ">
+                                                        <div class="row mt-2">
                                                             <div class="d-flex">
-                                                                <div class="p-2 w-100">
-                                                                    <div class="">Name:
-                                                                        <b><?php echo $order_cou_fetch['user_name'] ?></b>
+                                                                <div class="p-2 w-100 ">
+                                                                    <div class=""><b>Name : </b>
+                                                                        <?php echo $order_cou_fetch['user_name'] ?>
                                                                     </div>
-                                                                    <div class="">Mobile:
-                                                                        <b><?php echo $order_cou_fetch['mobile'] ?></b>
+                                                                    <div class=""><b>Mobile : </b>
+                                                                        <?php echo $order_cou_fetch['mobile'] ?>
                                                                     </div>
-                                                                    <div class="">Address:
-                                                                        <b><?php echo $order_cou_fetch['address'] ?></b>
+                                                                    <div class=""><b>Email : </b>
+                                                                        <?php echo $order_cou_fetch['email'] ?>
                                                                     </div>
-                                                                    <div class="">Date Time:
-                                                                        <b><?php echo $order_cou_fetch['order_date'] ?></b>
+                                                                    <div class=""><b>Address : </b>
+                                                                        <?php echo $order_cou_fetch['address'] ?>
+                                                                    </div>
+                                                                    <div class=""><b>Date Time : </b>
+                                                                        <?php echo $order_cou_fetch['order_date'] ?>
                                                                     </div>
                                                                 </div>
                                                                 <div class="p-2"><a class="btn btn-warning" data-bs-toggle="modal"
@@ -113,27 +116,29 @@ if (isset($_SESSION["a"])) {
                                                                                 <th scope="col"></th>
                                                                                 <th></th>
                                                                                 <th scope="col">ITEM</th>
-                                                                                <th scope="col">CUSTOMER</th>
                                                                                 <th scope="col">DETAILS</th>
-                                                                                <th scope="col">PRICE</th>
+                                                                                <th scope="col">UNIT PRICE</th>
+                                                                                <th scope="col">QTY</th>
+                                                                                <th scope="col">TOTAL PRICE</th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
                                                                             <?php
-                                                                            $order_rs = Databases::search("SELECT price_table.product_product_id AS product_id,price_table.box_type_box_type_id AS box_id,CONCAT(product.product_name,' ',meat_type.meat_type_name,' ',cook_type.cook_type_name) AS `p_name`,`order`.user_email,product.description,price_table.price,`order`.order_status_id,product_img.product_img_path,preference.preference_name
+                                                                            $order_rs = Databases::search("SELECT price_table.product_product_id AS product_id,price_table.box_type_box_type_id AS box_id,qty,CONCAT(product.product_name,' ',meat_type.meat_type_name,' ',cook_type.cook_type_name) AS `p_name`,`order`.user_email,product.description,price_table.price,`order`.order_status_id,product_img.product_img_path,preference.preference_name
                                                                 FROM order_item INNER JOIN product ON product.product_id=order_item.price_table_product_product_id
                                                                 INNER JOIN `order` ON `order`.id=order_item.order_id
                                                                 INNER JOIN product_img ON product_img.product_id=product.product_id
                                                                 INNER JOIN price_table ON price_table.box_type_box_type_id=order_item.price_table_box_type_box_type_id AND price_table.product_product_id=product.product_id
                                                                 INNER JOIN meat_type ON meat_type.meat_type_id=product.meat_type_id
                                                                 INNER JOIN cook_type ON cook_type.cook_type_id=product.cook_type_id
-                                                                INNER JOIN preference ON preference.preference_id=order_item.preference_preference_id WHERE `order`.`id`=$ocf AND product.on_delete=0");
+                                                                INNER JOIN preference ON preference.preference_id=order_item.preference_preference_id WHERE `order`.`id`=$ocf");
                                                                             $order_num = $order_rs->num_rows;
 
                                                                             for ($x = 0; $x < $order_num; $x++) {
 
                                                                                 $order_data = $order_rs->fetch_assoc();
                                                                                 $pid = $order_data["product_id"];
+                                                                                $p_tot=$order_data["price"]*$order_data["qty"];
                                                                                 ?>
                                                                                 <tr class="table-row-with-border">
                                                                                     <td>
@@ -149,12 +154,16 @@ if (isset($_SESSION["a"])) {
                                                                                         <?php echo $order_data['p_name'],' ',$order_data['preference_name']; ?>
                                                                                     </th>
                                                                                     <td>
-                                                                                        <?php echo $order_data["user_email"] ?>
+                                                                                        <?php echo $order_data["description"] ?>
                                                                                         </span>
                                                                                     </td>
-                                                                                    <td><?php echo $order_data["description"] ?></td>
-                                                                                    <td>NZD
+                                                                                    <td>NZD 
                                                                                         <?php echo number_format($order_data["price"], 2) ?>
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td><?php echo $order_data["qty"] ?></td>
+                                                                                    <td>NZD
+                                                                                        <?php echo number_format($p_tot, 2) ?>
                                                                                     </td>
 
 

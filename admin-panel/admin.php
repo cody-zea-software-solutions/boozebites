@@ -70,55 +70,38 @@ if (isset($_SESSION["a"])) {
                     $e = "0";
                     $f = "0";
 
-                    $invoice_rs = Databases::search("SELECT * FROM `invoice`");
-                    $invoice_num = $invoice_rs->num_rows;
+                    $invoice_rs = Databases::search("SELECT SUM(qty*price) AS sum_today
+                    FROM `order_item`
+                    INNER JOIN `order` ON `order`.`id`=`order_item`.`order_id`
+                    INNER JOIN price_table ON price_table.product_product_id=order_item.price_table_product_product_id AND price_table.box_type_box_type_id=order_item.price_table_box_type_box_type_id
+                    WHERE DATE(order_date)='$today'");
+                    if ($invoice_rs->num_rows == 1) {
+                      $sdf = $invoice_rs->fetch_assoc();
+                      $a = $sdf["sum_today"];
+                    }
 
-                    for ($x = 0; $x < $invoice_num; $x++) {
-                      $invoice_data = $invoice_rs->fetch_assoc();
-
-                      $f = $f + $invoice_data["qty"];
-
-                      $d = $invoice_data["date"];
-                      $splitDate = explode(" ", $d); //separate date from time
-                      $pdate = $splitDate[0]; //sold date
-                
-                      if ($pdate == $today) {
-                        $a = $a + $invoice_data["total_amount"];
-                        $c = $c + $invoice_data["qty"];
-                      }
-
-                      $splitMonth = explode("-", $pdate); //separate date as year,month & date
-                      $pyear = $splitMonth[0]; //year
-                      $pmonth = $splitMonth[1]; //month
-                
-                      if ($pyear == $thisyear) {
-                        if ($pmonth == $thismonth) {
-                          $b = $b + $invoice_data["total_amount"];
-                          $e = $e + $invoice_data["qty"];
-                        }
-                      }
+                    $invoice_rs2 = Databases::search("SELECT SUM(qty*price) AS sum_today
+                    FROM `order_item`
+                    INNER JOIN `order` ON `order`.`id`=`order_item`.`order_id`
+                    INNER JOIN price_table ON price_table.product_product_id=order_item.price_table_product_product_id AND price_table.box_type_box_type_id=order_item.price_table_box_type_box_type_id
+                    WHERE MONTH(order_date)='$thismonth'");
+                    if ($invoice_rs2->num_rows == 1) {
+                      $sdf = $invoice_rs2->fetch_assoc();
+                      $b = $sdf["sum_today"];
                     }
 
                     ?>
                     <!-- Yearly Breakup -->
-                    <div class="card overflow-hidden">
+                    <div class="card overflow-hidden border shadow">
                       <div class="card-body p-4">
                         <h5 class="card-title mb-9 fw-semibold">Daily Breakup</h5>
                         <div class="row align-items-center">
                           <div class="col-8">
                             <h4 class="fw-semibold mb-3">NZD <?php echo number_format($a, 2) ?></h4>
-                            <div class="d-flex align-items-center mb-3">
-                              <span
-                                class="me-1 rounded-circle bg-light-success round-20 d-flex align-items-center justify-content-center">
-                                <i class="ti ti-arrow-up-left text-success"></i>
-                              </span>
-                              <p class="text-dark me-1 fs-3 mb-0">+9%</p>
-                              <p class="fs-3 mb-0">Last Day</p>
-                            </div>
                             <div class="d-flex align-items-center">
                               <div class="me-4">
                                 <span class="round-8 bg-primary rounded-circle me-2 d-inline-block"></span>
-                                <span class="fs-2">2023</span>
+                                <span class="fs-2"><?php echo $thisyear ?></span>
                               </div>
 
                             </div>
@@ -134,25 +117,20 @@ if (isset($_SESSION["a"])) {
                   </div>
                   <div class="col-lg-12">
                     <!-- Monthly Earnings -->
-                    <div class="card">
+                    <div class="card border shadow">
                       <div class="card-body">
                         <div class="row alig n-items-start">
                           <div class="col-8">
                             <h5 class="card-title mb-9 fw-semibold"> Monthly Earnings </h5>
                             <h4 class="fw-semibold mb-3">NZD <?php echo number_format($b, 2) ?></h4>
                             <div class="d-flex align-items-center pb-1">
-                              <span
-                                class="me-2 rounded-circle bg-light-danger round-20 d-flex align-items-center justify-content-center">
-                                <i class="ti ti-arrow-down-right text-danger"></i>
-                              </span>
-                              <p class="text-dark me-1 fs-3 mb-0">+9%</p>
-                              <p class="fs-3 mb-0">last year</p>
+
                             </div>
                           </div>
                           <div class="col-4">
                             <div class="d-flex justify-content-end">
                               <div
-                                class="text-white bg-secondary rounded-circle p-6 d-flex align-items-center justify-content-center">
+                                class="text-white bg-orange rounded-circle p-6 d-flex align-items-center justify-content-center">
                                 <i class="ti ti-currency-dollar fs-6"></i>
                               </div>
                             </div>
@@ -176,32 +154,36 @@ if (isset($_SESSION["a"])) {
                       <?php
                       $invoice_rs3 = Databases::search("SELECT * 
                       FROM `invoice` 
-                      INNER JOIN `user` ON `user`.`email` = `invoice`.`user_email` 
-                      ORDER BY `invoice`.`date` DESC 
+                      ORDER BY `invoice_date` DESC 
                       LIMIT 5;
                       ");
                       $invoice_num3 = $invoice_rs3->num_rows;
                       for ($x = 1; $x <= $invoice_num3; $x++) {
                         $invoice_data3 = $invoice_rs3->fetch_assoc();
                         // Original datetime string
-                        $datetimeString = $invoice_data3["date"];
+                        $datetimeString = $invoice_data3["invoice_date"];
 
                         // Convert datetime string to a Unix timestamp
                         $timestamp = strtotime($datetimeString);
 
                         // Format the time portion using date() function
                         $formattedTime = date("H:i:s", $timestamp);
+                        $datetime = $invoice_data3["invoice_date"]; // Example: 2024-12-05 14:30:00
+                            $date = (new DateTime($datetime))->format('Y-m-d');
+                            
                         ?>
                         <li class="timeline-item d-flex position-relative overflow-hidden">
-                          <div class="timeline-time text-dark flex-shrink-0 text-end"><?php echo $formattedTime ?>
+                          <div class="timeline-time text-dark flex-shrink-0 text-end"><?php echo $date; ?>
                           </div>
                           <div class="timeline-badge-wrap d-flex flex-column align-items-center">
                             <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
                             <span class="timeline-badge-border d-block flex-shrink-0"></span>
                           </div>
-                          <div class="timeline-desc fs-3 text-dark mt-n1">Payment received from
-                            <?php echo $invoice_data3["date"] ?> of NZD
-                            <?php echo number_format($invoice_data3["total_amount"], 2) * $invoice_data["qty"] ?></div>
+                          <div class="timeline-desc fs-3 text-dark mt-n1">NZD 
+                          <?php echo number_format($invoice_data3["invoice_total"], 2) ?> Payment received at
+                            <?php echo $formattedTime; ?>
+                            
+                          </div>
                         </li>
                         <?php
                       }
@@ -239,7 +221,8 @@ if (isset($_SESSION["a"])) {
                         </thead>
                         <tbody>
                           <?php
-                          $invoice_rs1 = Databases::search("SELECT * FROM `invoice` INNER JOIN `user` ON `user`.`email` = `invoice`.`user_email` ORDER BY `invoice`.`date` DESC  LIMIT 5");
+                          $invoice_rs1 = Databases::search("SELECT * FROM invoice
+                          INNER JOIN `order` ON `order`.order_code=invoice.payment_intent ORDER BY `invoice_date` DESC  LIMIT 5");
                           $invoice_num1 = $invoice_rs1->num_rows;
                           for ($x = 1; $x <= $invoice_num1; $x++) {
                             $invoice_data1 = $invoice_rs1->fetch_assoc();
@@ -250,20 +233,20 @@ if (isset($_SESSION["a"])) {
                                 <h6 class="fw-semibold mb-0"><?php echo $x ?></h6>
                               </td>
                               <td class="border-bottom-0">
-                                <h6 class="fw-semibold mb-1"><?php echo uniqid(); ?></h6>
-                                <span class="fw-normal"><?php echo $invoice_data1["date"] ?></span>
+                                <h6 class="fw-semibold mb-1"><?php echo $invoice_data1['payment_intent'] ?></h6>
+                                <span class="fw-normal"><?php echo $invoice_data1["invoice_date"] ?></span>
                               </td>
                               <td class="border-bottom-0">
                                 <p class="mb-0 fw-normal"><?php echo $invoice_data1["user_email"] ?></p>
                               </td>
                               <td class="border-bottom-0">
                                 <div class="d-flex align-items-center gap-2">
-                                  <span class="badge bg-primary rounded-3 fw-semibold">Success</span>
+                                  <span class="badge bg-warning rounded-3 fw-semibold">Success</span>
                                 </div>
                               </td>
                               <td class="border-bottom-0">
                                 <span class="fw-semibold mb-0 text-black">NZD
-                                  <?php echo number_format($invoice_data1["total_amount"], 2) * $invoice_data["qty"] ?></span>
+                                  <?php echo number_format($invoice_data1["invoice_total"], 2) ?></span>
                               </td>
                               <?php
                           }
@@ -436,7 +419,7 @@ if (isset($_SESSION["a"])) {
             <!-- delete product modal end -->
 
             <div class="py-6 px-6 text-center">
-              <p class="mb-0 fs-4">Design and Developed by <a href="codylanka.com" 
+              <p class="mb-0 fs-4">Design and Developed by <a href="codylanka.com"
                   class="pe-1 text-primary text-decoration-underline">CL Solution.com</a> Distributed by <a
                   href="codylanka.com">CL Solution</a></p>
             </div>
