@@ -60,35 +60,34 @@ if (isset($_SESSION["a"])) {
                   <div class="col-lg-12">
                     <?php
 
+                    date_default_timezone_set("Pacific/Auckland"); // Set the timezone to New Zealand
                     $today = date("Y-m-d");
                     $thismonth = date("m");
                     $thisyear = date("Y");
 
+                    // Initialize variables
                     $a = "0";
                     $b = "0";
                     $c = "0";
                     $e = "0";
                     $f = "0";
 
-                    $invoice_rs = Databases::search("SELECT SUM(qty*price) AS sum_today
-                    FROM `order_item`
-                    INNER JOIN `order` ON `order`.`id`=`order_item`.`order_id`
-                    INNER JOIN price_table ON price_table.product_product_id=order_item.price_table_product_product_id AND price_table.box_type_box_type_id=order_item.price_table_box_type_box_type_id
-                    WHERE DATE(order_date)='$today'");
+                    // Query for today's invoices
+                    $invoice_rs = Databases::search("SELECT * FROM invoice WHERE DATE(invoice_date) = '$today'");
                     if ($invoice_rs->num_rows == 1) {
                       $sdf = $invoice_rs->fetch_assoc();
-                      $a = $sdf["sum_today"];
+                      $a = $sdf["invoice_total"];
                     }
 
-                    $invoice_rs2 = Databases::search("SELECT SUM(qty*price) AS sum_today
-                    FROM `order_item`
-                    INNER JOIN `order` ON `order`.`id`=`order_item`.`order_id`
-                    INNER JOIN price_table ON price_table.product_product_id=order_item.price_table_product_product_id AND price_table.box_type_box_type_id=order_item.price_table_box_type_box_type_id
-                    WHERE MONTH(order_date)='$thismonth'");
+                    // Query for this month's invoices
+                    $invoice_rs2 = Databases::search("
+                    SELECT * FROM invoice 
+                    WHERE DATE_FORMAT(invoice_date, '%Y-%m') = '$thisyear-$thismonth'");
                     if ($invoice_rs2->num_rows == 1) {
                       $sdf = $invoice_rs2->fetch_assoc();
-                      $b = $sdf["sum_today"];
+                      $b = $sdf["invoice_total"];
                     }
+
 
                     ?>
                     <!-- Yearly Breakup -->
@@ -169,8 +168,8 @@ if (isset($_SESSION["a"])) {
                         // Format the time portion using date() function
                         $formattedTime = date("H:i:s", $timestamp);
                         $datetime = $invoice_data3["invoice_date"]; // Example: 2024-12-05 14:30:00
-                            $date = (new DateTime($datetime))->format('Y-m-d');
-                            
+                        $date = (new DateTime($datetime))->format('Y-m-d');
+
                         ?>
                         <li class="timeline-item d-flex position-relative overflow-hidden">
                           <div class="timeline-time text-dark flex-shrink-0 text-end"><?php echo $date; ?>
@@ -179,10 +178,10 @@ if (isset($_SESSION["a"])) {
                             <span class="timeline-badge border-2 border border-primary flex-shrink-0 my-8"></span>
                             <span class="timeline-badge-border d-block flex-shrink-0"></span>
                           </div>
-                          <div class="timeline-desc fs-3 text-dark mt-n1">NZD 
-                          <?php echo number_format($invoice_data3["invoice_total"], 2) ?> Payment received at
+                          <div class="timeline-desc fs-3 text-dark mt-n1">NZD
+                            <?php echo number_format($invoice_data3["invoice_total"], 2) ?> Payment received at
                             <?php echo $formattedTime; ?>
-                            
+
                           </div>
                         </li>
                         <?php
