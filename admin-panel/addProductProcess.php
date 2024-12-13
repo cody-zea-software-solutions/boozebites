@@ -95,7 +95,7 @@ if (isset($_SESSION["a"])) {
                 }
             }
 
-            echo "Product Added Successfully";
+            echo "success";
 
         } else {
             echo "Error inserting product into database.";
