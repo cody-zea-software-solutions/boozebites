@@ -18,10 +18,9 @@ $scc = $_POST["scc"];
 $umail = $_POST["umail"];
 $paid = $_POST["payid"];
 $nzd = $_POST["currency"];
-$total = $_POST["total"];
-$discount = $_POST["dis"];
+$total = $_POST["total"]/100;
+$discount = $_POST["dis"]/100;
 $ship_amount = $_POST["ship"];
-
 $tax_per;
 // $discount = 0;
 $dfi = 1;
