@@ -69,7 +69,7 @@
                             for ($i = 0; $i < $pro_footer_num; $i++) {
                                 $pro_footer_data = $pro_footer_rs->fetch_assoc(); 
                                 ?>
-                                 <li><a href="product-details.php"><?php echo $pro_footer_data["product_name"] ?></a></li>
+                                 <li><a onclick="singlepr(<?php echo $pro_footer_data['product_id']; ?>);"><?php echo $pro_footer_data["product_name"] ?></a></li>
                                 <?php 
                             }
                             ?>
