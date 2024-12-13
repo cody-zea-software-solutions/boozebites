@@ -74,7 +74,7 @@ if (isset($_SESSION["user_boost"])) {
                         <div class="d-flex justify-content-center flex-column">
                             <p class="text-body lead text-center mt-10">Your Name: <?php echo $user_data["first_name"]." ".$user_data["last_name"] ?></p>
                             <div class="col-12 d-flex justify-content-center">
-                                <button class="theme-btn style-two col-10">Shop <i class="far fa-arrow-alt-right"></i></button>
+                                <a href="shop.php" class="theme-btn style-two col-10">Shop <i class="far fa-arrow-alt-right"></i></a>
                             </div>
                             <div class="col-12 d-flex justify-content-center mt-10">
                                 <button class="theme-btn style-two col-10" onclick="toggleForms()">
@@ -86,8 +86,8 @@ if (isset($_SESSION["user_boost"])) {
                                     My Orders <i class="far fa-arrow-alt-right"></i>
                                 </button>
                             </div>
-                            <p class="text-danger lead mt-10 text-center">
-                                <i onclick="logoutUser();" class="fas fa-sign-out"></i> Log Out
+                            <p class="text-danger lead mt-10 text-center" onclick="logoutUser();">
+                                <i class="fas fa-sign-out"></i> Log Out
                             </p>
                         </div>
                     </div>

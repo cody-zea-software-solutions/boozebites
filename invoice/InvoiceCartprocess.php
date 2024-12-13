@@ -18,7 +18,7 @@ $scc = $_POST["scc"];
 $umail = $_POST["umail"];
 $paid = $_POST["payid"];
 $nzd = $_POST["currency"];
-$total = $_POST["total"]/100;
+$total = $_POST["total"] / 100;
 $discount = $_POST["dis"];
 $ship_amount = $_POST["ship"];
 $tax_per;
@@ -69,6 +69,9 @@ INTO `order_item` (`order_id`,`price_table_product_product_id`,`price_table_box_
     $orderi->bind_param("iiiii", $order_id, $price_table_product_product_id, $price_table_box_type_box_type_id, $preference_preference_id, $qty);
     $orderi->execute();
 }
+
+Database::IUD("DELETE FROM `cart_item` WHERE `user_email`='$umail'");
+
 // echo "Okay Checkout Successed";
 $s = new EmailSender();
 echo $s->send($umail);

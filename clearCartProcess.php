@@ -1,9 +1,9 @@
 <?php
-require "C:/xampp/htdocs/meatShop/connection.php";
+require "connection.php";
 session_start();
 
-if (true) { //check if the user logged in
-    $user_email = 'user@gmail.com';
+if (isset($_SESSION["user_boost"])) { //check if the user logged in
+    $user_email = $_SESSION["user_boost"]["email"];
     Database::IUD("DELETE FROM `cart_item` WHERE `user_email`='$user_email'");
 } else {
     session_destroy();

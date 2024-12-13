@@ -38,11 +38,11 @@ if (isset($_SESSION["user_boost"])) {
                 // Define shipping charge
                 $shippingCharge = 250; // Shipping charge in cents (NZD 2.50)
                 if ($discount == '0.00') {
-                    $successUrl = 'http://localhost/boozebitenz/invoice/cartInvoice.php?session_id={CHECKOUT_SESSION_ID}&umail=' . $umail . '&qty=' . 1;
+                    $successUrl = 'https://boozebites.co.nz/invoice/cartInvoice.php?session_id={CHECKOUT_SESSION_ID}&umail=' . $umail . '&qty=' . 1;
                     // $successUrl = 'https://ceynap.co.nz/invoice/cartInvoice.php?session_id={CHECKOUT_SESSION_ID}&umail=' . $umail . '&qty=' . 1;
 
                 } else {
-                    $successUrl = 'http://localhost/boozebitenz/invoice/cartInvoice.php?session_id={CHECKOUT_SESSION_ID}&umail=' . $umail . '&qty=' . 1 . '&coupon_id=' . $coupon_id;
+                    $successUrl = 'https://boozebites.co.nz/invoice/cartInvoice.php?session_id={CHECKOUT_SESSION_ID}&umail=' . $umail . '&qty=' . 1 . '&coupon_id=' . $coupon_id;
                     // $successUrl = 'https://ceynap.co.nz/invoice/cartInvoice.php?session_id={CHECKOUT_SESSION_ID}&umail=' . $umail . '&qty=' . 1 . '&coupon_id=' . $coupon_id;
 
                 }
