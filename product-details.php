@@ -108,7 +108,7 @@ if (isset($_GET["pid"])) {
                   if ($img_rs->num_rows > 0) {
                     $img_d = $img_rs->fetch_assoc();
                     ?>
-                    <img src="<?php echo $img_d["product_img_path"]; ?>" class="img-fluid w-100" alt="Product Details">
+                    <img src="admin-panel/<?php echo $img_d["product_img_path"]; ?>" class="img-fluid w-100" alt="Product Details">
                     <?php
                   } else {
                     echo "no image set";
@@ -121,7 +121,7 @@ if (isset($_GET["pid"])) {
                     $img_d = $img_rs->fetch_assoc();
                     ?>
                     <div class="col-6 col-md-6 col-lg-4 mt-2">
-                      <img src="<?php echo $img_d["product_img_path"]; ?>" alt="Product Details" />
+                      <img src="admin-panel/<?php echo $img_d["product_img_path"]; ?>" alt="Product Details" />
                     </div>
                     <?php
                   }
@@ -440,7 +440,7 @@ if (isset($_GET["pid"])) {
                   data-aos-offset="50">
                   <div class="product-item-two">
                     <div class="image">
-                      <img src="<?php echo $img ?>" alt="Dish">
+                      <img src="admin-panel/<?php echo $img ?>" alt="Dish">
                     </div>
                     <div class="content">
                       <!-- <div class="ratting">
