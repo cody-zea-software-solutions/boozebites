@@ -70,6 +70,14 @@ function addToCart(pid) {
           showConfirmButton: false,
           timer: 1500,
         });
+      } else if(r.responseText == "log"){
+        Swal.fire({
+          position: "top-end",
+          icon: "warning",
+          title: "Please Login First",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     }
   };

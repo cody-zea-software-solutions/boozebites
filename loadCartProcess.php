@@ -145,7 +145,7 @@ if (isset($_SESSION["user_boost"]["email"])) { //check if the user logged in
                         } else {
                             ?>
                             <div class="text-center my-100">
-                                <div class="theme-btn">You need to have your address set in your profile</div>
+                                <a href="profile.php" class="theme-btn">You need to have your address set in your profile</a>
                             </div>
                             <?php
                         }
