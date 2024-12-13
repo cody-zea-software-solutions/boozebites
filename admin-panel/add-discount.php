@@ -119,7 +119,7 @@ if (isset($_SESSION["a"])) {
                                                     $category_data = $category_rs->fetch_assoc();
                                                     ?>
                                                     <option value="<?php echo $category_data["discount_id"] ?>">
-                                                        <?php echo $category_data["discount_name"]," || ",$category_data["percentage"]," % off per ",$category_data["amount"]," items" ?>
+                                                        <?php echo $category_data["discount_name"]," || ",$category_data["percentage"]," % off on spend ",$category_data["amount"]," NZD" ?>
                                                     </option>
                                                     <?php
                                                 }
