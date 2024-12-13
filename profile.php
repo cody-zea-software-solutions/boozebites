@@ -72,7 +72,7 @@ if (isset($_SESSION["user_boost"])) {
                     <div class="row d-flex justify-content-center">
                         <img src="./assets/images/profile-icon.png" class="img-fluid w-50 col-12" alt="Profile Icon" />
                         <div class="d-flex justify-content-center flex-column">
-                            <p class="text-body lead text-center mt-10">Your Name: John Doe</p>
+                            <p class="text-body lead text-center mt-10">Your Name: <?php echo $user_data["first_name"]." ".$user_data["last_name"] ?></p>
                             <div class="col-12 d-flex justify-content-center">
                                 <button class="theme-btn style-two col-10">Shop <i class="far fa-arrow-alt-right"></i></button>
                             </div>
