@@ -270,7 +270,7 @@ require "connection.php";
                                         data-aos-duration="1500" data-aos-offset="50">
                                         <div class="product-item-two">
                                             <div class="image">
-                                                <img src="<?php echo $img ?>" alt="Dish">
+                                                <img src="admin-panel/<?php echo $img ?>" alt="Dish">
                                             </div>
                                             <div class="content">
                                                 <!-- <div class="ratting">
