@@ -17,8 +17,7 @@ require "connection.php";
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="assets/images/logos/favicon.png" type="image/x-icon">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Flaticon -->
     <link rel="stylesheet" href="assets/css/flaticon.min.css">
@@ -59,15 +58,13 @@ require "connection.php";
 
 
         <!-- Page Banner Start -->
-        <section class="page-banner-area overlay pt-215 rpt-150 pb-160 rpb-120 rel z-1 bgs-cover text-center"
-            style="background-image: url(assets/images/background/banner.jpg);">
+        <section class="page-banner-area overlay pt-215 rpt-150 pb-160 rpb-120 rel z-1 bgs-cover text-center" style="background-image: url(assets/images/background/banner.jpg);">
             <div class="container">
                 <div class="banner-inner text-white">
                     <h1 class="page-title" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">Booze
                         Bites-Shop</h1>
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center" data-aos="fade-up" data-aos-delay="200"
-                            data-aos-duration="1500" data-aos-offset="50">
+                        <ol class="breadcrumb justify-content-center" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                             <li class="breadcrumb-item active">Booze Bites-Shop</li>
                         </ol>
@@ -84,16 +81,14 @@ require "connection.php";
                 <div class="row">
                     <div class="col-xl-3 col-lg-4 col-md-8">
                         <div class="shop-sidebar rmb-75">
-                            <div class="widget widget-search" data-aos="fade-up" data-aos-duration="1500"
-                                data-aos-offset="50">
+                            <div class="widget widget-search" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                                 <h4 class="widget-title">Search</h4>
                                 <form action="#" class="default-search-form">
                                     <input type="text" oninput="filtersearch();" placeholder="Search here" required>
                                     <button type="submit" class="searchbutton far fa-search"></button>
                                 </form>
                             </div>
-                            <div class="widget widget-category" data-aos="fade-up" data-aos-delay="50"
-                                data-aos-duration="1500" data-aos-offset="50">
+                            <div class="widget widget-category" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
                                 <h4 class="widget-title">meet Types</h4>
                                 <ul>
                                     <?php
@@ -101,15 +96,14 @@ require "connection.php";
                                     $meet_num = $meet->num_rows;
                                     if ($meet_num > 0) {
                                         while ($meet_data = $meet->fetch_assoc()) {
-                                            ?>
+                                    ?>
                                             <li>
                                                 <label>
-                                                    <input onchange="filtersearch();" id="meat_type" type="checkbox"
-                                                        name="meat_type[]" value="<?php echo $meet_data["meat_type_id"]; ?>" />
+                                                    <input onchange="filtersearch();" id="meat_type" type="checkbox" name="meat_type[]" value="<?php echo $meet_data["meat_type_id"]; ?>" />
                                                     <?php echo htmlspecialchars($meet_data["meat_type_name"], ENT_QUOTES, 'UTF-8'); ?>
                                                 </label>
                                             </li>
-                                            <?php
+                                    <?php
                                         }
                                     } else {
                                         echo "<li>No cook types found.</li>";
@@ -118,8 +112,7 @@ require "connection.php";
                                 </ul>
                             </div>
 
-                            <div class="widget widget-category" data-aos="fade-up" data-aos-delay="50"
-                                data-aos-duration="1500" data-aos-offset="50">
+                            <div class="widget widget-category" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
                                 <h4 class="widget-title">Cook Types</h4>
                                 <ul>
                                     <?php
@@ -128,15 +121,14 @@ require "connection.php";
 
                                     if ($cook_num > 0) {
                                         while ($cook_data = $cook->fetch_assoc()) {
-                                            ?>
+                                    ?>
                                             <li>
                                                 <label>
-                                                    <input onchange="filtersearch();" id="cook_type" type="checkbox"
-                                                        name="cook_type[]" value="<?php echo $cook_data["cook_type_id"]; ?>" />
+                                                    <input onchange="filtersearch();" id="cook_type" type="checkbox" name="cook_type[]" value="<?php echo $cook_data["cook_type_id"]; ?>" />
                                                     <?php echo htmlspecialchars($cook_data["cook_type_name"], ENT_QUOTES, 'UTF-8'); ?>
                                                 </label>
                                             </li>
-                                            <?php
+                                    <?php
                                         }
                                     } else {
                                         echo "<li>No cook types found.</li>";
@@ -145,8 +137,7 @@ require "connection.php";
                                 </ul>
                             </div>
 
-                            <div class="widget widget-filter" data-aos="fade-up" data-aos-delay="50"
-                                data-aos-duration="1500" data-aos-offset="50">
+                            <div class="widget widget-filter" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
                                 <h4 class="widget-title">Pricing</h4>
                                 <div class="price-filter-wrap">
                                     <!-- Price Slider Range -->
@@ -235,15 +226,27 @@ require "connection.php";
 
                         </div>
                     </div>
+
+                    <?php
+        
+                    $products_per_page = 12;
+                    $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
+                    $start_from = ($page - 1) * $products_per_page;
+                    $total_products_result = Database::Search("SELECT COUNT(*) AS total FROM `product` WHERE `on_delete` = '0'");
+                    $total_products_data = $total_products_result->fetch_assoc();
+                    $total_products = $total_products_data['total'];
+                    $total_pages = ceil($total_products / $products_per_page);
+                    
+                    $product_rs = Database::Search("SELECT * FROM `product` WHERE `on_delete` = '0' LIMIT $start_from, $products_per_page");
+                    $product_num = $product_rs->num_rows;
+                    ?>
                     <div class="col-xl-9 col-lg-8">
                         <div class="shop-page-wrap">
                             <div class="shop-shorter rel z-3 mb-35">
-                                <div class="sort-text mb-15" data-aos="fade-left" data-aos-duration="1500"
-                                    data-aos-offset="50">
-                                    Showing 1–12 of 27 results
+                                <div class="sort-text mb-15" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                                    Showing <?php echo $start_from + 1; ?>–<?php echo min($start_from + $products_per_page, $total_products); ?> of <?php echo $total_products; ?> results
                                 </div>
-                                <div class="products-dropdown mb-15" data-aos="fade-right" data-aos-duration="1500"
-                                    data-aos-offset="50">
+                                <div class="products-dropdown mb-15" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
                                     <select onchange="filtersearch();" id="sort">
                                         <option value="default" selected="">Default Sorting</option>
                                         <option value="hight-to-low">High To Low</option>
@@ -251,95 +254,76 @@ require "connection.php";
                                     </select>
                                 </div>
                             </div>
+
                             <div class="row" id="filtered-results">
                                 <?php
-                                $product_rs = Database::search("SELECT * FROM `product`  WHERE  `on_delete` = '0'");
-                                $product_num = $product_rs->num_rows;
-                                for ($i = 0; $i < $product_num; $i++) {
-                                    $product_data = $product_rs->fetch_assoc();
-                                    $product_img = Database::search("SELECT * FROM `product_img` WHERE `product_id`='" . $product_data['product_id'] . "'");
-                                    $product_img_num = $product_img->num_rows;
-                                    if ($product_img_num != 0) {
-                                        $pimg = $product_img->fetch_assoc();
-                                        $img = $pimg['product_img_path'];
-                                    } else {
-                                        $img = "assets/images/dishes/dish12.png";
-                                    }
-                                    ?>
-                                    <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100"
-                                        data-aos-duration="1500" data-aos-offset="50">
-                                        <div class="product-item-two">
-                                            <div class="image">
-                                                <img src="admin-panel/<?php echo $img ?>" alt="Dish">
-                                            </div>
-                                            <div class="content">
-                                                <!-- <div class="ratting">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <span>(5k)</span>
-                                                </div> -->
-                                                <h5><a
-                                                        onclick="singlepr(<?php echo $product_id; ?>);"><?php echo $product_data["product_name"] ?></a>
-                                                </h5>
-                                                <?php
-                                                $price = Database::Search("SELECT * FROM price_table WHERE `box_type_box_type_id`='1' AND `product_product_id`='" . $product_data["product_id"] . "' ");
-                                                $price_row = $price->num_rows;
-                                                if ($price_row != 0) {
-                                                    $price_data = $price->fetch_assoc();
-                                                    ?>
-                                                    <span
-                                                        class="price"><del><?php echo "$" . "" . $price_data["price"] + 50; ?></del><?php echo "$" . "" . $price_data["price"]; ?></span>
+                                if ($product_num > 0) {
+                                    while ($product_data = $product_rs->fetch_assoc()) {
+                                        $product_img = Database::Search("SELECT * FROM `product_img` WHERE `product_id`='" . $product_data['product_id'] . "'");
+                                        $product_img_num = $product_img->num_rows;
+                                        $img = $product_img_num > 0 ? $product_img->fetch_assoc()['product_img_path'] : "assets/images/dishes/dish12.png";
+                                ?>
+                                        <div class="col-xl-4 col-sm-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                                            <div class="product-item-two">
+                                                <div class="image">
+                                                    <img src="admin-panel/<?php echo $img ?>" alt="Dish">
+                                                </div>
+                                                <div class="content">
+                                                    <h5><a onclick="singlepr(<?php echo $product_data['product_id']; ?>);">
+                                                            <?php echo htmlspecialchars($product_data['product_name']); ?></a>
+                                                    </h5>
                                                     <?php
-                                                    $box = Database::Search("SELECT * FROM `box_type` WHERE `box_type_id`='1'");
-                                                    $box_data = $box->fetch_assoc();
+                                                    $price = Database::Search("SELECT * FROM price_table WHERE `box_type_box_type_id`='1' AND `product_product_id`='" . $product_data['product_id'] . "'");
+                                                    if ($price->num_rows > 0) {
+                                                        $price_data = $price->fetch_assoc();
                                                     ?>
-                                                    <br>
-                                                    <p><?php echo $box_data["box_type_name"] ?></p>
+                                                        <span class="price"><del><?php echo "$" . ($price_data['price'] + 50); ?></del><?php echo "$" . $price_data['price']; ?></span>
                                                     <?php
-                                                } else {
-                                                    echo "no price available";
-                                                }
-                                                ?>
+                                                    } else {
+                                                        echo "No price available";
+                                                    }
+                                                    ?>
+                                                </div>
+                                                <a onclick="singlepr(<?php echo $product_data['product_id']; ?>);" class="theme-btn">Buy now<i class="far fa-arrow-alt-right"></i></a>
                                             </div>
-                                            <?php $product_id = $product_data["product_id"]; ?>
-                                            <a onclick="singlepr(<?php echo $product_id; ?>);" class="theme-btn">Buy now<i
-                                                    class="far fa-arrow-alt-right"></i></a>
-                                            <script>
-                                                function singlepr(productId) {
-                                                    window.location.href = "product-details.php?pid=" + productId;
-                                                }
-                                            </script>
-
                                         </div>
-                                    </div>
-                                    <?php
+                                <?php
+                                    }
+                                } else {
+                                    echo "<p>No products found.</p>";
                                 }
                                 ?>
                             </div>
-                            <ul class="pagination pt-30 flex-wrap d-flex justify-content-center" data-aos="fade-up"
-                                data-aos-duration="1500" data-aos-offset="50">
-                                <li class="page-item disabled">
-                                    <span class="page-link"><i class="fal fa-arrow-left"></i></span>
-                                </li>
-                                <li class="page-item active">
-                                    <span class="page-link">
-                                        1
-                                        <span class="sr-only">(current)</span>
-                                    </span>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><i class="fal fa-arrow-right"></i></a>
-                                </li>
-                            </ul>
+
+                            <div class="pagination pt-30 flex-wrap d-flex justify-content-center" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                                <?php if ($page > 1) : ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=<?php echo $page - 1; ?>"><i class="fal fa-arrow-left"></i></a>
+                                    </li>
+                                <?php endif; ?>
+
+                                <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+                                    <li class="page-item <?php echo ($i === $page) ? 'active' : ''; ?>">
+                                        <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                    </li>
+                                <?php endfor; ?>
+
+                                <?php if ($page < $total_pages) : ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="?page=<?php echo $page + 1; ?>"><i class="fal fa-arrow-right"></i></a>
+                                    </li>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
+
+                    <script>
+                        function singlepr(productId) {
+                            window.location.href = "product-details.php?pid=" + productId;
+                        }
+                    </script>
+
+
                 </div>
             </div>
         </section>
