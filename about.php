@@ -1,10 +1,11 @@
-<?php  
+<?php
 session_start();
 require "connection.php";
 
 ?>
 <!DOCTYPE html>
 <html lang="zxx">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -17,8 +18,9 @@ require "connection.php";
     <!-- Favicon Icon -->
     <link rel="shortcut icon" href="assets/images/logos/favicon.png" type="image/x-icon">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
     <!-- Flaticon -->
     <link rel="stylesheet" href="assets/css/flaticon.min.css">
     <!-- Font Awesome -->
@@ -35,23 +37,26 @@ require "connection.php";
     <link rel="stylesheet" href="assets/css/slick.min.css">
     <!-- Main Style -->
     <link rel="stylesheet" href="assets/css/style.css">
-    
+
 </head>
+
 <body>
     <div class="page-wrapper">
 
         <!-- Preloader -->
-        <div class="preloader"><div class="custom-loader"></div></div>
+        <div class="preloader">
+            <div class="custom-loader"></div>
+        </div>
 
         <!-- main header -->
-        <?php  
-require_once("header.php");
-headerContent(1); 
-?>
+        <?php
+        require_once("header.php");
+        headerContent(1);
+        ?>
 
         <!--Form Back Drop-->
         <div class="form-back-drop"></div>
-        
+
         <!-- Hidden Sidebar -->
         <section class="hidden-bar">
             <div class="inner-box text-center">
@@ -88,15 +93,18 @@ headerContent(1);
             </div>
         </section>
         <!--End Hidden Sidebar -->
-        
-        
+
+
         <!-- Page Banner Start -->
-        <section class="page-banner-area overlay pt-215 rpt-150 pb-160 rpb-120 rel z-1 bgs-cover text-center" style="background-image: url(assets/images/background/banner.jpg);">
+        <section class="page-banner-area overlay pt-215 rpt-150 pb-160 rpb-120 rel z-1 bgs-cover text-center"
+            style="background-image: url(assets/images/background/banner.jpg);">
             <div class="container">
                 <div class="banner-inner text-white">
-                    <h1 class="page-title" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">About company</h1>
+                    <h1 class="page-title" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">About
+                        company</h1>
                     <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                        <ol class="breadcrumb justify-content-center" data-aos="fade-up" data-aos-delay="200"
+                            data-aos-duration="1500" data-aos-offset="50">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                             <li class="breadcrumb-item active">About Us</li>
                         </ol>
@@ -105,20 +113,23 @@ headerContent(1);
             </div>
         </section>
         <!-- Page Banner End -->
-        
-        
+
+
         <!-- About Us Area start -->
         <section class="about-us-area-four pt-130 rpt-100 pb-85 rpb-55 rel z-1">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-6">
-                        <div class="about-us-content ms-0 rmb-25" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="50">
+                        <div class="about-us-content ms-0 rmb-25" data-aos="fade-left" data-aos-duration="1500"
+                            data-aos-offset="50">
                             <div class="section-title mb-25">
                                 <span class="sub-title mb-5">learn About wellfood</span>
                                 <h2>we provide best Quality food for your health</h2>
                             </div>
-                            <p>Welcome too restaurant, where culinary excellence meets warm hospitality in every dish we serve. Nestled in the heart of City Name our eatery invites you on a journey</p>
-                            <a href="about.html" class="theme-btn mt-25 mb-60">learn more us <i class="far fa-arrow-alt-right"></i></a>
+                            <p>Welcome too restaurant, where culinary excellence meets warm hospitality in every dish we
+                                serve. Nestled in the heart of City Name our eatery invites you on a journey</p>
+                            <a href="about.html" class="theme-btn mt-25 mb-60">learn more us <i
+                                    class="far fa-arrow-alt-right"></i></a>
                             <div class="row">
                                 <div class="col-sm-4 col-6">
                                     <div class="counter-item style-two counter-text-wrap">
@@ -142,7 +153,8 @@ headerContent(1);
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <div class="about-image-four style-two mb-30" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="50">
+                        <div class="about-image-four style-two mb-30" data-aos="fade-right" data-aos-duration="1500"
+                            data-aos-offset="50">
                             <div class="row">
                                 <div class="col">
                                     <img src="assets/images/yogiImage.jpg" alt="About">
@@ -158,35 +170,35 @@ headerContent(1);
             </div>
         </section>
         <!-- About Us Area end -->
-        
-        
+
+
         <!-- Headline area start -->
         <div class="headline-area mb-105 rmb-85 rel z-1">
             <span class="marquee-wrap">
-               <span class="marquee-inner left">
-                    <span class="marquee-item">Italian pizza</span>
+                <span class="marquee-inner left">
+                    <span class="marquee-item">Sri Lankan Spiced Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">delicious foods</span>
+                    <span class="marquee-item">Booze Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">burger king</span>
+                    <span class="marquee-item">Weekend Food Pairings</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-               </span>
-               <span class="marquee-inner left">
-                    <span class="marquee-item">Italian pizza</span>
+                </span>
+                <span class="marquee-inner left">
+                    <span class="marquee-item">Booze Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">delicious foods</span>
+                    <span class="marquee-item">Where Every Bite Meets a Sip</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">burger king</span>
+                    <span class="marquee-item">Delight</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-               </span>
-               <span class="marquee-inner left">
-                    <span class="marquee-item">Italian pizza</span>
+                </span>
+                <span class="marquee-inner left">
+                    <span class="marquee-item">Booze Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">delicious foods</span>
+                    <span class="marquee-item">Booze Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-                    <span class="marquee-item">burger king</span>
+                    <span class="marquee-item">Booze Bites</span>
                     <span class="marquee-item"><i class="flaticon-star"></i></span>
-               </span>
+                </span>
             </span>
             <div class="headline-shapes">
                 <div class="shape one">
@@ -198,16 +210,16 @@ headerContent(1);
             </div>
         </div>
         <!-- Headline Area end -->
-        
-        
+
         <!-- Food Category Area start -->
         <section class="food-category-area pb-90 rpb-65 rel z-1">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-xxl-6 col-xl-7 col-lg-9">
-                        <div class="section-title text-center mb-50" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="col-xl-7 col-lg-9">
+                        <div class="section-title text-center mb-50" data-aos="fade-up" data-aos-duration="1500"
+                            data-aos-offset="50">
                             <span class="sub-title mb-5">popular food category</span>
-                            <h2>we provide amazing & Quality food for your good health</h2>
+                            <h2>Elevate Your Dining & Experience with Booze Bites</h2>
                         </div>
                     </div>
                 </div>
@@ -215,43 +227,54 @@ headerContent(1);
                     <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                         <div class="featured-item">
                             <div class="icon">
-                                <i class="flaticon-recommended-food"></i>
+                                <i class="fa-thin fa-meat"></i>
                             </div>
                             <div class="content">
-                                <h4><a href="menu-restaurant.html">Best Quality Food</a></h4>
-                                <p>Sed ut perspiciatis unde omnis este natus sit voluptatem</p>
+                                <h4>No Added MSG</h4>
+                                <p>Enjoy delicious food without artificial ingredients.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <div class="featured-item">
                             <div class="icon">
-                                <i class="flaticon-fast-delivery"></i>
+                                <i class="fa-thin fa-pot-food"></i>
                             </div>
                             <div class="content">
-                                <h4><a href="menu-restaurant.html">fast food delivery</a></h4>
-                                <p>Sed ut perspiciatis unde omnis este natus sit voluptatem</p>
+                                <h4>Healthy Ingredients</h4>
+                                <p>Savor meals made with fresh and wholesome ingredients.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <div class="featured-item">
                             <div class="icon">
-                                <i class="flaticon-cashback"></i>
+                                <i class="fa-thin fa-plate-utensils"></i>
                             </div>
                             <div class="content">
-                                <h4><a href="menu-restaurant.html">money back guarantee</a></h4>
-                                <p>Sed ut perspiciatis unde omnis este natus sit voluptatem</p>
+                                <h4>Sustainable Sourcing</h4>
+                                <p>Ethical food practices with responsibly sourced products
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="food-category-shape">
+                <div class="shape one">
+                    <img src="assets/images/shapes/food-category1.png" alt="Shape">
+                </div>
+                <div class="shape two">
+                    <img src="assets/images/shapes/food-category2.png" alt="Shape">
+                </div>
+            </div>
         </section>
         <!-- Food Category Area end -->
 
-        
-        
+
+
         <!-- Headline area start -->
         <!-- <div class="headline-area bgc-lighter pt-120 rpt-90 rel z-2">
             <span class="marquee-wrap">
@@ -290,14 +313,15 @@ headerContent(1);
             </div>
         </div> -->
         <!-- Headline Area end -->
-        
-        
+
+
         <!-- Testimonials Area start -->
         <section class="testimonials-area bgc-lighter pt-105 rpt-85 pb-130 rpb-100 rel z-1">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8">
-                        <div class="section-title text-center mb-50" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                        <div class="section-title text-center mb-50" data-aos="fade-up" data-aos-duration="1500"
+                            data-aos-offset="50">
                             <span class="sub-title mb-5">customer feedback</span>
                             <h2>what have lot’s off happy customer explore feedback</h2>
                         </div>
@@ -306,29 +330,91 @@ headerContent(1);
                 <div class="testimonials-active">
                     <div class="testimonial-item" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                         <div class="quote"><i class="flaticon-quote"></i></div>
-                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can be prepared in various ways, from simple steaming or boiling to elaborate preparations such as grilling incorporating</div>
+                        <div class="text">I recently bought pork stew from Booze Bites, and it was absolutely worth the
+                            amount! The flavors were yummy , and the portion size was perfect. Excellent value for
+                            money! I will definitely be back for more. Highly recommended!
+
+                        </div>
                         <div class="author">
                             <img src="assets/images/testimonials/author1.jpg" alt="Author">
                             <div class="description">
-                                <h5>Steven H. Paxson</h5>
-                                <span>CEO & Founder</span>
+                                <h5>Kasun</h5>
+                                <!-- <span>CEO & Founder</span> -->
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial-item" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="testimonial-item" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <div class="quote"><i class="flaticon-quote"></i></div>
-                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can be prepared in various ways, from simple steaming or boiling to elaborate preparations such as grilling incorporating</div>
+                        <div class="text">Hats off for the beautiful Chicken liver stew and Devilled Chicken. Flovours
+                            were amazingly delicious and you cooked it with all the points.
+                            Spicyness,salt,pepper,texture and the taste were all on point. This took me to one decade
+                            back, when I was in SL I used to have these kind of delicious bites from few restaurants
+                            where me and my friends got together for drinks. Also very generous size of portion and well
+                            worth for the money I paid. Most important thing was, I could see that the food was prepared
+                            and cooked in a very well clean and organized kitchen👌.As a senior chef who has been in the
+                            industry for years, I can say, I highly recommend "Booze Bites". Ten out of ten for the food
+                            and wish you all the success. Definetely will order again🤜🤛.
+                        </div>
                         <div class="author">
                             <img src="assets/images/testimonials/author2.jpg" alt="Author">
                             <div class="description">
-                                <h5>Steven H. Paxson</h5>
-                                <span>CEO & Founder</span>
+                                <h5>Samitha</h5>
+                                <!-- <span>CEO & Founder</span> -->
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1500"
+                        data-aos-offset="50">
                         <div class="quote"><i class="flaticon-quote"></i></div>
-                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can be prepared in various ways, from simple steaming or boiling to elaborate preparations such as grilling incorporating</div>
+                        <div class="text">Black Pork Curry එක හවසට අඩියක් ගහන්න සුපිරියටම යනවා. Worth trying it. Highly
+                            recommended. We only have to worry about drinks and Booze Bites will take care of bites for
+                            any occasion. 🥃🍗🥩
+                        </div>
+                        <div class="author">
+                            <img src="assets/images/testimonials/author3.jpg" alt="Author">
+                            <div class="description">
+                                <h5>Niran</h5>
+                                <!-- <span>CEO & Founder</span> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="quote"><i class="flaticon-quote"></i></div>
+                        <div class="text">🌟 Absolutely love Booze Bite! 🌟 The flavors take me back to Sri Lanka with
+                            every bite. The spices are on point, and the dishes are deliciously prepared, capturing the
+                            essence of Sri Lankan cooking. Highly recommend trying them when you're having a drink –
+                            they truly elevate the experience! Cheers to great food! 🍻
+                        </div>
+                        <div class="author">
+                            <img src="assets/images/testimonials/author1.jpg" alt="Author">
+                            <div class="description">
+                                <h5>Supun</h5>
+                                <!-- <span>CEO & Founder</span> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <div class="quote"><i class="flaticon-quote"></i></div>
+                        <div class="text">Excellent choice specially for Friday gatherings after work. Delivery can also
+                            be arranged if you give Yudeesh a call bit advance, which is super convenient. 🐔 liver stew
+                            is something you musy try from here. 🤟
+
+                            Keep up the good work guys. 🥃 Cheers!!
+                        </div>
+                        <div class="author">
+                            <img src="assets/images/testimonials/author2.jpg" alt="Author">
+                            <div class="description">
+                                <h5>Asanka</h5>
+                                <!-- <span>Asanka</span> -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="testimonial-item">
+                        <div class="quote"><i class="flaticon-quote"></i></div>
+                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can be prepared in
+                            various ways, from simple steaming or boiling to elaborate preparations such as grilling
+                            incorporating</div>
                         <div class="author">
                             <img src="assets/images/testimonials/author3.jpg" alt="Author">
                             <div class="description">
@@ -336,40 +422,7 @@ headerContent(1);
                                 <span>CEO & Founder</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="quote"><i class="flaticon-quote"></i></div>
-                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can be prepared in various ways, from simple steaming or boiling to elaborate preparations such as grilling incorporating</div>
-                        <div class="author">
-                            <img src="assets/images/testimonials/author1.jpg" alt="Author">
-                            <div class="description">
-                                <h5>Steven H. Paxson</h5>
-                                <span>CEO & Founder</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="quote"><i class="flaticon-quote"></i></div>
-                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can be prepared in various ways, from simple steaming or boiling to elaborate preparations such as grilling incorporating</div>
-                        <div class="author">
-                            <img src="assets/images/testimonials/author2.jpg" alt="Author">
-                            <div class="description">
-                                <h5>Steven H. Paxson</h5>
-                                <span>CEO & Founder</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-item">
-                        <div class="quote"><i class="flaticon-quote"></i></div>
-                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can be prepared in various ways, from simple steaming or boiling to elaborate preparations such as grilling incorporating</div>
-                        <div class="author">
-                            <img src="assets/images/testimonials/author3.jpg" alt="Author">
-                            <div class="description">
-                                <h5>Steven H. Paxson</h5>
-                                <span>CEO & Founder</span>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="testimonials-shapes">
@@ -382,16 +435,16 @@ headerContent(1);
             </div>
         </section>
         <!-- Testimonials Area end -->
-          
-    <?php 
-    require "footer.php"
-    
-    ?>
+
+        <?php
+        require "footer.php"
+
+            ?>
 
     </div>
     <!--End pagewrapper-->
-   
-    
+
+
     <!-- Jquery -->
     <script src="assets/js/jquery-3.6.0.min.js"></script>
     <!-- Bootstrap -->
@@ -418,4 +471,5 @@ headerContent(1);
     <script src="assets/js/script.js"></script>
 
 </body>
+
 </html>
