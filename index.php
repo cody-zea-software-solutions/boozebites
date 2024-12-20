@@ -227,13 +227,13 @@ session_start();
                                         <a href="about.html" class="theme-btn style-two">learn more us <i
                                                 class="far fa-arrow-alt-right"></i></a>
                                         <div class="customer">
-                                            <h6>100+ Happy customer</h6>
+                                            <h6>25+ Happy customer</h6>
                                             <div class="customer-image">
-                                                <img src="assets/images/about/customer1.png" alt="Customer">
-                                                <img src="assets/images/about/customer2.png" alt="Customer">
-                                                <img src="assets/images/about/customer3.png" alt="Customer">
-                                                <img src="assets/images/about/customer4.png" alt="Customer">
-                                                <img src="assets/images/about/customer5.png" alt="Customer">
+                                                <img src="assets/images/testimonials/author-one.jpg" alt="Customer">
+                                                <img src="assets/images/testimonials/author-two.jpg" alt="Customer">
+                                                <img src="assets/images/testimonials/author-three.jpg" alt="Customer">
+                                                <img src="assets/images/testimonials/author-four.jpg" alt="Customer">
+                                                <img src="assets/images/testimonials/author-five.jpg" alt="Customer">
                                             </div>
                                         </div>
                                     </div>
