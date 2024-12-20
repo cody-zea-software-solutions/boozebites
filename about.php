@@ -336,7 +336,7 @@ require "connection.php";
 
                         </div>
                         <div class="author">
-                            <img src="assets/images/testimonials/author1.jpg" alt="Author">
+                            <img src="assets/images/testimonials/author-one.jpg" alt="Author">
                             <div class="description">
                                 <h5>Kasun</h5>
                                 <!-- <span>CEO & Founder</span> -->
@@ -346,18 +346,16 @@ require "connection.php";
                     <div class="testimonial-item" data-aos="fade-up" data-aos-delay="50" data-aos-duration="1500"
                         data-aos-offset="50">
                         <div class="quote"><i class="flaticon-quote"></i></div>
-                        <div class="text">Hats off for the beautiful Chicken liver stew and Devilled Chicken. Flovours
-                            were amazingly delicious and you cooked it with all the points.
-                            Spicyness,salt,pepper,texture and the taste were all on point. This took me to one decade
-                            back, when I was in SL I used to have these kind of delicious bites from few restaurants
-                            where me and my friends got together for drinks. Also very generous size of portion and well
-                            worth for the money I paid. Most important thing was, I could see that the food was prepared
-                            and cooked in a very well clean and organized kitchen👌.As a senior chef who has been in the
-                            industry for years, I can say, I highly recommend "Booze Bites". Ten out of ten for the food
-                            and wish you all the success. Definetely will order again🤜🤛.
+                        <div class="text">
+                            Hats off to Booze Bites for the delicious Chicken Liver Stew and Devilled Chicken! The
+                            flavors were perfectly balanced—spice, salt, pepper, texture, and taste all on point. It
+                            brought back memories of enjoying similar bites with friends in SL. Generous portions, great
+                            value for money, and a clean, well-organized kitchen stood out. As a senior chef, I highly
+                            recommend Booze Bites—10/10 for the food. Will definitely order again. Wishing you all the
+                            success! 👌🤜🤛
                         </div>
                         <div class="author">
-                            <img src="assets/images/testimonials/author2.jpg" alt="Author">
+                            <img src="assets/images/testimonials/author-two.jpg" alt="Author">
                             <div class="description">
                                 <h5>Samitha</h5>
                                 <!-- <span>CEO & Founder</span> -->
@@ -372,7 +370,7 @@ require "connection.php";
                             any occasion. 🥃🍗🥩
                         </div>
                         <div class="author">
-                            <img src="assets/images/testimonials/author3.jpg" alt="Author">
+                            <img src="assets/images/testimonials/authorfour.jpg" alt="Author">
                             <div class="description">
                                 <h5>Niran</h5>
                                 <!-- <span>CEO & Founder</span> -->
@@ -387,7 +385,7 @@ require "connection.php";
                             they truly elevate the experience! Cheers to great food! 🍻
                         </div>
                         <div class="author">
-                            <img src="assets/images/testimonials/author1.jpg" alt="Author">
+                            <img src="assets/images/testimonials/author-three.jpg" alt="Author">
                             <div class="description">
                                 <h5>Supun</h5>
                                 <!-- <span>CEO & Founder</span> -->
@@ -403,7 +401,7 @@ require "connection.php";
                             Keep up the good work guys. 🥃 Cheers!!
                         </div>
                         <div class="author">
-                            <img src="assets/images/testimonials/author2.jpg" alt="Author">
+                            <img src="assets/images/testimonials/author-five.jpg" alt="Author">
                             <div class="description">
                                 <h5>Asanka</h5>
                                 <!-- <span>Asanka</span> -->
