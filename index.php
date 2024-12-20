@@ -622,6 +622,21 @@ session_start();
                                         <img src="assets/images/testimonials/author-one.jpg" alt="Author">
                                     </div>
                                     <div class="content">
+                                        <div class="text">I recently bought pork stew from Booze Bites, and it was
+                                            absolutely worth the amount! The flavors were yummy , and the portion size
+                                            was perfect. Excellent value for money! I will definitely be back for more.
+                                            Highly recommended!
+                                        </div>
+                                        <span class="author">Kasun</span>
+                                        <!-- <span class="designation">web designer</span> -->
+                                    </div>
+                                </div>
+                                <div class="testimonial-two-item style-two">
+                                    <div class="image">
+                                        <div class="quote"><i class="flaticon-quote"></i></div>
+                                        <img src="assets/images/testimonials/author-two.jpg" alt="Author">
+                                    </div>
+                                    <div class="content">
                                         <div class="text">Hats off for the beautiful Chicken liver stew and Devilled
                                             Chicken. Flovours were amazingly delicious and you cooked it with all the
                                             points. Spicyness,salt,pepper,texture and the taste were all on point. This
@@ -636,20 +651,6 @@ session_start();
 
                                         </div>
                                         <span class="author">Samitha</span>
-                                        <!-- <span class="designation">web designer</span> -->
-                                    </div>
-                                </div>
-                                <div class="testimonial-two-item style-two">
-                                    <div class="image">
-                                        <div class="quote"><i class="flaticon-quote"></i></div>
-                                        <img src="assets/images/testimonials/author-two.jpg" alt="Author">
-                                    </div>
-                                    <div class="content">
-                                        <div class="text">Black Pork Curry එක හවසට අඩියක් ගහන්න සුපිරියටම යනවා. Worth
-                                            trying it. Highly recommended. We only have to worry about drinks and Booze
-                                            Bites will take care of bites for any occasion. 🥃🍗🥩
-                                        </div>
-                                        <span class="author">Niran</span>
                                         <!-- <span class="designation">Manager</span> -->
                                     </div>
                                 </div>
@@ -659,13 +660,12 @@ session_start();
                                         <img src="assets/images/testimonials/author-three.jpg" alt="Author">
                                     </div>
                                     <div class="content">
-                                        <div class="text">🌟 Absolutely love Booze Bite! 🌟 The flavors take me back to
-                                            Sri Lanka with every bite. The spices are on point, and the dishes are
-                                            deliciously prepared, capturing the essence of Sri Lankan cooking. Highly
-                                            recommend trying them when you're having a drink – they truly elevate the
-                                            experience! Cheers to great food! 🍻
+                                        <div class="text">Black Pork Curry එක හවසට අඩියක් ගහන්න සුපිරියටම යනවා. Worth
+                                            trying it. Highly recommended. We only have to worry about drinks and Booze
+                                            Bites will take care of bites for any occasion. 🥃🍗🥩
+
                                         </div>
-                                        <span class="author">Supun</span>
+                                        <span class="author">Niran</span>
                                         <!-- <span class="designation">web designer</span> -->
                                     </div>
                                 </div>
@@ -675,13 +675,14 @@ session_start();
                                         <img src="assets/images/testimonials/author-four.jpg" alt="Author">
                                     </div>
                                     <div class="content">
-                                        <div class="text">Excellent choice specially for Friday gatherings after work.
-                                            Delivery can also be arranged if you give Yudeesh a call bit advance, which
-                                            is super convenient. 🐔 liver stew is something you musy try from here. 🤟
+                                        <div class="text">🌟 Absolutely love Booze Bite! 🌟 The flavors take me back to
+                                            Sri Lanka with every bite. The spices are on point, and the dishes are
+                                            deliciously prepared, capturing the essence of Sri Lankan cooking. Highly
+                                            recommend trying them when you're having a drink – they truly elevate the
+                                            experience! Cheers to great food! 🍻
 
-                                            Keep up the good work guys. 🥃 Cheers!!
                                         </div>
-                                        <span class="author">Asanka</span>
+                                        <span class="author">Supun</span>
                                         <!-- <span class="designation">Manager</span> -->
                                     </div>
                                 </div>
