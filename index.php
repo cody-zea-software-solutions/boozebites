@@ -619,14 +619,38 @@ session_start();
                                 <div class="testimonial-two-item style-two">
                                     <div class="image">
                                         <div class="quote"><i class="flaticon-quote"></i></div>
-                                        <img src="assets/images/testimonials/author-three.jpg" alt="Author">
+                                        <img src="assets/images/testimonials/author-one.jpg" alt="Author">
                                     </div>
                                     <div class="content">
-                                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can
-                                            prepared in various ways, from simple steaming or boiling to elaborate
-                                            preparations such as grilling incorporating weather loving</div>
-                                        <span class="author">Randy R. Pennington</span>
-                                        <span class="designation">web designer</span>
+                                        <div class="text">Hats off for the beautiful Chicken liver stew and Devilled
+                                            Chicken. Flovours were amazingly delicious and you cooked it with all the
+                                            points. Spicyness,salt,pepper,texture and the taste were all on point. This
+                                            took me to one decade back, when I was in SL I used to have these kind of
+                                            delicious bites from few restaurants where me and my friends got together
+                                            for drinks. Also very generous size of portion and well worth for the money
+                                            I paid. Most important thing was, I could see that the food was prepared and
+                                            cooked in a very well clean and organized kitchen👌.As a senior chef who has
+                                            been in the industry for years, I can say, I highly recommend "Booze Bites".
+                                            Ten out of ten for the food and wish you all the success. Definetely will
+                                            order again🤜🤛.
+
+                                        </div>
+                                        <span class="author">Samitha</span>
+                                        <!-- <span class="designation">web designer</span> -->
+                                    </div>
+                                </div>
+                                <div class="testimonial-two-item style-two">
+                                    <div class="image">
+                                        <div class="quote"><i class="flaticon-quote"></i></div>
+                                        <img src="assets/images/testimonials/author-two.jpg" alt="Author">
+                                    </div>
+                                    <div class="content">
+                                        <div class="text">Black Pork Curry එක හවසට අඩියක් ගහන්න සුපිරියටම යනවා. Worth
+                                            trying it. Highly recommended. We only have to worry about drinks and Booze
+                                            Bites will take care of bites for any occasion. 🥃🍗🥩
+                                        </div>
+                                        <span class="author">Niran</span>
+                                        <!-- <span class="designation">Manager</span> -->
                                     </div>
                                 </div>
                                 <div class="testimonial-two-item style-two">
@@ -635,37 +659,30 @@ session_start();
                                         <img src="assets/images/testimonials/author-three.jpg" alt="Author">
                                     </div>
                                     <div class="content">
-                                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can
-                                            prepared in various ways, from simple steaming or boiling to elaborate
-                                            preparations such as grilling incorporating weather loving</div>
-                                        <span class="author">Salvador I. Burton</span>
-                                        <span class="designation">Manager</span>
+                                        <div class="text">🌟 Absolutely love Booze Bite! 🌟 The flavors take me back to
+                                            Sri Lanka with every bite. The spices are on point, and the dishes are
+                                            deliciously prepared, capturing the essence of Sri Lankan cooking. Highly
+                                            recommend trying them when you're having a drink – they truly elevate the
+                                            experience! Cheers to great food! 🍻
+                                        </div>
+                                        <span class="author">Supun</span>
+                                        <!-- <span class="designation">web designer</span> -->
                                     </div>
                                 </div>
                                 <div class="testimonial-two-item style-two">
                                     <div class="image">
                                         <div class="quote"><i class="flaticon-quote"></i></div>
-                                        <img src="assets/images/testimonials/author-three.jpg" alt="Author">
+                                        <img src="assets/images/testimonials/author-four.jpg" alt="Author">
                                     </div>
                                     <div class="content">
-                                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can
-                                            prepared in various ways, from simple steaming or boiling to elaborate
-                                            preparations such as grilling incorporating weather loving</div>
-                                        <span class="author">Randy R. Pennington</span>
-                                        <span class="designation">web designer</span>
-                                    </div>
-                                </div>
-                                <div class="testimonial-two-item style-two">
-                                    <div class="image">
-                                        <div class="quote"><i class="flaticon-quote"></i></div>
-                                        <img src="assets/images/testimonials/author-three.jpg" alt="Author">
-                                    </div>
-                                    <div class="content">
-                                        <div class="text">Renowned for its versatility in the kitchen, Red King Crab can
-                                            prepared in various ways, from simple steaming or boiling to elaborate
-                                            preparations such as grilling incorporating weather loving</div>
-                                        <span class="author">Salvador I. Burton</span>
-                                        <span class="designation">Manager</span>
+                                        <div class="text">Excellent choice specially for Friday gatherings after work.
+                                            Delivery can also be arranged if you give Yudeesh a call bit advance, which
+                                            is super convenient. 🐔 liver stew is something you musy try from here. 🤟
+
+                                            Keep up the good work guys. 🥃 Cheers!!
+                                        </div>
+                                        <span class="author">Asanka</span>
+                                        <!-- <span class="designation">Manager</span> -->
                                     </div>
                                 </div>
                             </div>
