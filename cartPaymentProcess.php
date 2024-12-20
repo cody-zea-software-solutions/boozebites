@@ -6,7 +6,7 @@ $total = $_POST["total"];
 $umail = $_POST["umail"];
 $discount = $_POST["dis"];
 $shiptotal = $_POST["shiptotal"];
-
+$shiptotal = 0;
 $shiptotal = number_format($shiptotal, 2, '.', '');
 $discount = number_format($discount, 2, '.', ''); // Format discount amount
 
@@ -79,7 +79,7 @@ if (isset($_SESSION["user_boost"])) {
                     'price_data' => [
                         'currency' => 'nzd',
                         'product_data' => [
-                            'name' => 'Shipping Charge',
+                            'name' => 'Shipping Charge (Pick-Up Only)',
                         ],
                         'unit_amount' => intval($shiptotal * 100), // Shipping charge in cents
                     ],

@@ -98,7 +98,7 @@ if (isset($_SESSION["user_boost"]["email"])) { //check if the user logged in
                                     <td><span class="price"><?php echo $cartTotal; ?></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Shipping Fee</td>
+                                    <td>Shipping Fee (Pick Up Only)</td>
                                     <td><span class="price"><?php echo $shipFee; ?></span></td>
                                 </tr>
                                 <?php
