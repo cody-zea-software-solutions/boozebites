@@ -107,7 +107,7 @@ if (isset($_SESSION["user_boost"])) {
                         'mode' => 'payment',
 
                         'success_url' => $successUrl,
-                        'cancel_url' => 'https://ceynap.co.nz/payment-cancel.php',
+                        'cancel_url' => 'https://boozebites.co.nz/payment-cancel.php',
                      
                     ]);
                 }
