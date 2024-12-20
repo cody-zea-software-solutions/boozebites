@@ -56,10 +56,10 @@
   <div class="illustration"></div> <!-- Illustration -->
   <div class="container text-center">
     <div class="col-12 d-flex justify-content-center">
-          <img src="assets/img/logo.png" class="img-fluid w-50 " alt="">
+          <img src="assets/images/logos/logo-black.png" class="img-fluid w-50 " alt="">
     </div>
 
-    <div class="brand-name text-center">Ceynap</div> <!-- Adding brand name -->
+    <div class="brand-name text-center">Booze Bites</div> <!-- Adding brand name -->
     <h2>Payment Cancellation</h2>
     <p>Your payment has been cancelled.</p>
     <div class="text-center">
