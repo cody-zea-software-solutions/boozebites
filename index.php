@@ -657,7 +657,7 @@ session_start();
                                 <div class="testimonial-two-item style-two">
                                     <div class="image">
                                         <div class="quote"><i class="flaticon-quote"></i></div>
-                                        <img src="assets/images/testimonials/author-three.jpg" alt="Author">
+                                        <img src="assets/images/testimonials/author-four.jpg" alt="Author">
                                     </div>
                                     <div class="content">
                                         <div class="text">Black Pork Curry එක හවසට අඩියක් ගහන්න සුපිරියටම යනවා. Worth
@@ -672,7 +672,7 @@ session_start();
                                 <div class="testimonial-two-item style-two">
                                     <div class="image">
                                         <div class="quote"><i class="flaticon-quote"></i></div>
-                                        <img src="assets/images/testimonials/author-four.jpg" alt="Author">
+                                        <img src="assets/images/testimonials/author-three.jpg" alt="Author">
                                     </div>
                                     <div class="content">
                                         <div class="text">🌟 Absolutely love Booze Bite! 🌟 The flavors take me back to
