@@ -205,7 +205,7 @@ if (isset($_SESSION["user_boost"])) {
                                     $price_data = $price_rs->fetch_assoc();
                                     $price = number_format($price_data['invoice_total'],2);
                                     ?>
-                                    <img src="<?php echo isset($product_img_path['product_img_path']) ? $product_img_path['product_img_path'] : './assets/images/profile-icon.png'; ?>"
+                                    <img src="assets/images/food.png"
                                         class="img-fluid w-100 col-12 rounded-5" alt="Product Image" />
                                     <p class="text-center secondary-color mt-3 h4">
                                         <?php echo htmlspecialchars($product_data['product_name'] ?? 'Unknown Product'); ?></p>
