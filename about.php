@@ -370,7 +370,7 @@ require "connection.php";
                             any occasion. 🥃🍗🥩
                         </div>
                         <div class="author">
-                            <img src="assets/images/testimonials/authorfour.jpg" alt="Author">
+                            <img src="assets/images/testimonials/author-four.jpg" alt="Author">
                             <div class="description">
                                 <h5>Niran</h5>
                                 <!-- <span>CEO & Founder</span> -->
