@@ -5,7 +5,7 @@ if (isset($_SESSION["user_boost"]["email"])) { //check if the user logged in
     $user_email = $_SESSION["user_boost"]["email"];
 
     $cartTotal = 0.0;
-    $shipFee = 6.0;
+    $shipFee = 0.0;
     $discount = 0.0;
     $subTotal = 0.0;
     ?>
