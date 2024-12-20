@@ -70,7 +70,8 @@ function addToCart(pid) {
           showConfirmButton: false,
           timer: 1500,
         });
-      } else if(r.responseText == "log"){
+        window.location.reload();
+      } else if (r.responseText == "log") {
         Swal.fire({
           position: "top-end",
           icon: "warning",
