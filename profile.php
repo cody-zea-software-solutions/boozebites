@@ -79,7 +79,7 @@ if (isset($_SESSION["user_boost"])) {
                                 <a href="cart.php" class="theme-btn style-two col-10">Cart <i
                                         class="far fa-arrow-alt-right"></i></a>
                             </div>
-                            <div class="col-12 d-flex justify-content-center">
+                            <div class="col-12 d-flex justify-content-center mt-10">
                                 <a href="shop.php" class="theme-btn style-two col-10">Shop <i
                                         class="far fa-arrow-alt-right"></i></a>
                             </div>
