@@ -41,7 +41,7 @@ if (isset($_SESSION["user_boost"]["email"])) { //check if the user logged in
                                     if ($img_rs->num_rows > 0) {
                                         $img_d = $img_rs->fetch_assoc();
                                         ?>
-                                        <img src="<?php echo $img_d["product_img_path"]; ?>" alt="Product Details">
+                                        <img src="admin-panel/<?php echo $img_d["product_img_path"]; ?>" alt="Product Details">
                                         <?php
                                     } else {
                                         ?>
