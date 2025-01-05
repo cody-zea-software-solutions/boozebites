@@ -32,7 +32,7 @@ if (isset($_SESSION["user_boost"])) {
 
 
   $usemail = $_GET["umail"];
-  if ($umail == $usemail) {
+  // if ($umail == $usemail) {
     ?>
 
     <!DOCTYPE html>
@@ -307,14 +307,7 @@ if (isset($_SESSION["user_boost"])) {
 
     </html>
     <?php
-  } else {
-    ?>
-    <script>
-      alert("Please Sign-In Or Sign-Up");
-      window.location = "../main.php";
-    </script>
-    <?php
-  }
+  
 
 ?>
 <?php
